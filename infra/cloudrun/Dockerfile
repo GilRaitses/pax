@@ -6,6 +6,7 @@ WORKDIR /app
 
 COPY pyproject.toml README.md /app/
 COPY src /app/src
+COPY cameras.yaml /app/cameras.yaml
 
 RUN pip install --upgrade pip \
     && pip install .

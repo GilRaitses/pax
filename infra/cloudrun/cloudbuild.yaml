@@ -1,0 +1,7 @@
+steps:
+- name: 'gcr.io/cloud-builders/docker'
+  args: ['build', '-f', 'infra/cloudrun/Dockerfile', '-t', 'gcr.io/$PROJECT_ID/pax-collector', '.']
+images:
+- 'gcr.io/$PROJECT_ID/pax-collector'
+
+

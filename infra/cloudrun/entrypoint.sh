@@ -1,5 +1,6 @@
 #!/usr/bin/env bash
 set -euo pipefail
 
-exec python -m pax.scripts.collect --skip-images --max-cameras "${PAX_COLLECTOR_MAX_CAMERAS:-108}"
+# Use collect_manifest to only collect from cameras in cameras.yaml (40 corridor cameras)
+exec python -m pax.scripts.collect_manifest --skip-images
 
