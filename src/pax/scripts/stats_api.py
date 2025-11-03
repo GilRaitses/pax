@@ -25,6 +25,8 @@ class StatsAPIHandler(BaseHTTPRequestHandler):
             self.serve_stats()
         elif self.path == "/api/manifest":
             self.serve_manifest()
+        elif self.path.startswith("/api/images/"):
+            self.serve_image()
         elif self.path == "/" or self.path == "/index.html":
             self.serve_index()
         else:
@@ -55,10 +57,36 @@ class StatsAPIHandler(BaseHTTPRequestHandler):
             LOGGER.exception("Error loading manifest")
             self.send_error(500, str(e))
 
+    def serve_image(self) -> None:
+        """Serve image files for preview."""
+        try:
+            # Extract path: /api/images/data/raw/images/...
+            image_path_str = self.path.replace("/api/images/", "")
+            image_path = Path.cwd() / image_path_str
+            
+            if not image_path.exists() or not image_path.is_file():
+                self.send_error(404, "Image not found")
+                return
+            
+            with open(image_path, "rb") as f:
+                content = f.read()
+            
+            self.send_response(200)
+            self.send_header("Content-Type", "image/jpeg")
+            self.send_header("Content-Length", str(len(content)))
+            self.send_header("Access-Control-Allow-Origin", "*")
+            self.end_headers()
+            self.wfile.write(content)
+        except Exception as e:
+            LOGGER.exception("Error serving image")
+            self.send_error(500, str(e))
+
     def serve_index(self) -> None:
         """Serve the dashboard HTML."""
         try:
-            index_path = Path.cwd() / "docs" / "index.html"
+            index_path = Path.cwd() / "index.html"
+            if not index_path.exists():
+                index_path = Path.cwd() / "docs" / "index.html"
             if not index_path.exists():
                 self.send_error(404, "Dashboard not found")
                 return
@@ -78,6 +106,7 @@ class StatsAPIHandler(BaseHTTPRequestHandler):
     def _compute_stats(self, settings: PaxSettings) -> dict[str, Any]:
         """Compute statistics from metadata files."""
         metadata_root = settings.storage.metadata
+        images_root = settings.storage.images
         if not metadata_root or not metadata_root.exists():
             return self._empty_stats()
 
@@ -85,6 +114,8 @@ class StatsAPIHandler(BaseHTTPRequestHandler):
         camera_counts: dict[str, dict] = {}
         total_images = 0
         latest_capture = None
+        latest_camera_id = None
+        latest_timestamp = None
 
         for camera_dir in metadata_root.iterdir():
             if not camera_dir.is_dir() or camera_dir.name.startswith("batch_"):
@@ -97,6 +128,7 @@ class StatsAPIHandler(BaseHTTPRequestHandler):
 
             # Find latest capture time
             last_capture = None
+            last_timestamp = None
             for meta_file in metadata_files:
                 try:
                     with open(meta_file) as f:
@@ -105,8 +137,12 @@ class StatsAPIHandler(BaseHTTPRequestHandler):
                         if capture_time:
                             if not last_capture or capture_time > last_capture:
                                 last_capture = capture_time
+                                # Extract timestamp from filename: YYYYMMDDTHHMMSS
+                                last_timestamp = meta_file.stem
                             if not latest_capture or capture_time > latest_capture:
                                 latest_capture = capture_time
+                                latest_camera_id = camera_id
+                                latest_timestamp = meta_file.stem
                 except Exception:
                     continue
 
@@ -118,10 +154,30 @@ class StatsAPIHandler(BaseHTTPRequestHandler):
         # Load manifest to get camera names
         manifest_path = Path.cwd() / "cameras.yaml"
         active_cameras = 0
+        latest_camera_name = None
         if manifest_path.exists():
             with open(manifest_path) as f:
                 manifest = yaml.safe_load(f)
-                active_cameras = len(manifest.get("cameras", []))
+                cameras = manifest.get("cameras", [])
+                active_cameras = len(cameras)
+                if latest_camera_id:
+                    for cam in cameras:
+                        if cam.get("id") == latest_camera_id:
+                            latest_camera_name = cam.get("name", latest_camera_id)
+                            break
+
+        # Build latest image info
+        latest_image = None
+        if latest_camera_id and latest_timestamp and images_root and images_root.exists():
+            image_path = images_root / latest_camera_id / f"{latest_timestamp}.jpg"
+            if image_path.exists():
+                latest_image = {
+                    "camera_id": latest_camera_id,
+                    "camera_name": latest_camera_name or latest_camera_id,
+                    "timestamp": latest_timestamp,
+                    "image_path": str(image_path.relative_to(Path.cwd())),
+                    "captured_at": latest_capture,
+                }
 
         return {
             "totalImages": total_images,
@@ -129,6 +185,7 @@ class StatsAPIHandler(BaseHTTPRequestHandler):
             "latestCapture": latest_capture,
             "cameraCounts": camera_counts,
             "storageInfo": f"{total_images} images across {len(camera_counts)} cameras",
+            "latestImage": latest_image,
         }
 
     def _empty_stats(self) -> dict[str, Any]:
@@ -139,6 +196,7 @@ class StatsAPIHandler(BaseHTTPRequestHandler):
             "latestCapture": None,
             "cameraCounts": {},
             "storageInfo": "No data collected yet",
+            "latestImage": None,
         }
 
     def _send_json(self, data: dict) -> None:
