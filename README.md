@@ -1,6 +1,14 @@
-# Pax
+# Pax NYC - Energetic Pathfinding and Perceptual Heuristics
 
-Energetic pathfinding research toolkit for the CIS 667 term project. Pax houses the code for learning perception-aware heuristics over Manhattan street networks.
+**🚀 [View Live Dashboard →](https://gilraitses.github.io/pax/)**
+
+Energetic pathfinding research toolkit for the CIS 667 term project. Pax houses the code for learning perception-aware heuristics over Manhattan street networks via learned A* search.
+
+## Quick Links
+
+- **[📊 Live Dashboard](https://gilraitses.github.io/pax/)** - Real-time camera collection statistics
+- **[📄 Project Proposal PDF](https://github.com/GilRaitses/pax/raw/main/CIS667_TermProject_Proposal_Final.pdf)** - Complete proposal document
+- **Study Area:** Grand Central → Carnegie Hall corridor (40 cameras, Manhattan)
 
 ## Structure
 
