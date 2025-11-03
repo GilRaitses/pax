@@ -27,6 +27,8 @@ logs/
 !**/corridor_cameras.json
 !**/docs/manifest.json
 !**/docs/stats.json
+!**/manifest.json
+!**/stats.json
 !**/pyproject.toml
 **/pax-ingest-key.json
 **/service-account*.json

@@ -447,16 +447,15 @@
             
             // Fall back to static JSON file
             try {
-                const response = await fetch('./docs/manifest.json');
+                let response = await fetch('./manifest.json');
                 if (!response.ok) {
-                    // Try alternative path for GitHub Pages
-                    const altResponse = await fetch('docs/manifest.json');
-                    const manifest = await altResponse.json();
-                    cameraManifest = manifest.cameras || [];
-                } else {
-                    const manifest = await response.json();
-                    cameraManifest = manifest.cameras || [];
+                    response = await fetch('./docs/manifest.json');
                 }
+                if (!response.ok) {
+                    response = await fetch('docs/manifest.json');
+                }
+                const manifest = await response.json();
+                cameraManifest = manifest.cameras || [];
             } catch (error) {
                 console.error('Failed to load manifest:', error);
                 // Set default empty manifest
@@ -479,9 +478,11 @@
             
             // Fall back to static JSON file
             try {
-                let response = await fetch('./docs/stats.json');
+                let response = await fetch('./stats.json');
                 if (!response.ok) {
-                    // Try alternative path for GitHub Pages
+                    response = await fetch('./docs/stats.json');
+                }
+                if (!response.ok) {
                     response = await fetch('docs/stats.json');
                 }
                 const stats = await response.json();
