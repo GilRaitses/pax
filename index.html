@@ -423,36 +423,68 @@
     </div>
     
     <script>
+        // Try API first (for local dev), fall back to static files
         const API_BASE = window.location.hostname === 'localhost' 
             ? 'http://localhost:8000' 
             : '';
         
         let cameraManifest = [];
+        let useAPI = false;
         
         async function loadManifest() {
             try {
-                const response = await fetch(`${API_BASE}/api/manifest`);
-                const manifest = await response.json();
-                cameraManifest = manifest.cameras || [];
-                
-                // Update project info
-                if (manifest.project) {
-                    document.querySelector('.subtitle').textContent = manifest.project.description || 'Traffic Camera Collection Dashboard';
+                // Try API first
+                if (API_BASE) {
+                    const response = await fetch(`${API_BASE}/api/manifest`);
+                    const manifest = await response.json();
+                    cameraManifest = manifest.cameras || [];
+                    useAPI = true;
+                    return;
                 }
             } catch (error) {
+                console.log('API not available, using static files');
+            }
+            
+            // Fall back to static JSON file
+            try {
+                const response = await fetch('./docs/manifest.json');
+                const manifest = await response.json();
+                cameraManifest = manifest.cameras || [];
+            } catch (error) {
                 console.error('Failed to load manifest:', error);
-                showError('Failed to load camera manifest');
+                // Set default empty manifest
+                cameraManifest = [];
             }
         }
         
         async function fetchStats() {
             try {
-                const response = await fetch(`${API_BASE}/api/stats`);
+                // Try API first (local dev)
+                if (API_BASE && useAPI) {
+                    const response = await fetch(`${API_BASE}/api/stats`);
+                    const stats = await response.json();
+                    updateDashboard(stats);
+                    return;
+                }
+            } catch (error) {
+                console.log('API not available, using static stats');
+            }
+            
+            // Fall back to static JSON file
+            try {
+                const response = await fetch('./docs/stats.json');
                 const stats = await response.json();
                 updateDashboard(stats);
             } catch (error) {
                 console.error('Failed to fetch stats:', error);
-                showError('Failed to fetch statistics: ' + error.message);
+                // Set defaults if file doesn't exist
+                updateDashboard({
+                    totalImages: 0,
+                    activeCameras: 40,
+                    latestCapture: null,
+                    cameraCounts: {},
+                    storageInfo: 'No data collected yet'
+                });
             }
         }
         

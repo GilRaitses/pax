@@ -25,6 +25,8 @@ logs/
 *secret*.txt
 *.json
 !**/corridor_cameras.json
+!**/docs/manifest.json
+!**/docs/stats.json
 !**/pyproject.toml
 **/pax-ingest-key.json
 **/service-account*.json
