@@ -252,50 +252,128 @@
         </header>
 
         <div class="proposal-section">
-            <h2>Research Question</h2>
-            <p style="font-size: 1.1em; line-height: 1.7; color: #333;">
-                Can learned heuristics from vision-based environmental features outperform standard 
-                Manhattan-distance baselines in predicting route stress and improving path interpretability?
+            <h2>Introduction</h2>
+            <p style="font-size: 1.05em; line-height: 1.7; color: #333; margin-bottom: 25px;">
+                Traditional pathfinding algorithms optimize for geometric distance or travel time but fail to capture the 
+                <strong>energetic and perceptual dynamics</strong> of movement in dense urban environments. In Manhattan, 
+                the cost of traversing a route is not defined by distance alone but by <strong>sensory and behavioral complexity</strong>: 
+                crowding, visual noise, infrastructure gaps and movement unpredictability.
             </p>
 
-            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 20px; margin: 30px 0;">
+            <p style="font-size: 1.1em; line-height: 1.7; color: #333; font-weight: 600; margin: 25px 0;">
+                <strong>Key Research Question:</strong> Can learned heuristics from vision-based environmental features outperform 
+                standard Manhattan-distance baselines in predicting route stress and improving path interpretability?
+            </p>
+
+            <p style="font-size: 1.05em; line-height: 1.7; color: #333;">
+                This work develops a <strong>perceptually informed heuristic</strong> for A* search using NYC traffic camera data. 
+                The heuristic models environmental resistance by extracting features from visual data. Human pedestrians naturally 
+                avoid stressful routes based on crowded intersections, poor lighting and aggressive traffic patterns; this approach 
+                encodes similar avoidance behavior.
+            </p>
+
+            <div style="background: #f8f9fa; padding: 25px; border-radius: 12px; margin: 30px 0; border-left: 4px solid #667eea;">
+                <h3 style="color: #667eea; margin-top: 0;">Aim</h3>
+                <p style="margin: 0; font-size: 1.05em; line-height: 1.6;">
+                    Implement and evaluate a heuristic search system that learns energetic pathfinding behavior by integrating 
+                    sensory data into classical A* reasoning. Test whether perception-driven cost modeling improves interpretability 
+                    and environmental realism in AI navigation.
+                </p>
+            </div>
+
+            <h2>Study Area</h2>
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 20px; margin: 20px 0;">
                 <div class="proposal-card">
-                    <h3>Problem</h3>
-                                    <p>Traditional pathfinding algorithms optimize for geometric distance but fail to capture the 
-                                    <strong>energetic and perceptual dynamics</strong> of movement in dense urban environments. 
-                                    Routes involve sensory complexity: crowding, visual noise, infrastructure gaps, and unpredictability.</p>
+                    <h3>Navigation Environment</h3>
+                    <p>Assemble the Grand Central–Carnegie Hall corridor graph in EPSG:2263 using NYC DCM street centerlines; 
+                    snap 161 intersections to the projected grid, overlay official hydrography and park polygons, and link each 
+                    node to the nearest DOT camera through Voronoi zone IDs.</p>
                 </div>
                 <div class="proposal-card">
-                    <h3>Approach</h3>
-                    <p>Develop a <strong>perceptually informed heuristic</strong> for A* search using NYC traffic camera data. 
-                    The heuristic models environmental resistance by extracting features from visual data—encoding 
-                    how pedestrians naturally avoid stressful routes.</p>
+                    <h3>State Space</h3>
+                    <p><strong>States S:</strong> Set of 161 intersection nodes (where streets cross) spanning a corridor bounded 
+                    by extending ±2 streets and ±1 avenue from each endpoint: 40th to 59th St, Lexington to 8th Ave<br><br>
+                    <strong>Initial State s₀:</strong> Grand Central (42nd & Park)<br>
+                    <strong>Goal State s₉:</strong> Carnegie Hall (57th & 7th)</p>
                 </div>
                 <div class="proposal-card">
-                    <h3>Study Area</h3>
-                    <p><strong>Grand Central → Carnegie Hall corridor</strong><br>
-                    Manhattan: 40th-59th Streets, Lexington Ave to 8th Ave<br>
-                    161 intersection nodes • 40 camera zones<br>
-                    Start: Grand Central (42nd & Park)<br>
-                    Goal: Carnegie Hall (57th & 7th Ave)</p>
+                    <h3>Camera Coverage</h3>
+                    <p>Manhattan street network with 40 camera coverage zones in the corridor (Voronoi tessellation); dynamic 
+                    traffic conditions; partially observable via camera sensors. Each camera provides multi-dimensional feature 
+                    vectors encoding violations, density, infrastructure quality.</p>
                 </div>
             </div>
 
-            <div style="background: rgba(255, 255, 255, 0.95); padding: 25px; border-radius: 12px; margin: 30px 0; box-shadow: 0 2px 8px rgba(0,0,0,0.1);">
-                <h3 style="color: #667eea; margin-top: 0;">Methodology</h3>
-                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 15px;">
+            <h2>Methodology</h2>
+            <div style="background: rgba(255, 255, 255, 0.95); padding: 25px; border-radius: 12px; margin: 20px 0; box-shadow: 0 2px 8px rgba(0,0,0,0.1);">
+                <h3 style="color: #667eea; margin-top: 0;">Agent Framework</h3>
+                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 15px; margin-bottom: 20px;">
                     <div>
-                        <strong>State Space:</strong> 161 intersections from NYC DCM street centerlines
+                        <strong>Performance Measure:</strong> Minimize energetic cost (stress score) along navigation path
                     </div>
                     <div>
-                        <strong>Sensors:</strong> 40 cameras providing multi-dimensional feature vectors
+                        <strong>Environment:</strong> Manhattan street network with 40 camera zones, dynamic traffic conditions
                     </div>
                     <div>
-                        <strong>Heuristic:</strong> Learned via Ridge regression: <code>h(n) = w^T f(zone(n))</code>
+                        <strong>Actuators:</strong> Directional movements (N, S, E, W) along street intersections
                     </div>
                     <div>
-                        <strong>Search:</strong> A* with Manhattan baseline vs. learned perceptual heuristic
+                        <strong>Sensors:</strong> Computer vision analysis of traffic camera imagery; multi-dimensional feature vectors
                     </div>
+                </div>
+
+                <h3 style="color: #667eea; margin-top: 20px;">Heuristic Design</h3>
+                <div style="margin-top: 15px;">
+                    <p style="margin-bottom: 10px;"><strong>Baseline: Manhattan Distance</strong></p>
+                    <p style="background: #f8f9fa; padding: 15px; border-radius: 6px; margin-bottom: 15px;">
+                        <code>h<sub>manhattan</sub>(n) = |x<sub>n</sub> - x<sub>goal</sub>| + |y<sub>n</sub> - y<sub>goal</sub>|</code><br>
+                        <span style="color: #666; font-size: 0.9em;">Admissible but ignores environmental context.</span>
+                    </p>
+
+                    <p style="margin-bottom: 10px;"><strong>Learned Perceptual Heuristic</strong></p>
+                    <p style="background: #f8f9fa; padding: 15px; border-radius: 6px; margin-bottom: 15px;">
+                        <code>h<sub>learned</sub>(n) = w<sup>T</sup> f(n) + b</code><br>
+                        <span style="color: #666; font-size: 0.9em;">
+                        where <strong>f(n)</strong> represents the feature vector for node n, <strong>w</strong> denotes the learned 
+                        weights from Ridge regression and <strong>b</strong> is the intercept term. Each intersection n inherits 
+                        features from its nearest camera via Voronoi tessellation.
+                        </span>
+                    </p>
+
+                    <p style="margin-bottom: 10px;"><strong>Adaptive Weighted A*</strong></p>
+                    <p style="background: #f8f9fa; padding: 15px; border-radius: 6px;">
+                        <code>f(n) = g(n) + W · h<sub>learned</sub>(n)</code><br>
+                        <span style="color: #666; font-size: 0.9em;">
+                        with W ∈ {1.0, 1.2, 1.5} to balance the exploration-exploitation tradeoff: higher weights prioritize 
+                        heuristic guidance (faster search) while lower weights preserve optimality guarantees.
+                        </span>
+                    </p>
+                </div>
+            </div>
+
+            <h2>Objectives</h2>
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 20px; margin: 20px 0;">
+                <div class="proposal-card">
+                    <h3>Knowledge Base</h3>
+                    <p>Engineer a data pipeline that captures a one-week window of traffic camera imagery, runs computer vision 
+                    analysis, normalizes feature vectors and stores symbolic predicates such as <code>high_pedestrian</code> and 
+                    <code>bike_violation</code> for search-time reasoning.</p>
+                </div>
+                <div class="proposal-card">
+                    <h3>Perceptual Heuristic</h3>
+                    <p>Fit a Ridge regression model on annotated camera data to learn energetic weights, calibrate cost scaling 
+                    with stratified cross-validation and expose a reusable function returning h(n) = w<sup>T</sup> f<sub>zone(n)</sub> 
+                    with interpretable coefficients.</p>
+                </div>
+                <div class="proposal-card">
+                    <h3>A* Implementation</h3>
+                    <p>Implement baseline A*, learned A* and adaptive weighted A* (W ∈ {1.0, 1.2, 1.5}); instrument node expansions, 
+                    path costs and admissibility checks for the learned heuristic.</p>
+                </div>
+                <div class="proposal-card">
+                    <h3>Evaluation</h3>
+                    <p>Compare systems via Monte Carlo route sampling, Mean Absolute Error on stress predictions, search effort 
+                    (nodes expanded, runtime), path diversity and permutation importance to surface dominant perceptual factors.</p>
                 </div>
             </div>
         </div>
