@@ -6,7 +6,7 @@
     <title>Pax NYC - Traffic Camera Collection Dashboard</title>
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
     <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
-    <script src="https://unpkg.com/d3-delaunay@6.0.2/dist/d3-delaunay.min.js"></script>
+    <script src="https://unpkg.com/d3-delaunay@6.0.2/dist/d3-delaunay.umd.js"></script>
     <style>
         * {
             margin: 0;
@@ -745,49 +745,72 @@
         }
 
         function computeVoronoiCells(cameras) {
-            if (!cameras || cameras.length === 0) return null;
+            if (!cameras || cameras.length === 0 || !window.d3) return null;
             
-            // Convert lat/lon to map coordinates
-            const points = cameras.map(cam => {
-                const point = map.latLngToContainerPoint([cam.latitude, cam.longitude]);
-                return [point.x, point.y];
-            });
-            
-            // Compute Voronoi diagram
-            const delaunay = new d3.Delaunay.from(points);
-            const voronoi = delaunay.voronoi([0, 0, map.getContainer().clientWidth, map.getContainer().clientHeight]);
-            
-            return { voronoi, points };
+            try {
+                // Convert lat/lon to map coordinates
+                const bounds = map.getBounds();
+                const size = map.getSize();
+                const points = cameras.map(cam => {
+                    const point = map.latLngToContainerPoint([cam.latitude, cam.longitude]);
+                    return [point.x, point.y];
+                });
+                
+                // Compute Voronoi diagram using d3-delaunay
+                const delaunay = d3.Delaunay.from(points);
+                const voronoi = delaunay.voronoi([0, 0, size.x, size.y]);
+                
+                return { voronoi, points, cameras };
+            } catch (e) {
+                console.warn('Voronoi computation failed:', e);
+                return null;
+            }
         }
 
-        function drawVoronoiCells(voronoiData, cameras) {
-            if (!voronoiData || !voronoiLayer) return;
+        function drawVoronoiCells(voronoiData) {
+            if (!voronoiData || !voronoiLayer || !window.d3) return;
             
             const svg = voronoiLayer._container;
             if (!svg) return;
             
             // Clear existing cells
-            d3.select(svg).selectAll('.voronoi-cell').remove();
+            const existing = svg.querySelectorAll('.voronoi-cell');
+            existing.forEach(el => el.remove());
             
-            const svgGroup = d3.select(svg).append('g').attr('class', 'voronoi-overlay');
+            const svgGroup = document.createElementNS('http://www.w3.org/2000/svg', 'g');
+            svgGroup.setAttribute('class', 'voronoi-overlay');
+            svg.appendChild(svgGroup);
             
             // Draw Voronoi cells
-            cameras.forEach((camera, i) => {
-                const cell = voronoiData.voronoi.renderCell(i);
-                if (cell) {
-                    svgGroup.append('path')
-                        .attr('class', 'voronoi-cell')
-                        .attr('d', cell)
-                        .attr('data-camera-id', camera.id)
-                        .style('fill', camera.priority === 'high' ? 'rgba(245, 101, 101, 0.15)' : 'rgba(102, 126, 234, 0.1)')
-                        .style('stroke', camera.priority === 'high' ? 'rgba(245, 101, 101, 0.4)' : 'rgba(102, 126, 234, 0.3)')
-                        .on('mouseover', function() {
-                            d3.select(this).style('fill-opacity', 0.3);
-                            showCameraPopup(camera);
-                        })
-                        .on('mouseout', function() {
-                            d3.select(this).style('fill-opacity', 1);
+            voronoiData.cameras.forEach((camera, i) => {
+                try {
+                    const cell = voronoiData.voronoi.renderCell(i);
+                    if (cell) {
+                        const path = document.createElementNS('http://www.w3.org/2000/svg', 'path');
+                        path.setAttribute('class', 'voronoi-cell');
+                        path.setAttribute('d', cell);
+                        path.setAttribute('data-camera-id', camera.id);
+                        const fillColor = camera.priority === 'high' ? 'rgba(245, 101, 101, 0.15)' : 'rgba(102, 126, 234, 0.1)';
+                        const strokeColor = camera.priority === 'high' ? 'rgba(245, 101, 101, 0.4)' : 'rgba(102, 126, 234, 0.3)';
+                        path.style.fill = fillColor;
+                        path.style.stroke = strokeColor;
+                        path.style.strokeWidth = '1';
+                        path.style.pointerEvents = 'none';
+                        
+                        path.addEventListener('mouseover', function() {
+                            this.style.fillOpacity = '0.3';
+                            const stats = cameraStats[camera.id] || { count: 0, lastCapture: null };
+                            showCameraPopup(camera, stats);
                         });
+                        
+                        path.addEventListener('mouseout', function() {
+                            this.style.fillOpacity = '1';
+                        });
+                        
+                        svgGroup.appendChild(path);
+                    }
+                } catch (e) {
+                    console.warn(`Failed to render cell for camera ${i}:`, e);
                 }
             });
         }
@@ -828,19 +851,29 @@
             
             // Update Voronoi cells on map move/zoom
             function updateVoronoi() {
+                if (!window.d3) {
+                    console.log('d3-delaunay not loaded, skipping Voronoi cells');
+                    return;
+                }
                 const voronoiData = computeVoronoiCells(cameraManifest);
                 if (voronoiData) {
-                    drawVoronoiCells(voronoiData, cameraManifest);
+                    drawVoronoiCells(voronoiData);
                 }
+            }
+            
+            // Wait for d3 to load, then render Voronoi
+            if (window.d3) {
+                updateVoronoi();
+            } else {
+                setTimeout(() => {
+                    if (window.d3) updateVoronoi();
+                }, 1000);
             }
             
             map.off('moveend', updateVoronoi);
             map.off('zoomend', updateVoronoi);
             map.on('moveend', updateVoronoi);
             map.on('zoomend', updateVoronoi);
-            
-            // Initial Voronoi render
-            updateVoronoi();
         }
 
         function showCameraPopup(camera, stats, persistent = false) {
