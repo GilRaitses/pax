@@ -88,6 +88,17 @@ def main(argv: list[str] | None = None) -> int:
         settings.remote.bucket = args.gcs_bucket
         if args.gcs_prefix:
             settings.remote.prefix = args.gcs_prefix
+    else:
+        # Check environment variables (Cloud Run sets these)
+        import os
+        remote_provider = os.getenv("PAX_REMOTE_PROVIDER") or os.getenv("PAX_REMOTE__PROVIDER")
+        remote_bucket = os.getenv("PAX_REMOTE_BUCKET") or os.getenv("PAX_REMOTE__BUCKET")
+        remote_prefix = os.getenv("PAX_REMOTE_PREFIX") or os.getenv("PAX_REMOTE__PREFIX")
+        if remote_provider == "gcs" and remote_bucket:
+            settings.remote.provider = "gcs"
+            settings.remote.bucket = remote_bucket
+            if remote_prefix:
+                settings.remote.prefix = remote_prefix
 
     # Collect data
     collector = CameraDataCollector.create(settings)

@@ -4,6 +4,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Pax NYC - Traffic Camera Collection Dashboard</title>
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+    <script src="https://unpkg.com/d3-delaunay@6.0.2/dist/d3-delaunay.min.js"></script>
     <style>
         * {
             margin: 0;
@@ -81,164 +84,6 @@
             margin-top: 5px;
         }
         
-        .camera-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
-            gap: 20px;
-            margin-top: 20px;
-        }
-        
-        .camera-card {
-            background: white;
-            border-radius: 12px;
-            padding: 20px;
-            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-        }
-        
-        .camera-header {
-            display: flex;
-            justify-content: space-between;
-            align-items: start;
-            margin-bottom: 12px;
-        }
-        
-        .camera-name {
-            font-weight: 600;
-            font-size: 1.05em;
-            color: #333;
-            flex: 1;
-        }
-        
-        .camera-badge {
-            background: #667eea;
-            color: white;
-            padding: 4px 10px;
-            border-radius: 12px;
-            font-size: 0.75em;
-            font-weight: 600;
-            text-transform: uppercase;
-        }
-        
-        .camera-badge.high { background: #f56565; }
-        .camera-badge.medium { background: #ed8936; }
-        .camera-badge.low { background: #48bb78; }
-        
-        .camera-meta {
-            font-size: 0.85em;
-            color: #666;
-            margin-bottom: 8px;
-        }
-        
-        .camera-count {
-            font-size: 1.8em;
-            font-weight: 700;
-            color: #667eea;
-            margin: 10px 0;
-        }
-        
-        .camera-last-capture {
-            font-size: 0.8em;
-            color: #999;
-        }
-        
-        .refresh-indicator {
-            position: fixed;
-            bottom: 20px;
-            right: 20px;
-            background: white;
-            padding: 12px 20px;
-            border-radius: 25px;
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
-            font-size: 0.9em;
-            display: flex;
-            align-items: center;
-            gap: 10px;
-        }
-        
-        .spinner {
-            width: 16px;
-            height: 16px;
-            border: 2px solid #f3f3f3;
-            border-top: 2px solid #667eea;
-            border-radius: 50%;
-            animation: spin 1s linear infinite;
-        }
-        
-        @keyframes spin {
-            0% { transform: rotate(0deg); }
-            100% { transform: rotate(360deg); }
-        }
-        
-        .section-title {
-            color: white;
-            font-size: 1.5em;
-            font-weight: 600;
-            margin-bottom: 20px;
-            margin-top: 30px;
-        }
-        
-        .error-message {
-            background: #fed7d7;
-            color: #c53030;
-            padding: 15px;
-            border-radius: 8px;
-            margin-bottom: 20px;
-            display: none;
-        }
-        
-        .storage-info {
-            background: rgba(255, 255, 255, 0.1);
-            color: white;
-            padding: 15px;
-            border-radius: 8px;
-            margin-top: 20px;
-            font-size: 0.9em;
-        }
-        
-        .proposal-section {
-            background: white;
-            border-radius: 12px;
-            padding: 40px;
-            margin-bottom: 30px;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-        }
-        
-        .proposal-section h2 {
-            color: #667eea;
-            font-size: 1.8em;
-            margin-bottom: 20px;
-            border-bottom: 2px solid #667eea;
-            padding-bottom: 10px;
-        }
-        
-        .proposal-section h3 {
-            color: #764ba2;
-            font-size: 1.3em;
-            margin-bottom: 12px;
-            margin-top: 0;
-        }
-        
-        .proposal-card {
-            background: #f8f9fa;
-            padding: 20px;
-            border-radius: 8px;
-            border-left: 4px solid #667eea;
-        }
-        
-        .proposal-card p {
-            margin: 0;
-            line-height: 1.6;
-        }
-        
-        code {
-            background: #e9ecef;
-            padding: 2px 6px;
-            border-radius: 3px;
-            font-family: 'Courier New', monospace;
-            font-size: 0.9em;
-            color: #d63384;
-        }
-
         .live-preview-section {
             background: white;
             border-radius: 12px;
@@ -326,9 +171,200 @@
             color: #333;
         }
 
+        .map-section {
+            background: white;
+            border-radius: 12px;
+            padding: 25px;
+            margin-bottom: 30px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        .map-title {
+            font-size: 1.5em;
+            font-weight: 700;
+            color: #667eea;
+            margin-bottom: 15px;
+        }
+
+        #cameraMap {
+            width: 100%;
+            height: 600px;
+            border-radius: 8px;
+            overflow: hidden;
+            border: 2px solid #e0e0e0;
+        }
+
+        .camera-marker {
+            cursor: pointer;
+            transition: transform 0.2s;
+        }
+
+        .camera-marker:hover {
+            transform: scale(1.2);
+        }
+
+        .voronoi-cell {
+            fill: rgba(102, 126, 234, 0.1);
+            stroke: rgba(102, 126, 234, 0.3);
+            stroke-width: 1;
+            pointer-events: none;
+        }
+
+        .camera-popup {
+            min-width: 250px;
+        }
+
+        .camera-popup-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: start;
+            margin-bottom: 8px;
+        }
+
+        .camera-popup-name {
+            font-weight: 600;
+            font-size: 1.05em;
+            color: #333;
+            flex: 1;
+        }
+
+        .camera-popup-badge {
+            background: #667eea;
+            color: white;
+            padding: 4px 10px;
+            border-radius: 12px;
+            font-size: 0.75em;
+            font-weight: 600;
+            text-transform: uppercase;
+        }
+
+        .camera-popup-badge.high { background: #f56565; }
+        .camera-popup-badge.medium { background: #ed8936; }
+        .camera-popup-badge.low { background: #48bb78; }
+
+        .camera-popup-meta {
+            font-size: 0.85em;
+            color: #666;
+            margin-bottom: 8px;
+        }
+
+        .camera-popup-count {
+            font-size: 1.8em;
+            font-weight: 700;
+            color: #667eea;
+            margin: 10px 0;
+        }
+
+        .camera-popup-last {
+            font-size: 0.8em;
+            color: #999;
+        }
+
+        .storage-info {
+            background: rgba(255, 255, 255, 0.1);
+            color: white;
+            padding: 15px;
+            border-radius: 8px;
+            margin-top: 20px;
+            margin-bottom: 30px;
+            font-size: 0.9em;
+        }
+        
+        .section-title {
+            color: white;
+            font-size: 1.5em;
+            font-weight: 600;
+            margin-bottom: 20px;
+            margin-top: 30px;
+        }
+        
+        .error-message {
+            background: #fed7d7;
+            color: #c53030;
+            padding: 15px;
+            border-radius: 8px;
+            margin-bottom: 20px;
+            display: none;
+        }
+        
+        .proposal-section {
+            background: white;
+            border-radius: 12px;
+            padding: 40px;
+            margin-bottom: 30px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+        
+        .proposal-section h2 {
+            color: #667eea;
+            font-size: 1.8em;
+            margin-bottom: 20px;
+            border-bottom: 2px solid #667eea;
+            padding-bottom: 10px;
+        }
+        
+        .proposal-section h3 {
+            color: #764ba2;
+            font-size: 1.3em;
+            margin-bottom: 12px;
+            margin-top: 0;
+        }
+        
+        .proposal-card {
+            background: #f8f9fa;
+            padding: 20px;
+            border-radius: 8px;
+            border-left: 4px solid #667eea;
+        }
+        
+        .proposal-card p {
+            margin: 0;
+            line-height: 1.6;
+        }
+        
+        code {
+            background: #e9ecef;
+            padding: 2px 6px;
+            border-radius: 3px;
+            font-family: 'Courier New', monospace;
+            font-size: 0.9em;
+            color: #d63384;
+        }
+
+        .refresh-indicator {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background: white;
+            padding: 12px 20px;
+            border-radius: 25px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+            font-size: 0.9em;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .spinner {
+            width: 16px;
+            height: 16px;
+            border: 2px solid #f3f3f3;
+            border-top: 2px solid #667eea;
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+        }
+        
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
         @media (max-width: 768px) {
             .image-preview-container {
                 grid-template-columns: 1fr;
+            }
+            #cameraMap {
+                height: 400px;
             }
         }
     </style>
@@ -401,6 +437,11 @@
 
         <div class="storage-info">
             <strong>Storage:</strong> <span id="storageInfo">Loading...</span>
+        </div>
+
+        <div class="map-section">
+            <div class="map-title">Camera Coverage Map - Voronoi Cells & State Space</div>
+            <div id="cameraMap"></div>
         </div>
 
         <div class="proposal-section">
@@ -530,12 +571,6 @@
             </div>
         </div>
         
-        <h2 class="section-title">Data Collection Status</h2>
-        
-        <div class="camera-grid" id="cameraGrid">
-            <!-- Camera cards will be inserted here -->
-        </div>
-        
         <div class="refresh-indicator">
             <div class="spinner"></div>
             <span>Auto-refresh every 30s</span>
@@ -550,6 +585,10 @@
         
         let cameraManifest = [];
         let useAPI = false;
+        let map = null;
+        let voronoiLayer = null;
+        let cameraMarkers = {};
+        let cameraStats = {};
         
         async function loadManifest() {
             try {
@@ -578,7 +617,6 @@
                 cameraManifest = manifest.cameras || [];
             } catch (error) {
                 console.error('Failed to load manifest:', error);
-                // Set default empty manifest
                 cameraManifest = [];
             }
         }
@@ -609,40 +647,39 @@
                 updateDashboard(stats);
             } catch (error) {
                 console.error('Failed to fetch stats:', error);
-                // Set defaults if file doesn't exist
                 updateDashboard({
-                    totalImages: 45,
-                    activeCameras: 40,
-                    latestCapture: '2025-11-03T22:18:20.243178',
+                    totalImages: 0,
+                    activeCameras: 0,
+                    latestCapture: null,
                     cameraCounts: {},
-                    storageInfo: '45 metadata files across 45 cameras'
+                    storageInfo: 'No data collected yet',
+                    latestImage: null
                 });
             }
         }
         
         function updateDashboard(stats) {
-            document.getElementById('totalImages').textContent = stats.totalImages.toLocaleString();
-            document.getElementById('activeCameras').textContent = stats.activeCameras;
+            // Update stats cards
+            document.getElementById('totalImages').textContent = (stats.totalImages || 0).toLocaleString();
+            document.getElementById('activeCameras').textContent = stats.activeCameras || 0;
             
             if (stats.latestCapture) {
                 const captureDate = new Date(stats.latestCapture);
                 document.getElementById('latestCapture').textContent = captureDate.toLocaleTimeString();
+            } else {
+                document.getElementById('latestCapture').textContent = '--';
             }
             
-            document.getElementById('storageInfo').textContent = stats.storageInfo;
+            document.getElementById('storageInfo').textContent = stats.storageInfo || 'Loading...';
+            
+            // Store camera stats for map
+            cameraStats = stats.cameraCounts || {};
             
             // Update image preview
             updateImagePreview(stats.latestImage);
             
-            // Update camera grid
-            const cameraGrid = document.getElementById('cameraGrid');
-            cameraGrid.innerHTML = '';
-            
-            cameraManifest.forEach(camera => {
-                const cameraData = stats.cameraCounts[camera.id] || { count: 0, lastCapture: null };
-                const card = createCameraCard(camera, cameraData);
-                cameraGrid.appendChild(card);
-            });
+            // Update map
+            updateMap();
         }
 
         function updateImagePreview(latestImage) {
@@ -664,11 +701,8 @@
             // Build image URL
             let imageUrl;
             if (API_BASE && useAPI) {
-                // Local dev: use API proxy
                 imageUrl = `${API_BASE}/api/images/${latestImage.image_path}`;
             } else {
-                // GitHub Pages: try direct path (won't work unless images are committed)
-                // Or could use GCS signed URL if available
                 imageUrl = null;
             }
             
@@ -692,26 +726,150 @@
                 previewCapturedAt.textContent = '--';
             }
         }
-        
-        function createCameraCard(camera, data) {
-            const card = document.createElement('div');
-            card.className = 'camera-card';
+
+        function initializeMap() {
+            // Initialize Leaflet map centered on Manhattan corridor
+            map = L.map('cameraMap').setView([40.755, -73.977], 14);
             
+            // Add OpenStreetMap tiles
+            L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+                attribution: '© OpenStreetMap contributors',
+                maxZoom: 19
+            }).addTo(map);
+            
+            // Create SVG overlay for Voronoi cells
+            const svg = L.svg();
+            svg.addTo(map);
+            
+            voronoiLayer = svg;
+        }
+
+        function computeVoronoiCells(cameras) {
+            if (!cameras || cameras.length === 0) return null;
+            
+            // Convert lat/lon to map coordinates
+            const points = cameras.map(cam => {
+                const point = map.latLngToContainerPoint([cam.latitude, cam.longitude]);
+                return [point.x, point.y];
+            });
+            
+            // Compute Voronoi diagram
+            const delaunay = new d3.Delaunay.from(points);
+            const voronoi = delaunay.voronoi([0, 0, map.getContainer().clientWidth, map.getContainer().clientHeight]);
+            
+            return { voronoi, points };
+        }
+
+        function drawVoronoiCells(voronoiData, cameras) {
+            if (!voronoiData || !voronoiLayer) return;
+            
+            const svg = voronoiLayer._container;
+            if (!svg) return;
+            
+            // Clear existing cells
+            d3.select(svg).selectAll('.voronoi-cell').remove();
+            
+            const svgGroup = d3.select(svg).append('g').attr('class', 'voronoi-overlay');
+            
+            // Draw Voronoi cells
+            cameras.forEach((camera, i) => {
+                const cell = voronoiData.voronoi.renderCell(i);
+                if (cell) {
+                    svgGroup.append('path')
+                        .attr('class', 'voronoi-cell')
+                        .attr('d', cell)
+                        .attr('data-camera-id', camera.id)
+                        .style('fill', camera.priority === 'high' ? 'rgba(245, 101, 101, 0.15)' : 'rgba(102, 126, 234, 0.1)')
+                        .style('stroke', camera.priority === 'high' ? 'rgba(245, 101, 101, 0.4)' : 'rgba(102, 126, 234, 0.3)')
+                        .on('mouseover', function() {
+                            d3.select(this).style('fill-opacity', 0.3);
+                            showCameraPopup(camera);
+                        })
+                        .on('mouseout', function() {
+                            d3.select(this).style('fill-opacity', 1);
+                        });
+                }
+            });
+        }
+
+        function updateMap() {
+            if (!map || !cameraManifest || cameraManifest.length === 0) return;
+            
+            // Clear existing markers
+            Object.values(cameraMarkers).forEach(marker => marker.remove());
+            cameraMarkers = {};
+            
+            // Add camera markers
+            cameraManifest.forEach(camera => {
+                const stats = cameraStats[camera.id] || { count: 0, lastCapture: null };
+                
+                // Create custom icon based on priority and count
+                const iconColor = camera.priority === 'high' ? '#f56565' : '#667eea';
+                const iconSize = stats.count > 0 ? 20 : 12;
+                
+                const customIcon = L.divIcon({
+                    className: 'camera-marker',
+                    html: `<div style="width: ${iconSize}px; height: ${iconSize}px; background: ${iconColor}; border: 2px solid white; border-radius: 50%; box-shadow: 0 2px 4px rgba(0,0,0,0.3);"></div>`,
+                    iconSize: [iconSize, iconSize],
+                    iconAnchor: [iconSize/2, iconSize/2]
+                });
+                
+                const marker = L.marker([camera.latitude, camera.longitude], { icon: customIcon })
+                    .addTo(map)
+                    .on('mouseover', function() {
+                        showCameraPopup(camera, stats);
+                    })
+                    .on('click', function() {
+                        showCameraPopup(camera, stats, true);
+                    });
+                
+                cameraMarkers[camera.id] = marker;
+            });
+            
+            // Update Voronoi cells on map move/zoom
+            function updateVoronoi() {
+                const voronoiData = computeVoronoiCells(cameraManifest);
+                if (voronoiData) {
+                    drawVoronoiCells(voronoiData, cameraManifest);
+                }
+            }
+            
+            map.off('moveend', updateVoronoi);
+            map.off('zoomend', updateVoronoi);
+            map.on('moveend', updateVoronoi);
+            map.on('zoomend', updateVoronoi);
+            
+            // Initial Voronoi render
+            updateVoronoi();
+        }
+
+        function showCameraPopup(camera, stats, persistent = false) {
+            const data = stats || cameraStats[camera.id] || { count: 0, lastCapture: null };
             const lastCapture = data.lastCapture 
                 ? new Date(data.lastCapture).toLocaleString()
                 : 'No captures yet';
             
-            card.innerHTML = `
-                <div class="camera-header">
-                    <div class="camera-name">${camera.name}</div>
-                    <div class="camera-badge ${camera.priority}">${camera.priority}</div>
+            const popupContent = `
+                <div class="camera-popup">
+                    <div class="camera-popup-header">
+                        <div class="camera-popup-name">${camera.name}</div>
+                        <div class="camera-popup-badge ${camera.priority}">${camera.priority}</div>
+                    </div>
+                    <div class="camera-popup-meta">${camera.area}</div>
+                    <div class="camera-popup-count">${data.count.toLocaleString()}</div>
+                    <div class="camera-popup-last">Last: ${lastCapture}</div>
                 </div>
-                <div class="camera-meta">${camera.area}</div>
-                <div class="camera-count">${data.count.toLocaleString()}</div>
-                <div class="camera-last-capture">Last: ${lastCapture}</div>
             `;
             
-            return card;
+            if (cameraMarkers[camera.id]) {
+                cameraMarkers[camera.id].bindPopup(popupContent, {
+                    className: 'camera-popup-container',
+                    closeOnClick: !persistent
+                });
+                if (persistent) {
+                    cameraMarkers[camera.id].openPopup();
+                }
+            }
         }
         
         function showError(message) {
@@ -726,6 +884,7 @@
         // Initial load
         async function initialize() {
             await loadManifest();
+            initializeMap();
             await fetchStats();
         }
         
@@ -736,4 +895,3 @@
     </script>
 </body>
 </html>
-
