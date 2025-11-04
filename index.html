@@ -801,7 +801,8 @@
                         path.style.fill = fillColor;
                         path.style.stroke = strokeColor;
                         path.style.strokeWidth = '1';
-                        path.style.pointerEvents = 'none';
+                        path.style.pointerEvents = 'all';
+                        path.style.cursor = 'pointer';
                         
                         path.addEventListener('mouseover', function() {
                             this.style.fillOpacity = '0.3';
