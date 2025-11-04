@@ -745,11 +745,17 @@
         }
 
         function computeVoronoiCells(cameras) {
-            if (!cameras || cameras.length === 0 || !window.d3) return null;
+            if (!cameras || cameras.length === 0) return null;
+            
+            // Check for d3-delaunay (may be exposed as d3 or Delaunay)
+            const DelaunayClass = window.d3?.Delaunay || window.Delaunay;
+            if (!DelaunayClass) {
+                console.log('d3-delaunay not available');
+                return null;
+            }
             
             try {
                 // Convert lat/lon to map coordinates
-                const bounds = map.getBounds();
                 const size = map.getSize();
                 const points = cameras.map(cam => {
                     const point = map.latLngToContainerPoint([cam.latitude, cam.longitude]);
@@ -757,7 +763,7 @@
                 });
                 
                 // Compute Voronoi diagram using d3-delaunay
-                const delaunay = d3.Delaunay.from(points);
+                const delaunay = DelaunayClass.from(points);
                 const voronoi = delaunay.voronoi([0, 0, size.x, size.y]);
                 
                 return { voronoi, points, cameras };
@@ -768,7 +774,7 @@
         }
 
         function drawVoronoiCells(voronoiData) {
-            if (!voronoiData || !voronoiLayer || !window.d3) return;
+            if (!voronoiData || !voronoiLayer) return;
             
             const svg = voronoiLayer._container;
             if (!svg) return;
@@ -851,24 +857,14 @@
             
             // Update Voronoi cells on map move/zoom
             function updateVoronoi() {
-                if (!window.d3) {
-                    console.log('d3-delaunay not loaded, skipping Voronoi cells');
-                    return;
-                }
                 const voronoiData = computeVoronoiCells(cameraManifest);
                 if (voronoiData) {
                     drawVoronoiCells(voronoiData);
                 }
             }
             
-            // Wait for d3 to load, then render Voronoi
-            if (window.d3) {
-                updateVoronoi();
-            } else {
-                setTimeout(() => {
-                    if (window.d3) updateVoronoi();
-                }, 1000);
-            }
+            // Initial Voronoi render (with delay to ensure library loaded)
+            setTimeout(updateVoronoi, 500);
             
             map.off('moveend', updateVoronoi);
             map.off('zoomend', updateVoronoi);
