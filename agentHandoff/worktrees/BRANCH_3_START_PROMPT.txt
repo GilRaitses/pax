@@ -1,48 +1,77 @@
-I want to work on BRANCH 3: Baseline Generation (Partial).
+# BRANCH 3: Baseline Generation - Start Prompt
 
-See agentHandoff/worktrees/MULTI_AGENT_WORK_TREE.md for full details.
+You are working on **BRANCH 3: Baseline Generation** for the Multi-Scale Signal Processing project.
 
-BRANCH 1 is now complete! Features can be extracted from images using:
-- src/pax/vision/extractor.py (single image)
-- scripts/extract_all_features.py (batch processing)
+## Context
 
-Let's start with Task 3.1: Process Available Images per Camera Zone.
-- Group images by camera zone (using camera manifest: data/manifests/corridor_cameras_numbered.json)
-- Count images per zone
-- Identify zones with sufficient data (≥3 images)
-- Create script: scripts/2025-11-10/process_images_by_zone.py
-- Output: Zone data availability report (docs/reports/zone_data_availability.md)
+BRANCH 1 (Vision Model Integration) is COMPLETE. All vision models (YOLOv8n, Detectron2, CLIP) are integrated and the feature extraction pipeline is ready.
 
-Then Task 3.2: Compute Preliminary Stress Scores.
-- Extract features from images (or use already extracted features if available)
-- Use simple heuristics to compute stress scores:
-  - Pedestrian count (higher = more stress)
-  - Vehicle count (higher = more stress)
-  - Crowd density (higher = more stress)
-  - Visual complexity (higher = more stress)
-- Compute mean stress per zone (where data exists)
-- Handle zones with insufficient data gracefully
-- Create script: scripts/2025-11-10/compute_stress_scores.py
-- Output: Preliminary stress scores JSON (data/stress_scores_preliminary.json)
+BRANCH 2 (Empirical Data Structure) is COMPLETE. The feature vector schema is defined and validated.
 
-Then Task 3.3: Identify Zones with Sufficient Data.
-- List zones with ≥3 images (sufficient for baseline)
-- List zones with 1-2 images (partial data)
-- List zones with 0 images (missing data)
-- Create report: docs/reports/data_completeness.md
-- Output: Data completeness report
+BRANCH 5 (Infrastructure) is COMPLETE. Storage and query APIs are ready.
 
-Then Task 3.4: Generate Partial Baseline Heatmap.
-- Use BRANCH 4's heatmap script: scripts/2025-11-10/generate_baseline_heatmap.py
-- Visualize stress scores for zones with data
-- Mark zones with insufficient/missing data clearly
-- Output: docs/figures/baseline_heatmap_partial.png
+**Torch installation has been fixed** - torch (2.9.0) and transformers (4.57.1) are installed in the venv and ready to use.
 
-Finally Task 3.5: Document Data Gaps.
-- Identify which zones need more images
-- Estimate when full baseline can be generated (need 2 weeks = 672 images/camera)
-- Create data collection priority list
-- Create report: docs/reports/data_gaps.md
-- Output: Data gaps document
+**You can now start baseline generation!**
 
-This work uses the feature extraction pipeline from BRANCH 1 and the visualization scripts from BRANCH 4.
+## Your Tasks
+
+1. **Process available images** (~495 images currently available)
+2. **Extract features** using BRANCH 1's vision models
+3. **Compute preliminary stress scores** per camera zone
+4. **Generate partial baseline heatmap**
+5. **Document data gaps** (zones with insufficient data)
+
+## Available Resources
+
+- **Vision Models:** `src/pax/vision/extractor.py` (unified pipeline)
+- **Feature Schema:** `src/pax/schemas/feature_vector.py`
+- **Storage:** `src/pax/storage/feature_storage.py`
+- **Images:** `docs/backup/data_bkup/raw/images/` (~495 images)
+- **Manifest:** `data/manifests/corridor_cameras_numbered.json` (82 cameras)
+- **Stress Score Script:** `scripts/2025-11-10/compute_stress_scores.py` (ready to use)
+
+## Running Scripts
+
+**IMPORTANT:** Torch and transformers are installed in the `venv` virtual environment. You have two options:
+
+### Option 1: Activate venv manually
+```bash
+source venv/bin/activate
+python scripts/2025-11-10/compute_stress_scores.py --base-image-dir docs/backup/data_bkup/raw/images
+```
+
+### Option 2: Use the wrapper script (recommended)
+```bash
+scripts/2025-11-10/run_with_venv.sh scripts/2025-11-10/compute_stress_scores.py --base-image-dir docs/backup/data_bkup/raw/images
+```
+
+The wrapper script automatically uses the venv Python, so you don't need to manually activate it.
+
+## Starting Point
+
+Begin by:
+1. Reading the feature extraction pipeline: `src/pax/vision/extractor.py`
+2. Understanding the feature vector schema: `src/pax/schemas/feature_vector.py`
+3. Testing the stress score computation script:
+   ```bash
+   scripts/2025-11-10/run_with_venv.sh scripts/2025-11-10/compute_stress_scores.py --base-image-dir docs/backup/data_bkup/raw/images
+   ```
+4. Processing a small batch of images to verify the pipeline works
+5. Computing stress scores for zones with sufficient data (≥3 images)
+
+## Expected Deliverables
+
+- Feature dataset (JSON/Parquet) with extracted features
+- Stress scores per camera zone
+- Baseline heatmap visualization
+- Data gap analysis (zones needing more data)
+
+## Notes
+
+- **Torch is fixed:** Use `run_with_venv.sh` wrapper or activate venv manually
+- Start with existing ~495 images
+- System is collecting new images every 30 minutes
+- Continue refining baseline as more data arrives
+- Target: 2 weeks of baseline data (672 images/camera)
+- All dependencies are met - ready to start!
