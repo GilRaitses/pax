@@ -178,13 +178,26 @@ gcloud run jobs deploy "$JOB_NAME" \
 
 echo ""
 echo "=========================================="
-echo "Step 5: Grant run.invoker permission to service account"
+echo "Step 5: Grant run.invoker permission to service accounts"
 echo "=========================================="
-# Grant permission for scheduler service account to invoke the job
+# Grant permission for job's service account to invoke the job
 gcloud run jobs add-iam-policy-binding "$JOB_NAME" \
   --project "$PROJECT" \
   --region "$REGION" \
   --member="serviceAccount:${SERVICE_ACCOUNT}" \
+  --role="roles/run.invoker" \
+  --quiet || echo "Permission may already exist, continuing..."
+
+# Grant permission for Cloud Scheduler's compute service account to invoke the job
+# Cloud Scheduler uses the project's compute service account for OIDC authentication
+PROJECT_NUMBER=$(gcloud projects describe "$PROJECT" --format='value(projectNumber)')
+COMPUTE_SERVICE_ACCOUNT="${PROJECT_NUMBER}-compute@developer.gserviceaccount.com"
+
+echo "Granting run.invoker permission to Cloud Scheduler's service account: $COMPUTE_SERVICE_ACCOUNT"
+gcloud run jobs add-iam-policy-binding "$JOB_NAME" \
+  --project "$PROJECT" \
+  --region "$REGION" \
+  --member="serviceAccount:${COMPUTE_SERVICE_ACCOUNT}" \
   --role="roles/run.invoker" \
   --quiet || echo "Permission may already exist, continuing..."
 
