@@ -136,7 +136,7 @@ def download_image(gcs_path: str, local_path: Path) -> bool:
         return False
 
 
-def launch_progress_monitor(local_dir: Path, expected_total: int) -> None:
+def launch_progress_monitor(local_dir: Path, expected_total: int, date_filter: str | None = None) -> None:
     """Launch progress monitor in a separate terminal window."""
     script_dir = Path(__file__).parent
     monitor_script = script_dir / "open_download_monitor.sh"
@@ -149,14 +149,21 @@ def launch_progress_monitor(local_dir: Path, expected_total: int) -> None:
         # Make script executable
         os.chmod(monitor_script, 0o755)
         
+        # Build command arguments
+        args = [str(monitor_script), str(local_dir), str(expected_total), "2.0"]
+        if date_filter:
+            args.append(date_filter)
+        
         # Launch monitor in background
         subprocess.Popen(
-            [str(monitor_script), str(local_dir), str(expected_total), "2.0"],
+            args,
             cwd=script_dir.parent.parent,
         )
         print(f"✅ Progress monitor launched in separate terminal window")
         print(f"   Monitoring: {local_dir}")
         print(f"   Expected: {expected_total} images")
+        if date_filter:
+            print(f"   Date filter: {date_filter}")
     except Exception as e:
         print(f"⚠️  Failed to launch progress monitor: {e}")
         print("   Download will continue without monitor")
@@ -209,10 +216,14 @@ def download_todays_images(
             print(f"  ... and {len(images_to_download) - 10} more")
         return
     
+    # Get today's date for filtering (YYYYMMDD format)
+    today_et = datetime.now(ZoneInfo("America/New_York"))
+    today_date_filter = today_et.strftime("%Y%m%d")
+    
     # Launch progress monitor if requested
     if launch_monitor and len(images_to_download) > 0:
         print("\nLaunching progress monitor...")
-        launch_progress_monitor(local_dir, len(images_to_download))
+        launch_progress_monitor(local_dir, len(images_to_download), today_date_filter)
         print("Waiting 2 seconds for monitor to start...")
         import time
         time.sleep(2)
