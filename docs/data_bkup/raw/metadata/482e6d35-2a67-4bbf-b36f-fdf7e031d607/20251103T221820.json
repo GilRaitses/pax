@@ -1,0 +1,22 @@
+{
+  "camera_id": "482e6d35-2a67-4bbf-b36f-fdf7e031d607",
+  "captured_at": "2025-11-03T22:18:20.243105",
+  "image_url": "https://webcams.nyctmc.org/api/cameras/482e6d35-2a67-4bbf-b36f-fdf7e031d607/image",
+  "features": {
+    "pedestrian_density": 0.0,
+    "bike_lane_violations": 0.0,
+    "vehicle_volume": 0.0,
+    "obstruction_score": 0.0,
+    "visibility_score": 1.0,
+    "stress_score": null
+  },
+  "metadata": {
+    "name": "5 AVE @ 50 St",
+    "latitude": 40.75856,
+    "longitude": -73.9772,
+    "area": "Manhattan"
+  },
+  "image_path": null,
+  "image_bytes": null,
+  "image_remote_uri": null
+}

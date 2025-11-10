@@ -1,0 +1,22 @@
+{
+  "camera_id": "1e60ade7-c760-48cf-acd9-d9d6cbfa9420",
+  "captured_at": "2025-11-05T22:16:14.136047",
+  "image_url": "https://webcams.nyctmc.org/api/cameras/1e60ade7-c760-48cf-acd9-d9d6cbfa9420/image",
+  "features": {
+    "pedestrian_density": 0.0,
+    "bike_lane_violations": 0.0,
+    "vehicle_volume": 0.0,
+    "obstruction_score": 0.0,
+    "visibility_score": 1.0,
+    "stress_score": null
+  },
+  "metadata": {
+    "name": "7 Ave @ 32 St",
+    "latitude": 40.749508,
+    "longitude": -73.991493,
+    "area": "Manhattan"
+  },
+  "image_path": null,
+  "image_bytes": null,
+  "image_remote_uri": null
+}

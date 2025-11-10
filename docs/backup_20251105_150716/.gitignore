@@ -1,0 +1,51 @@
+__pycache__/
+*.py[cod]
+*.egg-info/
+.pytest_cache/
+.mypy_cache/
+.DS_Store
+env/
+.venv/
+venv/
+.idea/
+.vscode/
+
+data/
+outputs/
+logs/
+
+# Environment and secrets
+.env
+.env.*
+*.env
+*.key
+*.pem
+*key*.json
+*password*.txt
+*secret*.txt
+*.json
+!**/corridor_cameras.json
+!**/docs/manifest.json
+!**/docs/stats.json
+!**/manifest.json
+!**/stats.json
+!**/pyproject.toml
+**/pax-ingest-key.json
+**/service-account*.json
+**/*credentials*.json
+**/*service-account*.json
+**/*ingest-key*.json
+
+# Exports
+data/exports/
+**/*.tar.gz
+
+# Email credentials
+.pax_email_creds
+.pax_email.log
+
+# Corridor cameras is okay to commit (public API data)
+!corridor_cameras.json
+
+
+

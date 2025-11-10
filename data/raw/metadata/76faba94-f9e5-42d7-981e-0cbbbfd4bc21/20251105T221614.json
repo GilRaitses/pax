@@ -1,0 +1,22 @@
+{
+  "camera_id": "76faba94-f9e5-42d7-981e-0cbbbfd4bc21",
+  "captured_at": "2025-11-05T22:16:14.136509",
+  "image_url": "https://webcams.nyctmc.org/api/cameras/76faba94-f9e5-42d7-981e-0cbbbfd4bc21/image",
+  "features": {
+    "pedestrian_density": 0.0,
+    "bike_lane_violations": 0.0,
+    "vehicle_volume": 0.0,
+    "obstruction_score": 0.0,
+    "visibility_score": 1.0,
+    "stress_score": null
+  },
+  "metadata": {
+    "name": "Broadway @ 46 Street",
+    "latitude": 40.758711,
+    "longitude": -73.985366,
+    "area": "Manhattan"
+  },
+  "image_path": null,
+  "image_bytes": null,
+  "image_remote_uri": null
+}

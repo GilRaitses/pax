@@ -14,12 +14,16 @@ from ..data_collection import CameraDataCollector
 
 
 def load_manifest(manifest_path: Path) -> dict:
-    """Load camera manifest from YAML file."""
+    """Load camera manifest from YAML or JSON file."""
     if not manifest_path.exists():
         raise FileNotFoundError(f"Manifest not found: {manifest_path}")
 
     with open(manifest_path) as f:
-        return yaml.safe_load(f)
+        if manifest_path.suffix.lower() == ".json":
+            import json
+            return json.load(f)
+        else:
+            return yaml.safe_load(f)
 
 
 def build_parser() -> argparse.ArgumentParser:
@@ -28,7 +32,7 @@ def build_parser() -> argparse.ArgumentParser:
         "--manifest",
         type=Path,
         default=Path("cameras.yaml"),
-        help="Path to camera manifest YAML (default: cameras.yaml)",
+        help="Path to camera manifest YAML or JSON (default: cameras.yaml)",
     )
     parser.add_argument(
         "--skip-images",

@@ -1,0 +1,287 @@
+{
+  "started_at": "2025-11-05T01:21:14.516334",
+  "completed_at": "2025-11-05T01:21:20.773658",
+  "count": 40,
+  "storage_records": [
+    {
+      "camera_id": "5352e130-4668-4be5-a7b9-9e1ce4ea6d4c",
+      "captured_at": "2025-11-05T01:21:14.771594",
+      "image_path": "raw/images/5352e130-4668-4be5-a7b9-9e1ce4ea6d4c/20251105T012114.jpg",
+      "image_remote_uri": "gs://pax-nyc-images/images/5352e130-4668-4be5-a7b9-9e1ce4ea6d4c/20251105T012114.jpg",
+      "metadata_path": "raw/metadata/5352e130-4668-4be5-a7b9-9e1ce4ea6d4c/20251105T012114.json"
+    },
+    {
+      "camera_id": "5bb6d7d8-39ce-43b8-b539-376fbcf73927",
+      "captured_at": "2025-11-05T01:21:14.771617",
+      "image_path": "raw/images/5bb6d7d8-39ce-43b8-b539-376fbcf73927/20251105T012114.jpg",
+      "image_remote_uri": "gs://pax-nyc-images/images/5bb6d7d8-39ce-43b8-b539-376fbcf73927/20251105T012114.jpg",
+      "metadata_path": "raw/metadata/5bb6d7d8-39ce-43b8-b539-376fbcf73927/20251105T012114.json"
+    },
+    {
+      "camera_id": "2589c0d6-c389-4861-b812-4ae68f560eba",
+      "captured_at": "2025-11-05T01:21:14.771623",
+      "image_path": "raw/images/2589c0d6-c389-4861-b812-4ae68f560eba/20251105T012114.jpg",
+      "image_remote_uri": "gs://pax-nyc-images/images/2589c0d6-c389-4861-b812-4ae68f560eba/20251105T012114.jpg",
+      "metadata_path": "raw/metadata/2589c0d6-c389-4861-b812-4ae68f560eba/20251105T012114.json"
+    },
+    {
+      "camera_id": "9561ad5f-0eda-460b-ab12-41caa4e0a91e",
+      "captured_at": "2025-11-05T01:21:14.771628",
+      "image_path": "raw/images/9561ad5f-0eda-460b-ab12-41caa4e0a91e/20251105T012114.jpg",
+      "image_remote_uri": "gs://pax-nyc-images/images/9561ad5f-0eda-460b-ab12-41caa4e0a91e/20251105T012114.jpg",
+      "metadata_path": "raw/metadata/9561ad5f-0eda-460b-ab12-41caa4e0a91e/20251105T012114.json"
+    },
+    {
+      "camera_id": "482e6d35-2a67-4bbf-b36f-fdf7e031d607",
+      "captured_at": "2025-11-05T01:21:14.771631",
+      "image_path": "raw/images/482e6d35-2a67-4bbf-b36f-fdf7e031d607/20251105T012114.jpg",
+      "image_remote_uri": "gs://pax-nyc-images/images/482e6d35-2a67-4bbf-b36f-fdf7e031d607/20251105T012114.jpg",
+      "metadata_path": "raw/metadata/482e6d35-2a67-4bbf-b36f-fdf7e031d607/20251105T012114.json"
+    },
+    {
+      "camera_id": "f4e822f7-d2a2-4146-851c-04b2fa6d5265",
+      "captured_at": "2025-11-05T01:21:14.771635",
+      "image_path": "raw/images/f4e822f7-d2a2-4146-851c-04b2fa6d5265/20251105T012114.jpg",
+      "image_remote_uri": "gs://pax-nyc-images/images/f4e822f7-d2a2-4146-851c-04b2fa6d5265/20251105T012114.jpg",
+      "metadata_path": "raw/metadata/f4e822f7-d2a2-4146-851c-04b2fa6d5265/20251105T012114.json"
+    },
+    {
+      "camera_id": "8933100a-8229-42fe-b4b2-265db410d7ae",
+      "captured_at": "2025-11-05T01:21:14.771639",
+      "image_path": "raw/images/8933100a-8229-42fe-b4b2-265db410d7ae/20251105T012114.jpg",
+      "image_remote_uri": "gs://pax-nyc-images/images/8933100a-8229-42fe-b4b2-265db410d7ae/20251105T012114.jpg",
+      "metadata_path": "raw/metadata/8933100a-8229-42fe-b4b2-265db410d7ae/20251105T012114.json"
+    },
+    {
+      "camera_id": "03a8a2da-3ac2-45aa-a5ba-4ff7d1ecbd22",
+      "captured_at": "2025-11-05T01:21:14.771642",
+      "image_path": "raw/images/03a8a2da-3ac2-45aa-a5ba-4ff7d1ecbd22/20251105T012114.jpg",
+      "image_remote_uri": "gs://pax-nyc-images/images/03a8a2da-3ac2-45aa-a5ba-4ff7d1ecbd22/20251105T012114.jpg",
+      "metadata_path": "raw/metadata/03a8a2da-3ac2-45aa-a5ba-4ff7d1ecbd22/20251105T012114.json"
+    },
+    {
+      "camera_id": "7a7016c5-a086-40fd-9298-90f17f8b6cea",
+      "captured_at": "2025-11-05T01:21:14.771645",
+      "image_path": "raw/images/7a7016c5-a086-40fd-9298-90f17f8b6cea/20251105T012114.jpg",
+      "image_remote_uri": "gs://pax-nyc-images/images/7a7016c5-a086-40fd-9298-90f17f8b6cea/20251105T012114.jpg",
+      "metadata_path": "raw/metadata/7a7016c5-a086-40fd-9298-90f17f8b6cea/20251105T012114.json"
+    },
+    {
+      "camera_id": "9c4c2657-6796-4953-bbe6-c50f24bb5820",
+      "captured_at": "2025-11-05T01:21:14.771649",
+      "image_path": "raw/images/9c4c2657-6796-4953-bbe6-c50f24bb5820/20251105T012114.jpg",
+      "image_remote_uri": "gs://pax-nyc-images/images/9c4c2657-6796-4953-bbe6-c50f24bb5820/20251105T012114.jpg",
+      "metadata_path": "raw/metadata/9c4c2657-6796-4953-bbe6-c50f24bb5820/20251105T012114.json"
+    },
+    {
+      "camera_id": "b5a78bda-3ca9-4ad4-bd03-4cee70baba2d",
+      "captured_at": "2025-11-05T01:21:14.771652",
+      "image_path": "raw/images/b5a78bda-3ca9-4ad4-bd03-4cee70baba2d/20251105T012114.jpg",
+      "image_remote_uri": "gs://pax-nyc-images/images/b5a78bda-3ca9-4ad4-bd03-4cee70baba2d/20251105T012114.jpg",
+      "metadata_path": "raw/metadata/b5a78bda-3ca9-4ad4-bd03-4cee70baba2d/20251105T012114.json"
+    },
+    {
+      "camera_id": "cd949f21-54b2-4d11-8aae-4ffba8654271",
+      "captured_at": "2025-11-05T01:21:14.771656",
+      "image_path": "raw/images/cd949f21-54b2-4d11-8aae-4ffba8654271/20251105T012114.jpg",
+      "image_remote_uri": "gs://pax-nyc-images/images/cd949f21-54b2-4d11-8aae-4ffba8654271/20251105T012114.jpg",
+      "metadata_path": "raw/metadata/cd949f21-54b2-4d11-8aae-4ffba8654271/20251105T012114.json"
+    },
+    {
+      "camera_id": "4f3f56e3-f68e-4b60-a4ba-153ecb9094f7",
+      "captured_at": "2025-11-05T01:21:14.771659",
+      "image_path": "raw/images/4f3f56e3-f68e-4b60-a4ba-153ecb9094f7/20251105T012114.jpg",
+      "image_remote_uri": "gs://pax-nyc-images/images/4f3f56e3-f68e-4b60-a4ba-153ecb9094f7/20251105T012114.jpg",
+      "metadata_path": "raw/metadata/4f3f56e3-f68e-4b60-a4ba-153ecb9094f7/20251105T012114.json"
+    },
+    {
+      "camera_id": "c34ca47e-e375-4b9f-a8d7-f9737566b783",
+      "captured_at": "2025-11-05T01:21:14.771662",
+      "image_path": "raw/images/c34ca47e-e375-4b9f-a8d7-f9737566b783/20251105T012114.jpg",
+      "image_remote_uri": "gs://pax-nyc-images/images/c34ca47e-e375-4b9f-a8d7-f9737566b783/20251105T012114.jpg",
+      "metadata_path": "raw/metadata/c34ca47e-e375-4b9f-a8d7-f9737566b783/20251105T012114.json"
+    },
+    {
+      "camera_id": "1dddf912-4718-4b2a-94dd-1f793a9ed22c",
+      "captured_at": "2025-11-05T01:21:14.771665",
+      "image_path": "raw/images/1dddf912-4718-4b2a-94dd-1f793a9ed22c/20251105T012114.jpg",
+      "image_remote_uri": "gs://pax-nyc-images/images/1dddf912-4718-4b2a-94dd-1f793a9ed22c/20251105T012114.jpg",
+      "metadata_path": "raw/metadata/1dddf912-4718-4b2a-94dd-1f793a9ed22c/20251105T012114.json"
+    },
+    {
+      "camera_id": "e229e0fd-559b-4c1e-bcba-ac23db1d01e3",
+      "captured_at": "2025-11-05T01:21:14.771668",
+      "image_path": "raw/images/e229e0fd-559b-4c1e-bcba-ac23db1d01e3/20251105T012114.jpg",
+      "image_remote_uri": "gs://pax-nyc-images/images/e229e0fd-559b-4c1e-bcba-ac23db1d01e3/20251105T012114.jpg",
+      "metadata_path": "raw/metadata/e229e0fd-559b-4c1e-bcba-ac23db1d01e3/20251105T012114.json"
+    },
+    {
+      "camera_id": "a4c12003-9638-473d-bfe3-dddf509c80b8",
+      "captured_at": "2025-11-05T01:21:14.771671",
+      "image_path": "raw/images/a4c12003-9638-473d-bfe3-dddf509c80b8/20251105T012114.jpg",
+      "image_remote_uri": "gs://pax-nyc-images/images/a4c12003-9638-473d-bfe3-dddf509c80b8/20251105T012114.jpg",
+      "metadata_path": "raw/metadata/a4c12003-9638-473d-bfe3-dddf509c80b8/20251105T012114.json"
+    },
+    {
+      "camera_id": "fc7db899-7a79-41f3-b9b1-b23ce64c5a5e",
+      "captured_at": "2025-11-05T01:21:14.771675",
+      "image_path": "raw/images/fc7db899-7a79-41f3-b9b1-b23ce64c5a5e/20251105T012114.jpg",
+      "image_remote_uri": "gs://pax-nyc-images/images/fc7db899-7a79-41f3-b9b1-b23ce64c5a5e/20251105T012114.jpg",
+      "metadata_path": "raw/metadata/fc7db899-7a79-41f3-b9b1-b23ce64c5a5e/20251105T012114.json"
+    },
+    {
+      "camera_id": "4ebe49c8-3e68-43f7-b415-da3db9f72693",
+      "captured_at": "2025-11-05T01:21:14.771679",
+      "image_path": "raw/images/4ebe49c8-3e68-43f7-b415-da3db9f72693/20251105T012114.jpg",
+      "image_remote_uri": "gs://pax-nyc-images/images/4ebe49c8-3e68-43f7-b415-da3db9f72693/20251105T012114.jpg",
+      "metadata_path": "raw/metadata/4ebe49c8-3e68-43f7-b415-da3db9f72693/20251105T012114.json"
+    },
+    {
+      "camera_id": "f0b924fe-0df6-4ac2-85a2-5d2b96d081d5",
+      "captured_at": "2025-11-05T01:21:14.771682",
+      "image_path": "raw/images/f0b924fe-0df6-4ac2-85a2-5d2b96d081d5/20251105T012114.jpg",
+      "image_remote_uri": "gs://pax-nyc-images/images/f0b924fe-0df6-4ac2-85a2-5d2b96d081d5/20251105T012114.jpg",
+      "metadata_path": "raw/metadata/f0b924fe-0df6-4ac2-85a2-5d2b96d081d5/20251105T012114.json"
+    },
+    {
+      "camera_id": "d78ebdc6-2211-479e-bda6-59d79db20258",
+      "captured_at": "2025-11-05T01:21:14.771685",
+      "image_path": "raw/images/d78ebdc6-2211-479e-bda6-59d79db20258/20251105T012114.jpg",
+      "image_remote_uri": "gs://pax-nyc-images/images/d78ebdc6-2211-479e-bda6-59d79db20258/20251105T012114.jpg",
+      "metadata_path": "raw/metadata/d78ebdc6-2211-479e-bda6-59d79db20258/20251105T012114.json"
+    },
+    {
+      "camera_id": "78a5c61d-9dce-4b52-b0da-bf7d22c1f501",
+      "captured_at": "2025-11-05T01:21:14.771688",
+      "image_path": "raw/images/78a5c61d-9dce-4b52-b0da-bf7d22c1f501/20251105T012114.jpg",
+      "image_remote_uri": "gs://pax-nyc-images/images/78a5c61d-9dce-4b52-b0da-bf7d22c1f501/20251105T012114.jpg",
+      "metadata_path": "raw/metadata/78a5c61d-9dce-4b52-b0da-bf7d22c1f501/20251105T012114.json"
+    },
+    {
+      "camera_id": "332f161d-47cb-4c8a-b6b6-5ad48a55c978",
+      "captured_at": "2025-11-05T01:21:14.771691",
+      "image_path": "raw/images/332f161d-47cb-4c8a-b6b6-5ad48a55c978/20251105T012114.jpg",
+      "image_remote_uri": "gs://pax-nyc-images/images/332f161d-47cb-4c8a-b6b6-5ad48a55c978/20251105T012114.jpg",
+      "metadata_path": "raw/metadata/332f161d-47cb-4c8a-b6b6-5ad48a55c978/20251105T012114.json"
+    },
+    {
+      "camera_id": "3d8e276f-b179-414d-a506-679d5e559d3e",
+      "captured_at": "2025-11-05T01:21:14.771695",
+      "image_path": "raw/images/3d8e276f-b179-414d-a506-679d5e559d3e/20251105T012114.jpg",
+      "image_remote_uri": "gs://pax-nyc-images/images/3d8e276f-b179-414d-a506-679d5e559d3e/20251105T012114.jpg",
+      "metadata_path": "raw/metadata/3d8e276f-b179-414d-a506-679d5e559d3e/20251105T012114.json"
+    },
+    {
+      "camera_id": "c880d0c4-db84-44c2-9f00-62f21a83b5d0",
+      "captured_at": "2025-11-05T01:21:14.771698",
+      "image_path": "raw/images/c880d0c4-db84-44c2-9f00-62f21a83b5d0/20251105T012114.jpg",
+      "image_remote_uri": "gs://pax-nyc-images/images/c880d0c4-db84-44c2-9f00-62f21a83b5d0/20251105T012114.jpg",
+      "metadata_path": "raw/metadata/c880d0c4-db84-44c2-9f00-62f21a83b5d0/20251105T012114.json"
+    },
+    {
+      "camera_id": "85809312-60f2-4a52-a694-82628529c05a",
+      "captured_at": "2025-11-05T01:21:14.771701",
+      "image_path": "raw/images/85809312-60f2-4a52-a694-82628529c05a/20251105T012114.jpg",
+      "image_remote_uri": "gs://pax-nyc-images/images/85809312-60f2-4a52-a694-82628529c05a/20251105T012114.jpg",
+      "metadata_path": "raw/metadata/85809312-60f2-4a52-a694-82628529c05a/20251105T012114.json"
+    },
+    {
+      "camera_id": "5caa3ace-277b-42db-97bd-585f29b0d49f",
+      "captured_at": "2025-11-05T01:21:14.771704",
+      "image_path": "raw/images/5caa3ace-277b-42db-97bd-585f29b0d49f/20251105T012114.jpg",
+      "image_remote_uri": "gs://pax-nyc-images/images/5caa3ace-277b-42db-97bd-585f29b0d49f/20251105T012114.jpg",
+      "metadata_path": "raw/metadata/5caa3ace-277b-42db-97bd-585f29b0d49f/20251105T012114.json"
+    },
+    {
+      "camera_id": "1546f761-039c-4b5c-af5e-75c83c9f603f",
+      "captured_at": "2025-11-05T01:21:14.771708",
+      "image_path": "raw/images/1546f761-039c-4b5c-af5e-75c83c9f603f/20251105T012114.jpg",
+      "image_remote_uri": "gs://pax-nyc-images/images/1546f761-039c-4b5c-af5e-75c83c9f603f/20251105T012114.jpg",
+      "metadata_path": "raw/metadata/1546f761-039c-4b5c-af5e-75c83c9f603f/20251105T012114.json"
+    },
+    {
+      "camera_id": "d1d8cd99-7609-409a-a739-f5913dabf4e6",
+      "captured_at": "2025-11-05T01:21:14.771711",
+      "image_path": "raw/images/d1d8cd99-7609-409a-a739-f5913dabf4e6/20251105T012114.jpg",
+      "image_remote_uri": "gs://pax-nyc-images/images/d1d8cd99-7609-409a-a739-f5913dabf4e6/20251105T012114.jpg",
+      "metadata_path": "raw/metadata/d1d8cd99-7609-409a-a739-f5913dabf4e6/20251105T012114.json"
+    },
+    {
+      "camera_id": "e777e4b4-25cb-4c39-98fc-8d6b25cf7de7",
+      "captured_at": "2025-11-05T01:21:14.771714",
+      "image_path": "raw/images/e777e4b4-25cb-4c39-98fc-8d6b25cf7de7/20251105T012114.jpg",
+      "image_remote_uri": "gs://pax-nyc-images/images/e777e4b4-25cb-4c39-98fc-8d6b25cf7de7/20251105T012114.jpg",
+      "metadata_path": "raw/metadata/e777e4b4-25cb-4c39-98fc-8d6b25cf7de7/20251105T012114.json"
+    },
+    {
+      "camera_id": "421960d6-54a8-4f12-a5ee-7a07390def4c",
+      "captured_at": "2025-11-05T01:21:14.771717",
+      "image_path": "raw/images/421960d6-54a8-4f12-a5ee-7a07390def4c/20251105T012114.jpg",
+      "image_remote_uri": "gs://pax-nyc-images/images/421960d6-54a8-4f12-a5ee-7a07390def4c/20251105T012114.jpg",
+      "metadata_path": "raw/metadata/421960d6-54a8-4f12-a5ee-7a07390def4c/20251105T012114.json"
+    },
+    {
+      "camera_id": "d1363c77-e061-4414-be82-e6d749254859",
+      "captured_at": "2025-11-05T01:21:14.771720",
+      "image_path": "raw/images/d1363c77-e061-4414-be82-e6d749254859/20251105T012114.jpg",
+      "image_remote_uri": "gs://pax-nyc-images/images/d1363c77-e061-4414-be82-e6d749254859/20251105T012114.jpg",
+      "metadata_path": "raw/metadata/d1363c77-e061-4414-be82-e6d749254859/20251105T012114.json"
+    },
+    {
+      "camera_id": "434094f8-1be4-4c19-8067-1e11049e46b4",
+      "captured_at": "2025-11-05T01:21:14.771723",
+      "image_path": "raw/images/434094f8-1be4-4c19-8067-1e11049e46b4/20251105T012114.jpg",
+      "image_remote_uri": "gs://pax-nyc-images/images/434094f8-1be4-4c19-8067-1e11049e46b4/20251105T012114.jpg",
+      "metadata_path": "raw/metadata/434094f8-1be4-4c19-8067-1e11049e46b4/20251105T012114.json"
+    },
+    {
+      "camera_id": "1eb66413-6761-4eb0-bc04-e2533bb74b42",
+      "captured_at": "2025-11-05T01:21:14.771727",
+      "image_path": "raw/images/1eb66413-6761-4eb0-bc04-e2533bb74b42/20251105T012114.jpg",
+      "image_remote_uri": "gs://pax-nyc-images/images/1eb66413-6761-4eb0-bc04-e2533bb74b42/20251105T012114.jpg",
+      "metadata_path": "raw/metadata/1eb66413-6761-4eb0-bc04-e2533bb74b42/20251105T012114.json"
+    },
+    {
+      "camera_id": "c6d013c9-e69b-4824-8dad-b6580491d916",
+      "captured_at": "2025-11-05T01:21:14.771730",
+      "image_path": "raw/images/c6d013c9-e69b-4824-8dad-b6580491d916/20251105T012114.jpg",
+      "image_remote_uri": "gs://pax-nyc-images/images/c6d013c9-e69b-4824-8dad-b6580491d916/20251105T012114.jpg",
+      "metadata_path": "raw/metadata/c6d013c9-e69b-4824-8dad-b6580491d916/20251105T012114.json"
+    },
+    {
+      "camera_id": "879ab924-18ac-4779-a681-395d73a0f0cc",
+      "captured_at": "2025-11-05T01:21:14.771733",
+      "image_path": "raw/images/879ab924-18ac-4779-a681-395d73a0f0cc/20251105T012114.jpg",
+      "image_remote_uri": "gs://pax-nyc-images/images/879ab924-18ac-4779-a681-395d73a0f0cc/20251105T012114.jpg",
+      "metadata_path": "raw/metadata/879ab924-18ac-4779-a681-395d73a0f0cc/20251105T012114.json"
+    },
+    {
+      "camera_id": "9e3e26ae-d49f-4f64-ba99-113b779c25a2",
+      "captured_at": "2025-11-05T01:21:14.771736",
+      "image_path": "raw/images/9e3e26ae-d49f-4f64-ba99-113b779c25a2/20251105T012114.jpg",
+      "image_remote_uri": "gs://pax-nyc-images/images/9e3e26ae-d49f-4f64-ba99-113b779c25a2/20251105T012114.jpg",
+      "metadata_path": "raw/metadata/9e3e26ae-d49f-4f64-ba99-113b779c25a2/20251105T012114.json"
+    },
+    {
+      "camera_id": "f4d2c0f5-0148-45e7-95ba-a5185d8e8060",
+      "captured_at": "2025-11-05T01:21:14.771739",
+      "image_path": "raw/images/f4d2c0f5-0148-45e7-95ba-a5185d8e8060/20251105T012114.jpg",
+      "image_remote_uri": "gs://pax-nyc-images/images/f4d2c0f5-0148-45e7-95ba-a5185d8e8060/20251105T012114.jpg",
+      "metadata_path": "raw/metadata/f4d2c0f5-0148-45e7-95ba-a5185d8e8060/20251105T012114.json"
+    },
+    {
+      "camera_id": "62ecb539-5e6c-40ff-a771-ea77153cc4ed",
+      "captured_at": "2025-11-05T01:21:14.771742",
+      "image_path": "raw/images/62ecb539-5e6c-40ff-a771-ea77153cc4ed/20251105T012114.jpg",
+      "image_remote_uri": "gs://pax-nyc-images/images/62ecb539-5e6c-40ff-a771-ea77153cc4ed/20251105T012114.jpg",
+      "metadata_path": "raw/metadata/62ecb539-5e6c-40ff-a771-ea77153cc4ed/20251105T012114.json"
+    },
+    {
+      "camera_id": "e8a479f8-5170-4f1f-b258-b9745c966c71",
+      "captured_at": "2025-11-05T01:21:14.771746",
+      "image_path": "raw/images/e8a479f8-5170-4f1f-b258-b9745c966c71/20251105T012114.jpg",
+      "image_remote_uri": "gs://pax-nyc-images/images/e8a479f8-5170-4f1f-b258-b9745c966c71/20251105T012114.jpg",
+      "metadata_path": "raw/metadata/e8a479f8-5170-4f1f-b258-b9745c966c71/20251105T012114.json"
+    }
+  ]
+}

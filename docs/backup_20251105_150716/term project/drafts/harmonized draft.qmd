@@ -1,0 +1,129 @@
+---
+title: "Energetic Pathfinding and Perceptual Heuristics in Manhattan Navigation"
+subtitle: "CIS 667: Term Project Proposal"
+author:
+  - name: "Gil Raitses"
+    email: "gjraitse@syr.edu"
+    affiliation: "Syracuse University — Data Science / Human-Centered AI"
+date: "2025-11-01"
+format:
+  pdf:
+    pdf-engine: xelatex
+    classoption:
+      - twocolumn
+      - DIV=11
+      - numbers=noendperiod
+    mainfont: "Avenir"
+    colorlinks: true
+    geometry:
+      - top=1in
+      - bottom=1in
+      - left=1in
+      - right=1in
+header-includes: |
+  % Table aesthetics inspired by Week9_Scripts_and_Methods.qmd
+  \usepackage{booktabs}
+  \usepackage{array}
+  \usepackage{colortbl}
+  \definecolor{headerpurple}{RGB}{75,0,130}
+  \arrayrulecolor{headerpurple}
+  \setlength{\arrayrulewidth}{0.5pt}
+  \renewcommand{\toprule}{\arrayrulecolor{headerpurple}\specialrule{0.08em}{0em}{0.3em}\arrayrulecolor{headerpurple}}
+  \renewcommand{\midrule}{\arrayrulecolor{headerpurple}\specialrule{0.05em}{0em}{0em}\arrayrulecolor{headerpurple}}
+  \renewcommand{\bottomrule}{\arrayrulecolor{headerpurple}\specialrule{0.08em}{0em}{0em}\arrayrulecolor{headerpurple}}
+  \usepackage{etoolbox}
+  \AtBeginEnvironment{longtable}{\onecolumn}
+  \AfterEndEnvironment{longtable}{\twocolumn}
+  % Reduce spacing around tables and sections
+  \setlength{\intextsep}{0.8em}
+  \setlength{\floatsep}{0.8em}
+  \setlength{\textfloatsep}{1em}
+  \setlength{\abovecaptionskip}{0.5em}
+  \setlength{\belowcaptionskip}{0.3em}
+  % Reduce column separation
+  \setlength{\columnsep}{0.5in}
+number-sections: false
+---
+
+# Introduction
+
+## Subject Area
+
+Artificial Intelligence — heuristic search, knowledge representation, and perception-based reasoning.
+
+## Problem Statement
+
+Classical pathfinding optimizes distance or time and ignores the sensory complexity of real urban spaces. In Manhattan, crowding, traffic flow, and visual noise impose energetic and cognitive costs on pedestrians. The project asks: *How can an intelligent agent internalize these perceptual cues while searching for a route?*
+
+# Aim
+
+Design, implement, and evaluate an A*-based navigation agent whose heuristic adapts energetic path cost using vision-derived features from NYC traffic-camera data.
+
+# Objectives
+
+```{=latex}
+\begin{center}
+\vspace{-0.3em}
+\begin{tabular}{@{\hspace{0.4em}}cp{0.75\linewidth}@{}}
+\toprule
+\# & \textbf{Objective} \\
+\midrule
+1 & Model Manhattan grid intersections and legal moves. \\
+2 & Build symbolic knowledge base from traffic-camera detections. \\
+3 & Learn perceptual cost weights; embed in admissible heuristic. \\
+4 & Compare perceptual A* vs Manhattan baseline on metrics. \\
+5 & Visualize impact of sensory context on route cost. \\
+\bottomrule
+\end{tabular}
+\vspace{-0.3em}
+\end{center}
+```
+
+# Team Information
+
+**Gil Raitses**  
+Email: gjraitse@syr.edu
+
+# Project Type & Rationale
+
+Applied project — applies informed search methods to a realistic navigation scenario, demonstrating how perception can modify symbolic reasoning.
+
+# Work Plan (High-Level)
+
+```{=latex}
+\begin{center}
+\vspace{-0.3em}
+\begin{tabular}{@{\hspace{0.4em}}p{0.35\linewidth}p{0.6\linewidth}@{}}
+\toprule
+\textbf{Phase} & \textbf{Focus} \\
+\midrule
+Data Acquisition & Export and annotate traffic-camera frames; validate feature channels. \\
+Knowledge Base & Serialize detections into symbolic predicates for each intersection state. \\
+Baseline System & Implement classical A* with Manhattan heuristic for benchmarking. \\
+Perceptual System & Learn weights, integrate perceptual heuristic, assure admissibility. \\
+Evaluation & Run experiments, collect metrics (nodes expanded, path cost, MAE). \\
+Documentation & Prepare report, visualizations, and presentation artifacts. \\
+\bottomrule
+\end{tabular}
+\vspace{-0.3em}
+\end{center}
+```
+
+*(Solo project: all tasks executed by the author; no shared responsibilities.)*
+
+# Methodology Overview
+
+The agent follows the PEAS model. Performance: minimize energetic cost; Environment: Manhattan grid with dynamic sensory states; Actuators: move N/S/E/W; Sensors: vision-derived features fused with static map data. Constraint logic disables infeasible actions. The heuristic combines Manhattan distance with a weighted sum of sensory costs while retaining admissibility bounds.
+
+# Expected Contributions
+
+Demonstrate perception-aware heuristic search yielding human-aligned routes. Provide reusable pipeline linking traffic-camera data to symbolic search. Offer interpretable feature weights revealing environment–navigation links.
+
+# References
+
+Russell, S., & Norvig, P. *Artificial Intelligence: A Modern Approach* (4th ed.). Pearson, 2022.  
+Thrun, S., Burgard, W., & Fox, D. *Probabilistic Robotics.* MIT Press, 2005.  
+NYCDOT Open Data Portal. *NYC Traffic Camera Dataset*, 2024.  
+Bengio, Y., et al. “Learning Deep Architectures for Structured Prediction.” *Foundations and Trends in Machine Learning*, 2016.  
+Litwin-Kumar, A., & Abbott, L. F. “Learning and Adaptation in Neural Circuits.” *Annual Review of Neuroscience*, 2021.
+this table has problems with characters not rendering and overlow. 

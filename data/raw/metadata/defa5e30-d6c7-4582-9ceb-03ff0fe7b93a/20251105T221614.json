@@ -1,0 +1,22 @@
+{
+  "camera_id": "defa5e30-d6c7-4582-9ceb-03ff0fe7b93a",
+  "captured_at": "2025-11-05T22:16:14.136554",
+  "image_url": "https://webcams.nyctmc.org/api/cameras/defa5e30-d6c7-4582-9ceb-03ff0fe7b93a/image",
+  "features": {
+    "pedestrian_density": 0.0,
+    "bike_lane_violations": 0.0,
+    "vehicle_volume": 0.0,
+    "obstruction_score": 0.0,
+    "visibility_score": 1.0,
+    "stress_score": null
+  },
+  "metadata": {
+    "name": "9 Ave @ 34 St",
+    "latitude": 40.7534082474864,
+    "longitude": -73.9963142012874,
+    "area": "Manhattan"
+  },
+  "image_path": null,
+  "image_bytes": null,
+  "image_remote_uri": null
+}

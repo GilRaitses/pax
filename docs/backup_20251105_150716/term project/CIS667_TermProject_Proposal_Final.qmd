@@ -1,0 +1,664 @@
+---
+title: "Energetic Pathfinding and Perceptual Heuristics in Manhattan Navigation"
+subtitle: "CIS 667: Introduction to Artificial Intelligence – Term Project Proposal"
+author: 
+  - name: Gil Raitses
+    affiliation: Syracuse University, Data Science / HCAI Program
+    email: gjraitse@syr.edu
+date: "November 1, 2025"
+date-format: "MMMM D, YYYY"
+format:
+  pdf:
+    documentclass: article
+    papersize: letter
+    geometry:
+      - margin=1in
+      - includehead
+      - includefoot
+    include-before:
+      - "\\ifnum\\value{page}=1\\relax \\newgeometry{left=1.25in,right=1.25in,top=1.4in,bottom=1in} \\fi"
+    include-after:
+      - "\\ifnum\\value{page}=1\\relax \\restoregeometry \\fi"
+    classoption:
+      - numbers=noendperiod
+    toc: false
+    number-sections: false
+    colorlinks: true
+    linkcolor: CinnamorollBlue
+    urlcolor: CinnamorollPink
+    citecolor: CinnamorollBlue
+    mainfont: Avenir
+    sansfont: "Avenir Next"
+    monofont: "Courier New"
+    fontsize: 11pt
+    linestretch: 1.15
+    include-in-header:
+      text: |
+        \usepackage{xcolor}
+        \usepackage{titlesec}
+        \usepackage{tcolorbox}
+        \tcbuselibrary{skins}
+        \usepackage{fancyhdr}
+        \usepackage{booktabs}
+        \usepackage{array}
+        \usepackage{colortbl}
+        \usepackage{xcolor}
+        \usepackage{caption}
+        \usepackage{multicol}
+        \definecolor{headerpurple}{RGB}{75,0,130}
+        \definecolor{rowgray}{RGB}{245,245,250}
+        \arrayrulecolor{headerpurple}
+        \setlength{\arrayrulewidth}{0.5pt}
+        \renewcommand{\toprule}{\arrayrulecolor{headerpurple}\specialrule{0.08em}{0em}{0.3em}\arrayrulecolor{headerpurple}}
+        \renewcommand{\midrule}{\arrayrulecolor{headerpurple}\specialrule{0.05em}{0em}{0em}\arrayrulecolor{headerpurple}}
+        \renewcommand{\bottomrule}{\arrayrulecolor{headerpurple}\specialrule{0.08em}{0em}{0em}\arrayrulecolor{headerpurple}}
+        \usepackage{etoolbox}
+        \setlength{\intextsep}{0.8em}
+        \setlength{\floatsep}{0.8em}
+        \setlength{\textfloatsep}{1em}
+        \setlength{\abovecaptionskip}{0.5em}
+        \setlength{\belowcaptionskip}{0.3em}
+        \setlength{\columnsep}{0.5in}
+        \usepackage{tikz}
+        \usetikzlibrary{positioning,shapes,arrows,matrix,graphs,decorations.text,decorations.pathmorphing,shadows.blur}
+        \usepackage{forest}
+        \useforestlibrary{edges}
+        \captionsetup{format=plain,justification=raggedright,singlelinecheck=false,labelfont={color=CinnamorollBlue,sc},margin=20pt,skip=4pt}
+        
+        % Cinnamoroll Color Palette
+        \definecolor{CinnamorollBlue}{RGB}{142, 200, 234}
+        \definecolor{CinnamorollPink}{RGB}{255, 182, 193}
+        \definecolor{CinnamorollCream}{RGB}{255, 250, 240}
+        \definecolor{CinnamorollLavender}{RGB}{230, 230, 250}
+        \definecolor{CinnamorollMint}{RGB}{189, 252, 201}
+        \definecolor{CinnamorollPeriwinkle}{RGB}{204, 204, 255}
+        \definecolor{CinnamorollDeepBlue}{RGB}{100, 149, 237}
+        \definecolor{CinnamorollSoftGray}{RGB}{240, 240, 245}
+        
+        % Section headers with Cinnamoroll colors
+        \titleformat{\section}
+          {\normalfont\huge\bfseries\sffamily\color{CinnamorollDeepBlue}}
+          {\thesection}{1em}{}
+        
+        \titleformat{\subsection}
+          {\normalfont\Large\bfseries\sffamily\color{CinnamorollBlue}}
+          {\thesubsection}{1em}{}
+        
+        \titleformat{\subsubsection}
+          {\normalfont\large\bfseries\sffamily\color{CinnamorollPink}}
+          {\thesubsubsection}{1em}{}
+        
+        % Suppress default title
+        \AtBeginDocument{\let\maketitle\relax}
+        
+        % Custom header/footer
+        \pagestyle{fancy}
+        \fancyhf{}
+        \fancyhead[L]{\small\color{CinnamorollPink}\textit{Gil Raitses}}
+        \fancyhead[R]{\small\color{CinnamorollBlue}\textit{CIS 667 – Term Project Proposal}}
+        \fancyfoot[C]{\small\color{CinnamorollDeepBlue}\thepage}
+        \renewcommand{\headrulewidth}{0.5pt}
+        \renewcommand{\footrulewidth}{0pt}
+        \renewcommand{\headrule}{\hbox to\headwidth{\color{CinnamorollBlue}\leaders\hrule height \headrulewidth\hfill}}
+        
+        % Custom boxes for key content
+        \newtcolorbox{objectivebox}{
+          colback=CinnamorollLavender,
+          colframe=CinnamorollDeepBlue,
+          boxrule=1pt,
+          arc=4mm,
+          left=6pt,
+          right=6pt,
+          top=6pt,
+          bottom=6pt
+        }
+        
+        \newtcolorbox{aimbox}{
+          colback=CinnamorollCream,
+          colframe=CinnamorollPink,
+          boxrule=1pt,
+          arc=4mm,
+          left=6pt,
+          right=6pt,
+          top=6pt,
+          bottom=6pt
+        }
+        
+        \newtcolorbox{snapshotbox}{
+          colback=CinnamorollSoftGray,
+          colframe=CinnamorollDeepBlue,
+          boxrule=2.5pt,
+          arc=8mm,
+          left=4pt,
+          right=4pt,
+          top=12pt,
+          bottom=12pt,
+          drop shadow
+        }
+bibliography: references.bib
+csl: https://raw.githubusercontent.com/citation-style-language/styles/master/ieee.csl
+---
+
+\vspace*{1in}
+\begin{center}
+\begin{minipage}{0.7\textwidth}
+\begin{snapshotbox}
+\centering
+\begin{tikzpicture}
+\node[text width=10cm, align=center] (title) {
+  \Large\textbf{\color{CinnamorollDeepBlue!80!CinnamorollPink}Energetic Pathfinding and}\\
+  \Large\textbf{\color{CinnamorollDeepBlue}Perceptual Heuristics}
+};
+\draw[CinnamorollBlue, line width=1.5pt, decoration={snake, amplitude=0.6mm, segment length=3mm}, decorate] 
+  ([yshift=-3mm]title.south west) -- ([yshift=-3mm]title.south east);
+\end{tikzpicture}
+
+\vspace{2mm}
+\end{snapshotbox}
+\end{minipage}
+\end{center}
+
+\vspace{20mm}
+
+# Introduction
+
+## Subject Area
+
+The work operates within **Artificial Intelligence Search and Reasoning Systems**, focusing on heuristic search, knowledge representation and perception-based reasoning. It links foundational AI theory from Russell and Norvig's textbook @russell2022 to sensory modeling using computer vision and urban data streams.
+
+Classical pathfinding algorithms (A\*, weighted A\*) are extended by incorporating perceptually informed heuristics derived from live camera data. This connects abstract state-space search to embodied decision-making in dynamic environments.
+
+## Project Type and Rationale
+
+An **Applied Project** applies known methods to realistic situations, blending heuristic search (A$^*$, weighted A$^*$) with machine learning (Ridge regression, feature engineering) on real urban data to evaluate perceptually informed navigation.
+
+### Rationale
+
+The work applies course concepts (uninformed search, informed search, constraint satisfaction, knowledge representation) to sensory data from a dynamic environment. Cost and optimality are extended to include perceptual load and behavioral friction.
+
+## Problem Statement
+
+Traditional pathfinding algorithms optimize for geometric distance or travel time but fail to capture the **energetic and perceptual dynamics** of movement in dense urban environments. In Manhattan, the cost of traversing a route is not defined by distance alone but by **sensory and behavioral complexity**: crowding, visual noise, infrastructure gaps and movement unpredictability.
+
+```{=latex}
+\begin{figure}[H]
+\centering
+\includegraphics[width=0.45\textwidth]{carnegie-hall-comic.png}
+\caption{Carnegie Hall parable: the project asks how an agent can learn to navigate from Grand Central to Carnegie Hall while accounting for perceptual effort instead of pure geometric distance.}
+\label{fig:carnegie-comic}
+\end{figure}
+\vspace{-4mm}
+```
+
+This work develops a **perceptually informed heuristic** for A* search using NYC traffic camera data. The heuristic models environmental resistance by extracting features from visual data. Human pedestrians naturally avoid stressful routes based on crowded intersections, poor lighting and aggressive traffic patterns; this approach encodes similar avoidance behavior.
+
+**Key Research Question:** Can learned heuristics from vision-based environmental features outperform standard Manhattan-distance baselines in predicting route stress and improving path interpretability?
+
+```{=latex}
+\begin{samepage}
+\begin{aimbox}
+\section*{Aim}
+\vspace{-5mm}
+
+Implement and evaluate a heuristic search system that learns energetic pathfinding behavior by integrating sensory data into classical A* reasoning. Test whether perception-driven cost modeling improves interpretability and environmental realism in AI navigation.
+
+\end{aimbox}
+
+\begin{center}
+\textcolor{CinnamorollBlue}{\large This project will achieve the following objectives:}
+\end{center}
+
+\begin{center}
+\vspace{-0.5em}
+\begin{tabular}{@{\hspace{0.4em}}p{0.35\linewidth}p{0.6\linewidth}@{}}
+\toprule
+\textbf{Objective} & \textbf{Description} \\
+\midrule
+\rowcolor{rowgray}
+Navigation Environment & Assemble the Grand Central--Carnegie Hall corridor graph in EPSG:2263 using NYC DCM street centerlines; snap 161 intersections to the projected grid, overlay official hydrography and park polygons, and link each node to the nearest DOT camera through Voronoi zone IDs. \\
+\midrule
+Knowledge Base & Engineer a data pipeline that captures a one-week window of traffic camera imagery, runs computer vision analysis, normalizes feature vectors and stores symbolic predicates such as \texttt{high\_pedestrian} and \texttt{bike\_violation} for search-time reasoning. \\
+\midrule
+\rowcolor{rowgray}
+Perceptual Heuristic & Fit a Ridge regression model on annotated camera data to learn energetic weights, calibrate cost scaling with stratified cross-validation and expose a reusable function returning $h(n)=\mathbf{w}^T\mathbf{f}_{zone(n)}$ with interpretable coefficients. \\
+\midrule
+A$^*$ Implementation & Implement baseline A$^*$, learned A$^*$ and adaptive weighted A$^*$ ($W \in \{1.0, 1.2, 1.5\}$); instrument node expansions, path costs and admissibility checks for the learned heuristic. \\
+\midrule
+\rowcolor{rowgray}
+Evaluation & Compare systems via Monte Carlo route sampling, Mean Absolute Error on stress predictions, search effort (nodes expanded, runtime), path diversity and permutation importance to surface dominant perceptual factors. \\
+\midrule
+Implications & Deliver a lightweight test-harness application that supports collaborator exploration of alternate corridors, crowdsourced qualitative feedback and follow-on embodied AI studies aligned with PEAS and constraint satisfaction themes. \\
+\bottomrule
+\end{tabular}
+\vspace{-0.5em}
+\end{center}
+\end{samepage}
+```
+
+# Methodology
+
+```{=latex}
+\begin{center}
+\textcolor{CinnamorollBlue}{\large Agent Reasoning Framework}
+\end{center}
+\begin{center}
+\vspace{2mm}
+\begin{tabular}{@{\hspace{0.4em}}p{0.25\linewidth}p{0.7\linewidth}@{}}
+\toprule
+\textbf{Component} & \textbf{Description} \\
+\midrule
+\rowcolor{rowgray}
+Performance Measure & Minimize energetic cost (stress score) along navigation path. \\
+\midrule
+Environment & Manhattan street network with 108 camera coverage zones in the corridor (Voronoi tessellation); dynamic traffic conditions; partially observable via camera sensors. \\
+\midrule
+\rowcolor{rowgray}
+Actuators & Directional movements (N, S, E, W) along street intersections. \\
+\midrule
+Sensors & Computer vision analysis of traffic camera imagery; multi-dimensional feature vectors encoding violations, density, infrastructure quality. \\
+\bottomrule
+\end{tabular}
+\vspace{-2mm}
+\end{center}
+```
+
+
+The state space is constructed by combining three data sources:
+
+\noindent\textbf{1. Intersection Nodes (States):} Extract intersection coordinates from NYC Planning Digital City Map (DCM) street centerlines. Each intersection $i$ is defined by geographic coordinates $(lat_i, lon_i)$. States are encoded sequentially (n0 to n160) or by street names (45th\_Park, 51st\_Madison).
+
+```{=latex}
+\begin{center}
+\textcolor{CinnamorollPink}{\large State Space Representation}
+\end{center}
+\begin{center}
+\vspace{2mm}
+\begin{tabular}{@{\hspace{0.4em}}p{0.25\linewidth}p{0.7\linewidth}@{}}
+\toprule
+\textbf{Component} & \textbf{Definition} \\
+\midrule
+\rowcolor{rowgray}
+States $S$ & Set of 161 intersection nodes (where streets cross) spanning a corridor bounded by extending $\pm 2$ streets and $\pm 1$ avenue from each endpoint: 40th to 59th St, Lexington to 8th Ave \\
+\midrule
+Initial State $s_0$ & Grand Central (42nd \& Park) \\
+\midrule
+\rowcolor{rowgray}
+Goal State $s_g$ & Carnegie Hall (57th \& 7th) \\
+\midrule
+Actions $A(s)$ & \{North, South, East, West\} $\cap$ \{adjacent intersections via street connectivity\} \\
+\midrule
+\rowcolor{rowgray}
+Transition Model & Successor function returns neighboring intersections \\
+\midrule
+Path Cost & $g(n) + h(n)$ where $h(n) = \mathbf{w}^T \mathbf{f}_{zone(n)}$ (learned heuristic) \\
+\bottomrule
+\end{tabular}
+\end{center}
+```
+
+\vspace{2mm}
+\noindent\textbf{2. Camera Coverage Zones (Sensors):} Assign each intersection to its nearest camera using Voronoi tessellation of 108 camera positions from NYC DOT Traffic Management Center API. Each camera $c$ provides a multi-dimensional feature vector $\mathbf{f}_c$ encoding perceptual attributes (violations, density, infrastructure). Intersections within camera $c$'s Voronoi cell inherit feature vector $\mathbf{f}_c$.
+
+\newpage
+
+```{=latex}
+\begin{center}
+\textcolor{CinnamorollPink}{\large State Space: Intersection Nodes and Camera Coverage Zones}
+\end{center}
+\begin{figure}[H]
+\centering
+\makebox[\textwidth]{\hspace{0.4in}\includegraphics[width=0.9\textwidth]{state_space_map.png}}
+\caption{State space showing 161 intersection nodes (white circles with red borders), 108 camera positions (green triangles) and Voronoi tessellation (yellow) overlaying the Manhattan corridor map.}
+\label{fig:state-space-methodology}
+\end{figure}
+```
+
+\vspace{3mm}
+
+\noindent\textbf{3. Graph Structure:} Build an adjacency graph where edges $(i,j)$ exist if intersections $i$ and $j$ are connected by a street segment. Each edge has cost $w_{ij} = d_{Manhattan}(i,j) + \mathbf{w}^T \mathbf{f}_{zone(i)}$ combining geometric distance with learned perceptual weights.
+
+\vspace{3mm}
+
+```{=latex}
+\begin{center}
+\textcolor{CinnamorollPink}{\large Graph Model with Energy Cost Matrix}
+\end{center}
+\begin{table}[H]
+\centering
+\vspace{-0.3em}
+\begin{tabular}{@{\hspace{0.4em}}lcccccc@{\hspace{0.4em}}}
+\toprule
+& \textbf{GC} & \textbf{I1} & \textbf{I2} & \textbf{I3} & \textbf{I4} & \textbf{CH} \\
+\midrule
+\rowcolor{rowgray}
+GC & 0 & 2 & $\infty$ & 3 & $\infty$ & $\infty$ \\
+I1 & 2 & 0 & 2 & $\infty$ & 4 & $\infty$ \\
+\rowcolor{rowgray}
+I2 & $\infty$ & 2 & 0 & $\infty$ & 4 & $\infty$ \\
+I3 & 3 & $\infty$ & $\infty$ & 0 & 3 & $\infty$ \\
+\rowcolor{rowgray}
+I4 & $\infty$ & 4 & 4 & 3 & 0 & 5 \\
+CH & $\infty$ & $\infty$ & $\infty$ & $\infty$ & 5 & 0 \\
+\bottomrule
+\end{tabular}
+\vspace{-0.3em}
+\caption{Energy cost matrix showing weighted costs between intersections based on multi-dimensional feature vectors. Transition costs combine Manhattan distance with perceptual stress factors (traffic density, obstructions, enforcement signals).}
+\label{tab:energy-cost}
+\end{table}
+```
+
+```{=latex}
+\begin{samepage}
+\begin{center}
+\textcolor{CinnamorollPink}{\large A$^*$ Search Tree Exploration}
+\end{center}
+\begin{figure}[H]
+\centering
+\begin{forest}
+  for tree={
+    circle,
+    draw,
+    fill=CinnamorollLavender,
+    minimum size=1.1cm,
+    align=center,
+    font=\small,
+    edge={->,>=stealth,color=gray!50,line width=0.8pt},
+    s sep=15mm,
+    l sep=10mm
+  }
+  [42P\\{\scriptsize$g=0$}, fill=CinnamorollMint, edge={->,>=stealth,color=CinnamorollMint!70!CinnamorollDeepBlue,line width=2pt}
+    [42M\\{\scriptsize$g=1$}, edge={->,>=stealth,color=gray!50,line width=0.8pt}
+      [427\\{\scriptsize$g=5$}]
+      [425\\{\scriptsize$g=3$}]
+    ]
+    [45P\\{\scriptsize$g=3$}, fill=CinnamorollMint, edge={->,>=stealth,color=CinnamorollMint!70!CinnamorollDeepBlue,line width=2pt}
+      [45M\\{\scriptsize$g=4$}, fill=CinnamorollMint, edge={->,>=stealth,color=CinnamorollMint!70!CinnamorollDeepBlue,line width=2pt}
+        [55M\\{\scriptsize$g=14$}, fill=CinnamorollMint, edge={->,>=stealth,color=CinnamorollMint!70!CinnamorollDeepBlue,line width=2pt}
+          [556\\{\scriptsize$g=16$}, fill=CinnamorollMint, edge={->,>=stealth,color=CinnamorollMint!70!CinnamorollDeepBlue,line width=2pt}
+            [576\\{\scriptsize$g=18$}, fill=CinnamorollMint, edge={->,>=stealth,color=CinnamorollMint!70!CinnamorollDeepBlue,line width=2pt}
+              [577\\{\scriptsize$g=19$}, fill=CinnamorollMint]
+            ]
+          ]
+        ]
+      ]
+      [48P\\{\scriptsize$g=6$}]
+    ]
+  ]
+\end{forest}
+\caption{A$^*$ search tree with learned heuristic finding the optimal (lowest energetic cost) path. Node names encode intersections (42P = 42nd \& Park, 45M = 45th \& Madison, 577 = 57th \& 7th). Values show $g(n)$ = cumulative blocks traveled. The optimal path (mint green): 42P ($g=0$) $\rightarrow$ 45P ($g=3$) $\rightarrow$ 45M ($g=4$) $\rightarrow$ 55M ($g=14$) $\rightarrow$ 556 ($g=16$) $\rightarrow$ 576 ($g=18$) $\rightarrow$ 577 ($g=19$) goes north on Park to 45th, west to Madison, north on Madison to 55th, west to 6th, north to 57th, west to 7th. Gray branches show A$^*$ rejecting the baseline west-on-42nd route (42M) because the diagonal path has lower perceptual stress despite same total distance.}
+\label{fig:astar-tree}
+\end{figure}
+\end{samepage}
+```
+
+## Heuristic Design
+
+### Baseline: Manhattan Distance
+
+$$
+h_{\text{manhattan}}(n) = |x_n - x_{\text{goal}}| + |y_n - y_{\text{goal}}|
+$$
+
+Admissible but ignores environmental context.
+
+### Learned Perceptual Heuristic
+
+$$
+h_{\text{learned}}(n) = \mathbf{w}^T \mathbf{f}(n) + b
+$$
+
+where $\mathbf{f}(n)$ represents the feature vector for node $n$, $\mathbf{w}$ denotes the learned weights from Ridge regression and $b$ is the intercept term. Each intersection $n$ inherits features from its nearest camera via Voronoi tessellation: $\mathbf{f}(n) = \mathbf{f}_c$ where $c = \arg\min_{c'} d(n, c')$. The feature vector encodes perceptual and behavioral attributes including violations (pedestrian walkway, dangerous bike positioning, red light, flow blocking, car-bike lane), density metrics (pedestrian, vulnerable populations, traffic volume), infrastructure quality (gaps, poor signage, signal malfunctions), behavioral factors (cyclist speed, aggressive behavior) and environmental conditions (visibility, weather impact, overall safety risk).
+
+\vspace{4mm}
+```{=latex}
+\begin{center}
+\textcolor{CinnamorollBlue}{\large Manhattan Navigation: State Space Search Paths}
+\end{center}
+\begin{figure}[H]
+\centering
+\begin{tabular}{@{}ccc@{}}
+% Column 1: Baseline (tree | map) with border
+\fcolorbox{CinnamorollDeepBlue}{white}{
+\begin{minipage}[b]{0.29\textwidth}
+\centering
+\begin{tabular}{@{}cc@{}}
+\resizebox{!}{1.8in}{
+\begin{forest}
+  for tree={circle,draw,fill=CinnamorollLavender,minimum size=0.7cm,align=center,font=\scriptsize,edge={->,>=stealth,color=CinnamorollDeepBlue,line width=0.6pt},s sep=5mm,l sep=7mm}
+  [GC, fill=CinnamorollMint, label=right:{\scriptsize$h=15, g=0, f=15$}
+    [Mad, label=right:{\scriptsize$h=12, g=3, f=15$}
+      [5th, label=right:{\scriptsize$h=9, g=6, f=15$}
+        [6th, label=right:{\scriptsize$h=6, g=9, f=15$}
+          [7th, label=right:{\scriptsize$h=3, g=12, f=15$}
+            [CH, fill=CinnamorollMint, label=right:{\scriptsize$h=0, g=15, f=15$}]
+]]]]]\end{forest}} &
+\includegraphics[height=1.8in,keepaspectratio]{baseline_path_map.png}
+\end{tabular}\\[1mm]
+{\scriptsize\textbf{Baseline}\\Manhattan distance\\\textit{West on 42nd then North}}
+\end{minipage}} &
+% Column 2: Learned (tree | map) with border
+\fcolorbox{CinnamorollPink}{white}{
+\begin{minipage}[b]{0.29\textwidth}
+\centering
+\begin{tabular}{@{}cc@{}}
+\resizebox{!}{1.8in}{
+\begin{forest}
+  for tree={circle,draw,fill=CinnamorollLavender,minimum size=0.7cm,align=center,font=\scriptsize,edge={->,>=stealth,color=CinnamorollPink,line width=0.6pt},s sep=5mm,l sep=7mm}
+  [GC, fill=CinnamorollMint, label=right:{\scriptsize$c=0, f=0$}
+    [45P, label=right:{\scriptsize$c=2, f=2$}
+      [48P, label=right:{\scriptsize$c=5, f=5$}
+        [51P, label=right:{\scriptsize$c=8, f=8$}
+          [54P, label=right:{\scriptsize$c=10, f=10$}
+            [57P, label=right:{\scriptsize$c=12, f=12$}
+              [CH, fill=CinnamorollMint, label=right:{\scriptsize$c=15, f=15$}]
+]]]]]]\end{forest}} &
+\includegraphics[height=1.8in,keepaspectratio]{learned_path_map.png}
+\end{tabular}\\[1mm]
+{\scriptsize\textbf{Learned}\\Energetic cost\\\textit{North on Park then West}}
+\end{minipage}} &
+% Column 3: Alternative (tree | map) with border
+\fcolorbox{CinnamorollPeriwinkle}{white}{
+\begin{minipage}[b]{0.29\textwidth}
+\centering
+\begin{tabular}{@{}cc@{}}
+\resizebox{!}{1.8in}{
+\begin{forest}
+  for tree={circle,draw,fill=CinnamorollLavender,minimum size=0.7cm,align=center,font=\scriptsize,edge={->,>=stealth,color=CinnamorollPeriwinkle,line width=0.6pt},s sep=5mm,l sep=7mm}
+  [GC, fill=CinnamorollMint, label=right:{\scriptsize$h=15, c=0, f=15$}
+    [Mad, label=right:{\scriptsize$h=12, c=2, f=14$}
+      [5M, label=right:{\scriptsize$h=9, c=6, f=15$}
+        [5, label=right:{\scriptsize$h=6, c=9, f=15$}
+          [6, label=right:{\scriptsize$h=3, c=13, f=16$}
+            [7, label=right:{\scriptsize$h=3, c=16, f=19$}
+              [CH, fill=CinnamorollMint, label=right:{\scriptsize$h=0, c=19, f=19$}]
+]]]]]]\end{forest}} &
+\includegraphics[height=1.8in,keepaspectratio]{alternative_path_map.png}
+\end{tabular}\\[1mm]
+{\scriptsize\textbf{Alternative}\\Combined heuristic\\\textit{Mixed diagonal route}}
+\end{minipage}} \\
+\end{tabular}
+\caption{Six-panel comparison of A$^*$ search pathways. Each column shows tree and map side-by-side: baseline Manhattan distance, learned energetic cost and alternative mixed strategy.}
+\label{fig:search-paths}
+\end{figure}
+```
+
+### Adaptive Weighted A\*
+
+$$
+f(n) = g(n) + W \cdot h_{\text{learned}}(n)
+$$
+
+with $W \in \{1.0, 1.2, 1.5\}$ to balance the exploration-exploitation tradeoff: higher weights prioritize heuristic guidance (faster search) while lower weights preserve optimality guarantees.
+
+## Training Pipeline
+
+### Model: Ridge Regression
+
+$$
+\min_{\mathbf{w}} \|\mathbf{y} - \mathbf{X}\mathbf{w}\|^2 + \alpha \|\mathbf{w}\|^2
+$$
+
+Ridge regression offers several advantages: interpretable feature weights, regularization that prevents overfitting and fast training through closed-form solution. The model learns the calibrated stress score defined in the data pipeline (0–30) using the detector-derived features described below. Training uses the 36,288 labeled records gathered across 108 cameras, with temporal cross-validation (weekdays vs. weekends, rush vs. off-peak) to assess generalization.
+
+### Feature Importance Analysis
+
+The Ridge model produces a weight $w_i$ for each feature category (violations, pedestrian density, infrastructure gaps). Rank features by absolute coefficient value: $|w_{\text{violations}}| > |w_{\text{density}}| > |w_{\text{infrastructure}}|$ reveals which factors dominate stress predictions. This shows whether pedestrians avoid routes due to enforcement violations, crowding or infrastructure quality.
+
+## Data Pipeline
+
+Ground-truth labeling and feature extraction are now unified. Each camera frame is pulled via the resilient Cloud Run collector, processed immediately through the fixed detector suite, and stored alongside the computed 0–30 stress score. This guarantees that the Ridge heuristic learns from the same signals the agent uses at search time and that any collection gaps are explicitly tracked.
+
+### Data Collection Plan
+
+**Feature Vector Structure:** Every 30-minute snapshot is processed through a fixed detector suite and stored as a Parquet feature matrix. The pipeline runs in a Cloud Run Job immediately after each download and writes a single row per camera-time pair. Each detector can be swapped for an equivalent Google Cloud Vision API call or manual audit—the schema is fixed so the downstream learner is agnostic to the extraction tool.
+
+- **Pedestrian / cyclist / vehicle density:** YOLOv8n (Ultralytics, 2024) counts class-specific detections, normalized by visible street area. Optional fallback: Google Vision object detection (`OBJECT_LOCALIZATION`) with the same class map.
+- **Lane and sidewalk violations:** Detectron2 lane-segmentation (CityScapes fine-tune) plus centroid-in-polygon tests flag bike-lane intrusions and sidewalk blockage. Optional fallback: Google Vision `DOCUMENT_TEXT_DETECTION` on signage + geometry heuristics or human audit of the same mask.
+- **Aggressive behavior & crowding:** CrowdNet heat-map + frame-to-frame motion to spot rush pockets; thresholds calibrated on two pilot days. Optional fallback: Google Vision `IMAGE_PROPERTIES` + motion clustering for rapid prototyping.
+- **Infrastructure gaps / signage:** Static GIS mask from NYC DOT plus confidence from a lightweight traffic-signal classifier (OpenMMLab). Low-confidence segments inherit the previous hour’s state or can be manually confirmed.
+- **Environmental context:** Weather API (NOAA) and luminance estimates from histogram contrast to note rain/low-light modifiers.
+
+| Column name            | Type    | Primary extractor (fallback)                          | Description |
+|------------------------|---------|--------------------------------------------------------|-------------|
+| `camera_id`            | string  | Collector                                              | NYC DOT camera GUID |
+| `timestamp_utc`        | datetime| Collector                                              | ISO timestamp (rounded to :00 or :30) |
+| `ped_density`          | float   | YOLOv8n counts / area (`OBJECT_LOCALIZATION`)          | People per 100 m² walkway |
+| `bike_density`         | float   | YOLOv8n, bike class (`OBJECT_LOCALIZATION`)            | Bikes per 100 m² lane |
+| `vehicle_pressure`     | float   | YOLOv8n vehicle classes                                | Vehicles per lane segment |
+| `bike_lane_violation`  | float   | Detectron2 lane mask (manual/Google Vision geometry)   | Fraction of riders outside lane |
+| `sidewalk_blockage`    | float   | Detectron2 + centroid rule (manual flag)               | Blocked sidewalk share |
+| `crowd_heat`           | float   | CrowdNet heat-map (Vision color clustering)            | Normalized motion intensity |
+| `signal_risk`          | float   | Traffic-light classifier (Vision label detection)      | Probability of non-compliance |
+| `weather_modifier`     | float   | NOAA API (manual override)                             | Rain/light penalty factor |
+| `luminance`            | float   | Histogram contrast (Vision `IMAGE_PROPERTIES`)         | Brightness score |
+| `stress_score`         | float   | Calibrated linear model (can ingest manual audits)     | Target 0–30 label |
+
+**Stress Score Ground Truth:** The supervised label is a deterministic 0–30 scalar computed per frame. Detector outputs feed a calibrated linear model
+$$
+s = 0.35 \cdot \text{ped	extunderscore density} + 0.25 \cdot \text{bike	extunderscore violations} + 0.20 \cdot \text{vehicle	extunderscore pressure} + 0.12 \cdot \text{crowd	extunderscore heat} + 0.08 \cdot \text{signal	extunderscore risk}
+$$
+scaled to the target range. We run a daily audit of 25 randomly sampled frames that a human rater scores; weights are grid-searched to keep MAE ≤ 1.5 against the audit. These same vectors (features + stress score) train the Ridge heuristic.
+
+**Sampling Infrastructure & Reliability:** A Cloud Run job executes every 30 minutes from 06:00–23:30, fetching all 108 NYC DOT TMC cameras via `https://webcams.nyctmc.org/api/cameras/{id}/image`. Requests honor DOT guidance (≤1 rps) with a 500 ms exponential back-off and three retries. Successful frames stream into `gs://pax-nyc-images/images/YYYY/MM/DD/<camera>.jpg`; a lifecycle rule purges objects older than 24 hours. Failures log into Firestore with retry timestamps; any gap older than two hours is marked and interpolated downstream, ensuring the Ridge training window remains continuous.
+
+### Feature Extraction & Labeling Workflow
+
+1. **Acquisition:** The Cloud Run collector stores each snapshot in GCS and publishes metadata (`camera_id`, timestamp, URI, retry count) to the processing queue.
+2. **Detector stage (default):** A containerized inference worker executes the model suite above. Raw detections (bounding boxes, confidences, lane masks, heat maps) are persisted with model-version hashes. For rapid experiments the worker can swap in Google Vision API responses or a manual annotation, yielding the same downstream JSON payload.
+3. **Feature synthesis:** A deterministic transformer converts detections—regardless of source—into the feature matrix columns (e.g., `ped_density = person_count / walkway_area`). Missing readings inherit the last valid value and set `imputed=true`.
+4. **Stress-score calibration:** The transformer computes the 0–30 stress score via the weighted formula. A daily audit of 25 random frames compares human ratings to the automatic score; if MAE exceeds 1.5 the weights are re-fit, versioned, and logged.
+5. **Persistence & QA:** Final rows land in partitioned Parquet files and mirrored BigQuery tables. Dashboards monitor detector confidence, API failure rates and audit variance so we can intervene before training windows open.
+
+This end-to-end structure answers the reviewer questions: the target label is formally defined, each feature is backed by a named extractor with fallbacks, and the collection infrastructure gracefully handles DOT outages while maintaining a consistent feature matrix for the Ridge learner.
+
+\vspace{2cm}
+## Experimental Design
+
+```{=latex}
+\begin{center}
+\textcolor{CinnamorollBlue}{\large Experiments}
+\end{center}
+\begin{center}
+\vspace{2mm}
+\begin{tabular}{@{\hspace{0.4em}}p{0.35\linewidth}p{0.6\linewidth}@{}}
+\toprule
+\textbf{Experiment} & \textbf{Description} \\
+\midrule
+\rowcolor{rowgray}
+Baseline comparison & A\* with Manhattan distance vs. learned heuristic \\
+\midrule
+Weight sensitivity & Test $W \in \{1.0, 1.2, 1.5\}$\\(trade-off: optimality vs. speed) \\
+\midrule
+\rowcolor{rowgray}
+Path diversity & Monte Carlo sampling of routes, measure variance in total cost \\
+\midrule
+Ablation study & Remove feature categories (violations, density, infrastructure) to assess individual impact \\
+\bottomrule
+\end{tabular}
+\vspace{0.1em}
+\end{center}
+```
+
+```{=latex}
+\begin{center}
+\textcolor{CinnamorollBlue}{\large Metrics}
+\end{center}
+\begin{center}
+\vspace{2mm}
+\begin{tabular}{@{\hspace{0.4em}}p{0.35\linewidth}p{0.6\linewidth}@{}}
+\toprule
+\textbf{Metric} & \textbf{Description} \\
+\midrule
+\rowcolor{rowgray}
+Mean Absolute Error (MAE) & Predicted stress vs. ground truth temperature scores. \\
+\midrule
+Path Length & Number of nodes in solution path. \\
+\midrule
+\rowcolor{rowgray}
+Nodes Expanded & Computational efficiency measure. \\
+\midrule
+Stress Score Distribution & Variance across sampled paths. \\
+\midrule
+\rowcolor{rowgray}
+Feature Importance Rankings & Top contributing factors. \\
+\bottomrule
+\end{tabular}
+\vspace{-0.3em}
+\end{center}
+```
+
+### Success Criteria
+
+Success will be demonstrated by achieving interpretable feature weights and showing statistical significance in paired t-tests (p < 0.05) when comparing baseline versus learned heuristic performance.
+
+\newpage
+
+# Work Plan
+
+## Timeline (2 weeks)
+
+\begin{multicols}{2}
+\setstretch{0.90}
+
+\subsubsection*{Week 1: Knowledge Base Setup and Algorithm Implementation}
+
+\textbf{Days 1 to 2: Knowledge Base}
+
+Parse camera zone data structures to extract features. Design symbolic knowledge representation mapping features to predicates (pedestrian density, bike violations, infrastructure quality). Build graph with nodes as intersections and edges as street segments using NetworkX. Integrate Manhattan street topology via OSMnx. Serialize knowledge base for search queries.
+
+\textbf{Days 3 to 4: Analytical Visualizations}
+
+Design visualizations to guide implementation and analysis: route comparison maps showing baseline versus learned heuristic paths overlaid on Manhattan street network, search tree diagrams showing A* node expansion patterns, feature importance heatmaps to identify which perceptual attributes drive routing decisions and stress score distributions across different path alternatives.
+
+\textbf{Days 5 to 7: A* Implementation}
+
+Implement three A* variants: baseline with Manhattan distance heuristic, learned heuristic using Ridge weights and adaptive weighted A* with $W \in \{1.0, 1.2, 1.5\}$ to explore speed-optimality tradeoffs in informed search. Build Monte Carlo path sampling framework.
+
+\columnbreak
+
+\subsubsection*{Week 2: Model Training, Evaluation, and Visualization}
+
+\textbf{Days 8 to 9: Model Training}
+
+Train Ridge regression on collected camera data using temperature/stress scores as target variable. Integrate learned model with graph structure to compute perceptual heuristic values. Validate heuristic admissibility bounds for A* optimality. Identify top predictive features.
+
+\textbf{Days 10 to 11: Evaluation}
+
+Run comparative experiments: baseline (Manhattan distance) versus learned heuristic. Collect performance metrics: MAE on predicted stress scores, path length, nodes expanded and total energetic cost. Perform statistical analysis using paired t-tests. Conduct feature ablation studies.
+
+\textbf{Days 12 to 14: Documentation}
+
+Generate final visualizations. Draft project report with embedded figures. Prepare presentation materials.
+
+\end{multicols}
+
+# References
+
+::: {#refs}
+:::
+
+
+
+
+
+

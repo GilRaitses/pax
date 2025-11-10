@@ -1,0 +1,410 @@
+---
+title: "Energetic Pathfinding and Perceptual Heuristics in Manhattan Navigation"
+subtitle: "CIS 667: Introduction to Artificial Intelligence – Term Project Proposal"
+author: 
+  - name: Gil Raitses
+    affiliation: Syracuse University, Data Science / HCAI Program
+    email: graitses@syr.edu
+date: "November 1, 2025"
+date-format: "MMMM D, YYYY"
+format:
+  pdf:
+    documentclass: article
+    papersize: letter
+    geometry:
+      - margin=1in
+    toc: false
+    number-sections: true
+    colorlinks: true
+    linkcolor: CinnamorollBlue
+    urlcolor: CinnamorollPink
+    citecolor: CinnamorollBlue
+    mainfont: Avenir
+    sansfont: "Avenir Next"
+    monofont: "Courier New"
+    fontsize: 11pt
+    linestretch: 1.15
+    include-in-header:
+      text: |
+        \usepackage{xcolor}
+        \usepackage{titlesec}
+        \usepackage{tcolorbox}
+        \usepackage{fancyhdr}
+        
+        % Cinnamoroll Color Palette
+        \definecolor{CinnamorollBlue}{RGB}{142, 200, 234}
+        \definecolor{CinnamorollPink}{RGB}{255, 182, 193}
+        \definecolor{CinnamorollCream}{RGB}{255, 250, 240}
+        \definecolor{CinnamorollLavender}{RGB}{230, 230, 250}
+        \definecolor{CinnamorollMint}{RGB}{189, 252, 201}
+        \definecolor{CinnamorollPeriwinkle}{RGB}{204, 204, 255}
+        \definecolor{CinnamorollDeepBlue}{RGB}{100, 149, 237}
+        \definecolor{CinnamorollSoftGray}{RGB}{240, 240, 245}
+        
+        % Section headers with Cinnamoroll colors
+        \titleformat{\section}
+          {\normalfont\huge\bfseries\sffamily\color{CinnamorollDeepBlue}}
+          {\thesection}{1em}{}
+        
+        \titleformat{\subsection}
+          {\normalfont\Large\bfseries\sffamily\color{CinnamorollBlue}}
+          {\thesubsection}{1em}{}
+        
+        \titleformat{\subsubsection}
+          {\normalfont\large\bfseries\sffamily\color{CinnamorollPink}}
+          {\thesubsubsection}{1em}{}
+        
+        % Custom header/footer
+        \pagestyle{fancy}
+        \fancyhf{}
+        \fancyhead[L]{\small\color{CinnamorollBlue}\textit{CIS 667 Term Project Proposal}}
+        \fancyhead[R]{\small\color{CinnamorollPink}\textit{Gil Raitses}}
+        \fancyfoot[C]{\small\color{CinnamorollDeepBlue}\thepage}
+        \renewcommand{\headrulewidth}{0.5pt}
+        \renewcommand{\footrulewidth}{0pt}
+        \renewcommand{\headrule}{\hbox to\headwidth{\color{CinnamorollBlue}\leaders\hrule height \headrulewidth\hfill}}
+        
+        % Custom boxes for key content
+        \newtcolorbox{objectivebox}{
+          colback=CinnamorollLavender,
+          colframe=CinnamorollDeepBlue,
+          boxrule=1pt,
+          arc=4mm,
+          left=6pt,
+          right=6pt,
+          top=6pt,
+          bottom=6pt
+        }
+        
+        \newtcolorbox{aimbox}{
+          colback=CinnamorollCream,
+          colframe=CinnamorollPink,
+          boxrule=1pt,
+          arc=4mm,
+          left=6pt,
+          right=6pt,
+          top=6pt,
+          bottom=6pt
+        }
+bibliography: references.bib
+csl: https://raw.githubusercontent.com/citation-style-language/styles/master/ieee.csl
+---
+
+\begin{center}
+\begin{tcolorbox}[colback=CinnamorollSoftGray, colframe=CinnamorollDeepBlue, boxrule=1.5pt, arc=5mm, width=0.9\textwidth]
+\centering
+\Large\textbf{\color{CinnamorollDeepBlue}Adaptive Heuristic Learning for\\Stress-Optimized Pedestrian Navigation}
+
+\vspace{3mm}
+\normalsize\textit{\color{CinnamorollBlue}Integrating Perception, Reasoning, and Real-World Sensory Context}
+\end{tcolorbox}
+\end{center}
+
+\vspace{5mm}
+
+# Introduction
+
+## Subject Area
+
+This project operates within **Artificial Intelligence – Search and Reasoning Systems**, focusing specifically on heuristic search, knowledge representation, and perception-based reasoning. The work links foundational AI theory—as covered in @russell2020artificial—to real-world sensory modeling using computer vision and urban data streams.
+
+The project extends classical pathfinding algorithms (A\*, weighted A\*) by incorporating perceptually informed heuristics derived from live camera data. This bridges the gap between abstract state-space search and embodied decision-making in dynamic environments.
+
+## Problem Statement
+
+Traditional pathfinding algorithms optimize for geometric distance or travel time but fail to capture the **energetic and perceptual dynamics** of real-world movement. In dense urban environments like Manhattan, the cost of traversing a route is not defined by distance alone but by **sensory and behavioral complexity**—crowding, visual noise, infrastructure gaps, and movement unpredictability.
+
+The problem addressed here is:
+
+> **How can we design an intelligent agent capable of integrating sensory context into its reasoning process for route selection?**
+
+The project reimagines the A\* search paradigm with a **perceptually informed heuristic** derived from NYC traffic camera data, modeling what it means for an agent to "feel" resistance in the environment it navigates. This is inspired by human pedestrians who naturally avoid stressful routes based on visual and spatial cues—crowded intersections, poor lighting, aggressive traffic patterns.
+
+**Key Research Question:**
+
+Can learned heuristics from vision-based environmental features outperform standard Manhattan-distance baselines in predicting route stress and improving path interpretability?
+
+\vspace{3mm}
+
+\begin{aimbox}
+\section*{Aim of the Project}
+
+To implement and evaluate a heuristic search system that learns energetic pathfinding behavior by integrating sensory data into classical A* reasoning, demonstrating how perception-driven cost modeling can improve interpretability and environmental realism in AI navigation.
+
+\end{aimbox}
+
+\vspace{5mm}
+
+# Objectives
+
+\begin{objectivebox}
+This project will achieve the following specific objectives:
+
+\begin{enumerate}
+\item \textbf{Define Navigation Environment:} Construct a Manhattan-based navigation graph between Grand Central Station and Carnegie Hall using a grid of intersections as states, leveraging the existing NYC Vibe Check infrastructure (907 camera zones, Voronoi tessellation).
+
+\item \textbf{Build Knowledge Base:} Construct a knowledge base from NYC traffic camera data, translating visual detections into symbolic features representing environmental conditions (bikes, cars, pedestrians, obstructions, violations).
+
+\item \textbf{Develop Perceptual Heuristic:} Create a perceptually weighted heuristic that adapts energetic cost functions based on a 17-dimensional feature vector extracted from camera analysis (Google Cloud Vision API).
+
+\item \textbf{Implement Search Algorithms:} Implement A* search with multiple heuristic variants:
+\begin{itemize}
+  \item Standard Manhattan distance (baseline)
+  \item Learned weighted heuristic (Ridge regression on features)
+  \item Adaptive weighted A* (W ∈ [1.0, 1.5], inspired by Programming Problem 3)
+\end{itemize}
+
+\item \textbf{Comparative Evaluation:} Evaluate differences in efficiency, realism, and interpretability between baseline and perceptual systems using:
+\begin{itemize}
+  \item Mean Absolute Error (MAE) on predicted stress scores
+  \item Path diversity metrics (Monte Carlo sampling)
+  \item Feature importance analysis (top predictive factors)
+\end{itemize}
+
+\item \textbf{Visualization:} Present visualizations showing how sensory context alters route choice and total cost, including:
+\begin{itemize}
+  \item Route comparison maps (baseline vs. learned heuristic)
+  \item Feature weight distributions
+  \item Stress score predictions vs. ground truth
+\end{itemize}
+
+\item \textbf{Reflection:} Discuss implications for embodied AI and human-centered navigation modeling, connecting to PEAS framework and constraint satisfaction principles from course material.
+\end{enumerate}
+\end{objectivebox}
+
+\vspace{5mm}
+
+# Team Information
+
+**Individual Project Lead:** Gil Raitses  
+**Email:** graitses@syr.edu  
+**Phone:** [Optional - available upon request]  
+**Affiliation:** Syracuse University, Data Science / HCAI Program  
+**Course:** CIS 667 – Introduction to Artificial Intelligence  
+**Instructor:** Prof. Andrew C. Lee  
+**Semester:** Fall 2025
+
+\vspace{3mm}
+
+# Project Type
+
+This is an **Applied Project** (Category D in proposal guidelines), which aims to gain experience from learning and applying known methods to realistic situations. The project will:
+
+- Apply heuristic search methods (A\*, weighted A\*) to a real-world urban navigation task
+- Integrate machine learning (Ridge regression, feature engineering) with classical AI search
+- Analyze and summarize experiences with synthetic data generation and model validation
+- Identify refinements through comparative experiments
+
+**Rationale:** This project connects theoretical AI models from course material—uninformed search (BFS, DFS), informed search (A\*, greedy best-first), constraint satisfaction, and knowledge representation—to sensory data from a dynamic real-world environment. It extends the notion of cost and optimality to include perceptual load and behavioral friction, exemplifying how AI systems can transition from abstract reasoning to embodied decision-making.
+
+\vspace{3mm}
+
+# Methodology
+
+## PEAS Framework
+
+The agent's reasoning follows the **PEAS framework** (Performance, Environment, Actuators, Sensors):
+
+- **Performance Measure:** Minimize energetic cost (stress score) along navigation path; beat baseline MAPE of 14.6% from ARIMA predictions
+- **Environment:** Discretized Manhattan grid (907 Voronoi zones from NYC Vibe Check); dynamic traffic conditions; partially observable via camera sensors
+- **Actuators:** Directional movements (N, S, E, W) along street intersections
+- **Sensors:** Google Cloud Vision API analyzing traffic camera imagery; 17-dimensional feature vectors encoding violations, density, infrastructure quality
+
+## State Space Representation
+
+**States:** Intersection nodes (camera zone centroids)  
+**Actions:** Move to adjacent intersection (based on street connectivity)  
+**Goal Test:** Reach target zone (e.g., Carnegie Hall from Grand Central)  
+**Path Cost:** Weighted sum of learned heuristic values across traversed nodes
+
+## Heuristic Design
+
+### Baseline: Manhattan Distance
+
+$$
+h_{\text{manhattan}}(n) = |x_n - x_{\text{goal}}| + |y_n - y_{\text{goal}}|
+$$
+
+Admissible but ignores environmental context.
+
+### Learned Perceptual Heuristic
+
+$$
+h_{\text{learned}}(n) = \mathbf{w}^T \mathbf{f}(n) + b
+$$
+
+where:
+
+- $\mathbf{f}(n)$ = 17-dimensional feature vector for node $n$
+- $\mathbf{w}$ = learned weights from Ridge regression
+- $b$ = intercept term
+
+Features include: pedestrian walkway violations, dangerous bike positioning, red light violations, flow blocking, car-bike lane violations, pedestrian density, vulnerable populations, traffic volume, visibility, infrastructure gaps, poor signage, signal malfunctions, cyclist speed, aggressive behavior, infrastructure quality, weather impact, overall safety risk.
+
+### Adaptive Weighted A\*
+
+$$
+f(n) = g(n) + W \cdot h_{\text{learned}}(n)
+$$
+
+with $W \in [1.0, 1.2, 1.5]$ to balance optimality vs. speed (inspired by Programming Problem 3 experience with 8-puzzle).
+
+## Data Pipeline
+
+### Existing Infrastructure (NYC Vibe Check)
+
+- **BigQuery Datasets:** 3 datasets, 11 tables, 5 training records
+- **Feature Extraction:** Google Cloud Vision API (object detection, scene labels, safety scores)
+- **Telemetry:** Processing times, success rates, confidence scores
+- **Coverage:** 907 camera zones across NYC, Voronoi tessellation for zone assignment
+
+### Current Data Inventory
+
+| Table | Records | Key Features |
+|-------|---------|--------------|
+| `zone_analyses` | 2 | 17-dim vectors, temperature scores (5.0–24.0), Vision API labels |
+| `realtime_violations` | 1 | Violation types, confidence scores (87%) |
+| `traffic_predictions` | 2 | ARIMA forecasts, MAPE 12–17%, 30-min horizon |
+
+**Ground Truth:** Temperature/stress scores (range: 5.0–24.0, mean: 14.5) serve as target variable for supervised learning.
+
+### Synthetic Data Augmentation
+
+Due to limited sample size (5 records), training data will be augmented using:
+
+1. **Bootstrap Resampling:** Replicate existing samples with Gaussian noise injection [@chawla2002smote]
+2. **SMOTE (Synthetic Minority Over-sampling):** Interpolate between feature vectors in k-nearest neighbors
+3. **Target:** Generate 100–500 synthetic training samples while preserving 5 real records as validation/test set
+
+## Training Pipeline
+
+### Model: Ridge Regression
+
+$$
+\min_{\mathbf{w}} \|\mathbf{y} - \mathbf{X}\mathbf{w}\|^2 + \alpha \|\mathbf{w}\|^2
+$$
+
+**Advantages:**
+
+- Interpretable feature weights
+- Regularization prevents overfitting on small dataset
+- Fast training (closed-form solution)
+- Aligns with linear heuristic design in A\*
+
+**Training/Validation Split:**
+
+- **Training:** 100–500 synthetic samples + 4 real samples
+- **Validation:** 1 held-out real sample (leave-one-out cross-validation)
+- **Test:** Path planning experiments on full NYC graph
+
+### Feature Importance Analysis
+
+Identify top 5 predictive features using:
+
+- Ridge coefficient magnitudes
+- Permutation feature importance
+- SHAP values (if time permits)
+
+This informs which environmental factors most contribute to route stress, supporting interpretability goals.
+
+## Experimental Design
+
+### Experiments
+
+1. **Baseline Comparison:** A\* with Manhattan distance vs. learned heuristic
+2. **Weight Sensitivity:** Test W = 1.0, 1.2, 1.5 (trade-off: optimality vs. speed)
+3. **Path Diversity:** Monte Carlo sampling of routes, measure variance in total cost
+4. **Ablation Study:** Remove feature categories (violations, density, infrastructure) to assess impact
+
+### Metrics
+
+- **Mean Absolute Error (MAE):** Predicted stress vs. ground truth temperature scores
+- **Path Length:** Number of nodes in solution path
+- **Nodes Expanded:** Computational efficiency measure
+- **Stress Score Distribution:** Variance across sampled paths
+- **Feature Importance Rankings:** Top contributing factors
+
+### Success Criteria
+
+- Beat baseline MAPE of 14.6% (from ARIMA predictions)
+- Demonstrate interpretable feature weights
+- Show statistical significance in paired t-tests (p < 0.05)
+
+\vspace{3mm}
+
+# Work Plan
+
+## Timeline (10 weeks)
+
+### Weeks 1–2: Foundation (Nov 1–14)
+- Review relevant algorithms from course material (uninformed search, informed search, constraint satisfaction)
+- Set up Python environment (`pandas`, `numpy`, `scikit-learn`, `matplotlib`)
+- Implement synthetic data generation (bootstrap + SMOTE)
+- Train baseline Ridge regression model on augmented dataset
+
+### Weeks 3–4: Algorithm Implementation (Nov 15–28)
+- Implement classical A\* with Manhattan heuristic (baseline)
+- Implement learned heuristic A\* with Ridge-based weights
+- Develop adaptive weighted A\* (W ∈ [1.0, 1.5])
+- Build path sampling framework (Monte Carlo simulation)
+
+### Weeks 5–6: Integration & Testing (Nov 29–Dec 12)
+- Integrate learned model with NYC Vibe Check graph structure
+- Run comparative experiments (baseline vs. learned heuristic)
+- Collect performance metrics (MAE, path length, nodes expanded)
+- Statistical analysis (paired t-tests, confidence intervals)
+
+### Weeks 7–8: Visualization & Analysis (Dec 13–26)
+- Generate route comparison maps (matplotlib + geopandas)
+- Feature importance plots (bar charts, SHAP summary)
+- Stress score prediction scatter plots
+- Ablation study results
+
+### Weeks 9–10: Final Report & Presentation (Dec 27–Jan 9)
+- Draft final report (15–20 pages)
+- Create presentation slides (10–15 minutes)
+- Document code repository (GitHub)
+- Prepare submission materials
+
+## Individual Responsibilities (Solo Project)
+
+**Gil Raitses:**
+
+- Data collection and preprocessing (BigQuery export, feature engineering)
+- Synthetic data generation and validation
+- Model training (Ridge regression, hyperparameter tuning)
+- Algorithm implementation (A\* variants in Python)
+- Experimental evaluation and statistical testing
+- Visualization and documentation
+- Report writing and presentation preparation
+
+**Shared Tasks:** N/A (individual project)
+
+\vspace{3mm}
+
+# Expected Contributions
+
+This project demonstrates how informed search can evolve toward **perceptually grounded reasoning**. Key contributions include:
+
+1. **Applied Framework:** A practical system that makes heuristic logic interpretable by connecting environmental perception to decision-making
+
+2. **Course Integration:** Bridges multiple CIS 667 topics:
+   - **State-space search** (A\*, BFS/DFS comparison)
+   - **Heuristic admissibility** (Manhattan baseline vs. learned heuristic)
+   - **Knowledge representation** (symbolic encoding of visual features)
+   - **CSP integration** (constraint satisfaction for infeasible paths)
+
+3. **Real-World Validation:** Uses actual NYC traffic data, demonstrating practical applicability beyond toy problems
+
+4. **Interpretability:** Learned feature weights reveal which environmental factors most predict stress, supporting explainable AI principles
+
+5. **Extensibility:** Framework can generalize to other urban navigation tasks (emergency response, accessibility routing, delivery optimization)
+
+\vspace{3mm}
+
+# References
+
+::: {#refs}
+:::
+
+

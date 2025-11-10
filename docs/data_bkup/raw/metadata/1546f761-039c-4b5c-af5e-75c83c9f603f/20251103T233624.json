@@ -1,0 +1,22 @@
+{
+  "camera_id": "1546f761-039c-4b5c-af5e-75c83c9f603f",
+  "captured_at": "2025-11-03T23:36:24.061854",
+  "image_url": "https://webcams.nyctmc.org/api/cameras/1546f761-039c-4b5c-af5e-75c83c9f603f/image",
+  "features": {
+    "pedestrian_density": 0.0,
+    "bike_lane_violations": 0.0,
+    "vehicle_volume": 0.0,
+    "obstruction_score": 0.0,
+    "visibility_score": 1.0,
+    "stress_score": null
+  },
+  "metadata": {
+    "name": "Lexington Ave @ 42 St",
+    "latitude": 40.7514494972593,
+    "longitude": -73.976060779701,
+    "area": "Manhattan"
+  },
+  "image_path": "/Users/gilraitses/pax/data/raw/images/1546f761-039c-4b5c-af5e-75c83c9f603f/20251103T233624.jpg",
+  "image_bytes": 26335,
+  "image_remote_uri": null
+}

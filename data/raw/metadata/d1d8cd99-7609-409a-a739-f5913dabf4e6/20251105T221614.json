@@ -1,0 +1,22 @@
+{
+  "camera_id": "d1d8cd99-7609-409a-a739-f5913dabf4e6",
+  "captured_at": "2025-11-05T22:16:14.136504",
+  "image_url": "https://webcams.nyctmc.org/api/cameras/d1d8cd99-7609-409a-a739-f5913dabf4e6/image",
+  "features": {
+    "pedestrian_density": 0.0,
+    "bike_lane_violations": 0.0,
+    "vehicle_volume": 0.0,
+    "obstruction_score": 0.0,
+    "visibility_score": 1.0,
+    "stress_score": null
+  },
+  "metadata": {
+    "name": "Lexington Ave @ 49 St",
+    "latitude": 40.7558782935853,
+    "longitude": -73.972833819289,
+    "area": "Manhattan"
+  },
+  "image_path": null,
+  "image_bytes": null,
+  "image_remote_uri": null
+}

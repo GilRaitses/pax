@@ -304,35 +304,67 @@
         
         <div class="stats-grid">
             <div class="stat-card">
-                <div class="stat-label">Total Images</div>
+                <div class="stat-label">Total Images Collected</div>
                 <div class="stat-value" id="totalImages">0</div>
-                <div class="stat-subtext">Captured frames</div>
+                <div class="stat-subtext" id="totalImagesSubtext">From GCS bucket</div>
             </div>
             
             <div class="stat-card">
-                <div class="stat-label">Active Cameras</div>
-                <div class="stat-value" id="activeCameras">0</div>
-                <div class="stat-subtext">Monitored locations</div>
+                <div class="stat-label">Purple Zone Cameras</div>
+                <div class="stat-value" id="activeCameras">82</div>
+                <div class="stat-subtext">34th-66th St, 3rd-9th/Amsterdam</div>
+            </div>
+            
+            <div class="stat-card">
+                <div class="stat-label">Today's Images</div>
+                <div class="stat-value" id="todayImages">0</div>
+                <div class="stat-subtext" id="todayImagesSubtext">Last 24 hours</div>
             </div>
             
             <div class="stat-card">
                 <div class="stat-label">Latest Capture</div>
                 <div class="stat-value" id="latestCapture" style="font-size: 1.2em;">--</div>
-                <div class="stat-subtext">Last collection time</div>
+                <div class="stat-subtext" id="latestCaptureSubtext">UTC time</div>
+            </div>
+            
+            <div class="stat-card">
+                <div class="stat-label">Collection Period</div>
+                <div class="stat-value" id="collectionDays" style="font-size: 1.5em;">0</div>
+                <div class="stat-subtext" id="collectionPeriod">Days active</div>
             </div>
             
             <div class="stat-card">
                 <div class="stat-label">Collection Rate</div>
-                <div class="stat-value" id="collectionRate">30</div>
-                <div class="stat-subtext">Minutes per cycle</div>
+                <div class="stat-value" id="collectionRate" style="font-size: 1.5em;">48</div>
+                <div class="stat-subtext">Images/camera/day (30 min intervals)</div>
             </div>
         </div>
         
         <div class="storage-info">
-            <strong>Storage:</strong> <span id="storageInfo">Loading...</span>
+            <strong>GCS Bucket:</strong> <span id="bucketInfo">gs://pax-nyc-images/images/</span><br>
+            <strong>Status:</strong> <span id="storageInfo">Loading collection stats...</span><br>
+            <strong>Collection Schedule:</strong> Every 30 minutes (48 images/day per camera)
         </div>
         
-        <h2 class="section-title">Data Collection Status</h2>
+        <h2 class="section-title">Collection Status</h2>
+        
+        <div style="background: white; border-radius: 12px; padding: 25px; margin-bottom: 20px; box-shadow: 0 2px 4px rgba(0,0,0,0.1);">
+            <h3 style="color: #667eea; margin-top: 0; margin-bottom: 15px;">Current Collection</h3>
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 15px;">
+                <div>
+                    <strong>Cameras:</strong> 82 (numbered 1-82)<br>
+                    <strong>Zone:</strong> Purple corridor (34th-66th St)
+                </div>
+                <div>
+                    <strong>Expected:</strong> 3,936 images/day<br>
+                    <strong>Target:</strong> 672 images/camera over 14 days
+                </div>
+                <div>
+                    <strong>Job:</strong> pax-collector-v2<br>
+                    <strong>Scheduler:</strong> Every 30 minutes
+                </div>
+            </div>
+        </div>
         
         <div class="camera-grid" id="cameraGrid">
             <!-- Camera cards will be inserted here -->
@@ -345,59 +377,143 @@
     </div>
     
     <script>
+        // Try multiple paths for stats.json (GitHub Pages compatibility)
+        const STATS_PATHS = [
+            './stats.json',
+            './docs/stats.json',
+            'stats.json',
+            'docs/stats.json'
+        ];
+        
         const API_BASE = window.location.hostname === 'localhost' 
             ? 'http://localhost:8000' 
             : '';
         
         let cameraManifest = [];
+        let statsData = null;
         
         async function loadManifest() {
             try {
-                const response = await fetch(`${API_BASE}/api/manifest`);
-                const manifest = await response.json();
-                cameraManifest = manifest.cameras || [];
+                // Try numbered manifest first
+                let manifestPath = './data/corridor_cameras_numbered.json';
+                let response = await fetch(manifestPath);
                 
-                // Update project info
-                if (manifest.project) {
-                    document.querySelector('.subtitle').textContent = manifest.project.description || 'Traffic Camera Collection Dashboard';
+                if (!response.ok) {
+                    // Fallback to API or cameras.yaml
+                    if (API_BASE) {
+                        response = await fetch(`${API_BASE}/api/manifest`);
+                    } else {
+                        manifestPath = './cameras.yaml';
+                        response = await fetch(manifestPath);
+                    }
+                }
+                
+                if (response.ok) {
+                    const manifest = await response.json();
+                    cameraManifest = manifest.cameras || [];
+                    console.log(`Loaded ${cameraManifest.length} cameras from manifest`);
                 }
             } catch (error) {
-                console.error('Failed to load manifest:', error);
-                showError('Failed to load camera manifest');
+                console.warn('Failed to load manifest:', error);
+                // Continue without manifest
             }
         }
         
         async function fetchStats() {
-            try {
-                const response = await fetch(`${API_BASE}/api/stats`);
-                const stats = await response.json();
-                updateDashboard(stats);
-            } catch (error) {
-                console.error('Failed to fetch stats:', error);
-                showError('Failed to fetch statistics: ' + error.message);
+            // Try API first (local dev)
+            if (API_BASE) {
+                try {
+                    const response = await fetch(`${API_BASE}/api/stats`);
+                    if (response.ok) {
+                        const stats = await response.json();
+                        updateDashboard(stats);
+                        return;
+                    }
+                } catch (error) {
+                    console.log('API not available, trying static stats');
+                }
             }
+            
+            // Try static stats.json files
+            for (const path of STATS_PATHS) {
+                try {
+                    const response = await fetch(path);
+                    if (response.ok) {
+                        const stats = await response.json();
+                        statsData = stats;
+                        updateDashboard(stats);
+                        return;
+                    }
+                } catch (error) {
+                    continue;
+                }
+            }
+            
+            // Fallback: show error
+            console.error('Failed to fetch stats from all sources');
+            showError('Unable to load collection statistics. Stats may be updating...');
+            updateDashboard({
+                totalImages: 0,
+                activeCameras: 82,
+                todayImages: 0,
+                latestCapture: null,
+                cameraCounts: {},
+                storageInfo: 'Stats unavailable',
+                collectionPeriod: { days: 0, start: null, end: null },
+            });
         }
         
         function updateDashboard(stats) {
-            document.getElementById('totalImages').textContent = stats.totalImages.toLocaleString();
-            document.getElementById('activeCameras').textContent = stats.activeCameras;
+            document.getElementById('totalImages').textContent = (stats.totalImages || 0).toLocaleString();
+            document.getElementById('activeCameras').textContent = stats.activeCameras || 82;
+            document.getElementById('todayImages').textContent = (stats.todayImages || 0).toLocaleString();
             
             if (stats.latestCapture) {
                 const captureDate = new Date(stats.latestCapture);
-                document.getElementById('latestCapture').textContent = captureDate.toLocaleTimeString();
+                document.getElementById('latestCapture').textContent = captureDate.toLocaleString();
+                document.getElementById('latestCaptureSubtext').textContent = 
+                    stats.latestCameraName || 'Latest collection';
+            } else {
+                document.getElementById('latestCapture').textContent = '--';
             }
             
-            document.getElementById('storageInfo').textContent = stats.storageInfo;
+            if (stats.collectionPeriod) {
+                document.getElementById('collectionDays').textContent = stats.collectionPeriod.days || 0;
+                if (stats.collectionPeriod.start && stats.collectionPeriod.end) {
+                    document.getElementById('collectionPeriod').textContent = 
+                        `${stats.collectionPeriod.start} to ${stats.collectionPeriod.end}`;
+                }
+            }
             
-            // Update camera grid
+            document.getElementById('storageInfo').textContent = stats.storageInfo || 'Loading...';
+            
+            if (stats.bucket) {
+                document.getElementById('bucketInfo').textContent = `gs://${stats.bucket}/images/`;
+            }
+            
+            // Update camera grid with numbered cameras
             const cameraGrid = document.getElementById('cameraGrid');
             cameraGrid.innerHTML = '';
             
-            cameraManifest.forEach(camera => {
-                const cameraData = stats.cameraCounts[camera.id] || { count: 0, lastCapture: null };
-                const card = createCameraCard(camera, cameraData);
-                cameraGrid.appendChild(card);
-            });
+            if (cameraManifest.length > 0) {
+                // Sort by number
+                const sortedCameras = [...cameraManifest].sort((a, b) => 
+                    (a.number || 999) - (b.number || 999)
+                );
+                
+                sortedCameras.forEach(camera => {
+                    const cameraData = stats.cameraCounts?.[camera.id] || { count: 0, lastCapture: null };
+                    const card = createCameraCard(camera, cameraData);
+                    cameraGrid.appendChild(card);
+                });
+            } else if (stats.cameraCounts) {
+                // Fallback: show cameras from stats
+                Object.entries(stats.cameraCounts).forEach(([cameraId, data]) => {
+                    const camera = { id: cameraId, name: cameraId, number: null };
+                    const card = createCameraCard(camera, data);
+                    cameraGrid.appendChild(card);
+                });
+            }
         }
         
         function createCameraCard(camera, data) {
@@ -408,13 +524,16 @@
                 ? new Date(data.lastCapture).toLocaleString()
                 : 'No captures yet';
             
+            const cameraNumber = camera.number ? `#${camera.number}` : '';
+            const cameraName = camera.name || camera.id;
+            
             card.innerHTML = `
                 <div class="camera-header">
-                    <div class="camera-name">${camera.name}</div>
-                    <div class="camera-badge ${camera.priority}">${camera.priority}</div>
+                    <div class="camera-name">${cameraNumber ? cameraNumber + ': ' : ''}${cameraName}</div>
+                    ${camera.number ? `<div class="camera-badge" style="background: #2ecc71;">#${camera.number}</div>` : ''}
                 </div>
-                <div class="camera-meta">${camera.area}</div>
-                <div class="camera-count">${data.count.toLocaleString()}</div>
+                ${camera.latitude ? `<div class="camera-meta">${camera.latitude.toFixed(4)}, ${camera.longitude.toFixed(4)}</div>` : ''}
+                <div class="camera-count">${(data.count || 0).toLocaleString()}</div>
                 <div class="camera-last-capture">Last: ${lastCapture}</div>
             `;
             

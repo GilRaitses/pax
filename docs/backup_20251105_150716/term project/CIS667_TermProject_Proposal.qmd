@@ -1,0 +1,147 @@
+---
+title: "Energetic Pathfinding and Perceptual Heuristics in Manhattan Navigation"
+subtitle: "CIS 667: Term Project Proposal"
+author:
+  - name: "Gil Raitses"
+    email: "gjraitse@syr.edu"
+    affiliation: "Syracuse University — Data Science / Human-Centered AI"
+date: "2025-11-01"
+format:
+  pdf:
+    pdf-engine: xelatex
+    mainfont: "Avenir"
+    colorlinks: true
+    geometry:
+      - top=1in
+      - bottom=1in
+      - left=1in
+      - right=1in
+    include-in-header:
+      text: |
+        % --- Cinnamoroll palette and typography ---
+        \usepackage{xcolor}
+        \usepackage{sectsty}
+        \usepackage{setspace}
+        \definecolor{cinnasky}{HTML}{A8D8FF}
+        \definecolor{cinnapink}{HTML}{F6C4E8}
+        \definecolor{cinnacream}{HTML}{FFF4E6}
+        \definecolor{cinnalilac}{HTML}{CAB7FF}
+        \definecolor{cinnamint}{HTML}{B8F4E8}
+        \definecolor{cinnablue}{HTML}{4A6FA5}
+        \IfFontExistsTF{Chalkboard SE}{\newfontfamily\headingfont{Chalkboard SE}[Scale=1.08]}{\IfFontExistsTF{Chalkboard}{\newfontfamily\headingfont{Chalkboard}[Scale=1.08]}{\newfontfamily\headingfont{Avenir Black}[Scale=1.04]}}
+        \color{cinnablue}
+        \sectionfont{\headingfont\color{cinnapink}}
+        \subsectionfont{\headingfont\color{cinnalilac}}
+        \subsubsectionfont{\headingfont\color{cinnamint}}
+        \setstretch{1.18}
+    include-after-body:
+      text: |
+        \newpage
+number-sections: false
+bibliography: references.bib
+---
+
+::: {.callout-tip title="Project Snapshot"}
+- **Subject Area:** Perceptually informed heuristic search and reasoning.
+- **Focus:** Manhattan navigation shaped by energetic and sensory contexts.
+- **Outcome:** Comparative evaluation of classical and perception-aware A* agents with visual analytics and documented methodology.
+:::
+
+# Introduction
+
+## Subject Area
+This project advances the study of heuristic search and knowledge-based reasoning within Artificial Intelligence. By integrating perception-driven features into a symbolic search routine, the work aligns with topics in CIS 667 covering PEAS models, informed search, and constraint reasoning.
+
+## Problem Focus
+Classical pathfinding optimizes for geometric distance or travel time, assuming a frictionless world. Dense urban corridors such as the stretch between Grand Central Station and Carnegie Hall exhibit sensory complexity—crowding, visual noise, and erratic flows—that impose energetic costs on real walkers. The project addresses how an intelligent agent can internalize those perceptual cues while searching, redefining cost beyond distance.
+
+# Aim
+
+::: {.callout-note title="Aim"}
+Design, implement, and evaluate a Manhattan navigation agent whose heuristic adapts energetic path costs using features extracted from NYC traffic-camera footage.
+:::
+
+# Objectives
+
+1. Model a grid of intersections spanning the Grand Central–Carnegie Hall corridor, encoding legal movements and accessibility constraints.
+2. Build a symbolic knowledge base from annotated traffic-camera captures, translating detections (pedestrians, bikes, congestion, obstructions) into environmental predicates.
+3. Learn a perceptual cost weighting that modulates A* heuristic values using the knowledge base.
+4. Implement baseline A* search with Manhattan-distance heuristic and compare against the perceptual variant on path efficiency, realism, and interpretability.
+5. Produce visualization layers that show how sensory context alters route selection and cumulative energetic cost.
+6. Discuss implications for embodied AI and human-centered navigation design.
+
+# Project Type and Rationale
+
+The proposal constitutes an **applied project**. Course concepts on informed search and constraint satisfaction are deployed on a realistic Manhattan navigation problem, linking abstract reasoning models to the sensory variability observed in city movement. By folding perception into the cost function, the work highlights how AI systems approach embodied decision-making [@russell2022].
+
+# Dataset Alignment
+
+The project leverages NYC Department of Transportation traffic-camera feeds [@nycdot2024]. A curated subset of intersections along Madison, Park, and 5th Avenue has been exported as time-indexed image sequences (see `term project/bigquery_data/`). Each sequence is processed with a lightweight detection model to derive frame-level metadata:
+
+| Feature Channel | Description | Usage in Heuristic |
+|-----------------|-------------|--------------------|
+| `ped_density`   | Count of pedestrian detections per frame | Raises energetic cost proportional to crowding |
+| `veh_flow`      | Vehicles per frame normalized by lane count | Flags vehicular interference for crosswalk timing |
+| `bike_incident` | Binary indicator if a bicycle enters crosswalk envelope | Penalizes sudden lateral motion risk |
+| `obstruction`   | Bounding boxes overlapping sidewalk polygons | Marks blocked nodes for constraint pruning |
+
+The metadata will be serialized into a knowledge base of symbolic facts, ensuring the concise guide’s requirements map directly to data actually collected. Data quality checks (missing frames, detector confidence) will run before weights are learned.
+
+# Methodology Overview
+
+The agent follows the **PEAS** framework:
+
+- **Performance:** Minimize cumulative energetic cost while preserving admissibility of the search heuristic.
+- **Environment:** Manhattan grid with time-varying sensory states derived from traffic-camera imagery.
+- **Actuators:** Move north, south, east, west across intersections; wait actions when signals or obstacles require pausing.
+- **Sensors:** Vision-driven features (`ped_density`, `veh_flow`, `bike_incident`, `obstruction`) fused with static map data.
+
+Constraint satisfaction logic filters infeasible actions (e.g., closed crossings, construction). The perceptual heuristic extends classical A* by incorporating a weighted sum of sensory costs alongside Manhattan distance, drawing on ideas from embodied navigation and structured prediction [@bengio2016; @litwinkumar2021].
+
+# Work Plan
+
+## Timeline
+
+| Weeks | Milestone |
+|-------|-----------|
+| 1–2 | Refresh uninformed/informed search theory and survey perception-aware pathfinding literature [@thrun2005]. |
+| 3 | Preprocess camera sequences; extract and validate feature channels. |
+| 4–5 | Populate knowledge base and calibrate energetic weights against sample routes. |
+| 6 | Implement baseline A* with Manhattan heuristic for benchmarking. |
+| 7–8 | Integrate perceptual heuristic, tune admissibility, and run comparative experiments. |
+| 9 | Generate analytical visualizations (heatmaps, route overlays, cost breakdowns). |
+| 10 | Compile final report, poster, and demo assets. |
+
+## Individual Responsibilities
+
+**Gil Raitses** (solo project):
+
+- Collect and preprocess NYC traffic-camera data.
+- Translate detections into the symbolic knowledge base.
+- Engineer heuristic weighting and implement A* variants in Python.
+- Run evaluations, interpret findings, and document results.
+- Prepare final submission materials and presentation.
+
+# Communication and Logistics
+
+- **Email:** gjraitse@syr.edu
+- **Phone:** _Optional — add if required by submission guidelines._
+- **Documentation:** Version-controlled Quarto project in `term project/`; data ingest notebooks stored under `bigquery_data/` for reproducibility.
+
+# Risk Mitigation
+
+- **Data Variability:** Maintain fallback to publicly archived frames when live feeds drop; perform interpolation for missing intervals.
+- **Heuristic Admissibility:** Bound perceptual weights using validation routes to preserve optimality guarantees.
+- **Compute Constraints:** Use batch preprocessing with OpenCV/PyTorch on Syracuse iSchool GPU nodes; cache feature maps to avoid repeated inference.
+
+# Expected Contributions
+
+- Demonstrate how sensory information can be fused into heuristic evaluation, yielding routes that feel more human-aligned.
+- Provide a reusable pipeline for converting camera streams into symbolic predicates for search.
+- Deliver visual analytics that clarify when perception-aware heuristics diverge from classical distance-only reasoning.
+
+# References
+
+::: {#refs}
+:::
+

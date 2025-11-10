@@ -1,0 +1,22 @@
+{
+  "camera_id": "1927b469-e2dc-4943-a70c-e6e52fd4c48c",
+  "captured_at": "2025-11-05T22:16:14.136101",
+  "image_url": "https://webcams.nyctmc.org/api/cameras/1927b469-e2dc-4943-a70c-e6e52fd4c48c/image",
+  "features": {
+    "pedestrian_density": 0.0,
+    "bike_lane_violations": 0.0,
+    "vehicle_volume": 0.0,
+    "obstruction_score": 0.0,
+    "visibility_score": 1.0,
+    "stress_score": null
+  },
+  "metadata": {
+    "name": "Broadway @ 46 St- Quad South",
+    "latitude": 40.758692,
+    "longitude": -73.985371,
+    "area": "Manhattan"
+  },
+  "image_path": null,
+  "image_bytes": null,
+  "image_remote_uri": null
+}

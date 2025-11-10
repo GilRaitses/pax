@@ -1,0 +1,22 @@
+{
+  "camera_id": "f2964d50-042c-4021-8b52-992c08c6ff6f",
+  "captured_at": "2025-11-05T22:16:14.136650",
+  "image_url": "https://webcams.nyctmc.org/api/cameras/f2964d50-042c-4021-8b52-992c08c6ff6f/image",
+  "features": {
+    "pedestrian_density": 0.0,
+    "bike_lane_violations": 0.0,
+    "vehicle_volume": 0.0,
+    "obstruction_score": 0.0,
+    "visibility_score": 1.0,
+    "stress_score": null
+  },
+  "metadata": {
+    "name": "8 Ave @ 34 St",
+    "latitude": 40.7521973661027,
+    "longitude": -73.9934562042021,
+    "area": "Manhattan"
+  },
+  "image_path": null,
+  "image_bytes": null,
+  "image_remote_uri": null
+}

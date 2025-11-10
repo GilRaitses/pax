@@ -1,0 +1,644 @@
+{
+  "started_at": "2025-11-05T22:16:19.593703",
+  "completed_at": "2025-11-05T22:16:24.147299",
+  "count": 91,
+  "storage_records": [
+    {
+      "camera_id": "332f161d-47cb-4c8a-b6b6-5ad48a55c978",
+      "captured_at": "2025-11-05T22:16:19.935130",
+      "image_path": "raw/images/332f161d-47cb-4c8a-b6b6-5ad48a55c978/20251105T221619.jpg",
+      "image_remote_uri": null,
+      "metadata_path": "raw/metadata/332f161d-47cb-4c8a-b6b6-5ad48a55c978/20251105T221619.json"
+    },
+    {
+      "camera_id": "cd949f21-54b2-4d11-8aae-4ffba8654271",
+      "captured_at": "2025-11-05T22:16:19.935167",
+      "image_path": "raw/images/cd949f21-54b2-4d11-8aae-4ffba8654271/20251105T221619.jpg",
+      "image_remote_uri": null,
+      "metadata_path": "raw/metadata/cd949f21-54b2-4d11-8aae-4ffba8654271/20251105T221619.json"
+    },
+    {
+      "camera_id": "9c4c2657-6796-4953-bbe6-c50f24bb5820",
+      "captured_at": "2025-11-05T22:16:19.935175",
+      "image_path": "raw/images/9c4c2657-6796-4953-bbe6-c50f24bb5820/20251105T221619.jpg",
+      "image_remote_uri": null,
+      "metadata_path": "raw/metadata/9c4c2657-6796-4953-bbe6-c50f24bb5820/20251105T221619.json"
+    },
+    {
+      "camera_id": "053e8995-f8cb-4d02-a659-70ac7c7da5db",
+      "captured_at": "2025-11-05T22:16:19.935180",
+      "image_path": "raw/images/053e8995-f8cb-4d02-a659-70ac7c7da5db/20251105T221619.jpg",
+      "image_remote_uri": null,
+      "metadata_path": "raw/metadata/053e8995-f8cb-4d02-a659-70ac7c7da5db/20251105T221619.json"
+    },
+    {
+      "camera_id": "34674be5-4791-47f1-b0b2-2db0ff619732",
+      "captured_at": "2025-11-05T22:16:19.935215",
+      "image_path": "raw/images/34674be5-4791-47f1-b0b2-2db0ff619732/20251105T221619.jpg",
+      "image_remote_uri": null,
+      "metadata_path": "raw/metadata/34674be5-4791-47f1-b0b2-2db0ff619732/20251105T221619.json"
+    },
+    {
+      "camera_id": "b0cbb042-de0a-449f-b5d1-49f68a9bf2ae",
+      "captured_at": "2025-11-05T22:16:19.935222",
+      "image_path": "raw/images/b0cbb042-de0a-449f-b5d1-49f68a9bf2ae/20251105T221619.jpg",
+      "image_remote_uri": null,
+      "metadata_path": "raw/metadata/b0cbb042-de0a-449f-b5d1-49f68a9bf2ae/20251105T221619.json"
+    },
+    {
+      "camera_id": "aacb43bf-ed37-44c6-a2fe-8449a7851306",
+      "captured_at": "2025-11-05T22:16:19.935233",
+      "image_path": "raw/images/aacb43bf-ed37-44c6-a2fe-8449a7851306/20251105T221619.jpg",
+      "image_remote_uri": null,
+      "metadata_path": "raw/metadata/aacb43bf-ed37-44c6-a2fe-8449a7851306/20251105T221619.json"
+    },
+    {
+      "camera_id": "421960d6-54a8-4f12-a5ee-7a07390def4c",
+      "captured_at": "2025-11-05T22:16:19.935238",
+      "image_path": "raw/images/421960d6-54a8-4f12-a5ee-7a07390def4c/20251105T221619.jpg",
+      "image_remote_uri": null,
+      "metadata_path": "raw/metadata/421960d6-54a8-4f12-a5ee-7a07390def4c/20251105T221619.json"
+    },
+    {
+      "camera_id": "5d055599-875a-4010-991f-e7e454889052",
+      "captured_at": "2025-11-05T22:16:19.935244",
+      "image_path": "raw/images/5d055599-875a-4010-991f-e7e454889052/20251105T221619.jpg",
+      "image_remote_uri": null,
+      "metadata_path": "raw/metadata/5d055599-875a-4010-991f-e7e454889052/20251105T221619.json"
+    },
+    {
+      "camera_id": "20b2298a-90cf-463f-b172-0b398a34f061",
+      "captured_at": "2025-11-05T22:16:19.935249",
+      "image_path": "raw/images/20b2298a-90cf-463f-b172-0b398a34f061/20251105T221619.jpg",
+      "image_remote_uri": null,
+      "metadata_path": "raw/metadata/20b2298a-90cf-463f-b172-0b398a34f061/20251105T221619.json"
+    },
+    {
+      "camera_id": "ccd1abb9-0683-4d93-a62f-b2b121612d28",
+      "captured_at": "2025-11-05T22:16:19.935253",
+      "image_path": "raw/images/ccd1abb9-0683-4d93-a62f-b2b121612d28/20251105T221619.jpg",
+      "image_remote_uri": null,
+      "metadata_path": "raw/metadata/ccd1abb9-0683-4d93-a62f-b2b121612d28/20251105T221619.json"
+    },
+    {
+      "camera_id": "83655dbc-7902-4fdb-926c-15fee4396b83",
+      "captured_at": "2025-11-05T22:16:19.935258",
+      "image_path": "raw/images/83655dbc-7902-4fdb-926c-15fee4396b83/20251105T221619.jpg",
+      "image_remote_uri": null,
+      "metadata_path": "raw/metadata/83655dbc-7902-4fdb-926c-15fee4396b83/20251105T221619.json"
+    },
+    {
+      "camera_id": "1e60ade7-c760-48cf-acd9-d9d6cbfa9420",
+      "captured_at": "2025-11-05T22:16:19.935263",
+      "image_path": "raw/images/1e60ade7-c760-48cf-acd9-d9d6cbfa9420/20251105T221619.jpg",
+      "image_remote_uri": null,
+      "metadata_path": "raw/metadata/1e60ade7-c760-48cf-acd9-d9d6cbfa9420/20251105T221619.json"
+    },
+    {
+      "camera_id": "0dc7c2b4-614d-46a3-9610-3ba09f3f1284",
+      "captured_at": "2025-11-05T22:16:19.935319",
+      "image_path": "raw/images/0dc7c2b4-614d-46a3-9610-3ba09f3f1284/20251105T221619.jpg",
+      "image_remote_uri": null,
+      "metadata_path": "raw/metadata/0dc7c2b4-614d-46a3-9610-3ba09f3f1284/20251105T221619.json"
+    },
+    {
+      "camera_id": "5caa3ace-277b-42db-97bd-585f29b0d49f",
+      "captured_at": "2025-11-05T22:16:19.935332",
+      "image_path": "raw/images/5caa3ace-277b-42db-97bd-585f29b0d49f/20251105T221619.jpg",
+      "image_remote_uri": null,
+      "metadata_path": "raw/metadata/5caa3ace-277b-42db-97bd-585f29b0d49f/20251105T221619.json"
+    },
+    {
+      "camera_id": "17b6c7dd-2aa7-442a-8832-d39051a47d1b",
+      "captured_at": "2025-11-05T22:16:19.935339",
+      "image_path": "raw/images/17b6c7dd-2aa7-442a-8832-d39051a47d1b/20251105T221619.jpg",
+      "image_remote_uri": null,
+      "metadata_path": "raw/metadata/17b6c7dd-2aa7-442a-8832-d39051a47d1b/20251105T221619.json"
+    },
+    {
+      "camera_id": "d1363c77-e061-4414-be82-e6d749254859",
+      "captured_at": "2025-11-05T22:16:19.935345",
+      "image_path": "raw/images/d1363c77-e061-4414-be82-e6d749254859/20251105T221619.jpg",
+      "image_remote_uri": null,
+      "metadata_path": "raw/metadata/d1363c77-e061-4414-be82-e6d749254859/20251105T221619.json"
+    },
+    {
+      "camera_id": "9565e94d-66f2-4965-9c13-82d5500d6cfd",
+      "captured_at": "2025-11-05T22:16:19.935351",
+      "image_path": "raw/images/9565e94d-66f2-4965-9c13-82d5500d6cfd/20251105T221619.jpg",
+      "image_remote_uri": null,
+      "metadata_path": "raw/metadata/9565e94d-66f2-4965-9c13-82d5500d6cfd/20251105T221619.json"
+    },
+    {
+      "camera_id": "c0f05969-abc6-4fa6-b317-3e6ba03e989a",
+      "captured_at": "2025-11-05T22:16:19.935357",
+      "image_path": "raw/images/c0f05969-abc6-4fa6-b317-3e6ba03e989a/20251105T221619.jpg",
+      "image_remote_uri": null,
+      "metadata_path": "raw/metadata/c0f05969-abc6-4fa6-b317-3e6ba03e989a/20251105T221619.json"
+    },
+    {
+      "camera_id": "5c505897-b475-4359-897d-b064bdb9feef",
+      "captured_at": "2025-11-05T22:16:19.935363",
+      "image_path": "raw/images/5c505897-b475-4359-897d-b064bdb9feef/20251105T221619.jpg",
+      "image_remote_uri": null,
+      "metadata_path": "raw/metadata/5c505897-b475-4359-897d-b064bdb9feef/20251105T221619.json"
+    },
+    {
+      "camera_id": "c880d0c4-db84-44c2-9f00-62f21a83b5d0",
+      "captured_at": "2025-11-05T22:16:19.935368",
+      "image_path": "raw/images/c880d0c4-db84-44c2-9f00-62f21a83b5d0/20251105T221619.jpg",
+      "image_remote_uri": null,
+      "metadata_path": "raw/metadata/c880d0c4-db84-44c2-9f00-62f21a83b5d0/20251105T221619.json"
+    },
+    {
+      "camera_id": "0a49d947-2a5b-498d-a386-2cef5ce883fa",
+      "captured_at": "2025-11-05T22:16:19.935374",
+      "image_path": "raw/images/0a49d947-2a5b-498d-a386-2cef5ce883fa/20251105T221619.jpg",
+      "image_remote_uri": null,
+      "metadata_path": "raw/metadata/0a49d947-2a5b-498d-a386-2cef5ce883fa/20251105T221619.json"
+    },
+    {
+      "camera_id": "1dddf912-4718-4b2a-94dd-1f793a9ed22c",
+      "captured_at": "2025-11-05T22:16:19.935379",
+      "image_path": "raw/images/1dddf912-4718-4b2a-94dd-1f793a9ed22c/20251105T221619.jpg",
+      "image_remote_uri": null,
+      "metadata_path": "raw/metadata/1dddf912-4718-4b2a-94dd-1f793a9ed22c/20251105T221619.json"
+    },
+    {
+      "camera_id": "1927b469-e2dc-4943-a70c-e6e52fd4c48c",
+      "captured_at": "2025-11-05T22:16:19.935384",
+      "image_path": "raw/images/1927b469-e2dc-4943-a70c-e6e52fd4c48c/20251105T221619.jpg",
+      "image_remote_uri": null,
+      "metadata_path": "raw/metadata/1927b469-e2dc-4943-a70c-e6e52fd4c48c/20251105T221619.json"
+    },
+    {
+      "camera_id": "e777e4b4-25cb-4c39-98fc-8d6b25cf7de7",
+      "captured_at": "2025-11-05T22:16:19.935390",
+      "image_path": "raw/images/e777e4b4-25cb-4c39-98fc-8d6b25cf7de7/20251105T221619.jpg",
+      "image_remote_uri": null,
+      "metadata_path": "raw/metadata/e777e4b4-25cb-4c39-98fc-8d6b25cf7de7/20251105T221619.json"
+    },
+    {
+      "camera_id": "482e6d35-2a67-4bbf-b36f-fdf7e031d607",
+      "captured_at": "2025-11-05T22:16:19.935396",
+      "image_path": "raw/images/482e6d35-2a67-4bbf-b36f-fdf7e031d607/20251105T221619.jpg",
+      "image_remote_uri": null,
+      "metadata_path": "raw/metadata/482e6d35-2a67-4bbf-b36f-fdf7e031d607/20251105T221619.json"
+    },
+    {
+      "camera_id": "879ab924-18ac-4779-a681-395d73a0f0cc",
+      "captured_at": "2025-11-05T22:16:19.935402",
+      "image_path": "raw/images/879ab924-18ac-4779-a681-395d73a0f0cc/20251105T221619.jpg",
+      "image_remote_uri": null,
+      "metadata_path": "raw/metadata/879ab924-18ac-4779-a681-395d73a0f0cc/20251105T221619.json"
+    },
+    {
+      "camera_id": "37e2a4b6-2fbd-42f5-9d2d-130b664783f2",
+      "captured_at": "2025-11-05T22:16:19.935409",
+      "image_path": "raw/images/37e2a4b6-2fbd-42f5-9d2d-130b664783f2/20251105T221619.jpg",
+      "image_remote_uri": null,
+      "metadata_path": "raw/metadata/37e2a4b6-2fbd-42f5-9d2d-130b664783f2/20251105T221619.json"
+    },
+    {
+      "camera_id": "bca4a4b0-d73f-4937-9301-85ff8293bd94",
+      "captured_at": "2025-11-05T22:16:19.935414",
+      "image_path": "raw/images/bca4a4b0-d73f-4937-9301-85ff8293bd94/20251105T221619.jpg",
+      "image_remote_uri": null,
+      "metadata_path": "raw/metadata/bca4a4b0-d73f-4937-9301-85ff8293bd94/20251105T221619.json"
+    },
+    {
+      "camera_id": "4f3f56e3-f68e-4b60-a4ba-153ecb9094f7",
+      "captured_at": "2025-11-05T22:16:19.935420",
+      "image_path": "raw/images/4f3f56e3-f68e-4b60-a4ba-153ecb9094f7/20251105T221619.jpg",
+      "image_remote_uri": null,
+      "metadata_path": "raw/metadata/4f3f56e3-f68e-4b60-a4ba-153ecb9094f7/20251105T221619.json"
+    },
+    {
+      "camera_id": "4f8c2e84-c15a-4474-91fb-7e14554d4c4e",
+      "captured_at": "2025-11-05T22:16:19.935425",
+      "image_path": "raw/images/4f8c2e84-c15a-4474-91fb-7e14554d4c4e/20251105T221619.jpg",
+      "image_remote_uri": null,
+      "metadata_path": "raw/metadata/4f8c2e84-c15a-4474-91fb-7e14554d4c4e/20251105T221619.json"
+    },
+    {
+      "camera_id": "d1c219c0-afdd-4fa4-a72c-cc1b1318b99d",
+      "captured_at": "2025-11-05T22:16:19.935429",
+      "image_path": "raw/images/d1c219c0-afdd-4fa4-a72c-cc1b1318b99d/20251105T221619.jpg",
+      "image_remote_uri": null,
+      "metadata_path": "raw/metadata/d1c219c0-afdd-4fa4-a72c-cc1b1318b99d/20251105T221619.json"
+    },
+    {
+      "camera_id": "0b4bd3d3-1741-49b3-87cc-d0960fa5f424",
+      "captured_at": "2025-11-05T22:16:19.935435",
+      "image_path": "raw/images/0b4bd3d3-1741-49b3-87cc-d0960fa5f424/20251105T221619.jpg",
+      "image_remote_uri": null,
+      "metadata_path": "raw/metadata/0b4bd3d3-1741-49b3-87cc-d0960fa5f424/20251105T221619.json"
+    },
+    {
+      "camera_id": "180dcc87-d861-43e3-8898-9ad5ee1a26a9",
+      "captured_at": "2025-11-05T22:16:19.935440",
+      "image_path": "raw/images/180dcc87-d861-43e3-8898-9ad5ee1a26a9/20251105T221619.jpg",
+      "image_remote_uri": null,
+      "metadata_path": "raw/metadata/180dcc87-d861-43e3-8898-9ad5ee1a26a9/20251105T221619.json"
+    },
+    {
+      "camera_id": "81db80c2-13fe-4ae7-8b47-c08aa42d512f",
+      "captured_at": "2025-11-05T22:16:19.935445",
+      "image_path": "raw/images/81db80c2-13fe-4ae7-8b47-c08aa42d512f/20251105T221619.jpg",
+      "image_remote_uri": null,
+      "metadata_path": "raw/metadata/81db80c2-13fe-4ae7-8b47-c08aa42d512f/20251105T221619.json"
+    },
+    {
+      "camera_id": "3a3d7bc0-7f35-46ba-9cca-75fe83aac34d",
+      "captured_at": "2025-11-05T22:16:19.935450",
+      "image_path": "raw/images/3a3d7bc0-7f35-46ba-9cca-75fe83aac34d/20251105T221619.jpg",
+      "image_remote_uri": null,
+      "metadata_path": "raw/metadata/3a3d7bc0-7f35-46ba-9cca-75fe83aac34d/20251105T221619.json"
+    },
+    {
+      "camera_id": "8cd15417-5b79-4065-9165-4b6ff0ff3f53",
+      "captured_at": "2025-11-05T22:16:19.935455",
+      "image_path": "raw/images/8cd15417-5b79-4065-9165-4b6ff0ff3f53/20251105T221619.jpg",
+      "image_remote_uri": null,
+      "metadata_path": "raw/metadata/8cd15417-5b79-4065-9165-4b6ff0ff3f53/20251105T221619.json"
+    },
+    {
+      "camera_id": "0c9a2836-c408-48d3-85c7-1977c33d9133",
+      "captured_at": "2025-11-05T22:16:19.935460",
+      "image_path": "raw/images/0c9a2836-c408-48d3-85c7-1977c33d9133/20251105T221619.jpg",
+      "image_remote_uri": null,
+      "metadata_path": "raw/metadata/0c9a2836-c408-48d3-85c7-1977c33d9133/20251105T221619.json"
+    },
+    {
+      "camera_id": "404fac12-9b5c-430b-a01b-12b50d39521c",
+      "captured_at": "2025-11-05T22:16:19.935466",
+      "image_path": "raw/images/404fac12-9b5c-430b-a01b-12b50d39521c/20251105T221619.jpg",
+      "image_remote_uri": null,
+      "metadata_path": "raw/metadata/404fac12-9b5c-430b-a01b-12b50d39521c/20251105T221619.json"
+    },
+    {
+      "camera_id": "434094f8-1be4-4c19-8067-1e11049e46b4",
+      "captured_at": "2025-11-05T22:16:19.935470",
+      "image_path": "raw/images/434094f8-1be4-4c19-8067-1e11049e46b4/20251105T221619.jpg",
+      "image_remote_uri": null,
+      "metadata_path": "raw/metadata/434094f8-1be4-4c19-8067-1e11049e46b4/20251105T221619.json"
+    },
+    {
+      "camera_id": "45cb119b-0e4a-442e-9410-b810ab8c255d",
+      "captured_at": "2025-11-05T22:16:19.935475",
+      "image_path": "raw/images/45cb119b-0e4a-442e-9410-b810ab8c255d/20251105T221619.jpg",
+      "image_remote_uri": null,
+      "metadata_path": "raw/metadata/45cb119b-0e4a-442e-9410-b810ab8c255d/20251105T221619.json"
+    },
+    {
+      "camera_id": "2191c11c-1757-4938-a608-a2c6ae0e6486",
+      "captured_at": "2025-11-05T22:16:19.935481",
+      "image_path": "raw/images/2191c11c-1757-4938-a608-a2c6ae0e6486/20251105T221619.jpg",
+      "image_remote_uri": null,
+      "metadata_path": "raw/metadata/2191c11c-1757-4938-a608-a2c6ae0e6486/20251105T221619.json"
+    },
+    {
+      "camera_id": "19789499-03ac-45de-9401-a7a71ea60d1e",
+      "captured_at": "2025-11-05T22:16:19.935534",
+      "image_path": "raw/images/19789499-03ac-45de-9401-a7a71ea60d1e/20251105T221619.jpg",
+      "image_remote_uri": null,
+      "metadata_path": "raw/metadata/19789499-03ac-45de-9401-a7a71ea60d1e/20251105T221619.json"
+    },
+    {
+      "camera_id": "4ebe49c8-3e68-43f7-b415-da3db9f72693",
+      "captured_at": "2025-11-05T22:16:19.935546",
+      "image_path": "raw/images/4ebe49c8-3e68-43f7-b415-da3db9f72693/20251105T221619.jpg",
+      "image_remote_uri": null,
+      "metadata_path": "raw/metadata/4ebe49c8-3e68-43f7-b415-da3db9f72693/20251105T221619.json"
+    },
+    {
+      "camera_id": "4850e464-1111-4b5d-a72d-f54a0e12a789",
+      "captured_at": "2025-11-05T22:16:19.935552",
+      "image_path": "raw/images/4850e464-1111-4b5d-a72d-f54a0e12a789/20251105T221619.jpg",
+      "image_remote_uri": null,
+      "metadata_path": "raw/metadata/4850e464-1111-4b5d-a72d-f54a0e12a789/20251105T221619.json"
+    },
+    {
+      "camera_id": "c6d013c9-e69b-4824-8dad-b6580491d916",
+      "captured_at": "2025-11-05T22:16:19.935558",
+      "image_path": "raw/images/c6d013c9-e69b-4824-8dad-b6580491d916/20251105T221619.jpg",
+      "image_remote_uri": null,
+      "metadata_path": "raw/metadata/c6d013c9-e69b-4824-8dad-b6580491d916/20251105T221619.json"
+    },
+    {
+      "camera_id": "bb362cd8-057b-4538-bdee-cf846a725ea0",
+      "captured_at": "2025-11-05T22:16:19.935566",
+      "image_path": "raw/images/bb362cd8-057b-4538-bdee-cf846a725ea0/20251105T221619.jpg",
+      "image_remote_uri": null,
+      "metadata_path": "raw/metadata/bb362cd8-057b-4538-bdee-cf846a725ea0/20251105T221619.json"
+    },
+    {
+      "camera_id": "3d8e276f-b179-414d-a506-679d5e559d3e",
+      "captured_at": "2025-11-05T22:16:19.935572",
+      "image_path": "raw/images/3d8e276f-b179-414d-a506-679d5e559d3e/20251105T221619.jpg",
+      "image_remote_uri": null,
+      "metadata_path": "raw/metadata/3d8e276f-b179-414d-a506-679d5e559d3e/20251105T221619.json"
+    },
+    {
+      "camera_id": "b5a78bda-3ca9-4ad4-bd03-4cee70baba2d",
+      "captured_at": "2025-11-05T22:16:19.935578",
+      "image_path": "raw/images/b5a78bda-3ca9-4ad4-bd03-4cee70baba2d/20251105T221619.jpg",
+      "image_remote_uri": null,
+      "metadata_path": "raw/metadata/b5a78bda-3ca9-4ad4-bd03-4cee70baba2d/20251105T221619.json"
+    },
+    {
+      "camera_id": "1eb66413-6761-4eb0-bc04-e2533bb74b42",
+      "captured_at": "2025-11-05T22:16:19.935582",
+      "image_path": "raw/images/1eb66413-6761-4eb0-bc04-e2533bb74b42/20251105T221619.jpg",
+      "image_remote_uri": null,
+      "metadata_path": "raw/metadata/1eb66413-6761-4eb0-bc04-e2533bb74b42/20251105T221619.json"
+    },
+    {
+      "camera_id": "9eca011a-81b1-4e4a-b44a-4ee2bc8affff",
+      "captured_at": "2025-11-05T22:16:19.935587",
+      "image_path": "raw/images/9eca011a-81b1-4e4a-b44a-4ee2bc8affff/20251105T221619.jpg",
+      "image_remote_uri": null,
+      "metadata_path": "raw/metadata/9eca011a-81b1-4e4a-b44a-4ee2bc8affff/20251105T221619.json"
+    },
+    {
+      "camera_id": "15f7a00b-5afb-4193-a5e4-dfe7710a5dfe",
+      "captured_at": "2025-11-05T22:16:19.935592",
+      "image_path": "raw/images/15f7a00b-5afb-4193-a5e4-dfe7710a5dfe/20251105T221619.jpg",
+      "image_remote_uri": null,
+      "metadata_path": "raw/metadata/15f7a00b-5afb-4193-a5e4-dfe7710a5dfe/20251105T221619.json"
+    },
+    {
+      "camera_id": "f06979b2-3497-4330-9882-a06c8a442b7c",
+      "captured_at": "2025-11-05T22:16:19.935597",
+      "image_path": "raw/images/f06979b2-3497-4330-9882-a06c8a442b7c/20251105T221619.jpg",
+      "image_remote_uri": null,
+      "metadata_path": "raw/metadata/f06979b2-3497-4330-9882-a06c8a442b7c/20251105T221619.json"
+    },
+    {
+      "camera_id": "c34ca47e-e375-4b9f-a8d7-f9737566b783",
+      "captured_at": "2025-11-05T22:16:19.935603",
+      "image_path": "raw/images/c34ca47e-e375-4b9f-a8d7-f9737566b783/20251105T221619.jpg",
+      "image_remote_uri": null,
+      "metadata_path": "raw/metadata/c34ca47e-e375-4b9f-a8d7-f9737566b783/20251105T221619.json"
+    },
+    {
+      "camera_id": "a356e2c6-7d95-4d93-85c1-da3d05485d8c",
+      "captured_at": "2025-11-05T22:16:19.935608",
+      "image_path": "raw/images/a356e2c6-7d95-4d93-85c1-da3d05485d8c/20251105T221619.jpg",
+      "image_remote_uri": null,
+      "metadata_path": "raw/metadata/a356e2c6-7d95-4d93-85c1-da3d05485d8c/20251105T221619.json"
+    },
+    {
+      "camera_id": "3f04a686-f97c-4187-8968-cb09265e08ff",
+      "captured_at": "2025-11-05T22:16:19.935613",
+      "image_path": "raw/images/3f04a686-f97c-4187-8968-cb09265e08ff/20251105T221619.jpg",
+      "image_remote_uri": null,
+      "metadata_path": "raw/metadata/3f04a686-f97c-4187-8968-cb09265e08ff/20251105T221619.json"
+    },
+    {
+      "camera_id": "2589c0d6-c389-4861-b812-4ae68f560eba",
+      "captured_at": "2025-11-05T22:16:19.935618",
+      "image_path": "raw/images/2589c0d6-c389-4861-b812-4ae68f560eba/20251105T221619.jpg",
+      "image_remote_uri": null,
+      "metadata_path": "raw/metadata/2589c0d6-c389-4861-b812-4ae68f560eba/20251105T221619.json"
+    },
+    {
+      "camera_id": "8933100a-8229-42fe-b4b2-265db410d7ae",
+      "captured_at": "2025-11-05T22:16:19.935623",
+      "image_path": "raw/images/8933100a-8229-42fe-b4b2-265db410d7ae/20251105T221619.jpg",
+      "image_remote_uri": null,
+      "metadata_path": "raw/metadata/8933100a-8229-42fe-b4b2-265db410d7ae/20251105T221619.json"
+    },
+    {
+      "camera_id": "03a8a2da-3ac2-45aa-a5ba-4ff7d1ecbd22",
+      "captured_at": "2025-11-05T22:16:19.935628",
+      "image_path": "raw/images/03a8a2da-3ac2-45aa-a5ba-4ff7d1ecbd22/20251105T221619.jpg",
+      "image_remote_uri": null,
+      "metadata_path": "raw/metadata/03a8a2da-3ac2-45aa-a5ba-4ff7d1ecbd22/20251105T221619.json"
+    },
+    {
+      "camera_id": "326b2bab-d277-4c5a-9778-a7af791ad151",
+      "captured_at": "2025-11-05T22:16:19.935632",
+      "image_path": "raw/images/326b2bab-d277-4c5a-9778-a7af791ad151/20251105T221619.jpg",
+      "image_remote_uri": null,
+      "metadata_path": "raw/metadata/326b2bab-d277-4c5a-9778-a7af791ad151/20251105T221619.json"
+    },
+    {
+      "camera_id": "9e694610-60f1-4939-a1f9-1679e6408f27",
+      "captured_at": "2025-11-05T22:16:19.935637",
+      "image_path": "raw/images/9e694610-60f1-4939-a1f9-1679e6408f27/20251105T221619.jpg",
+      "image_remote_uri": null,
+      "metadata_path": "raw/metadata/9e694610-60f1-4939-a1f9-1679e6408f27/20251105T221619.json"
+    },
+    {
+      "camera_id": "9e3e26ae-d49f-4f64-ba99-113b779c25a2",
+      "captured_at": "2025-11-05T22:16:19.935643",
+      "image_path": "raw/images/9e3e26ae-d49f-4f64-ba99-113b779c25a2/20251105T221619.jpg",
+      "image_remote_uri": null,
+      "metadata_path": "raw/metadata/9e3e26ae-d49f-4f64-ba99-113b779c25a2/20251105T221619.json"
+    },
+    {
+      "camera_id": "ec9eda79-e250-4e6f-a8f6-e51021fb054f",
+      "captured_at": "2025-11-05T22:16:19.935648",
+      "image_path": "raw/images/ec9eda79-e250-4e6f-a8f6-e51021fb054f/20251105T221619.jpg",
+      "image_remote_uri": null,
+      "metadata_path": "raw/metadata/ec9eda79-e250-4e6f-a8f6-e51021fb054f/20251105T221619.json"
+    },
+    {
+      "camera_id": "d8122408-7092-41ba-a9db-ef8847edeaef",
+      "captured_at": "2025-11-05T22:16:19.935654",
+      "image_path": "raw/images/d8122408-7092-41ba-a9db-ef8847edeaef/20251105T221619.jpg",
+      "image_remote_uri": null,
+      "metadata_path": "raw/metadata/d8122408-7092-41ba-a9db-ef8847edeaef/20251105T221619.json"
+    },
+    {
+      "camera_id": "d78ebdc6-2211-479e-bda6-59d79db20258",
+      "captured_at": "2025-11-05T22:16:19.935659",
+      "image_path": "raw/images/d78ebdc6-2211-479e-bda6-59d79db20258/20251105T221619.jpg",
+      "image_remote_uri": null,
+      "metadata_path": "raw/metadata/d78ebdc6-2211-479e-bda6-59d79db20258/20251105T221619.json"
+    },
+    {
+      "camera_id": "1546f761-039c-4b5c-af5e-75c83c9f603f",
+      "captured_at": "2025-11-05T22:16:19.935664",
+      "image_path": "raw/images/1546f761-039c-4b5c-af5e-75c83c9f603f/20251105T221619.jpg",
+      "image_remote_uri": null,
+      "metadata_path": "raw/metadata/1546f761-039c-4b5c-af5e-75c83c9f603f/20251105T221619.json"
+    },
+    {
+      "camera_id": "d1d8cd99-7609-409a-a739-f5913dabf4e6",
+      "captured_at": "2025-11-05T22:16:19.935669",
+      "image_path": "raw/images/d1d8cd99-7609-409a-a739-f5913dabf4e6/20251105T221619.jpg",
+      "image_remote_uri": null,
+      "metadata_path": "raw/metadata/d1d8cd99-7609-409a-a739-f5913dabf4e6/20251105T221619.json"
+    },
+    {
+      "camera_id": "76faba94-f9e5-42d7-981e-0cbbbfd4bc21",
+      "captured_at": "2025-11-05T22:16:19.935689",
+      "image_path": "raw/images/76faba94-f9e5-42d7-981e-0cbbbfd4bc21/20251105T221619.jpg",
+      "image_remote_uri": null,
+      "metadata_path": "raw/metadata/76faba94-f9e5-42d7-981e-0cbbbfd4bc21/20251105T221619.json"
+    },
+    {
+      "camera_id": "7a7016c5-a086-40fd-9298-90f17f8b6cea",
+      "captured_at": "2025-11-05T22:16:19.935695",
+      "image_path": "raw/images/7a7016c5-a086-40fd-9298-90f17f8b6cea/20251105T221619.jpg",
+      "image_remote_uri": null,
+      "metadata_path": "raw/metadata/7a7016c5-a086-40fd-9298-90f17f8b6cea/20251105T221619.json"
+    },
+    {
+      "camera_id": "78a5c61d-9dce-4b52-b0da-bf7d22c1f501",
+      "captured_at": "2025-11-05T22:16:19.935701",
+      "image_path": "raw/images/78a5c61d-9dce-4b52-b0da-bf7d22c1f501/20251105T221619.jpg",
+      "image_remote_uri": null,
+      "metadata_path": "raw/metadata/78a5c61d-9dce-4b52-b0da-bf7d22c1f501/20251105T221619.json"
+    },
+    {
+      "camera_id": "f96c7b05-c0a1-4d3c-93ae-b025bdea422a",
+      "captured_at": "2025-11-05T22:16:19.935705",
+      "image_path": "raw/images/f96c7b05-c0a1-4d3c-93ae-b025bdea422a/20251105T221619.jpg",
+      "image_remote_uri": null,
+      "metadata_path": "raw/metadata/f96c7b05-c0a1-4d3c-93ae-b025bdea422a/20251105T221619.json"
+    },
+    {
+      "camera_id": "82b5a027-8b2d-43ce-ba8e-329382bd61bf",
+      "captured_at": "2025-11-05T22:16:19.935710",
+      "image_path": "raw/images/82b5a027-8b2d-43ce-ba8e-329382bd61bf/20251105T221619.jpg",
+      "image_remote_uri": null,
+      "metadata_path": "raw/metadata/82b5a027-8b2d-43ce-ba8e-329382bd61bf/20251105T221619.json"
+    },
+    {
+      "camera_id": "62ecb539-5e6c-40ff-a771-ea77153cc4ed",
+      "captured_at": "2025-11-05T22:16:19.935716",
+      "image_path": "raw/images/62ecb539-5e6c-40ff-a771-ea77153cc4ed/20251105T221619.jpg",
+      "image_remote_uri": null,
+      "metadata_path": "raw/metadata/62ecb539-5e6c-40ff-a771-ea77153cc4ed/20251105T221619.json"
+    },
+    {
+      "camera_id": "dbbf45f6-7d87-46fa-825f-454a7e2bbcad",
+      "captured_at": "2025-11-05T22:16:19.935721",
+      "image_path": "raw/images/dbbf45f6-7d87-46fa-825f-454a7e2bbcad/20251105T221619.jpg",
+      "image_remote_uri": null,
+      "metadata_path": "raw/metadata/dbbf45f6-7d87-46fa-825f-454a7e2bbcad/20251105T221619.json"
+    },
+    {
+      "camera_id": "85809312-60f2-4a52-a694-82628529c05a",
+      "captured_at": "2025-11-05T22:16:19.935727",
+      "image_path": "raw/images/85809312-60f2-4a52-a694-82628529c05a/20251105T221619.jpg",
+      "image_remote_uri": null,
+      "metadata_path": "raw/metadata/85809312-60f2-4a52-a694-82628529c05a/20251105T221619.json"
+    },
+    {
+      "camera_id": "defa5e30-d6c7-4582-9ceb-03ff0fe7b93a",
+      "captured_at": "2025-11-05T22:16:19.935732",
+      "image_path": "raw/images/defa5e30-d6c7-4582-9ceb-03ff0fe7b93a/20251105T221619.jpg",
+      "image_remote_uri": null,
+      "metadata_path": "raw/metadata/defa5e30-d6c7-4582-9ceb-03ff0fe7b93a/20251105T221619.json"
+    },
+    {
+      "camera_id": "e229e0fd-559b-4c1e-bcba-ac23db1d01e3",
+      "captured_at": "2025-11-05T22:16:19.935737",
+      "image_path": "raw/images/e229e0fd-559b-4c1e-bcba-ac23db1d01e3/20251105T221619.jpg",
+      "image_remote_uri": null,
+      "metadata_path": "raw/metadata/e229e0fd-559b-4c1e-bcba-ac23db1d01e3/20251105T221619.json"
+    },
+    {
+      "camera_id": "9561ad5f-0eda-460b-ab12-41caa4e0a91e",
+      "captured_at": "2025-11-05T22:16:19.935745",
+      "image_path": "raw/images/9561ad5f-0eda-460b-ab12-41caa4e0a91e/20251105T221619.jpg",
+      "image_remote_uri": null,
+      "metadata_path": "raw/metadata/9561ad5f-0eda-460b-ab12-41caa4e0a91e/20251105T221619.json"
+    },
+    {
+      "camera_id": "f9ed4dbb-7dd1-4b0c-80df-7f5586109599",
+      "captured_at": "2025-11-05T22:16:19.935750",
+      "image_path": "raw/images/f9ed4dbb-7dd1-4b0c-80df-7f5586109599/20251105T221619.jpg",
+      "image_remote_uri": null,
+      "metadata_path": "raw/metadata/f9ed4dbb-7dd1-4b0c-80df-7f5586109599/20251105T221619.json"
+    },
+    {
+      "camera_id": "a4c12003-9638-473d-bfe3-dddf509c80b8",
+      "captured_at": "2025-11-05T22:16:19.935755",
+      "image_path": "raw/images/a4c12003-9638-473d-bfe3-dddf509c80b8/20251105T221619.jpg",
+      "image_remote_uri": null,
+      "metadata_path": "raw/metadata/a4c12003-9638-473d-bfe3-dddf509c80b8/20251105T221619.json"
+    },
+    {
+      "camera_id": "b331d9d1-c081-4476-8302-83445ac196e7",
+      "captured_at": "2025-11-05T22:16:19.935761",
+      "image_path": "raw/images/b331d9d1-c081-4476-8302-83445ac196e7/20251105T221619.jpg",
+      "image_remote_uri": null,
+      "metadata_path": "raw/metadata/b331d9d1-c081-4476-8302-83445ac196e7/20251105T221619.json"
+    },
+    {
+      "camera_id": "ee1b1d85-e8ce-485f-a539-12962933eb9f",
+      "captured_at": "2025-11-05T22:16:19.935766",
+      "image_path": "raw/images/ee1b1d85-e8ce-485f-a539-12962933eb9f/20251105T221619.jpg",
+      "image_remote_uri": null,
+      "metadata_path": "raw/metadata/ee1b1d85-e8ce-485f-a539-12962933eb9f/20251105T221619.json"
+    },
+    {
+      "camera_id": "83bf2591-579d-415b-a0d4-fe39868b46d1",
+      "captured_at": "2025-11-05T22:16:19.935784",
+      "image_path": "raw/images/83bf2591-579d-415b-a0d4-fe39868b46d1/20251105T221619.jpg",
+      "image_remote_uri": null,
+      "metadata_path": "raw/metadata/83bf2591-579d-415b-a0d4-fe39868b46d1/20251105T221619.json"
+    },
+    {
+      "camera_id": "f3d82b25-6b10-44c7-ae89-30df075a7ac8",
+      "captured_at": "2025-11-05T22:16:19.935789",
+      "image_path": "raw/images/f3d82b25-6b10-44c7-ae89-30df075a7ac8/20251105T221619.jpg",
+      "image_remote_uri": null,
+      "metadata_path": "raw/metadata/f3d82b25-6b10-44c7-ae89-30df075a7ac8/20251105T221619.json"
+    },
+    {
+      "camera_id": "f4d2c0f5-0148-45e7-95ba-a5185d8e8060",
+      "captured_at": "2025-11-05T22:16:19.935794",
+      "image_path": "raw/images/f4d2c0f5-0148-45e7-95ba-a5185d8e8060/20251105T221619.jpg",
+      "image_remote_uri": null,
+      "metadata_path": "raw/metadata/f4d2c0f5-0148-45e7-95ba-a5185d8e8060/20251105T221619.json"
+    },
+    {
+      "camera_id": "e8a479f8-5170-4f1f-b258-b9745c966c71",
+      "captured_at": "2025-11-05T22:16:19.935799",
+      "image_path": "raw/images/e8a479f8-5170-4f1f-b258-b9745c966c71/20251105T221619.jpg",
+      "image_remote_uri": null,
+      "metadata_path": "raw/metadata/e8a479f8-5170-4f1f-b258-b9745c966c71/20251105T221619.json"
+    },
+    {
+      "camera_id": "f4e822f7-d2a2-4146-851c-04b2fa6d5265",
+      "captured_at": "2025-11-05T22:16:19.935805",
+      "image_path": "raw/images/f4e822f7-d2a2-4146-851c-04b2fa6d5265/20251105T221619.jpg",
+      "image_remote_uri": null,
+      "metadata_path": "raw/metadata/f4e822f7-d2a2-4146-851c-04b2fa6d5265/20251105T221619.json"
+    },
+    {
+      "camera_id": "fc7db899-7a79-41f3-b9b1-b23ce64c5a5e",
+      "captured_at": "2025-11-05T22:16:19.935810",
+      "image_path": "raw/images/fc7db899-7a79-41f3-b9b1-b23ce64c5a5e/20251105T221619.jpg",
+      "image_remote_uri": null,
+      "metadata_path": "raw/metadata/fc7db899-7a79-41f3-b9b1-b23ce64c5a5e/20251105T221619.json"
+    },
+    {
+      "camera_id": "f2964d50-042c-4021-8b52-992c08c6ff6f",
+      "captured_at": "2025-11-05T22:16:19.935814",
+      "image_path": "raw/images/f2964d50-042c-4021-8b52-992c08c6ff6f/20251105T221619.jpg",
+      "image_remote_uri": null,
+      "metadata_path": "raw/metadata/f2964d50-042c-4021-8b52-992c08c6ff6f/20251105T221619.json"
+    },
+    {
+      "camera_id": "af2b479e-ec78-46b0-be35-6bbbd1691460",
+      "captured_at": "2025-11-05T22:16:19.935819",
+      "image_path": "raw/images/af2b479e-ec78-46b0-be35-6bbbd1691460/20251105T221619.jpg",
+      "image_remote_uri": null,
+      "metadata_path": "raw/metadata/af2b479e-ec78-46b0-be35-6bbbd1691460/20251105T221619.json"
+    },
+    {
+      "camera_id": "f0b924fe-0df6-4ac2-85a2-5d2b96d081d5",
+      "captured_at": "2025-11-05T22:16:19.935824",
+      "image_path": "raw/images/f0b924fe-0df6-4ac2-85a2-5d2b96d081d5/20251105T221619.jpg",
+      "image_remote_uri": null,
+      "metadata_path": "raw/metadata/f0b924fe-0df6-4ac2-85a2-5d2b96d081d5/20251105T221619.json"
+    }
+  ]
+}

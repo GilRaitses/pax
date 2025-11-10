@@ -1,0 +1,14 @@
+{
+	"folders": [
+		{
+			"path": ".."
+		},
+		{
+			"path": "../../vibe-check"
+		},
+		{
+			"path": "../../pax"
+		}
+	],
+	"settings": {}
+}

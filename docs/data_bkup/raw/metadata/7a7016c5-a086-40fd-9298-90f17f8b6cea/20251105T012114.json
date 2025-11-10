@@ -1,0 +1,22 @@
+{
+  "camera_id": "7a7016c5-a086-40fd-9298-90f17f8b6cea",
+  "captured_at": "2025-11-05T01:21:14.771645",
+  "image_url": "https://webcams.nyctmc.org/api/cameras/7a7016c5-a086-40fd-9298-90f17f8b6cea/image",
+  "features": {
+    "pedestrian_density": 0.0,
+    "bike_lane_violations": 0.0,
+    "vehicle_volume": 0.0,
+    "obstruction_score": 0.0,
+    "visibility_score": 1.0,
+    "stress_score": null
+  },
+  "metadata": {
+    "name": "5 Ave @ 49 St",
+    "latitude": 40.7579183170509,
+    "longitude": -73.9776717716469,
+    "area": "Manhattan"
+  },
+  "image_path": "/Users/gilraitses/pax/data/raw/images/7a7016c5-a086-40fd-9298-90f17f8b6cea/20251105T012114.jpg",
+  "image_bytes": 20477,
+  "image_remote_uri": "gs://pax-nyc-images/images/7a7016c5-a086-40fd-9298-90f17f8b6cea/20251105T012114.jpg"
+}

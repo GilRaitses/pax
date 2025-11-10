@@ -1,0 +1,22 @@
+{
+  "camera_id": "7af854d4-3997-4656-aea3-5482dc4c20ee",
+  "captured_at": "2025-11-03T22:12:14.296468",
+  "image_url": "https://webcams.nyctmc.org/api/cameras/7af854d4-3997-4656-aea3-5482dc4c20ee/image",
+  "features": {
+    "pedestrian_density": 0.0,
+    "bike_lane_violations": 0.0,
+    "vehicle_volume": 0.0,
+    "obstruction_score": 0.0,
+    "visibility_score": 1.0,
+    "stress_score": null
+  },
+  "metadata": {
+    "name": "BQE @ 49 St NSR",
+    "latitude": 40.7657,
+    "longitude": -73.9036,
+    "area": "Queens"
+  },
+  "image_path": "/Users/gilraitses/pax/data/raw/images/7af854d4-3997-4656-aea3-5482dc4c20ee/20251103T221214.jpg",
+  "image_bytes": 22059,
+  "image_remote_uri": null
+}

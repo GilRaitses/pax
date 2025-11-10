@@ -1,0 +1,46 @@
+total_zones: 99
+bounds:
+  lat_min: 40.62253508299997
+  lat_max: 40.941938285307046
+  lon_min: -74.0116343288119
+  lon_max: -73.96788338400296
+crs: EPSG:4326
+files:
+  shapefile: voronoi_zones.shp
+  geojson: voronoi_zones.geojson
+  json: voronoi_zones.json
+  npz: voronoi_zones.npz
+zones_by_avenue:
+  5 Ave: 10
+  1 Ave: 1
+  Park Ave: 3
+  7 Ave: 8
+  6 Ave: 6
+  2 Ave: 2
+  9 Ave: 7
+  3 Ave: 2
+  Lexington Ave: 4
+  8 Ave: 5
+  Broadway: 12
+  Madison Ave: 5
+  Dyer Ave: 4
+  Vanderbilt Ave: 1
+  10 Ave: 3
+  Unknown: 2
+  11 Ave: 4
+  7 AVE: 2
+  47 St Bet. 5 Ave: 1
+  Rockefeller Plz: 1
+  8 AVE: 1
+  5 AVE: 1
+  Galvin Ave: 1
+  6 AVE: 1
+  12 Ave: 2
+  MADISON: 1
+  West Street: 1
+  Ave of Americas: 1
+  Central Park S: 1
+  Central Park West: 3
+  Amsterdam Ave: 1
+  Central Park: 1
+  Columbus Ave: 1

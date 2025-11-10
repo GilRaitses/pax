@@ -1,0 +1,22 @@
+{
+  "camera_id": "5caa3ace-277b-42db-97bd-585f29b0d49f",
+  "captured_at": "2025-11-04T19:58:48.586102",
+  "image_url": "https://webcams.nyctmc.org/api/cameras/5caa3ace-277b-42db-97bd-585f29b0d49f/image",
+  "features": {
+    "pedestrian_density": 0.0,
+    "bike_lane_violations": 0.0,
+    "vehicle_volume": 0.0,
+    "obstruction_score": 0.0,
+    "visibility_score": 1.0,
+    "stress_score": null
+  },
+  "metadata": {
+    "name": "Central Park West @ W 61 St",
+    "latitude": 40.769303,
+    "longitude": -73.980882,
+    "area": "Manhattan"
+  },
+  "image_path": "/Users/gilraitses/pax/data/raw/images/5caa3ace-277b-42db-97bd-585f29b0d49f/20251104T195848.jpg",
+  "image_bytes": 23771,
+  "image_remote_uri": null
+}

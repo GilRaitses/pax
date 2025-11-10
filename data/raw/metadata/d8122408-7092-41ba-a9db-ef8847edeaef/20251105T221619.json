@@ -1,0 +1,22 @@
+{
+  "camera_id": "d8122408-7092-41ba-a9db-ef8847edeaef",
+  "captured_at": "2025-11-05T22:16:19.935654",
+  "image_url": "https://webcams.nyctmc.org/api/cameras/d8122408-7092-41ba-a9db-ef8847edeaef/image",
+  "features": {
+    "pedestrian_density": 0.0,
+    "bike_lane_violations": 0.0,
+    "vehicle_volume": 0.0,
+    "obstruction_score": 0.0,
+    "visibility_score": 1.0,
+    "stress_score": null
+  },
+  "metadata": {
+    "name": "Broadway @ 43 St",
+    "latitude": 40.756583,
+    "longitude": -73.986156,
+    "area": "Manhattan"
+  },
+  "image_path": "/Users/gilraitses/pax/data/raw/images/d8122408-7092-41ba-a9db-ef8847edeaef/20251105T221619.jpg",
+  "image_bytes": 21817,
+  "image_remote_uri": null
+}

@@ -1,0 +1,254 @@
+project:
+  name: Pax NYC - Grand Central to Carnegie Hall Corridor
+  description: Energetic pathfinding and perceptual heuristics study
+  study_area:
+    start: Grand Central Terminal (42nd & Park)
+    goal: Carnegie Hall (57th & 7th Ave)
+    bounds: 40th-59th Streets, Lexington Ave to 8th Ave
+schedule:
+  interval_minutes: 30
+  active_hours:
+    start: 06:00
+    end: '22:00'
+  timezone: America/New_York
+cameras:
+- id: 5352e130-4668-4be5-a7b9-9e1ce4ea6d4c
+  name: 3 Ave @ 42 St
+  area: East Side
+  latitude: 40.7507631595424
+  longitude: -73.9744615986273
+  priority: medium
+- id: 5bb6d7d8-39ce-43b8-b539-376fbcf73927
+  name: 3 Ave @ 49 St
+  area: East Side
+  latitude: 40.7552116061846
+  longitude: -73.9712421172846
+  priority: medium
+- id: 2589c0d6-c389-4861-b812-4ae68f560eba
+  name: 46 St Bet. 5 Ave & Madison Ave
+  area: Midtown Core
+  latitude: 40.7557483
+  longitude: -73.9784187
+  priority: high
+- id: 9561ad5f-0eda-460b-ab12-41caa4e0a91e
+  name: 47 St Bet. 5 Ave @ Madison Ave- Manhattan
+  area: Midtown Core
+  latitude: 40.75632
+  longitude: -73.9777487
+  priority: high
+- id: 482e6d35-2a67-4bbf-b36f-fdf7e031d607
+  name: 5 AVE @ 50 St
+  area: Midtown Core
+  latitude: 40.75856
+  longitude: -73.9772
+  priority: high
+- id: f4e822f7-d2a2-4146-851c-04b2fa6d5265
+  name: 5 Ave @ 42 St
+  area: Midtown Core
+  latitude: 40.7534920464028
+  longitude: -73.9808970054167
+  priority: high
+- id: 8933100a-8229-42fe-b4b2-265db410d7ae
+  name: 5 Ave @ 46 St
+  area: Midtown Core
+  latitude: 40.756036
+  longitude: -73.979014
+  priority: high
+- id: 03a8a2da-3ac2-45aa-a5ba-4ff7d1ecbd22
+  name: 5 Ave @ 47 St
+  area: Midtown Core
+  latitude: 40.756725
+  longitude: -73.97883
+  priority: high
+- id: 7a7016c5-a086-40fd-9298-90f17f8b6cea
+  name: 5 Ave @ 49 St
+  area: Midtown Core
+  latitude: 40.7579183170509
+  longitude: -73.9776717716469
+  priority: high
+- id: 9c4c2657-6796-4953-bbe6-c50f24bb5820
+  name: 5 Ave @ 57 St
+  area: Midtown Core
+  latitude: 40.7629820055328
+  longitude: -73.9739858644822
+  priority: high
+- id: b5a78bda-3ca9-4ad4-bd03-4cee70baba2d
+  name: 5 Ave @ 59 St
+  area: Midtown Core
+  latitude: 40.764289
+  longitude: -73.973023
+  priority: high
+- id: cd949f21-54b2-4d11-8aae-4ffba8654271
+  name: 5 Ave @ E 60 St
+  area: Midtown Core
+  latitude: 40.765165
+  longitude: -73.972692
+  priority: high
+- id: 4f3f56e3-f68e-4b60-a4ba-153ecb9094f7
+  name: 6 AVE @ 50 St
+  area: West Midtown
+  latitude: 40.75994
+  longitude: -73.9805
+  priority: medium
+- id: c34ca47e-e375-4b9f-a8d7-f9737566b783
+  name: 6 Ave @ 42 St
+  area: West Midtown
+  latitude: 40.7548488195947
+  longitude: -73.9841249380499
+  priority: medium
+- id: 1dddf912-4718-4b2a-94dd-1f793a9ed22c
+  name: 6 Ave @ 49 St
+  area: West Midtown
+  latitude: 40.759281077223
+  longitude: -73.9808977882913
+  priority: medium
+- id: e229e0fd-559b-4c1e-bcba-ac23db1d01e3
+  name: 6 Ave @ 57 St
+  area: West Midtown
+  latitude: 40.7643348872061
+  longitude: -73.9772018595711
+  priority: medium
+- id: a4c12003-9638-473d-bfe3-dddf509c80b8
+  name: 6 Ave @ 58 St
+  area: West Midtown
+  latitude: 40.765024
+  longitude: -73.976689
+  priority: medium
+- id: fc7db899-7a79-41f3-b9b1-b23ce64c5a5e
+  name: 7 Ave @ 49 St
+  area: Theater District
+  latitude: 40.7604823513464
+  longitude: -73.983738054794
+  priority: high
+- id: 4ebe49c8-3e68-43f7-b415-da3db9f72693
+  name: 7 Ave @ 54 St
+  area: Theater District
+  latitude: 40.763617
+  longitude: -73.981436
+  priority: high
+- id: f0b924fe-0df6-4ac2-85a2-5d2b96d081d5
+  name: 7 Ave @ 57 St
+  area: Theater District
+  latitude: 40.765534775125
+  longitude: -73.9800400250842
+  priority: high
+- id: d78ebdc6-2211-479e-bda6-59d79db20258
+  name: 8 Ave @ 57 St
+  area: West Side
+  latitude: 40.766796
+  longitude: -73.9829
+  priority: medium
+- id: 78a5c61d-9dce-4b52-b0da-bf7d22c1f501
+  name: 8 Ave @ Columbus Cr South
+  area: West Side
+  latitude: 40.767775
+  longitude: -73.982089
+  priority: medium
+- id: 332f161d-47cb-4c8a-b6b6-5ad48a55c978
+  name: Ave of Americas @ Central Park South
+  area: East Side
+  latitude: 40.765767
+  longitude: -73.976123
+  priority: medium
+- id: 3d8e276f-b179-414d-a506-679d5e559d3e
+  name: Broadway @ 51 St
+  area: Theater District
+  latitude: 40.762077539856
+  longitude: -73.9836422756604
+  priority: high
+- id: c880d0c4-db84-44c2-9f00-62f21a83b5d0
+  name: Broadway @ Columbus Circle
+  area: Theater District
+  latitude: 40.76861
+  longitude: -73.981747
+  priority: high
+- id: 85809312-60f2-4a52-a694-82628529c05a
+  name: Central Park S @ Columbus Cr
+  area: East Side
+  latitude: 40.7677366852749
+  longitude: -73.9814615249633
+  priority: medium
+- id: 5caa3ace-277b-42db-97bd-585f29b0d49f
+  name: Central Park West @ W 61 St
+  area: East Side
+  latitude: 40.769303
+  longitude: -73.980882
+  priority: medium
+- id: 1546f761-039c-4b5c-af5e-75c83c9f603f
+  name: Lexington Ave @ 42 St
+  area: East Side
+  latitude: 40.7514494972593
+  longitude: -73.976060779701
+  priority: high
+- id: d1d8cd99-7609-409a-a739-f5913dabf4e6
+  name: Lexington Ave @ 49 St
+  area: East Side
+  latitude: 40.7558782935853
+  longitude: -73.972833819289
+  priority: high
+- id: e777e4b4-25cb-4c39-98fc-8d6b25cf7de7
+  name: 'Lexington Ave @ 53 St '
+  area: East Side
+  latitude: 40.758559
+  longitude: -73.971296
+  priority: high
+- id: 421960d6-54a8-4f12-a5ee-7a07390def4c
+  name: MADISON @ 57 ST
+  area: Midtown Core
+  latitude: 40.7622962700164
+  longitude: -73.9723570534941
+  priority: medium
+- id: d1363c77-e061-4414-be82-e6d749254859
+  name: Madison Ave @ 42 St
+  area: Midtown Core
+  latitude: 40.7528121596316
+  longitude: -73.9792838595713
+  priority: medium
+- id: 434094f8-1be4-4c19-8067-1e11049e46b4
+  name: Madison Ave @ 46 St - Manhattan
+  area: Midtown Core
+  latitude: 40.755508
+  longitude: -73.977437
+  priority: medium
+- id: 1eb66413-6761-4eb0-bc04-e2533bb74b42
+  name: Madison Ave @ 49 St
+  area: Midtown Core
+  latitude: 40.7572361824409
+  longitude: -73.9760573417802
+  priority: medium
+- id: c6d013c9-e69b-4824-8dad-b6580491d916
+  name: Madison Ave @ E 43 St
+  area: Midtown Core
+  latitude: 40.753417
+  longitude: -73.97874
+  priority: medium
+- id: 879ab924-18ac-4779-a681-395d73a0f0cc
+  name: Madison Ave @ E 44 St
+  area: Midtown Core
+  latitude: 40.754038
+  longitude: -73.97827
+  priority: medium
+- id: 9e3e26ae-d49f-4f64-ba99-113b779c25a2
+  name: Park Ave @ 53 St
+  area: East Side
+  latitude: 40.759067
+  longitude: -73.97261
+  priority: high
+- id: f4d2c0f5-0148-45e7-95ba-a5185d8e8060
+  name: Park Ave @ 57 St
+  area: East Side
+  latitude: 40.761615778381
+  longitude: -73.9707524905279
+  priority: high
+- id: 62ecb539-5e6c-40ff-a771-ea77153cc4ed
+  name: Rockefeller Plz @ 48 St (between 5 Ave and 6 Ave)
+  area: Midtown Core
+  latitude: 40.757839
+  longitude: -73.979362
+  priority: high
+- id: e8a479f8-5170-4f1f-b258-b9745c966c71
+  name: Vanderbilt Ave @ E 45 St
+  area: Midtown Core
+  latitude: 40.754297
+  longitude: -73.976936
+  priority: medium

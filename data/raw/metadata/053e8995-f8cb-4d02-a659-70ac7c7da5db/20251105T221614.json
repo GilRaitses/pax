@@ -1,0 +1,22 @@
+{
+  "camera_id": "053e8995-f8cb-4d02-a659-70ac7c7da5db",
+  "captured_at": "2025-11-05T22:16:14.136003",
+  "image_url": "https://webcams.nyctmc.org/api/cameras/053e8995-f8cb-4d02-a659-70ac7c7da5db/image",
+  "features": {
+    "pedestrian_density": 0.0,
+    "bike_lane_violations": 0.0,
+    "vehicle_volume": 0.0,
+    "obstruction_score": 0.0,
+    "visibility_score": 1.0,
+    "stress_score": null
+  },
+  "metadata": {
+    "name": "Broadway @ 45 St",
+    "latitude": 40.757953,
+    "longitude": -73.98549,
+    "area": "Manhattan"
+  },
+  "image_path": null,
+  "image_bytes": null,
+  "image_remote_uri": null
+}

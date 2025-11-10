@@ -1,0 +1,54 @@
+# Exclude collected images and data
+data/raw/images/**
+data/warehouse/**
+data/packages/**
+data/exports/**
+
+# BUT KEEP the numbered manifest
+!data/corridor_cameras_numbered.json
+!data/corridor_cameras_numbered.yaml
+
+# Exclude documentation and visualizations
+docs/**
+*.png
+*.jpg
+*.jpeg
+*.pdf
+
+# Exclude Python cache and virtual environments
+venv/
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+.Python
+
+# Exclude IDE files
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# Exclude logs
+*.log
+logs/
+
+# Exclude test data
+tests/
+test_*.py
+*_test.py
+
+# Exclude backups
+*_bkup/
+backup_*/
+docs/backup_*/
+docs/data_bkup/
+docs/src_bkup/
+docs/infra_bkup/
+
+# Keep only what we need:
+# - src/ (source code)
+# - pyproject.toml, README.md
+# - data/corridor_cameras_numbered.json (manifest)
+# - infra/cloudrun/entrypoint_v2.sh
+

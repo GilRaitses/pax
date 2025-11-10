@@ -1,0 +1,22 @@
+{
+  "camera_id": "5d055599-875a-4010-991f-e7e454889052",
+  "captured_at": "2025-11-05T22:16:14.136030",
+  "image_url": "https://webcams.nyctmc.org/api/cameras/5d055599-875a-4010-991f-e7e454889052/image",
+  "features": {
+    "pedestrian_density": 0.0,
+    "bike_lane_violations": 0.0,
+    "vehicle_volume": 0.0,
+    "obstruction_score": 0.0,
+    "visibility_score": 1.0,
+    "stress_score": null
+  },
+  "metadata": {
+    "name": "7 Ave @ 40 St",
+    "latitude": 40.754222,
+    "longitude": -73.988355,
+    "area": "Manhattan"
+  },
+  "image_path": null,
+  "image_bytes": null,
+  "image_remote_uri": null
+}

@@ -1,0 +1,22 @@
+{
+  "camera_id": "4f3f56e3-f68e-4b60-a4ba-153ecb9094f7",
+  "captured_at": "2025-11-05T22:16:19.935420",
+  "image_url": "https://webcams.nyctmc.org/api/cameras/4f3f56e3-f68e-4b60-a4ba-153ecb9094f7/image",
+  "features": {
+    "pedestrian_density": 0.0,
+    "bike_lane_violations": 0.0,
+    "vehicle_volume": 0.0,
+    "obstruction_score": 0.0,
+    "visibility_score": 1.0,
+    "stress_score": null
+  },
+  "metadata": {
+    "name": "6 AVE @ 50 St",
+    "latitude": 40.75994,
+    "longitude": -73.9805,
+    "area": "Manhattan"
+  },
+  "image_path": "/Users/gilraitses/pax/data/raw/images/4f3f56e3-f68e-4b60-a4ba-153ecb9094f7/20251105T221619.jpg",
+  "image_bytes": 22683,
+  "image_remote_uri": null
+}

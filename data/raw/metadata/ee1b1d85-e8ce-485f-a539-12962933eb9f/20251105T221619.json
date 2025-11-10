@@ -1,0 +1,22 @@
+{
+  "camera_id": "ee1b1d85-e8ce-485f-a539-12962933eb9f",
+  "captured_at": "2025-11-05T22:16:19.935766",
+  "image_url": "https://webcams.nyctmc.org/api/cameras/ee1b1d85-e8ce-485f-a539-12962933eb9f/image",
+  "features": {
+    "pedestrian_density": 0.0,
+    "bike_lane_violations": 0.0,
+    "vehicle_volume": 0.0,
+    "obstruction_score": 0.0,
+    "visibility_score": 1.0,
+    "stress_score": null
+  },
+  "metadata": {
+    "name": "7 Ave @ 34 St",
+    "latitude": 40.7510195668227,
+    "longitude": -73.9906285955498,
+    "area": "Manhattan"
+  },
+  "image_path": "/Users/gilraitses/pax/data/raw/images/ee1b1d85-e8ce-485f-a539-12962933eb9f/20251105T221619.jpg",
+  "image_bytes": 16112,
+  "image_remote_uri": null
+}

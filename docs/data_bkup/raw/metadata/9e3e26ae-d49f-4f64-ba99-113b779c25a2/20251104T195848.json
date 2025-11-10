@@ -1,0 +1,22 @@
+{
+  "camera_id": "9e3e26ae-d49f-4f64-ba99-113b779c25a2",
+  "captured_at": "2025-11-04T19:58:48.586143",
+  "image_url": "https://webcams.nyctmc.org/api/cameras/9e3e26ae-d49f-4f64-ba99-113b779c25a2/image",
+  "features": {
+    "pedestrian_density": 0.0,
+    "bike_lane_violations": 0.0,
+    "vehicle_volume": 0.0,
+    "obstruction_score": 0.0,
+    "visibility_score": 1.0,
+    "stress_score": null
+  },
+  "metadata": {
+    "name": "Park Ave @ 53 St",
+    "latitude": 40.759067,
+    "longitude": -73.97261,
+    "area": "Manhattan"
+  },
+  "image_path": "/Users/gilraitses/pax/data/raw/images/9e3e26ae-d49f-4f64-ba99-113b779c25a2/20251104T195848.jpg",
+  "image_bytes": 22721,
+  "image_remote_uri": null
+}

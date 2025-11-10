@@ -1,0 +1,22 @@
+{
+  "camera_id": "aacb43bf-ed37-44c6-a2fe-8449a7851306",
+  "captured_at": "2025-11-05T22:16:19.935233",
+  "image_url": "https://webcams.nyctmc.org/api/cameras/aacb43bf-ed37-44c6-a2fe-8449a7851306/image",
+  "features": {
+    "pedestrian_density": 0.0,
+    "bike_lane_violations": 0.0,
+    "vehicle_volume": 0.0,
+    "obstruction_score": 0.0,
+    "visibility_score": 1.0,
+    "stress_score": null
+  },
+  "metadata": {
+    "name": "5 Ave @ 35 St ",
+    "latitude": 40.749475,
+    "longitude": -73.98427,
+    "area": "Manhattan"
+  },
+  "image_path": "/Users/gilraitses/pax/data/raw/images/aacb43bf-ed37-44c6-a2fe-8449a7851306/20251105T221619.jpg",
+  "image_bytes": 27645,
+  "image_remote_uri": null
+}

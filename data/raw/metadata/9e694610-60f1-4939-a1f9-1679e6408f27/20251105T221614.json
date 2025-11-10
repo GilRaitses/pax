@@ -1,0 +1,22 @@
+{
+  "camera_id": "9e694610-60f1-4939-a1f9-1679e6408f27",
+  "captured_at": "2025-11-05T22:16:14.136360",
+  "image_url": "https://webcams.nyctmc.org/api/cameras/9e694610-60f1-4939-a1f9-1679e6408f27/image",
+  "features": {
+    "pedestrian_density": 0.0,
+    "bike_lane_violations": 0.0,
+    "vehicle_volume": 0.0,
+    "obstruction_score": 0.0,
+    "visibility_score": 1.0,
+    "stress_score": null
+  },
+  "metadata": {
+    "name": "9 Ave @ W 39 St",
+    "latitude": 40.7565,
+    "longitude": -73.994,
+    "area": "Manhattan"
+  },
+  "image_path": null,
+  "image_bytes": null,
+  "image_remote_uri": null
+}

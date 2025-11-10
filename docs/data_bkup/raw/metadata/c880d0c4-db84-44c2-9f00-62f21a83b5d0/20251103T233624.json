@@ -1,0 +1,22 @@
+{
+  "camera_id": "c880d0c4-db84-44c2-9f00-62f21a83b5d0",
+  "captured_at": "2025-11-03T23:36:24.061843",
+  "image_url": "https://webcams.nyctmc.org/api/cameras/c880d0c4-db84-44c2-9f00-62f21a83b5d0/image",
+  "features": {
+    "pedestrian_density": 0.0,
+    "bike_lane_violations": 0.0,
+    "vehicle_volume": 0.0,
+    "obstruction_score": 0.0,
+    "visibility_score": 1.0,
+    "stress_score": null
+  },
+  "metadata": {
+    "name": "Broadway @ Columbus Circle",
+    "latitude": 40.76861,
+    "longitude": -73.981747,
+    "area": "Manhattan"
+  },
+  "image_path": "/Users/gilraitses/pax/data/raw/images/c880d0c4-db84-44c2-9f00-62f21a83b5d0/20251103T233624.jpg",
+  "image_bytes": 19441,
+  "image_remote_uri": null
+}

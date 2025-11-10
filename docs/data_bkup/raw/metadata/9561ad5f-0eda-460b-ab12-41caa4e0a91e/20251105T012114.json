@@ -1,0 +1,22 @@
+{
+  "camera_id": "9561ad5f-0eda-460b-ab12-41caa4e0a91e",
+  "captured_at": "2025-11-05T01:21:14.771628",
+  "image_url": "https://webcams.nyctmc.org/api/cameras/9561ad5f-0eda-460b-ab12-41caa4e0a91e/image",
+  "features": {
+    "pedestrian_density": 0.0,
+    "bike_lane_violations": 0.0,
+    "vehicle_volume": 0.0,
+    "obstruction_score": 0.0,
+    "visibility_score": 1.0,
+    "stress_score": null
+  },
+  "metadata": {
+    "name": "47 St Bet. 5 Ave @ Madison Ave- Manhattan",
+    "latitude": 40.75632,
+    "longitude": -73.9777487,
+    "area": "Manhattan"
+  },
+  "image_path": "/Users/gilraitses/pax/data/raw/images/9561ad5f-0eda-460b-ab12-41caa4e0a91e/20251105T012114.jpg",
+  "image_bytes": 14147,
+  "image_remote_uri": "gs://pax-nyc-images/images/9561ad5f-0eda-460b-ab12-41caa4e0a91e/20251105T012114.jpg"
+}

@@ -1,0 +1,154 @@
+---
+title: "Energetic Pathfinding and Perceptual Heuristics in Manhattan Navigation"
+subtitle: "CIS 667: Introduction to Artificial Intelligence"
+author: "Gil Raitses"
+date: "`r Sys.Date()`"
+format:
+  pdf:
+    documentclass: article
+    geometry:
+      - top=30mm
+      - left=20mm
+      - right=20mm
+      - bottom=30mm
+    fontsize: 11pt
+    linestretch: 1.5
+    colorlinks: true
+    linkcolor: "#A8D5E2"
+    urlcolor: "#A8D5E2"
+    citecolor: "#FFB6C1"
+    pdf-engine: xelatex
+    include-in-header:
+      - text: |
+          \usepackage{xcolor}
+          \definecolor{cinnamorollblue}{HTML}{A8D5E2}
+          \definecolor{cinnamorollpink}{HTML}{FFB6C1}
+          \definecolor{cinnamorollcream}{HTML}{FFF8E7}
+          \definecolor{cinnamorollsoftblue}{HTML}{B8E5E8}
+          \usepackage{titlesec}
+          \usepackage{sectsty}
+          \usepackage{fontspec}
+          \setmainfont{Avenir}
+          \setsansfont{Helvetica Neue}
+          \newfontfamily\headerfont{Helvetica Neue}[
+            Color=cinnamorollblue
+          ]
+          \allsectionsfont{\headerfont}
+          \titleformat{\section}
+            {\Large\headerfont\bfseries\color{cinnamorollblue}}
+            {\thesection}{1em}{}
+          \titleformat{\subsection}
+            {\large\headerfont\bfseries\color{cinnamorollsoftblue}}
+            {\thesubsection}{1em}{}
+          \titleformat{\subsubsection}
+            {\normalsize\headerfont\bfseries\color{cinnamorollpink}}
+            {\thesubsubsection}{1em}{}
+          \titleformat{\paragraph}
+            {\normalsize\headerfont\color{cinnamorollblue}}
+            {\theparagraph}{1em}{}
+          \usepackage{titling}
+          \pretitle{\begin{center}\Large\headerfont\bfseries\color{cinnamorollblue}}
+          \posttitle{\end{center}}
+          \preauthor{\begin{center}\normalsize\headerfont\color{cinnamorollpink}}
+          \postauthor{\end{center}}
+          \predate{\begin{center}\small\color{cinnamorollblue}}
+          \postdate{\end{center}}
+---
+
+# Introduction
+
+## Subject Area
+
+**Artificial Intelligence – Search and Reasoning Systems.**
+
+The project focuses on heuristic search, knowledge representation, and perception-based reasoning, linking foundational AI theory to real-world sensory modeling.
+
+## Problem Statement
+
+Traditional pathfinding algorithms optimize for geometric distance or time but fail to capture the energetic and perceptual dynamics of real-world movement. In dense environments like Manhattan, cost is not defined by distance alone but by sensory and behavioral complexity—crowding, visual noise, and movement unpredictability.
+
+The problem addressed here is how to design an intelligent agent capable of integrating sensory context into its reasoning process for route selection. The project reimagines the A* search paradigm with a perceptually informed heuristic derived from camera data, modeling what it means for an agent to "feel" resistance in the environment it navigates.
+
+# Aim of the Project
+
+To implement and evaluate a heuristic search system that learns energetic pathfinding behavior by integrating sensory data into classical A* reasoning, demonstrating how perception-driven cost modeling can improve interpretability and environmental realism in AI navigation.
+
+# Objectives
+
+1. Define a Manhattan-based navigation environment between Grand Central Station and Carnegie Hall using a grid of intersections as states.
+
+2. Construct a knowledge base from NYC traffic-camera data, translating visual detections into symbolic features representing environmental conditions (bikes, cars, pedestrians, obstructions).
+
+3. Develop a perceptually weighted heuristic that adapts energetic cost functions based on visual context.
+
+4. Implement A* search and compare it to standard Manhattan-distance-only heuristics.
+
+5. Evaluate differences in efficiency, realism, and interpretability between baseline and perceptual systems.
+
+6. Present visualizations showing how sensory context alters route choice and total cost.
+
+7. Reflect on implications for embodied AI and human-centered navigation modeling.
+
+# Team Information
+
+**Gil Raitses**
+
+- **Role:** Individual project lead
+- **Email:** [YOUR_SU_EMAIL]
+- **Phone:** [OPTIONAL_PHONE]
+- **Affiliation:** Syracuse University, Data Science / HCAI Program
+
+# Project Type and Rationale
+
+This is an **Applied Project** (category (d) from the guide).
+
+This project applies heuristic search and reasoning methods learned in class to a realistic urban navigation task. It connects theoretical AI models to sensory data from a dynamic real-world environment, extending the notion of cost and optimality to include perceptual load and behavioral friction. It exemplifies how AI systems can transition from abstract reasoning to embodied decision-making.
+
+# Work Plan
+
+## Initial Work Plan
+
+- **Week 1–2:** Review relevant algorithms from course material (uninformed search, informed search, constraint satisfaction).
+- **Week 3:** Preprocess NYC traffic-camera dataset and extract feature sets (density, obstructions, flow).
+- **Week 4–5:** Build knowledge base and assign weighted costs to edge transitions.
+- **Week 6:** Implement classical A* with Manhattan heuristic.
+- **Week 7–8:** Develop perceptual heuristic integrating vision-derived features.
+- **Week 9:** Compare performance metrics and generate visualizations.
+- **Week 10:** Draft final report and presentation materials.
+
+## Individual Work Plan
+
+**Gil Raitses Responsibilities:**
+
+- Collect and preprocess visual dataset.
+- Design heuristic and cost models.
+- Implement algorithm and testing pipeline in Python.
+- Analyze results and document findings.
+- Prepare submission materials and presentation.
+
+**Shared Tasks:** N/A (individual project).
+
+# Methodology Summary
+
+The agent's reasoning follows the PEAS framework (Performance, Environment, Actuators, Sensors). The environment is a discretized Manhattan grid; performance is measured by minimal energetic cost; sensors derive context from traffic-camera imagery; actuators represent directional movements.
+
+The heuristic integrates classical pathfinding logic with environmental features to approximate human-like reasoning about effort. Constraint satisfaction logic filters infeasible or undesirable paths. The resulting system demonstrates how AI agents can merge perception with symbolic reasoning in practical navigation scenarios.
+
+# Expected Contributions
+
+The project demonstrates how informed search can evolve toward perceptually grounded reasoning. It contributes an applied framework that makes heuristic logic interpretable, showing the connection between environmental perception and decision-making. It also bridges course concepts—state-space search, heuristic admissibility, knowledge representation, and CSP integration—through a single coherent implementation.
+
+# References
+
+Russell, S., & Norvig, P. (2022). *Artificial Intelligence: A Modern Approach* (4th ed.). Pearson.
+
+Thrun, S., Burgard, W., & Fox, D. (2005). *Probabilistic Robotics.* MIT Press.
+
+NYCDOT Open Data Portal. (2024). *NYC Traffic Camera Dataset.*
+
+Bengio, Y., et al. (2016). "Learning Deep Architectures for Structured Prediction." *Foundations and Trends in Machine Learning.*
+
+Sun, J., Parks, S., & Raitses, G. (2024). *Annotation Systems for Behavioral Classification.* Parks Lab Research Notes, Syracuse University.
+
+Litwin-Kumar, A., & Abbott, L. F. (2021). "Learning and Adaptation in Neural Circuits." *Annual Review of Neuroscience.*
+

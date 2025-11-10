@@ -1,0 +1,2117 @@
+metadata:
+  base_path: /Users/gilraitses/pax/data/images_by_location
+  timezone: America/New_York
+  collection_period:
+    start_date: '2025-11-03'
+    end_date: '2025-11-04'
+    total_days: 2
+  total_cameras: 45
+  total_images: 167
+  generated_at: '2025-11-04T20:22:12.852898-05:00'
+collection_stats:
+  date_range:
+    earliest: '2025-11-03'
+    latest: '2025-11-04'
+  dates_collected:
+  - '2025-11-03'
+  - '2025-11-04'
+  images_per_date:
+    '2025-11-03': 45
+    '2025-11-04': 122
+cameras:
+  62ecb539-5e6c-40ff-a771-ea77153cc4ed:
+    camera_id: 62ecb539-5e6c-40ff-a771-ea77153cc4ed
+    camera_name: Rockefeller Plz @ 48 St (between 5 Ave and 6 Ave)
+    avenue: Rockefeller Plz
+    cross_street: 48 St
+    total_images: 4
+    time_range:
+      earliest_utc: '2025-11-03T23:36:24+00:00'
+      latest_utc: '2025-11-05T01:21:14+00:00'
+      earliest_nyc: '2025-11-03T18:36:24-05:00'
+      latest_nyc: '2025-11-04T20:21:14-05:00'
+      duration_hours: 25.75
+      duration_days: 1.07
+    images_by_date:
+      '2025-11-03': 1
+      '2025-11-04': 3
+    images:
+    - timestamp: '2025-11-03T23:36:24+00:00'
+      timestamp_nyc: '2025-11-03T18:36:24-05:00'
+      date: '2025-11-03'
+      date_part: '2025-11-03'
+      time_part: 18-36-24
+      local_path: /Users/gilraitses/pax/data/images_by_location/Rockefeller_Plz/48_St/62ecb539-5e6c-40ff-a771-ea77153cc4ed_2025-11-03_18-36-24.jpg
+      absolute_path: /Users/gilraitses/pax/data/images_by_location/Rockefeller_Plz/48_St/62ecb539-5e6c-40ff-a771-ea77153cc4ed_2025-11-03_18-36-24.jpg
+      size_bytes: 20945
+    - timestamp: '2025-11-04T19:58:48+00:00'
+      timestamp_nyc: '2025-11-04T14:58:48-05:00'
+      date: '2025-11-04'
+      date_part: '2025-11-04'
+      time_part: 14-58-48
+      local_path: /Users/gilraitses/pax/data/images_by_location/Rockefeller_Plz/48_St/62ecb539-5e6c-40ff-a771-ea77153cc4ed_2025-11-04_14-58-48.jpg
+      absolute_path: /Users/gilraitses/pax/data/images_by_location/Rockefeller_Plz/48_St/62ecb539-5e6c-40ff-a771-ea77153cc4ed_2025-11-04_14-58-48.jpg
+      size_bytes: 25668
+    - timestamp: '2025-11-04T20:10:52+00:00'
+      timestamp_nyc: '2025-11-04T15:10:52-05:00'
+      date: '2025-11-04'
+      date_part: '2025-11-04'
+      time_part: 15-10-52
+      local_path: /Users/gilraitses/pax/data/images_by_location/Rockefeller_Plz/48_St/62ecb539-5e6c-40ff-a771-ea77153cc4ed_2025-11-04_15-10-52.jpg
+      absolute_path: /Users/gilraitses/pax/data/images_by_location/Rockefeller_Plz/48_St/62ecb539-5e6c-40ff-a771-ea77153cc4ed_2025-11-04_15-10-52.jpg
+      size_bytes: 25124
+    - timestamp: '2025-11-05T01:21:14+00:00'
+      timestamp_nyc: '2025-11-04T20:21:14-05:00'
+      date: '2025-11-04'
+      date_part: '2025-11-04'
+      time_part: 20-21-14
+      local_path: /Users/gilraitses/pax/data/images_by_location/Rockefeller_Plz/48_St/62ecb539-5e6c-40ff-a771-ea77153cc4ed_2025-11-04_20-21-14.jpg
+      absolute_path: /Users/gilraitses/pax/data/images_by_location/Rockefeller_Plz/48_St/62ecb539-5e6c-40ff-a771-ea77153cc4ed_2025-11-04_20-21-14.jpg
+      size_bytes: 19905
+  e777e4b4-25cb-4c39-98fc-8d6b25cf7de7:
+    camera_id: e777e4b4-25cb-4c39-98fc-8d6b25cf7de7
+    camera_name: 'Lexington Ave @ 53 St '
+    avenue: Lexington Ave
+    cross_street: 53 St
+    total_images: 4
+    time_range:
+      earliest_utc: '2025-11-03T23:36:24+00:00'
+      latest_utc: '2025-11-05T01:21:14+00:00'
+      earliest_nyc: '2025-11-03T18:36:24-05:00'
+      latest_nyc: '2025-11-04T20:21:14-05:00'
+      duration_hours: 25.75
+      duration_days: 1.07
+    images_by_date:
+      '2025-11-03': 1
+      '2025-11-04': 3
+    images:
+    - timestamp: '2025-11-03T23:36:24+00:00'
+      timestamp_nyc: '2025-11-03T18:36:24-05:00'
+      date: '2025-11-03'
+      date_part: '2025-11-03'
+      time_part: 18-36-24
+      local_path: /Users/gilraitses/pax/data/images_by_location/Lexington_Ave/53_St/e777e4b4-25cb-4c39-98fc-8d6b25cf7de7_2025-11-03_18-36-24.jpg
+      absolute_path: /Users/gilraitses/pax/data/images_by_location/Lexington_Ave/53_St/e777e4b4-25cb-4c39-98fc-8d6b25cf7de7_2025-11-03_18-36-24.jpg
+      size_bytes: 19036
+    - timestamp: '2025-11-04T19:58:48+00:00'
+      timestamp_nyc: '2025-11-04T14:58:48-05:00'
+      date: '2025-11-04'
+      date_part: '2025-11-04'
+      time_part: 14-58-48
+      local_path: /Users/gilraitses/pax/data/images_by_location/Lexington_Ave/53_St/e777e4b4-25cb-4c39-98fc-8d6b25cf7de7_2025-11-04_14-58-48.jpg
+      absolute_path: /Users/gilraitses/pax/data/images_by_location/Lexington_Ave/53_St/e777e4b4-25cb-4c39-98fc-8d6b25cf7de7_2025-11-04_14-58-48.jpg
+      size_bytes: 20553
+    - timestamp: '2025-11-04T20:10:52+00:00'
+      timestamp_nyc: '2025-11-04T15:10:52-05:00'
+      date: '2025-11-04'
+      date_part: '2025-11-04'
+      time_part: 15-10-52
+      local_path: /Users/gilraitses/pax/data/images_by_location/Lexington_Ave/53_St/e777e4b4-25cb-4c39-98fc-8d6b25cf7de7_2025-11-04_15-10-52.jpg
+      absolute_path: /Users/gilraitses/pax/data/images_by_location/Lexington_Ave/53_St/e777e4b4-25cb-4c39-98fc-8d6b25cf7de7_2025-11-04_15-10-52.jpg
+      size_bytes: 18491
+    - timestamp: '2025-11-05T01:21:14+00:00'
+      timestamp_nyc: '2025-11-04T20:21:14-05:00'
+      date: '2025-11-04'
+      date_part: '2025-11-04'
+      time_part: 20-21-14
+      local_path: /Users/gilraitses/pax/data/images_by_location/Lexington_Ave/53_St/e777e4b4-25cb-4c39-98fc-8d6b25cf7de7_2025-11-04_20-21-14.jpg
+      absolute_path: /Users/gilraitses/pax/data/images_by_location/Lexington_Ave/53_St/e777e4b4-25cb-4c39-98fc-8d6b25cf7de7_2025-11-04_20-21-14.jpg
+      size_bytes: 18091
+  78a5c61d-9dce-4b52-b0da-bf7d22c1f501:
+    camera_id: 78a5c61d-9dce-4b52-b0da-bf7d22c1f501
+    camera_name: 8 Ave @ Columbus Cr South
+    avenue: 8 Ave
+    cross_street: Columbus St
+    total_images: 4
+    time_range:
+      earliest_utc: '2025-11-03T23:36:24+00:00'
+      latest_utc: '2025-11-05T01:21:14+00:00'
+      earliest_nyc: '2025-11-03T18:36:24-05:00'
+      latest_nyc: '2025-11-04T20:21:14-05:00'
+      duration_hours: 25.75
+      duration_days: 1.07
+    images_by_date:
+      '2025-11-03': 1
+      '2025-11-04': 3
+    images:
+    - timestamp: '2025-11-03T23:36:24+00:00'
+      timestamp_nyc: '2025-11-03T18:36:24-05:00'
+      date: '2025-11-03'
+      date_part: '2025-11-03'
+      time_part: 18-36-24
+      local_path: /Users/gilraitses/pax/data/images_by_location/8_Ave/Columbus_St/78a5c61d-9dce-4b52-b0da-bf7d22c1f501_2025-11-03_18-36-24.jpg
+      absolute_path: /Users/gilraitses/pax/data/images_by_location/8_Ave/Columbus_St/78a5c61d-9dce-4b52-b0da-bf7d22c1f501_2025-11-03_18-36-24.jpg
+      size_bytes: 16141
+    - timestamp: '2025-11-04T19:58:48+00:00'
+      timestamp_nyc: '2025-11-04T14:58:48-05:00'
+      date: '2025-11-04'
+      date_part: '2025-11-04'
+      time_part: 14-58-48
+      local_path: /Users/gilraitses/pax/data/images_by_location/8_Ave/Columbus_St/78a5c61d-9dce-4b52-b0da-bf7d22c1f501_2025-11-04_14-58-48.jpg
+      absolute_path: /Users/gilraitses/pax/data/images_by_location/8_Ave/Columbus_St/78a5c61d-9dce-4b52-b0da-bf7d22c1f501_2025-11-04_14-58-48.jpg
+      size_bytes: 17457
+    - timestamp: '2025-11-04T20:10:52+00:00'
+      timestamp_nyc: '2025-11-04T15:10:52-05:00'
+      date: '2025-11-04'
+      date_part: '2025-11-04'
+      time_part: 15-10-52
+      local_path: /Users/gilraitses/pax/data/images_by_location/8_Ave/Columbus_St/78a5c61d-9dce-4b52-b0da-bf7d22c1f501_2025-11-04_15-10-52.jpg
+      absolute_path: /Users/gilraitses/pax/data/images_by_location/8_Ave/Columbus_St/78a5c61d-9dce-4b52-b0da-bf7d22c1f501_2025-11-04_15-10-52.jpg
+      size_bytes: 18008
+    - timestamp: '2025-11-05T01:21:14+00:00'
+      timestamp_nyc: '2025-11-04T20:21:14-05:00'
+      date: '2025-11-04'
+      date_part: '2025-11-04'
+      time_part: 20-21-14
+      local_path: /Users/gilraitses/pax/data/images_by_location/8_Ave/Columbus_St/78a5c61d-9dce-4b52-b0da-bf7d22c1f501_2025-11-04_20-21-14.jpg
+      absolute_path: /Users/gilraitses/pax/data/images_by_location/8_Ave/Columbus_St/78a5c61d-9dce-4b52-b0da-bf7d22c1f501_2025-11-04_20-21-14.jpg
+      size_bytes: 17236
+  7a7016c5-a086-40fd-9298-90f17f8b6cea:
+    camera_id: 7a7016c5-a086-40fd-9298-90f17f8b6cea
+    camera_name: 5 Ave @ 49 St
+    avenue: 5 Ave
+    cross_street: 49 St
+    total_images: 4
+    time_range:
+      earliest_utc: '2025-11-03T23:36:24+00:00'
+      latest_utc: '2025-11-05T01:21:14+00:00'
+      earliest_nyc: '2025-11-03T18:36:24-05:00'
+      latest_nyc: '2025-11-04T20:21:14-05:00'
+      duration_hours: 25.75
+      duration_days: 1.07
+    images_by_date:
+      '2025-11-03': 1
+      '2025-11-04': 3
+    images:
+    - timestamp: '2025-11-03T23:36:24+00:00'
+      timestamp_nyc: '2025-11-03T18:36:24-05:00'
+      date: '2025-11-03'
+      date_part: '2025-11-03'
+      time_part: 18-36-24
+      local_path: /Users/gilraitses/pax/data/images_by_location/5_Ave/49_St/7a7016c5-a086-40fd-9298-90f17f8b6cea_2025-11-03_18-36-24.jpg
+      absolute_path: /Users/gilraitses/pax/data/images_by_location/5_Ave/49_St/7a7016c5-a086-40fd-9298-90f17f8b6cea_2025-11-03_18-36-24.jpg
+      size_bytes: 21679
+    - timestamp: '2025-11-04T19:58:48+00:00'
+      timestamp_nyc: '2025-11-04T14:58:48-05:00'
+      date: '2025-11-04'
+      date_part: '2025-11-04'
+      time_part: 14-58-48
+      local_path: /Users/gilraitses/pax/data/images_by_location/5_Ave/49_St/7a7016c5-a086-40fd-9298-90f17f8b6cea_2025-11-04_14-58-48.jpg
+      absolute_path: /Users/gilraitses/pax/data/images_by_location/5_Ave/49_St/7a7016c5-a086-40fd-9298-90f17f8b6cea_2025-11-04_14-58-48.jpg
+      size_bytes: 22325
+    - timestamp: '2025-11-04T20:10:52+00:00'
+      timestamp_nyc: '2025-11-04T15:10:52-05:00'
+      date: '2025-11-04'
+      date_part: '2025-11-04'
+      time_part: 15-10-52
+      local_path: /Users/gilraitses/pax/data/images_by_location/5_Ave/49_St/7a7016c5-a086-40fd-9298-90f17f8b6cea_2025-11-04_15-10-52.jpg
+      absolute_path: /Users/gilraitses/pax/data/images_by_location/5_Ave/49_St/7a7016c5-a086-40fd-9298-90f17f8b6cea_2025-11-04_15-10-52.jpg
+      size_bytes: 21322
+    - timestamp: '2025-11-05T01:21:14+00:00'
+      timestamp_nyc: '2025-11-04T20:21:14-05:00'
+      date: '2025-11-04'
+      date_part: '2025-11-04'
+      time_part: 20-21-14
+      local_path: /Users/gilraitses/pax/data/images_by_location/5_Ave/49_St/7a7016c5-a086-40fd-9298-90f17f8b6cea_2025-11-04_20-21-14.jpg
+      absolute_path: /Users/gilraitses/pax/data/images_by_location/5_Ave/49_St/7a7016c5-a086-40fd-9298-90f17f8b6cea_2025-11-04_20-21-14.jpg
+      size_bytes: 20477
+  2589c0d6-c389-4861-b812-4ae68f560eba:
+    camera_id: 2589c0d6-c389-4861-b812-4ae68f560eba
+    camera_name: 46 St Bet. 5 Ave & Madison Ave
+    avenue: 5 Ave
+    cross_street: 46 St
+    total_images: 4
+    time_range:
+      earliest_utc: '2025-11-03T23:36:24+00:00'
+      latest_utc: '2025-11-05T01:21:14+00:00'
+      earliest_nyc: '2025-11-03T18:36:24-05:00'
+      latest_nyc: '2025-11-04T20:21:14-05:00'
+      duration_hours: 25.75
+      duration_days: 1.07
+    images_by_date:
+      '2025-11-03': 1
+      '2025-11-04': 3
+    images:
+    - timestamp: '2025-11-03T23:36:24+00:00'
+      timestamp_nyc: '2025-11-03T18:36:24-05:00'
+      date: '2025-11-03'
+      date_part: '2025-11-03'
+      time_part: 18-36-24
+      local_path: /Users/gilraitses/pax/data/images_by_location/5_Ave/46_St/2589c0d6-c389-4861-b812-4ae68f560eba_2025-11-03_18-36-24.jpg
+      absolute_path: /Users/gilraitses/pax/data/images_by_location/5_Ave/46_St/2589c0d6-c389-4861-b812-4ae68f560eba_2025-11-03_18-36-24.jpg
+      size_bytes: 12177
+    - timestamp: '2025-11-04T19:58:48+00:00'
+      timestamp_nyc: '2025-11-04T14:58:48-05:00'
+      date: '2025-11-04'
+      date_part: '2025-11-04'
+      time_part: 14-58-48
+      local_path: /Users/gilraitses/pax/data/images_by_location/5_Ave/46_St/2589c0d6-c389-4861-b812-4ae68f560eba_2025-11-04_14-58-48.jpg
+      absolute_path: /Users/gilraitses/pax/data/images_by_location/5_Ave/46_St/2589c0d6-c389-4861-b812-4ae68f560eba_2025-11-04_14-58-48.jpg
+      size_bytes: 22513
+    - timestamp: '2025-11-04T20:10:52+00:00'
+      timestamp_nyc: '2025-11-04T15:10:52-05:00'
+      date: '2025-11-04'
+      date_part: '2025-11-04'
+      time_part: 15-10-52
+      local_path: /Users/gilraitses/pax/data/images_by_location/5_Ave/46_St/2589c0d6-c389-4861-b812-4ae68f560eba_2025-11-04_15-10-52.jpg
+      absolute_path: /Users/gilraitses/pax/data/images_by_location/5_Ave/46_St/2589c0d6-c389-4861-b812-4ae68f560eba_2025-11-04_15-10-52.jpg
+      size_bytes: 21908
+    - timestamp: '2025-11-05T01:21:14+00:00'
+      timestamp_nyc: '2025-11-04T20:21:14-05:00'
+      date: '2025-11-04'
+      date_part: '2025-11-04'
+      time_part: 20-21-14
+      local_path: /Users/gilraitses/pax/data/images_by_location/5_Ave/46_St/2589c0d6-c389-4861-b812-4ae68f560eba_2025-11-04_20-21-14.jpg
+      absolute_path: /Users/gilraitses/pax/data/images_by_location/5_Ave/46_St/2589c0d6-c389-4861-b812-4ae68f560eba_2025-11-04_20-21-14.jpg
+      size_bytes: 9058
+  03a8a2da-3ac2-45aa-a5ba-4ff7d1ecbd22:
+    camera_id: 03a8a2da-3ac2-45aa-a5ba-4ff7d1ecbd22
+    camera_name: 5 Ave @ 47 St
+    avenue: 5 Ave
+    cross_street: 47 St
+    total_images: 4
+    time_range:
+      earliest_utc: '2025-11-03T23:36:24+00:00'
+      latest_utc: '2025-11-05T01:21:14+00:00'
+      earliest_nyc: '2025-11-03T18:36:24-05:00'
+      latest_nyc: '2025-11-04T20:21:14-05:00'
+      duration_hours: 25.75
+      duration_days: 1.07
+    images_by_date:
+      '2025-11-03': 1
+      '2025-11-04': 3
+    images:
+    - timestamp: '2025-11-03T23:36:24+00:00'
+      timestamp_nyc: '2025-11-03T18:36:24-05:00'
+      date: '2025-11-03'
+      date_part: '2025-11-03'
+      time_part: 18-36-24
+      local_path: /Users/gilraitses/pax/data/images_by_location/5_Ave/47_St/03a8a2da-3ac2-45aa-a5ba-4ff7d1ecbd22_2025-11-03_18-36-24.jpg
+      absolute_path: /Users/gilraitses/pax/data/images_by_location/5_Ave/47_St/03a8a2da-3ac2-45aa-a5ba-4ff7d1ecbd22_2025-11-03_18-36-24.jpg
+      size_bytes: 17059
+    - timestamp: '2025-11-04T19:58:48+00:00'
+      timestamp_nyc: '2025-11-04T14:58:48-05:00'
+      date: '2025-11-04'
+      date_part: '2025-11-04'
+      time_part: 14-58-48
+      local_path: /Users/gilraitses/pax/data/images_by_location/5_Ave/47_St/03a8a2da-3ac2-45aa-a5ba-4ff7d1ecbd22_2025-11-04_14-58-48.jpg
+      absolute_path: /Users/gilraitses/pax/data/images_by_location/5_Ave/47_St/03a8a2da-3ac2-45aa-a5ba-4ff7d1ecbd22_2025-11-04_14-58-48.jpg
+      size_bytes: 18007
+    - timestamp: '2025-11-04T20:10:52+00:00'
+      timestamp_nyc: '2025-11-04T15:10:52-05:00'
+      date: '2025-11-04'
+      date_part: '2025-11-04'
+      time_part: 15-10-52
+      local_path: /Users/gilraitses/pax/data/images_by_location/5_Ave/47_St/03a8a2da-3ac2-45aa-a5ba-4ff7d1ecbd22_2025-11-04_15-10-52.jpg
+      absolute_path: /Users/gilraitses/pax/data/images_by_location/5_Ave/47_St/03a8a2da-3ac2-45aa-a5ba-4ff7d1ecbd22_2025-11-04_15-10-52.jpg
+      size_bytes: 17224
+    - timestamp: '2025-11-05T01:21:14+00:00'
+      timestamp_nyc: '2025-11-04T20:21:14-05:00'
+      date: '2025-11-04'
+      date_part: '2025-11-04'
+      time_part: 20-21-14
+      local_path: /Users/gilraitses/pax/data/images_by_location/5_Ave/47_St/03a8a2da-3ac2-45aa-a5ba-4ff7d1ecbd22_2025-11-04_20-21-14.jpg
+      absolute_path: /Users/gilraitses/pax/data/images_by_location/5_Ave/47_St/03a8a2da-3ac2-45aa-a5ba-4ff7d1ecbd22_2025-11-04_20-21-14.jpg
+      size_bytes: 15876
+  f4e822f7-d2a2-4146-851c-04b2fa6d5265:
+    camera_id: f4e822f7-d2a2-4146-851c-04b2fa6d5265
+    camera_name: 5 Ave @ 42 St
+    avenue: 5 Ave
+    cross_street: 42 St
+    total_images: 4
+    time_range:
+      earliest_utc: '2025-11-03T23:36:24+00:00'
+      latest_utc: '2025-11-05T01:21:14+00:00'
+      earliest_nyc: '2025-11-03T18:36:24-05:00'
+      latest_nyc: '2025-11-04T20:21:14-05:00'
+      duration_hours: 25.75
+      duration_days: 1.07
+    images_by_date:
+      '2025-11-03': 1
+      '2025-11-04': 3
+    images:
+    - timestamp: '2025-11-03T23:36:24+00:00'
+      timestamp_nyc: '2025-11-03T18:36:24-05:00'
+      date: '2025-11-03'
+      date_part: '2025-11-03'
+      time_part: 18-36-24
+      local_path: /Users/gilraitses/pax/data/images_by_location/5_Ave/42_St/f4e822f7-d2a2-4146-851c-04b2fa6d5265_2025-11-03_18-36-24.jpg
+      absolute_path: /Users/gilraitses/pax/data/images_by_location/5_Ave/42_St/f4e822f7-d2a2-4146-851c-04b2fa6d5265_2025-11-03_18-36-24.jpg
+      size_bytes: 22731
+    - timestamp: '2025-11-04T19:58:48+00:00'
+      timestamp_nyc: '2025-11-04T14:58:48-05:00'
+      date: '2025-11-04'
+      date_part: '2025-11-04'
+      time_part: 14-58-48
+      local_path: /Users/gilraitses/pax/data/images_by_location/5_Ave/42_St/f4e822f7-d2a2-4146-851c-04b2fa6d5265_2025-11-04_14-58-48.jpg
+      absolute_path: /Users/gilraitses/pax/data/images_by_location/5_Ave/42_St/f4e822f7-d2a2-4146-851c-04b2fa6d5265_2025-11-04_14-58-48.jpg
+      size_bytes: 25940
+    - timestamp: '2025-11-04T20:10:52+00:00'
+      timestamp_nyc: '2025-11-04T15:10:52-05:00'
+      date: '2025-11-04'
+      date_part: '2025-11-04'
+      time_part: 15-10-52
+      local_path: /Users/gilraitses/pax/data/images_by_location/5_Ave/42_St/f4e822f7-d2a2-4146-851c-04b2fa6d5265_2025-11-04_15-10-52.jpg
+      absolute_path: /Users/gilraitses/pax/data/images_by_location/5_Ave/42_St/f4e822f7-d2a2-4146-851c-04b2fa6d5265_2025-11-04_15-10-52.jpg
+      size_bytes: 24896
+    - timestamp: '2025-11-05T01:21:14+00:00'
+      timestamp_nyc: '2025-11-04T20:21:14-05:00'
+      date: '2025-11-04'
+      date_part: '2025-11-04'
+      time_part: 20-21-14
+      local_path: /Users/gilraitses/pax/data/images_by_location/5_Ave/42_St/f4e822f7-d2a2-4146-851c-04b2fa6d5265_2025-11-04_20-21-14.jpg
+      absolute_path: /Users/gilraitses/pax/data/images_by_location/5_Ave/42_St/f4e822f7-d2a2-4146-851c-04b2fa6d5265_2025-11-04_20-21-14.jpg
+      size_bytes: 23425
+  5bb6d7d8-39ce-43b8-b539-376fbcf73927:
+    camera_id: 5bb6d7d8-39ce-43b8-b539-376fbcf73927
+    camera_name: 3 Ave @ 49 St
+    avenue: 3 Ave
+    cross_street: 49 St
+    total_images: 5
+    time_range:
+      earliest_utc: '2025-11-03T23:36:24+00:00'
+      latest_utc: '2025-11-05T01:21:14+00:00'
+      earliest_nyc: '2025-11-03T18:36:24-05:00'
+      latest_nyc: '2025-11-04T20:21:14-05:00'
+      duration_hours: 25.75
+      duration_days: 1.07
+    images_by_date:
+      '2025-11-03': 1
+      '2025-11-04': 4
+    images:
+    - timestamp: '2025-11-03T23:36:24+00:00'
+      timestamp_nyc: '2025-11-03T18:36:24-05:00'
+      date: '2025-11-03'
+      date_part: '2025-11-03'
+      time_part: 18-36-24
+      local_path: /Users/gilraitses/pax/data/images_by_location/3_Ave/49_St/5bb6d7d8-39ce-43b8-b539-376fbcf73927_2025-11-03_18-36-24.jpg
+      absolute_path: /Users/gilraitses/pax/data/images_by_location/3_Ave/49_St/5bb6d7d8-39ce-43b8-b539-376fbcf73927_2025-11-03_18-36-24.jpg
+      size_bytes: 19955
+    - timestamp: '2025-11-04T19:58:48+00:00'
+      timestamp_nyc: '2025-11-04T14:58:48-05:00'
+      date: '2025-11-04'
+      date_part: '2025-11-04'
+      time_part: 14-58-48
+      local_path: /Users/gilraitses/pax/data/images_by_location/3_Ave/49_St/5bb6d7d8-39ce-43b8-b539-376fbcf73927_2025-11-04_14-58-48.jpg
+      absolute_path: /Users/gilraitses/pax/data/images_by_location/3_Ave/49_St/5bb6d7d8-39ce-43b8-b539-376fbcf73927_2025-11-04_14-58-48.jpg
+      size_bytes: 21652
+    - timestamp: '2025-11-04T20:02:05+00:00'
+      timestamp_nyc: '2025-11-04T15:02:05-05:00'
+      date: '2025-11-04'
+      date_part: '2025-11-04'
+      time_part: 15-02-05
+      local_path: /Users/gilraitses/pax/data/images_by_location/3_Ave/49_St/5bb6d7d8-39ce-43b8-b539-376fbcf73927_2025-11-04_15-02-05.jpg
+      absolute_path: /Users/gilraitses/pax/data/images_by_location/3_Ave/49_St/5bb6d7d8-39ce-43b8-b539-376fbcf73927_2025-11-04_15-02-05.jpg
+      size_bytes: 20355
+    - timestamp: '2025-11-04T20:10:52+00:00'
+      timestamp_nyc: '2025-11-04T15:10:52-05:00'
+      date: '2025-11-04'
+      date_part: '2025-11-04'
+      time_part: 15-10-52
+      local_path: /Users/gilraitses/pax/data/images_by_location/3_Ave/49_St/5bb6d7d8-39ce-43b8-b539-376fbcf73927_2025-11-04_15-10-52.jpg
+      absolute_path: /Users/gilraitses/pax/data/images_by_location/3_Ave/49_St/5bb6d7d8-39ce-43b8-b539-376fbcf73927_2025-11-04_15-10-52.jpg
+      size_bytes: 20409
+    - timestamp: '2025-11-05T01:21:14+00:00'
+      timestamp_nyc: '2025-11-04T20:21:14-05:00'
+      date: '2025-11-04'
+      date_part: '2025-11-04'
+      time_part: 20-21-14
+      local_path: /Users/gilraitses/pax/data/images_by_location/3_Ave/49_St/5bb6d7d8-39ce-43b8-b539-376fbcf73927_2025-11-04_20-21-14.jpg
+      absolute_path: /Users/gilraitses/pax/data/images_by_location/3_Ave/49_St/5bb6d7d8-39ce-43b8-b539-376fbcf73927_2025-11-04_20-21-14.jpg
+      size_bytes: 18816
+  85809312-60f2-4a52-a694-82628529c05a:
+    camera_id: 85809312-60f2-4a52-a694-82628529c05a
+    camera_name: Central Park S @ Columbus Cr
+    avenue: Central Park S
+    cross_street: Columbus
+    total_images: 4
+    time_range:
+      earliest_utc: '2025-11-03T23:36:24+00:00'
+      latest_utc: '2025-11-05T01:21:14+00:00'
+      earliest_nyc: '2025-11-03T18:36:24-05:00'
+      latest_nyc: '2025-11-04T20:21:14-05:00'
+      duration_hours: 25.75
+      duration_days: 1.07
+    images_by_date:
+      '2025-11-03': 1
+      '2025-11-04': 3
+    images:
+    - timestamp: '2025-11-03T23:36:24+00:00'
+      timestamp_nyc: '2025-11-03T18:36:24-05:00'
+      date: '2025-11-03'
+      date_part: '2025-11-03'
+      time_part: 18-36-24
+      local_path: /Users/gilraitses/pax/data/images_by_location/Central_Park_S/Columbus/85809312-60f2-4a52-a694-82628529c05a_2025-11-03_18-36-24.jpg
+      absolute_path: /Users/gilraitses/pax/data/images_by_location/Central_Park_S/Columbus/85809312-60f2-4a52-a694-82628529c05a_2025-11-03_18-36-24.jpg
+      size_bytes: 19868
+    - timestamp: '2025-11-04T19:58:48+00:00'
+      timestamp_nyc: '2025-11-04T14:58:48-05:00'
+      date: '2025-11-04'
+      date_part: '2025-11-04'
+      time_part: 14-58-48
+      local_path: /Users/gilraitses/pax/data/images_by_location/Central_Park_S/Columbus/85809312-60f2-4a52-a694-82628529c05a_2025-11-04_14-58-48.jpg
+      absolute_path: /Users/gilraitses/pax/data/images_by_location/Central_Park_S/Columbus/85809312-60f2-4a52-a694-82628529c05a_2025-11-04_14-58-48.jpg
+      size_bytes: 22181
+    - timestamp: '2025-11-04T20:10:52+00:00'
+      timestamp_nyc: '2025-11-04T15:10:52-05:00'
+      date: '2025-11-04'
+      date_part: '2025-11-04'
+      time_part: 15-10-52
+      local_path: /Users/gilraitses/pax/data/images_by_location/Central_Park_S/Columbus/85809312-60f2-4a52-a694-82628529c05a_2025-11-04_15-10-52.jpg
+      absolute_path: /Users/gilraitses/pax/data/images_by_location/Central_Park_S/Columbus/85809312-60f2-4a52-a694-82628529c05a_2025-11-04_15-10-52.jpg
+      size_bytes: 22059
+    - timestamp: '2025-11-05T01:21:14+00:00'
+      timestamp_nyc: '2025-11-04T20:21:14-05:00'
+      date: '2025-11-04'
+      date_part: '2025-11-04'
+      time_part: 20-21-14
+      local_path: /Users/gilraitses/pax/data/images_by_location/Central_Park_S/Columbus/85809312-60f2-4a52-a694-82628529c05a_2025-11-04_20-21-14.jpg
+      absolute_path: /Users/gilraitses/pax/data/images_by_location/Central_Park_S/Columbus/85809312-60f2-4a52-a694-82628529c05a_2025-11-04_20-21-14.jpg
+      size_bytes: 19661
+  5caa3ace-277b-42db-97bd-585f29b0d49f:
+    camera_id: 5caa3ace-277b-42db-97bd-585f29b0d49f
+    camera_name: Central Park West @ W 61 St
+    avenue: Central Park West
+    cross_street: W
+    total_images: 4
+    time_range:
+      earliest_utc: '2025-11-03T23:36:24+00:00'
+      latest_utc: '2025-11-05T01:21:14+00:00'
+      earliest_nyc: '2025-11-03T18:36:24-05:00'
+      latest_nyc: '2025-11-04T20:21:14-05:00'
+      duration_hours: 25.75
+      duration_days: 1.07
+    images_by_date:
+      '2025-11-03': 1
+      '2025-11-04': 3
+    images:
+    - timestamp: '2025-11-03T23:36:24+00:00'
+      timestamp_nyc: '2025-11-03T18:36:24-05:00'
+      date: '2025-11-03'
+      date_part: '2025-11-03'
+      time_part: 18-36-24
+      local_path: /Users/gilraitses/pax/data/images_by_location/Central_Park_West/W/5caa3ace-277b-42db-97bd-585f29b0d49f_2025-11-03_18-36-24.jpg
+      absolute_path: /Users/gilraitses/pax/data/images_by_location/Central_Park_West/W/5caa3ace-277b-42db-97bd-585f29b0d49f_2025-11-03_18-36-24.jpg
+      size_bytes: 19427
+    - timestamp: '2025-11-04T19:58:48+00:00'
+      timestamp_nyc: '2025-11-04T14:58:48-05:00'
+      date: '2025-11-04'
+      date_part: '2025-11-04'
+      time_part: 14-58-48
+      local_path: /Users/gilraitses/pax/data/images_by_location/Central_Park_West/W/5caa3ace-277b-42db-97bd-585f29b0d49f_2025-11-04_14-58-48.jpg
+      absolute_path: /Users/gilraitses/pax/data/images_by_location/Central_Park_West/W/5caa3ace-277b-42db-97bd-585f29b0d49f_2025-11-04_14-58-48.jpg
+      size_bytes: 23771
+    - timestamp: '2025-11-04T20:10:52+00:00'
+      timestamp_nyc: '2025-11-04T15:10:52-05:00'
+      date: '2025-11-04'
+      date_part: '2025-11-04'
+      time_part: 15-10-52
+      local_path: /Users/gilraitses/pax/data/images_by_location/Central_Park_West/W/5caa3ace-277b-42db-97bd-585f29b0d49f_2025-11-04_15-10-52.jpg
+      absolute_path: /Users/gilraitses/pax/data/images_by_location/Central_Park_West/W/5caa3ace-277b-42db-97bd-585f29b0d49f_2025-11-04_15-10-52.jpg
+      size_bytes: 24724
+    - timestamp: '2025-11-05T01:21:14+00:00'
+      timestamp_nyc: '2025-11-04T20:21:14-05:00'
+      date: '2025-11-04'
+      date_part: '2025-11-04'
+      time_part: 20-21-14
+      local_path: /Users/gilraitses/pax/data/images_by_location/Central_Park_West/W/5caa3ace-277b-42db-97bd-585f29b0d49f_2025-11-04_20-21-14.jpg
+      absolute_path: /Users/gilraitses/pax/data/images_by_location/Central_Park_West/W/5caa3ace-277b-42db-97bd-585f29b0d49f_2025-11-04_20-21-14.jpg
+      size_bytes: 21485
+  d78ebdc6-2211-479e-bda6-59d79db20258:
+    camera_id: d78ebdc6-2211-479e-bda6-59d79db20258
+    camera_name: 8 Ave @ 57 St
+    avenue: 8 Ave
+    cross_street: 57 St
+    total_images: 4
+    time_range:
+      earliest_utc: '2025-11-03T23:36:24+00:00'
+      latest_utc: '2025-11-05T01:21:14+00:00'
+      earliest_nyc: '2025-11-03T18:36:24-05:00'
+      latest_nyc: '2025-11-04T20:21:14-05:00'
+      duration_hours: 25.75
+      duration_days: 1.07
+    images_by_date:
+      '2025-11-03': 1
+      '2025-11-04': 3
+    images:
+    - timestamp: '2025-11-03T23:36:24+00:00'
+      timestamp_nyc: '2025-11-03T18:36:24-05:00'
+      date: '2025-11-03'
+      date_part: '2025-11-03'
+      time_part: 18-36-24
+      local_path: /Users/gilraitses/pax/data/images_by_location/8_Ave/57_St/d78ebdc6-2211-479e-bda6-59d79db20258_2025-11-03_18-36-24.jpg
+      absolute_path: /Users/gilraitses/pax/data/images_by_location/8_Ave/57_St/d78ebdc6-2211-479e-bda6-59d79db20258_2025-11-03_18-36-24.jpg
+      size_bytes: 19404
+    - timestamp: '2025-11-04T19:58:48+00:00'
+      timestamp_nyc: '2025-11-04T14:58:48-05:00'
+      date: '2025-11-04'
+      date_part: '2025-11-04'
+      time_part: 14-58-48
+      local_path: /Users/gilraitses/pax/data/images_by_location/8_Ave/57_St/d78ebdc6-2211-479e-bda6-59d79db20258_2025-11-04_14-58-48.jpg
+      absolute_path: /Users/gilraitses/pax/data/images_by_location/8_Ave/57_St/d78ebdc6-2211-479e-bda6-59d79db20258_2025-11-04_14-58-48.jpg
+      size_bytes: 15938
+    - timestamp: '2025-11-04T20:10:52+00:00'
+      timestamp_nyc: '2025-11-04T15:10:52-05:00'
+      date: '2025-11-04'
+      date_part: '2025-11-04'
+      time_part: 15-10-52
+      local_path: /Users/gilraitses/pax/data/images_by_location/8_Ave/57_St/d78ebdc6-2211-479e-bda6-59d79db20258_2025-11-04_15-10-52.jpg
+      absolute_path: /Users/gilraitses/pax/data/images_by_location/8_Ave/57_St/d78ebdc6-2211-479e-bda6-59d79db20258_2025-11-04_15-10-52.jpg
+      size_bytes: 19250
+    - timestamp: '2025-11-05T01:21:14+00:00'
+      timestamp_nyc: '2025-11-04T20:21:14-05:00'
+      date: '2025-11-04'
+      date_part: '2025-11-04'
+      time_part: 20-21-14
+      local_path: /Users/gilraitses/pax/data/images_by_location/8_Ave/57_St/d78ebdc6-2211-479e-bda6-59d79db20258_2025-11-04_20-21-14.jpg
+      absolute_path: /Users/gilraitses/pax/data/images_by_location/8_Ave/57_St/d78ebdc6-2211-479e-bda6-59d79db20258_2025-11-04_20-21-14.jpg
+      size_bytes: 19701
+  4f3f56e3-f68e-4b60-a4ba-153ecb9094f7:
+    camera_id: 4f3f56e3-f68e-4b60-a4ba-153ecb9094f7
+    camera_name: 6 AVE @ 50 St
+    avenue: 6 AVE
+    cross_street: 50 St
+    total_images: 4
+    time_range:
+      earliest_utc: '2025-11-03T23:36:24+00:00'
+      latest_utc: '2025-11-05T01:21:14+00:00'
+      earliest_nyc: '2025-11-03T18:36:24-05:00'
+      latest_nyc: '2025-11-04T20:21:14-05:00'
+      duration_hours: 25.75
+      duration_days: 1.07
+    images_by_date:
+      '2025-11-03': 1
+      '2025-11-04': 3
+    images:
+    - timestamp: '2025-11-03T23:36:24+00:00'
+      timestamp_nyc: '2025-11-03T18:36:24-05:00'
+      date: '2025-11-03'
+      date_part: '2025-11-03'
+      time_part: 18-36-24
+      local_path: /Users/gilraitses/pax/data/images_by_location/6_AVE/50_St/4f3f56e3-f68e-4b60-a4ba-153ecb9094f7_2025-11-03_18-36-24.jpg
+      absolute_path: /Users/gilraitses/pax/data/images_by_location/6_AVE/50_St/4f3f56e3-f68e-4b60-a4ba-153ecb9094f7_2025-11-03_18-36-24.jpg
+      size_bytes: 22812
+    - timestamp: '2025-11-04T19:58:48+00:00'
+      timestamp_nyc: '2025-11-04T14:58:48-05:00'
+      date: '2025-11-04'
+      date_part: '2025-11-04'
+      time_part: 14-58-48
+      local_path: /Users/gilraitses/pax/data/images_by_location/6_AVE/50_St/4f3f56e3-f68e-4b60-a4ba-153ecb9094f7_2025-11-04_14-58-48.jpg
+      absolute_path: /Users/gilraitses/pax/data/images_by_location/6_AVE/50_St/4f3f56e3-f68e-4b60-a4ba-153ecb9094f7_2025-11-04_14-58-48.jpg
+      size_bytes: 23599
+    - timestamp: '2025-11-04T20:10:52+00:00'
+      timestamp_nyc: '2025-11-04T15:10:52-05:00'
+      date: '2025-11-04'
+      date_part: '2025-11-04'
+      time_part: 15-10-52
+      local_path: /Users/gilraitses/pax/data/images_by_location/6_AVE/50_St/4f3f56e3-f68e-4b60-a4ba-153ecb9094f7_2025-11-04_15-10-52.jpg
+      absolute_path: /Users/gilraitses/pax/data/images_by_location/6_AVE/50_St/4f3f56e3-f68e-4b60-a4ba-153ecb9094f7_2025-11-04_15-10-52.jpg
+      size_bytes: 22893
+    - timestamp: '2025-11-05T01:21:14+00:00'
+      timestamp_nyc: '2025-11-04T20:21:14-05:00'
+      date: '2025-11-04'
+      date_part: '2025-11-04'
+      time_part: 20-21-14
+      local_path: /Users/gilraitses/pax/data/images_by_location/6_AVE/50_St/4f3f56e3-f68e-4b60-a4ba-153ecb9094f7_2025-11-04_20-21-14.jpg
+      absolute_path: /Users/gilraitses/pax/data/images_by_location/6_AVE/50_St/4f3f56e3-f68e-4b60-a4ba-153ecb9094f7_2025-11-04_20-21-14.jpg
+      size_bytes: 23356
+  879ab924-18ac-4779-a681-395d73a0f0cc:
+    camera_id: 879ab924-18ac-4779-a681-395d73a0f0cc
+    camera_name: Madison Ave @ E 44 St
+    avenue: Madison Ave
+    cross_street: E St
+    total_images: 4
+    time_range:
+      earliest_utc: '2025-11-03T23:36:24+00:00'
+      latest_utc: '2025-11-05T01:21:14+00:00'
+      earliest_nyc: '2025-11-03T18:36:24-05:00'
+      latest_nyc: '2025-11-04T20:21:14-05:00'
+      duration_hours: 25.75
+      duration_days: 1.07
+    images_by_date:
+      '2025-11-03': 1
+      '2025-11-04': 3
+    images:
+    - timestamp: '2025-11-03T23:36:24+00:00'
+      timestamp_nyc: '2025-11-03T18:36:24-05:00'
+      date: '2025-11-03'
+      date_part: '2025-11-03'
+      time_part: 18-36-24
+      local_path: /Users/gilraitses/pax/data/images_by_location/Madison_Ave/E_St/879ab924-18ac-4779-a681-395d73a0f0cc_2025-11-03_18-36-24.jpg
+      absolute_path: /Users/gilraitses/pax/data/images_by_location/Madison_Ave/E_St/879ab924-18ac-4779-a681-395d73a0f0cc_2025-11-03_18-36-24.jpg
+      size_bytes: 20647
+    - timestamp: '2025-11-04T19:58:48+00:00'
+      timestamp_nyc: '2025-11-04T14:58:48-05:00'
+      date: '2025-11-04'
+      date_part: '2025-11-04'
+      time_part: 14-58-48
+      local_path: /Users/gilraitses/pax/data/images_by_location/Madison_Ave/E_St/879ab924-18ac-4779-a681-395d73a0f0cc_2025-11-04_14-58-48.jpg
+      absolute_path: /Users/gilraitses/pax/data/images_by_location/Madison_Ave/E_St/879ab924-18ac-4779-a681-395d73a0f0cc_2025-11-04_14-58-48.jpg
+      size_bytes: 22228
+    - timestamp: '2025-11-04T20:10:52+00:00'
+      timestamp_nyc: '2025-11-04T15:10:52-05:00'
+      date: '2025-11-04'
+      date_part: '2025-11-04'
+      time_part: 15-10-52
+      local_path: /Users/gilraitses/pax/data/images_by_location/Madison_Ave/E_St/879ab924-18ac-4779-a681-395d73a0f0cc_2025-11-04_15-10-52.jpg
+      absolute_path: /Users/gilraitses/pax/data/images_by_location/Madison_Ave/E_St/879ab924-18ac-4779-a681-395d73a0f0cc_2025-11-04_15-10-52.jpg
+      size_bytes: 22915
+    - timestamp: '2025-11-05T01:21:14+00:00'
+      timestamp_nyc: '2025-11-04T20:21:14-05:00'
+      date: '2025-11-04'
+      date_part: '2025-11-04'
+      time_part: 20-21-14
+      local_path: /Users/gilraitses/pax/data/images_by_location/Madison_Ave/E_St/879ab924-18ac-4779-a681-395d73a0f0cc_2025-11-04_20-21-14.jpg
+      absolute_path: /Users/gilraitses/pax/data/images_by_location/Madison_Ave/E_St/879ab924-18ac-4779-a681-395d73a0f0cc_2025-11-04_20-21-14.jpg
+      size_bytes: 20285
+  4ebe49c8-3e68-43f7-b415-da3db9f72693:
+    camera_id: 4ebe49c8-3e68-43f7-b415-da3db9f72693
+    camera_name: 7 Ave @ 54 St
+    avenue: 7 Ave
+    cross_street: 54 St
+    total_images: 4
+    time_range:
+      earliest_utc: '2025-11-03T23:36:24+00:00'
+      latest_utc: '2025-11-05T01:21:14+00:00'
+      earliest_nyc: '2025-11-03T18:36:24-05:00'
+      latest_nyc: '2025-11-04T20:21:14-05:00'
+      duration_hours: 25.75
+      duration_days: 1.07
+    images_by_date:
+      '2025-11-03': 1
+      '2025-11-04': 3
+    images:
+    - timestamp: '2025-11-03T23:36:24+00:00'
+      timestamp_nyc: '2025-11-03T18:36:24-05:00'
+      date: '2025-11-03'
+      date_part: '2025-11-03'
+      time_part: 18-36-24
+      local_path: /Users/gilraitses/pax/data/images_by_location/7_Ave/54_St/4ebe49c8-3e68-43f7-b415-da3db9f72693_2025-11-03_18-36-24.jpg
+      absolute_path: /Users/gilraitses/pax/data/images_by_location/7_Ave/54_St/4ebe49c8-3e68-43f7-b415-da3db9f72693_2025-11-03_18-36-24.jpg
+      size_bytes: 22061
+    - timestamp: '2025-11-04T19:58:48+00:00'
+      timestamp_nyc: '2025-11-04T14:58:48-05:00'
+      date: '2025-11-04'
+      date_part: '2025-11-04'
+      time_part: 14-58-48
+      local_path: /Users/gilraitses/pax/data/images_by_location/7_Ave/54_St/4ebe49c8-3e68-43f7-b415-da3db9f72693_2025-11-04_14-58-48.jpg
+      absolute_path: /Users/gilraitses/pax/data/images_by_location/7_Ave/54_St/4ebe49c8-3e68-43f7-b415-da3db9f72693_2025-11-04_14-58-48.jpg
+      size_bytes: 25573
+    - timestamp: '2025-11-04T20:10:52+00:00'
+      timestamp_nyc: '2025-11-04T15:10:52-05:00'
+      date: '2025-11-04'
+      date_part: '2025-11-04'
+      time_part: 15-10-52
+      local_path: /Users/gilraitses/pax/data/images_by_location/7_Ave/54_St/4ebe49c8-3e68-43f7-b415-da3db9f72693_2025-11-04_15-10-52.jpg
+      absolute_path: /Users/gilraitses/pax/data/images_by_location/7_Ave/54_St/4ebe49c8-3e68-43f7-b415-da3db9f72693_2025-11-04_15-10-52.jpg
+      size_bytes: 24759
+    - timestamp: '2025-11-05T01:21:14+00:00'
+      timestamp_nyc: '2025-11-04T20:21:14-05:00'
+      date: '2025-11-04'
+      date_part: '2025-11-04'
+      time_part: 20-21-14
+      local_path: /Users/gilraitses/pax/data/images_by_location/7_Ave/54_St/4ebe49c8-3e68-43f7-b415-da3db9f72693_2025-11-04_20-21-14.jpg
+      absolute_path: /Users/gilraitses/pax/data/images_by_location/7_Ave/54_St/4ebe49c8-3e68-43f7-b415-da3db9f72693_2025-11-04_20-21-14.jpg
+      size_bytes: 21855
+  d1d8cd99-7609-409a-a739-f5913dabf4e6:
+    camera_id: d1d8cd99-7609-409a-a739-f5913dabf4e6
+    camera_name: Lexington Ave @ 49 St
+    avenue: Lexington Ave
+    cross_street: 49 St
+    total_images: 4
+    time_range:
+      earliest_utc: '2025-11-03T23:36:24+00:00'
+      latest_utc: '2025-11-05T01:21:14+00:00'
+      earliest_nyc: '2025-11-03T18:36:24-05:00'
+      latest_nyc: '2025-11-04T20:21:14-05:00'
+      duration_hours: 25.75
+      duration_days: 1.07
+    images_by_date:
+      '2025-11-03': 1
+      '2025-11-04': 3
+    images:
+    - timestamp: '2025-11-03T23:36:24+00:00'
+      timestamp_nyc: '2025-11-03T18:36:24-05:00'
+      date: '2025-11-03'
+      date_part: '2025-11-03'
+      time_part: 18-36-24
+      local_path: /Users/gilraitses/pax/data/images_by_location/Lexington_Ave/49_St/d1d8cd99-7609-409a-a739-f5913dabf4e6_2025-11-03_18-36-24.jpg
+      absolute_path: /Users/gilraitses/pax/data/images_by_location/Lexington_Ave/49_St/d1d8cd99-7609-409a-a739-f5913dabf4e6_2025-11-03_18-36-24.jpg
+      size_bytes: 21626
+    - timestamp: '2025-11-04T19:58:48+00:00'
+      timestamp_nyc: '2025-11-04T14:58:48-05:00'
+      date: '2025-11-04'
+      date_part: '2025-11-04'
+      time_part: 14-58-48
+      local_path: /Users/gilraitses/pax/data/images_by_location/Lexington_Ave/49_St/d1d8cd99-7609-409a-a739-f5913dabf4e6_2025-11-04_14-58-48.jpg
+      absolute_path: /Users/gilraitses/pax/data/images_by_location/Lexington_Ave/49_St/d1d8cd99-7609-409a-a739-f5913dabf4e6_2025-11-04_14-58-48.jpg
+      size_bytes: 22638
+    - timestamp: '2025-11-04T20:10:52+00:00'
+      timestamp_nyc: '2025-11-04T15:10:52-05:00'
+      date: '2025-11-04'
+      date_part: '2025-11-04'
+      time_part: 15-10-52
+      local_path: /Users/gilraitses/pax/data/images_by_location/Lexington_Ave/49_St/d1d8cd99-7609-409a-a739-f5913dabf4e6_2025-11-04_15-10-52.jpg
+      absolute_path: /Users/gilraitses/pax/data/images_by_location/Lexington_Ave/49_St/d1d8cd99-7609-409a-a739-f5913dabf4e6_2025-11-04_15-10-52.jpg
+      size_bytes: 23405
+    - timestamp: '2025-11-05T01:21:14+00:00'
+      timestamp_nyc: '2025-11-04T20:21:14-05:00'
+      date: '2025-11-04'
+      date_part: '2025-11-04'
+      time_part: 20-21-14
+      local_path: /Users/gilraitses/pax/data/images_by_location/Lexington_Ave/49_St/d1d8cd99-7609-409a-a739-f5913dabf4e6_2025-11-04_20-21-14.jpg
+      absolute_path: /Users/gilraitses/pax/data/images_by_location/Lexington_Ave/49_St/d1d8cd99-7609-409a-a739-f5913dabf4e6_2025-11-04_20-21-14.jpg
+      size_bytes: 20075
+  c34ca47e-e375-4b9f-a8d7-f9737566b783:
+    camera_id: c34ca47e-e375-4b9f-a8d7-f9737566b783
+    camera_name: 6 Ave @ 42 St
+    avenue: 6 Ave
+    cross_street: 42 St
+    total_images: 4
+    time_range:
+      earliest_utc: '2025-11-03T23:36:24+00:00'
+      latest_utc: '2025-11-05T01:21:14+00:00'
+      earliest_nyc: '2025-11-03T18:36:24-05:00'
+      latest_nyc: '2025-11-04T20:21:14-05:00'
+      duration_hours: 25.75
+      duration_days: 1.07
+    images_by_date:
+      '2025-11-03': 1
+      '2025-11-04': 3
+    images:
+    - timestamp: '2025-11-03T23:36:24+00:00'
+      timestamp_nyc: '2025-11-03T18:36:24-05:00'
+      date: '2025-11-03'
+      date_part: '2025-11-03'
+      time_part: 18-36-24
+      local_path: /Users/gilraitses/pax/data/images_by_location/6_Ave/42_St/c34ca47e-e375-4b9f-a8d7-f9737566b783_2025-11-03_18-36-24.jpg
+      absolute_path: /Users/gilraitses/pax/data/images_by_location/6_Ave/42_St/c34ca47e-e375-4b9f-a8d7-f9737566b783_2025-11-03_18-36-24.jpg
+      size_bytes: 19500
+    - timestamp: '2025-11-04T19:58:48+00:00'
+      timestamp_nyc: '2025-11-04T14:58:48-05:00'
+      date: '2025-11-04'
+      date_part: '2025-11-04'
+      time_part: 14-58-48
+      local_path: /Users/gilraitses/pax/data/images_by_location/6_Ave/42_St/c34ca47e-e375-4b9f-a8d7-f9737566b783_2025-11-04_14-58-48.jpg
+      absolute_path: /Users/gilraitses/pax/data/images_by_location/6_Ave/42_St/c34ca47e-e375-4b9f-a8d7-f9737566b783_2025-11-04_14-58-48.jpg
+      size_bytes: 20935
+    - timestamp: '2025-11-04T20:10:52+00:00'
+      timestamp_nyc: '2025-11-04T15:10:52-05:00'
+      date: '2025-11-04'
+      date_part: '2025-11-04'
+      time_part: 15-10-52
+      local_path: /Users/gilraitses/pax/data/images_by_location/6_Ave/42_St/c34ca47e-e375-4b9f-a8d7-f9737566b783_2025-11-04_15-10-52.jpg
+      absolute_path: /Users/gilraitses/pax/data/images_by_location/6_Ave/42_St/c34ca47e-e375-4b9f-a8d7-f9737566b783_2025-11-04_15-10-52.jpg
+      size_bytes: 21440
+    - timestamp: '2025-11-05T01:21:14+00:00'
+      timestamp_nyc: '2025-11-04T20:21:14-05:00'
+      date: '2025-11-04'
+      date_part: '2025-11-04'
+      time_part: 20-21-14
+      local_path: /Users/gilraitses/pax/data/images_by_location/6_Ave/42_St/c34ca47e-e375-4b9f-a8d7-f9737566b783_2025-11-04_20-21-14.jpg
+      absolute_path: /Users/gilraitses/pax/data/images_by_location/6_Ave/42_St/c34ca47e-e375-4b9f-a8d7-f9737566b783_2025-11-04_20-21-14.jpg
+      size_bytes: 19780
+  482e6d35-2a67-4bbf-b36f-fdf7e031d607:
+    camera_id: 482e6d35-2a67-4bbf-b36f-fdf7e031d607
+    camera_name: 5 AVE @ 50 St
+    avenue: 5 AVE
+    cross_street: 50 St
+    total_images: 4
+    time_range:
+      earliest_utc: '2025-11-03T23:36:24+00:00'
+      latest_utc: '2025-11-05T01:21:14+00:00'
+      earliest_nyc: '2025-11-03T18:36:24-05:00'
+      latest_nyc: '2025-11-04T20:21:14-05:00'
+      duration_hours: 25.75
+      duration_days: 1.07
+    images_by_date:
+      '2025-11-03': 1
+      '2025-11-04': 3
+    images:
+    - timestamp: '2025-11-03T23:36:24+00:00'
+      timestamp_nyc: '2025-11-03T18:36:24-05:00'
+      date: '2025-11-03'
+      date_part: '2025-11-03'
+      time_part: 18-36-24
+      local_path: /Users/gilraitses/pax/data/images_by_location/5_AVE/50_St/482e6d35-2a67-4bbf-b36f-fdf7e031d607_2025-11-03_18-36-24.jpg
+      absolute_path: /Users/gilraitses/pax/data/images_by_location/5_AVE/50_St/482e6d35-2a67-4bbf-b36f-fdf7e031d607_2025-11-03_18-36-24.jpg
+      size_bytes: 17793
+    - timestamp: '2025-11-04T19:58:48+00:00'
+      timestamp_nyc: '2025-11-04T14:58:48-05:00'
+      date: '2025-11-04'
+      date_part: '2025-11-04'
+      time_part: 14-58-48
+      local_path: /Users/gilraitses/pax/data/images_by_location/5_AVE/50_St/482e6d35-2a67-4bbf-b36f-fdf7e031d607_2025-11-04_14-58-48.jpg
+      absolute_path: /Users/gilraitses/pax/data/images_by_location/5_AVE/50_St/482e6d35-2a67-4bbf-b36f-fdf7e031d607_2025-11-04_14-58-48.jpg
+      size_bytes: 23187
+    - timestamp: '2025-11-04T20:10:52+00:00'
+      timestamp_nyc: '2025-11-04T15:10:52-05:00'
+      date: '2025-11-04'
+      date_part: '2025-11-04'
+      time_part: 15-10-52
+      local_path: /Users/gilraitses/pax/data/images_by_location/5_AVE/50_St/482e6d35-2a67-4bbf-b36f-fdf7e031d607_2025-11-04_15-10-52.jpg
+      absolute_path: /Users/gilraitses/pax/data/images_by_location/5_AVE/50_St/482e6d35-2a67-4bbf-b36f-fdf7e031d607_2025-11-04_15-10-52.jpg
+      size_bytes: 22796
+    - timestamp: '2025-11-05T01:21:14+00:00'
+      timestamp_nyc: '2025-11-04T20:21:14-05:00'
+      date: '2025-11-04'
+      date_part: '2025-11-04'
+      time_part: 20-21-14
+      local_path: /Users/gilraitses/pax/data/images_by_location/5_AVE/50_St/482e6d35-2a67-4bbf-b36f-fdf7e031d607_2025-11-04_20-21-14.jpg
+      absolute_path: /Users/gilraitses/pax/data/images_by_location/5_AVE/50_St/482e6d35-2a67-4bbf-b36f-fdf7e031d607_2025-11-04_20-21-14.jpg
+      size_bytes: 17472
+  c880d0c4-db84-44c2-9f00-62f21a83b5d0:
+    camera_id: c880d0c4-db84-44c2-9f00-62f21a83b5d0
+    camera_name: Broadway @ Columbus Circle
+    avenue: Broadway
+    cross_street: Columbus
+    total_images: 4
+    time_range:
+      earliest_utc: '2025-11-03T23:36:24+00:00'
+      latest_utc: '2025-11-05T01:21:14+00:00'
+      earliest_nyc: '2025-11-03T18:36:24-05:00'
+      latest_nyc: '2025-11-04T20:21:14-05:00'
+      duration_hours: 25.75
+      duration_days: 1.07
+    images_by_date:
+      '2025-11-03': 1
+      '2025-11-04': 3
+    images:
+    - timestamp: '2025-11-03T23:36:24+00:00'
+      timestamp_nyc: '2025-11-03T18:36:24-05:00'
+      date: '2025-11-03'
+      date_part: '2025-11-03'
+      time_part: 18-36-24
+      local_path: /Users/gilraitses/pax/data/images_by_location/Broadway/Columbus/c880d0c4-db84-44c2-9f00-62f21a83b5d0_2025-11-03_18-36-24.jpg
+      absolute_path: /Users/gilraitses/pax/data/images_by_location/Broadway/Columbus/c880d0c4-db84-44c2-9f00-62f21a83b5d0_2025-11-03_18-36-24.jpg
+      size_bytes: 19441
+    - timestamp: '2025-11-04T19:58:48+00:00'
+      timestamp_nyc: '2025-11-04T14:58:48-05:00'
+      date: '2025-11-04'
+      date_part: '2025-11-04'
+      time_part: 14-58-48
+      local_path: /Users/gilraitses/pax/data/images_by_location/Broadway/Columbus/c880d0c4-db84-44c2-9f00-62f21a83b5d0_2025-11-04_14-58-48.jpg
+      absolute_path: /Users/gilraitses/pax/data/images_by_location/Broadway/Columbus/c880d0c4-db84-44c2-9f00-62f21a83b5d0_2025-11-04_14-58-48.jpg
+      size_bytes: 19140
+    - timestamp: '2025-11-04T20:10:52+00:00'
+      timestamp_nyc: '2025-11-04T15:10:52-05:00'
+      date: '2025-11-04'
+      date_part: '2025-11-04'
+      time_part: 15-10-52
+      local_path: /Users/gilraitses/pax/data/images_by_location/Broadway/Columbus/c880d0c4-db84-44c2-9f00-62f21a83b5d0_2025-11-04_15-10-52.jpg
+      absolute_path: /Users/gilraitses/pax/data/images_by_location/Broadway/Columbus/c880d0c4-db84-44c2-9f00-62f21a83b5d0_2025-11-04_15-10-52.jpg
+      size_bytes: 20188
+    - timestamp: '2025-11-05T01:21:14+00:00'
+      timestamp_nyc: '2025-11-04T20:21:14-05:00'
+      date: '2025-11-04'
+      date_part: '2025-11-04'
+      time_part: 20-21-14
+      local_path: /Users/gilraitses/pax/data/images_by_location/Broadway/Columbus/c880d0c4-db84-44c2-9f00-62f21a83b5d0_2025-11-04_20-21-14.jpg
+      absolute_path: /Users/gilraitses/pax/data/images_by_location/Broadway/Columbus/c880d0c4-db84-44c2-9f00-62f21a83b5d0_2025-11-04_20-21-14.jpg
+      size_bytes: 18420
+  c6d013c9-e69b-4824-8dad-b6580491d916:
+    camera_id: c6d013c9-e69b-4824-8dad-b6580491d916
+    camera_name: Madison Ave @ E 43 St
+    avenue: Madison Ave
+    cross_street: E St
+    total_images: 4
+    time_range:
+      earliest_utc: '2025-11-03T23:36:24+00:00'
+      latest_utc: '2025-11-05T01:21:14+00:00'
+      earliest_nyc: '2025-11-03T18:36:24-05:00'
+      latest_nyc: '2025-11-04T20:21:14-05:00'
+      duration_hours: 25.75
+      duration_days: 1.07
+    images_by_date:
+      '2025-11-03': 1
+      '2025-11-04': 3
+    images:
+    - timestamp: '2025-11-03T23:36:24+00:00'
+      timestamp_nyc: '2025-11-03T18:36:24-05:00'
+      date: '2025-11-03'
+      date_part: '2025-11-03'
+      time_part: 18-36-24
+      local_path: /Users/gilraitses/pax/data/images_by_location/Madison_Ave/E_St/c6d013c9-e69b-4824-8dad-b6580491d916_2025-11-03_18-36-24.jpg
+      absolute_path: /Users/gilraitses/pax/data/images_by_location/Madison_Ave/E_St/c6d013c9-e69b-4824-8dad-b6580491d916_2025-11-03_18-36-24.jpg
+      size_bytes: 23046
+    - timestamp: '2025-11-04T19:58:48+00:00'
+      timestamp_nyc: '2025-11-04T14:58:48-05:00'
+      date: '2025-11-04'
+      date_part: '2025-11-04'
+      time_part: 14-58-48
+      local_path: /Users/gilraitses/pax/data/images_by_location/Madison_Ave/E_St/c6d013c9-e69b-4824-8dad-b6580491d916_2025-11-04_14-58-48.jpg
+      absolute_path: /Users/gilraitses/pax/data/images_by_location/Madison_Ave/E_St/c6d013c9-e69b-4824-8dad-b6580491d916_2025-11-04_14-58-48.jpg
+      size_bytes: 25224
+    - timestamp: '2025-11-04T20:10:52+00:00'
+      timestamp_nyc: '2025-11-04T15:10:52-05:00'
+      date: '2025-11-04'
+      date_part: '2025-11-04'
+      time_part: 15-10-52
+      local_path: /Users/gilraitses/pax/data/images_by_location/Madison_Ave/E_St/c6d013c9-e69b-4824-8dad-b6580491d916_2025-11-04_15-10-52.jpg
+      absolute_path: /Users/gilraitses/pax/data/images_by_location/Madison_Ave/E_St/c6d013c9-e69b-4824-8dad-b6580491d916_2025-11-04_15-10-52.jpg
+      size_bytes: 24894
+    - timestamp: '2025-11-05T01:21:14+00:00'
+      timestamp_nyc: '2025-11-04T20:21:14-05:00'
+      date: '2025-11-04'
+      date_part: '2025-11-04'
+      time_part: 20-21-14
+      local_path: /Users/gilraitses/pax/data/images_by_location/Madison_Ave/E_St/c6d013c9-e69b-4824-8dad-b6580491d916_2025-11-04_20-21-14.jpg
+      absolute_path: /Users/gilraitses/pax/data/images_by_location/Madison_Ave/E_St/c6d013c9-e69b-4824-8dad-b6580491d916_2025-11-04_20-21-14.jpg
+      size_bytes: 25352
+  421960d6-54a8-4f12-a5ee-7a07390def4c:
+    camera_id: 421960d6-54a8-4f12-a5ee-7a07390def4c
+    camera_name: MADISON @ 57 ST
+    avenue: MADISON
+    cross_street: 57 St
+    total_images: 4
+    time_range:
+      earliest_utc: '2025-11-03T23:36:24+00:00'
+      latest_utc: '2025-11-05T01:21:14+00:00'
+      earliest_nyc: '2025-11-03T18:36:24-05:00'
+      latest_nyc: '2025-11-04T20:21:14-05:00'
+      duration_hours: 25.75
+      duration_days: 1.07
+    images_by_date:
+      '2025-11-03': 1
+      '2025-11-04': 3
+    images:
+    - timestamp: '2025-11-03T23:36:24+00:00'
+      timestamp_nyc: '2025-11-03T18:36:24-05:00'
+      date: '2025-11-03'
+      date_part: '2025-11-03'
+      time_part: 18-36-24
+      local_path: /Users/gilraitses/pax/data/images_by_location/MADISON/57_St/421960d6-54a8-4f12-a5ee-7a07390def4c_2025-11-03_18-36-24.jpg
+      absolute_path: /Users/gilraitses/pax/data/images_by_location/MADISON/57_St/421960d6-54a8-4f12-a5ee-7a07390def4c_2025-11-03_18-36-24.jpg
+      size_bytes: 14571
+    - timestamp: '2025-11-04T19:58:48+00:00'
+      timestamp_nyc: '2025-11-04T14:58:48-05:00'
+      date: '2025-11-04'
+      date_part: '2025-11-04'
+      time_part: 14-58-48
+      local_path: /Users/gilraitses/pax/data/images_by_location/MADISON/57_St/421960d6-54a8-4f12-a5ee-7a07390def4c_2025-11-04_14-58-48.jpg
+      absolute_path: /Users/gilraitses/pax/data/images_by_location/MADISON/57_St/421960d6-54a8-4f12-a5ee-7a07390def4c_2025-11-04_14-58-48.jpg
+      size_bytes: 20165
+    - timestamp: '2025-11-04T20:10:52+00:00'
+      timestamp_nyc: '2025-11-04T15:10:52-05:00'
+      date: '2025-11-04'
+      date_part: '2025-11-04'
+      time_part: 15-10-52
+      local_path: /Users/gilraitses/pax/data/images_by_location/MADISON/57_St/421960d6-54a8-4f12-a5ee-7a07390def4c_2025-11-04_15-10-52.jpg
+      absolute_path: /Users/gilraitses/pax/data/images_by_location/MADISON/57_St/421960d6-54a8-4f12-a5ee-7a07390def4c_2025-11-04_15-10-52.jpg
+      size_bytes: 20223
+    - timestamp: '2025-11-05T01:21:14+00:00'
+      timestamp_nyc: '2025-11-04T20:21:14-05:00'
+      date: '2025-11-04'
+      date_part: '2025-11-04'
+      time_part: 20-21-14
+      local_path: /Users/gilraitses/pax/data/images_by_location/MADISON/57_St/421960d6-54a8-4f12-a5ee-7a07390def4c_2025-11-04_20-21-14.jpg
+      absolute_path: /Users/gilraitses/pax/data/images_by_location/MADISON/57_St/421960d6-54a8-4f12-a5ee-7a07390def4c_2025-11-04_20-21-14.jpg
+      size_bytes: 19309
+  3d8e276f-b179-414d-a506-679d5e559d3e:
+    camera_id: 3d8e276f-b179-414d-a506-679d5e559d3e
+    camera_name: Broadway @ 51 St
+    avenue: Broadway
+    cross_street: 51 St
+    total_images: 4
+    time_range:
+      earliest_utc: '2025-11-03T23:36:24+00:00'
+      latest_utc: '2025-11-05T01:21:14+00:00'
+      earliest_nyc: '2025-11-03T18:36:24-05:00'
+      latest_nyc: '2025-11-04T20:21:14-05:00'
+      duration_hours: 25.75
+      duration_days: 1.07
+    images_by_date:
+      '2025-11-03': 1
+      '2025-11-04': 3
+    images:
+    - timestamp: '2025-11-03T23:36:24+00:00'
+      timestamp_nyc: '2025-11-03T18:36:24-05:00'
+      date: '2025-11-03'
+      date_part: '2025-11-03'
+      time_part: 18-36-24
+      local_path: /Users/gilraitses/pax/data/images_by_location/Broadway/51_St/3d8e276f-b179-414d-a506-679d5e559d3e_2025-11-03_18-36-24.jpg
+      absolute_path: /Users/gilraitses/pax/data/images_by_location/Broadway/51_St/3d8e276f-b179-414d-a506-679d5e559d3e_2025-11-03_18-36-24.jpg
+      size_bytes: 18613
+    - timestamp: '2025-11-04T19:58:48+00:00'
+      timestamp_nyc: '2025-11-04T14:58:48-05:00'
+      date: '2025-11-04'
+      date_part: '2025-11-04'
+      time_part: 14-58-48
+      local_path: /Users/gilraitses/pax/data/images_by_location/Broadway/51_St/3d8e276f-b179-414d-a506-679d5e559d3e_2025-11-04_14-58-48.jpg
+      absolute_path: /Users/gilraitses/pax/data/images_by_location/Broadway/51_St/3d8e276f-b179-414d-a506-679d5e559d3e_2025-11-04_14-58-48.jpg
+      size_bytes: 20590
+    - timestamp: '2025-11-04T20:10:52+00:00'
+      timestamp_nyc: '2025-11-04T15:10:52-05:00'
+      date: '2025-11-04'
+      date_part: '2025-11-04'
+      time_part: 15-10-52
+      local_path: /Users/gilraitses/pax/data/images_by_location/Broadway/51_St/3d8e276f-b179-414d-a506-679d5e559d3e_2025-11-04_15-10-52.jpg
+      absolute_path: /Users/gilraitses/pax/data/images_by_location/Broadway/51_St/3d8e276f-b179-414d-a506-679d5e559d3e_2025-11-04_15-10-52.jpg
+      size_bytes: 19768
+    - timestamp: '2025-11-05T01:21:14+00:00'
+      timestamp_nyc: '2025-11-04T20:21:14-05:00'
+      date: '2025-11-04'
+      date_part: '2025-11-04'
+      time_part: 20-21-14
+      local_path: /Users/gilraitses/pax/data/images_by_location/Broadway/51_St/3d8e276f-b179-414d-a506-679d5e559d3e_2025-11-04_20-21-14.jpg
+      absolute_path: /Users/gilraitses/pax/data/images_by_location/Broadway/51_St/3d8e276f-b179-414d-a506-679d5e559d3e_2025-11-04_20-21-14.jpg
+      size_bytes: 18735
+  9e3e26ae-d49f-4f64-ba99-113b779c25a2:
+    camera_id: 9e3e26ae-d49f-4f64-ba99-113b779c25a2
+    camera_name: Park Ave @ 53 St
+    avenue: Park Ave
+    cross_street: 53 St
+    total_images: 4
+    time_range:
+      earliest_utc: '2025-11-03T23:36:24+00:00'
+      latest_utc: '2025-11-05T01:21:14+00:00'
+      earliest_nyc: '2025-11-03T18:36:24-05:00'
+      latest_nyc: '2025-11-04T20:21:14-05:00'
+      duration_hours: 25.75
+      duration_days: 1.07
+    images_by_date:
+      '2025-11-03': 1
+      '2025-11-04': 3
+    images:
+    - timestamp: '2025-11-03T23:36:24+00:00'
+      timestamp_nyc: '2025-11-03T18:36:24-05:00'
+      date: '2025-11-03'
+      date_part: '2025-11-03'
+      time_part: 18-36-24
+      local_path: /Users/gilraitses/pax/data/images_by_location/Park_Ave/53_St/9e3e26ae-d49f-4f64-ba99-113b779c25a2_2025-11-03_18-36-24.jpg
+      absolute_path: /Users/gilraitses/pax/data/images_by_location/Park_Ave/53_St/9e3e26ae-d49f-4f64-ba99-113b779c25a2_2025-11-03_18-36-24.jpg
+      size_bytes: 18764
+    - timestamp: '2025-11-04T19:58:48+00:00'
+      timestamp_nyc: '2025-11-04T14:58:48-05:00'
+      date: '2025-11-04'
+      date_part: '2025-11-04'
+      time_part: 14-58-48
+      local_path: /Users/gilraitses/pax/data/images_by_location/Park_Ave/53_St/9e3e26ae-d49f-4f64-ba99-113b779c25a2_2025-11-04_14-58-48.jpg
+      absolute_path: /Users/gilraitses/pax/data/images_by_location/Park_Ave/53_St/9e3e26ae-d49f-4f64-ba99-113b779c25a2_2025-11-04_14-58-48.jpg
+      size_bytes: 22721
+    - timestamp: '2025-11-04T20:10:52+00:00'
+      timestamp_nyc: '2025-11-04T15:10:52-05:00'
+      date: '2025-11-04'
+      date_part: '2025-11-04'
+      time_part: 15-10-52
+      local_path: /Users/gilraitses/pax/data/images_by_location/Park_Ave/53_St/9e3e26ae-d49f-4f64-ba99-113b779c25a2_2025-11-04_15-10-52.jpg
+      absolute_path: /Users/gilraitses/pax/data/images_by_location/Park_Ave/53_St/9e3e26ae-d49f-4f64-ba99-113b779c25a2_2025-11-04_15-10-52.jpg
+      size_bytes: 24887
+    - timestamp: '2025-11-05T01:21:14+00:00'
+      timestamp_nyc: '2025-11-04T20:21:14-05:00'
+      date: '2025-11-04'
+      date_part: '2025-11-04'
+      time_part: 20-21-14
+      local_path: /Users/gilraitses/pax/data/images_by_location/Park_Ave/53_St/9e3e26ae-d49f-4f64-ba99-113b779c25a2_2025-11-04_20-21-14.jpg
+      absolute_path: /Users/gilraitses/pax/data/images_by_location/Park_Ave/53_St/9e3e26ae-d49f-4f64-ba99-113b779c25a2_2025-11-04_20-21-14.jpg
+      size_bytes: 17090
+  1dddf912-4718-4b2a-94dd-1f793a9ed22c:
+    camera_id: 1dddf912-4718-4b2a-94dd-1f793a9ed22c
+    camera_name: 6 Ave @ 49 St
+    avenue: 6 Ave
+    cross_street: 49 St
+    total_images: 4
+    time_range:
+      earliest_utc: '2025-11-03T23:36:24+00:00'
+      latest_utc: '2025-11-05T01:21:14+00:00'
+      earliest_nyc: '2025-11-03T18:36:24-05:00'
+      latest_nyc: '2025-11-04T20:21:14-05:00'
+      duration_hours: 25.75
+      duration_days: 1.07
+    images_by_date:
+      '2025-11-03': 1
+      '2025-11-04': 3
+    images:
+    - timestamp: '2025-11-03T23:36:24+00:00'
+      timestamp_nyc: '2025-11-03T18:36:24-05:00'
+      date: '2025-11-03'
+      date_part: '2025-11-03'
+      time_part: 18-36-24
+      local_path: /Users/gilraitses/pax/data/images_by_location/6_Ave/49_St/1dddf912-4718-4b2a-94dd-1f793a9ed22c_2025-11-03_18-36-24.jpg
+      absolute_path: /Users/gilraitses/pax/data/images_by_location/6_Ave/49_St/1dddf912-4718-4b2a-94dd-1f793a9ed22c_2025-11-03_18-36-24.jpg
+      size_bytes: 14808
+    - timestamp: '2025-11-04T19:58:48+00:00'
+      timestamp_nyc: '2025-11-04T14:58:48-05:00'
+      date: '2025-11-04'
+      date_part: '2025-11-04'
+      time_part: 14-58-48
+      local_path: /Users/gilraitses/pax/data/images_by_location/6_Ave/49_St/1dddf912-4718-4b2a-94dd-1f793a9ed22c_2025-11-04_14-58-48.jpg
+      absolute_path: /Users/gilraitses/pax/data/images_by_location/6_Ave/49_St/1dddf912-4718-4b2a-94dd-1f793a9ed22c_2025-11-04_14-58-48.jpg
+      size_bytes: 11608
+    - timestamp: '2025-11-04T20:10:52+00:00'
+      timestamp_nyc: '2025-11-04T15:10:52-05:00'
+      date: '2025-11-04'
+      date_part: '2025-11-04'
+      time_part: 15-10-52
+      local_path: /Users/gilraitses/pax/data/images_by_location/6_Ave/49_St/1dddf912-4718-4b2a-94dd-1f793a9ed22c_2025-11-04_15-10-52.jpg
+      absolute_path: /Users/gilraitses/pax/data/images_by_location/6_Ave/49_St/1dddf912-4718-4b2a-94dd-1f793a9ed22c_2025-11-04_15-10-52.jpg
+      size_bytes: 11508
+    - timestamp: '2025-11-05T01:21:14+00:00'
+      timestamp_nyc: '2025-11-04T20:21:14-05:00'
+      date: '2025-11-04'
+      date_part: '2025-11-04'
+      time_part: 20-21-14
+      local_path: /Users/gilraitses/pax/data/images_by_location/6_Ave/49_St/1dddf912-4718-4b2a-94dd-1f793a9ed22c_2025-11-04_20-21-14.jpg
+      absolute_path: /Users/gilraitses/pax/data/images_by_location/6_Ave/49_St/1dddf912-4718-4b2a-94dd-1f793a9ed22c_2025-11-04_20-21-14.jpg
+      size_bytes: 14327
+  e8a479f8-5170-4f1f-b258-b9745c966c71:
+    camera_id: e8a479f8-5170-4f1f-b258-b9745c966c71
+    camera_name: Vanderbilt Ave @ E 45 St
+    avenue: Vanderbilt Ave
+    cross_street: E St
+    total_images: 4
+    time_range:
+      earliest_utc: '2025-11-03T23:36:24+00:00'
+      latest_utc: '2025-11-05T01:21:14+00:00'
+      earliest_nyc: '2025-11-03T18:36:24-05:00'
+      latest_nyc: '2025-11-04T20:21:14-05:00'
+      duration_hours: 25.75
+      duration_days: 1.07
+    images_by_date:
+      '2025-11-03': 1
+      '2025-11-04': 3
+    images:
+    - timestamp: '2025-11-03T23:36:24+00:00'
+      timestamp_nyc: '2025-11-03T18:36:24-05:00'
+      date: '2025-11-03'
+      date_part: '2025-11-03'
+      time_part: 18-36-24
+      local_path: /Users/gilraitses/pax/data/images_by_location/Vanderbilt_Ave/E_St/e8a479f8-5170-4f1f-b258-b9745c966c71_2025-11-03_18-36-24.jpg
+      absolute_path: /Users/gilraitses/pax/data/images_by_location/Vanderbilt_Ave/E_St/e8a479f8-5170-4f1f-b258-b9745c966c71_2025-11-03_18-36-24.jpg
+      size_bytes: 21051
+    - timestamp: '2025-11-04T19:58:48+00:00'
+      timestamp_nyc: '2025-11-04T14:58:48-05:00'
+      date: '2025-11-04'
+      date_part: '2025-11-04'
+      time_part: 14-58-48
+      local_path: /Users/gilraitses/pax/data/images_by_location/Vanderbilt_Ave/E_St/e8a479f8-5170-4f1f-b258-b9745c966c71_2025-11-04_14-58-48.jpg
+      absolute_path: /Users/gilraitses/pax/data/images_by_location/Vanderbilt_Ave/E_St/e8a479f8-5170-4f1f-b258-b9745c966c71_2025-11-04_14-58-48.jpg
+      size_bytes: 22769
+    - timestamp: '2025-11-04T20:10:52+00:00'
+      timestamp_nyc: '2025-11-04T15:10:52-05:00'
+      date: '2025-11-04'
+      date_part: '2025-11-04'
+      time_part: 15-10-52
+      local_path: /Users/gilraitses/pax/data/images_by_location/Vanderbilt_Ave/E_St/e8a479f8-5170-4f1f-b258-b9745c966c71_2025-11-04_15-10-52.jpg
+      absolute_path: /Users/gilraitses/pax/data/images_by_location/Vanderbilt_Ave/E_St/e8a479f8-5170-4f1f-b258-b9745c966c71_2025-11-04_15-10-52.jpg
+      size_bytes: 22660
+    - timestamp: '2025-11-05T01:21:14+00:00'
+      timestamp_nyc: '2025-11-04T20:21:14-05:00'
+      date: '2025-11-04'
+      date_part: '2025-11-04'
+      time_part: 20-21-14
+      local_path: /Users/gilraitses/pax/data/images_by_location/Vanderbilt_Ave/E_St/e8a479f8-5170-4f1f-b258-b9745c966c71_2025-11-04_20-21-14.jpg
+      absolute_path: /Users/gilraitses/pax/data/images_by_location/Vanderbilt_Ave/E_St/e8a479f8-5170-4f1f-b258-b9745c966c71_2025-11-04_20-21-14.jpg
+      size_bytes: 21959
+  9c4c2657-6796-4953-bbe6-c50f24bb5820:
+    camera_id: 9c4c2657-6796-4953-bbe6-c50f24bb5820
+    camera_name: 5 Ave @ 57 St
+    avenue: 5 Ave
+    cross_street: 57 St
+    total_images: 4
+    time_range:
+      earliest_utc: '2025-11-03T23:36:24+00:00'
+      latest_utc: '2025-11-05T01:21:14+00:00'
+      earliest_nyc: '2025-11-03T18:36:24-05:00'
+      latest_nyc: '2025-11-04T20:21:14-05:00'
+      duration_hours: 25.75
+      duration_days: 1.07
+    images_by_date:
+      '2025-11-03': 1
+      '2025-11-04': 3
+    images:
+    - timestamp: '2025-11-03T23:36:24+00:00'
+      timestamp_nyc: '2025-11-03T18:36:24-05:00'
+      date: '2025-11-03'
+      date_part: '2025-11-03'
+      time_part: 18-36-24
+      local_path: /Users/gilraitses/pax/data/images_by_location/5_Ave/57_St/9c4c2657-6796-4953-bbe6-c50f24bb5820_2025-11-03_18-36-24.jpg
+      absolute_path: /Users/gilraitses/pax/data/images_by_location/5_Ave/57_St/9c4c2657-6796-4953-bbe6-c50f24bb5820_2025-11-03_18-36-24.jpg
+      size_bytes: 17115
+    - timestamp: '2025-11-04T19:58:48+00:00'
+      timestamp_nyc: '2025-11-04T14:58:48-05:00'
+      date: '2025-11-04'
+      date_part: '2025-11-04'
+      time_part: 14-58-48
+      local_path: /Users/gilraitses/pax/data/images_by_location/5_Ave/57_St/9c4c2657-6796-4953-bbe6-c50f24bb5820_2025-11-04_14-58-48.jpg
+      absolute_path: /Users/gilraitses/pax/data/images_by_location/5_Ave/57_St/9c4c2657-6796-4953-bbe6-c50f24bb5820_2025-11-04_14-58-48.jpg
+      size_bytes: 18509
+    - timestamp: '2025-11-04T20:10:52+00:00'
+      timestamp_nyc: '2025-11-04T15:10:52-05:00'
+      date: '2025-11-04'
+      date_part: '2025-11-04'
+      time_part: 15-10-52
+      local_path: /Users/gilraitses/pax/data/images_by_location/5_Ave/57_St/9c4c2657-6796-4953-bbe6-c50f24bb5820_2025-11-04_15-10-52.jpg
+      absolute_path: /Users/gilraitses/pax/data/images_by_location/5_Ave/57_St/9c4c2657-6796-4953-bbe6-c50f24bb5820_2025-11-04_15-10-52.jpg
+      size_bytes: 19962
+    - timestamp: '2025-11-05T01:21:14+00:00'
+      timestamp_nyc: '2025-11-04T20:21:14-05:00'
+      date: '2025-11-04'
+      date_part: '2025-11-04'
+      time_part: 20-21-14
+      local_path: /Users/gilraitses/pax/data/images_by_location/5_Ave/57_St/9c4c2657-6796-4953-bbe6-c50f24bb5820_2025-11-04_20-21-14.jpg
+      absolute_path: /Users/gilraitses/pax/data/images_by_location/5_Ave/57_St/9c4c2657-6796-4953-bbe6-c50f24bb5820_2025-11-04_20-21-14.jpg
+      size_bytes: 16611
+  1eb66413-6761-4eb0-bc04-e2533bb74b42:
+    camera_id: 1eb66413-6761-4eb0-bc04-e2533bb74b42
+    camera_name: Madison Ave @ 49 St
+    avenue: Madison Ave
+    cross_street: 49 St
+    total_images: 4
+    time_range:
+      earliest_utc: '2025-11-03T23:36:24+00:00'
+      latest_utc: '2025-11-05T01:21:14+00:00'
+      earliest_nyc: '2025-11-03T18:36:24-05:00'
+      latest_nyc: '2025-11-04T20:21:14-05:00'
+      duration_hours: 25.75
+      duration_days: 1.07
+    images_by_date:
+      '2025-11-03': 1
+      '2025-11-04': 3
+    images:
+    - timestamp: '2025-11-03T23:36:24+00:00'
+      timestamp_nyc: '2025-11-03T18:36:24-05:00'
+      date: '2025-11-03'
+      date_part: '2025-11-03'
+      time_part: 18-36-24
+      local_path: /Users/gilraitses/pax/data/images_by_location/Madison_Ave/49_St/1eb66413-6761-4eb0-bc04-e2533bb74b42_2025-11-03_18-36-24.jpg
+      absolute_path: /Users/gilraitses/pax/data/images_by_location/Madison_Ave/49_St/1eb66413-6761-4eb0-bc04-e2533bb74b42_2025-11-03_18-36-24.jpg
+      size_bytes: 17912
+    - timestamp: '2025-11-04T19:58:48+00:00'
+      timestamp_nyc: '2025-11-04T14:58:48-05:00'
+      date: '2025-11-04'
+      date_part: '2025-11-04'
+      time_part: 14-58-48
+      local_path: /Users/gilraitses/pax/data/images_by_location/Madison_Ave/49_St/1eb66413-6761-4eb0-bc04-e2533bb74b42_2025-11-04_14-58-48.jpg
+      absolute_path: /Users/gilraitses/pax/data/images_by_location/Madison_Ave/49_St/1eb66413-6761-4eb0-bc04-e2533bb74b42_2025-11-04_14-58-48.jpg
+      size_bytes: 16762
+    - timestamp: '2025-11-04T20:10:52+00:00'
+      timestamp_nyc: '2025-11-04T15:10:52-05:00'
+      date: '2025-11-04'
+      date_part: '2025-11-04'
+      time_part: 15-10-52
+      local_path: /Users/gilraitses/pax/data/images_by_location/Madison_Ave/49_St/1eb66413-6761-4eb0-bc04-e2533bb74b42_2025-11-04_15-10-52.jpg
+      absolute_path: /Users/gilraitses/pax/data/images_by_location/Madison_Ave/49_St/1eb66413-6761-4eb0-bc04-e2533bb74b42_2025-11-04_15-10-52.jpg
+      size_bytes: 16722
+    - timestamp: '2025-11-05T01:21:14+00:00'
+      timestamp_nyc: '2025-11-04T20:21:14-05:00'
+      date: '2025-11-04'
+      date_part: '2025-11-04'
+      time_part: 20-21-14
+      local_path: /Users/gilraitses/pax/data/images_by_location/Madison_Ave/49_St/1eb66413-6761-4eb0-bc04-e2533bb74b42_2025-11-04_20-21-14.jpg
+      absolute_path: /Users/gilraitses/pax/data/images_by_location/Madison_Ave/49_St/1eb66413-6761-4eb0-bc04-e2533bb74b42_2025-11-04_20-21-14.jpg
+      size_bytes: 18963
+  f4d2c0f5-0148-45e7-95ba-a5185d8e8060:
+    camera_id: f4d2c0f5-0148-45e7-95ba-a5185d8e8060
+    camera_name: Park Ave @ 57 St
+    avenue: Park Ave
+    cross_street: 57 St
+    total_images: 4
+    time_range:
+      earliest_utc: '2025-11-03T23:36:24+00:00'
+      latest_utc: '2025-11-05T01:21:14+00:00'
+      earliest_nyc: '2025-11-03T18:36:24-05:00'
+      latest_nyc: '2025-11-04T20:21:14-05:00'
+      duration_hours: 25.75
+      duration_days: 1.07
+    images_by_date:
+      '2025-11-03': 1
+      '2025-11-04': 3
+    images:
+    - timestamp: '2025-11-03T23:36:24+00:00'
+      timestamp_nyc: '2025-11-03T18:36:24-05:00'
+      date: '2025-11-03'
+      date_part: '2025-11-03'
+      time_part: 18-36-24
+      local_path: /Users/gilraitses/pax/data/images_by_location/Park_Ave/57_St/f4d2c0f5-0148-45e7-95ba-a5185d8e8060_2025-11-03_18-36-24.jpg
+      absolute_path: /Users/gilraitses/pax/data/images_by_location/Park_Ave/57_St/f4d2c0f5-0148-45e7-95ba-a5185d8e8060_2025-11-03_18-36-24.jpg
+      size_bytes: 17500
+    - timestamp: '2025-11-04T19:58:48+00:00'
+      timestamp_nyc: '2025-11-04T14:58:48-05:00'
+      date: '2025-11-04'
+      date_part: '2025-11-04'
+      time_part: 14-58-48
+      local_path: /Users/gilraitses/pax/data/images_by_location/Park_Ave/57_St/f4d2c0f5-0148-45e7-95ba-a5185d8e8060_2025-11-04_14-58-48.jpg
+      absolute_path: /Users/gilraitses/pax/data/images_by_location/Park_Ave/57_St/f4d2c0f5-0148-45e7-95ba-a5185d8e8060_2025-11-04_14-58-48.jpg
+      size_bytes: 18662
+    - timestamp: '2025-11-04T20:10:52+00:00'
+      timestamp_nyc: '2025-11-04T15:10:52-05:00'
+      date: '2025-11-04'
+      date_part: '2025-11-04'
+      time_part: 15-10-52
+      local_path: /Users/gilraitses/pax/data/images_by_location/Park_Ave/57_St/f4d2c0f5-0148-45e7-95ba-a5185d8e8060_2025-11-04_15-10-52.jpg
+      absolute_path: /Users/gilraitses/pax/data/images_by_location/Park_Ave/57_St/f4d2c0f5-0148-45e7-95ba-a5185d8e8060_2025-11-04_15-10-52.jpg
+      size_bytes: 17893
+    - timestamp: '2025-11-05T01:21:14+00:00'
+      timestamp_nyc: '2025-11-04T20:21:14-05:00'
+      date: '2025-11-04'
+      date_part: '2025-11-04'
+      time_part: 20-21-14
+      local_path: /Users/gilraitses/pax/data/images_by_location/Park_Ave/57_St/f4d2c0f5-0148-45e7-95ba-a5185d8e8060_2025-11-04_20-21-14.jpg
+      absolute_path: /Users/gilraitses/pax/data/images_by_location/Park_Ave/57_St/f4d2c0f5-0148-45e7-95ba-a5185d8e8060_2025-11-04_20-21-14.jpg
+      size_bytes: 17606
+  cd949f21-54b2-4d11-8aae-4ffba8654271:
+    camera_id: cd949f21-54b2-4d11-8aae-4ffba8654271
+    camera_name: 5 Ave @ E 60 St
+    avenue: 5 Ave
+    cross_street: E St
+    total_images: 4
+    time_range:
+      earliest_utc: '2025-11-03T23:36:24+00:00'
+      latest_utc: '2025-11-05T01:21:14+00:00'
+      earliest_nyc: '2025-11-03T18:36:24-05:00'
+      latest_nyc: '2025-11-04T20:21:14-05:00'
+      duration_hours: 25.75
+      duration_days: 1.07
+    images_by_date:
+      '2025-11-03': 1
+      '2025-11-04': 3
+    images:
+    - timestamp: '2025-11-03T23:36:24+00:00'
+      timestamp_nyc: '2025-11-03T18:36:24-05:00'
+      date: '2025-11-03'
+      date_part: '2025-11-03'
+      time_part: 18-36-24
+      local_path: /Users/gilraitses/pax/data/images_by_location/5_Ave/E_St/cd949f21-54b2-4d11-8aae-4ffba8654271_2025-11-03_18-36-24.jpg
+      absolute_path: /Users/gilraitses/pax/data/images_by_location/5_Ave/E_St/cd949f21-54b2-4d11-8aae-4ffba8654271_2025-11-03_18-36-24.jpg
+      size_bytes: 19084
+    - timestamp: '2025-11-04T19:58:48+00:00'
+      timestamp_nyc: '2025-11-04T14:58:48-05:00'
+      date: '2025-11-04'
+      date_part: '2025-11-04'
+      time_part: 14-58-48
+      local_path: /Users/gilraitses/pax/data/images_by_location/5_Ave/E_St/cd949f21-54b2-4d11-8aae-4ffba8654271_2025-11-04_14-58-48.jpg
+      absolute_path: /Users/gilraitses/pax/data/images_by_location/5_Ave/E_St/cd949f21-54b2-4d11-8aae-4ffba8654271_2025-11-04_14-58-48.jpg
+      size_bytes: 26276
+    - timestamp: '2025-11-04T20:10:52+00:00'
+      timestamp_nyc: '2025-11-04T15:10:52-05:00'
+      date: '2025-11-04'
+      date_part: '2025-11-04'
+      time_part: 15-10-52
+      local_path: /Users/gilraitses/pax/data/images_by_location/5_Ave/E_St/cd949f21-54b2-4d11-8aae-4ffba8654271_2025-11-04_15-10-52.jpg
+      absolute_path: /Users/gilraitses/pax/data/images_by_location/5_Ave/E_St/cd949f21-54b2-4d11-8aae-4ffba8654271_2025-11-04_15-10-52.jpg
+      size_bytes: 24268
+    - timestamp: '2025-11-05T01:21:14+00:00'
+      timestamp_nyc: '2025-11-04T20:21:14-05:00'
+      date: '2025-11-04'
+      date_part: '2025-11-04'
+      time_part: 20-21-14
+      local_path: /Users/gilraitses/pax/data/images_by_location/5_Ave/E_St/cd949f21-54b2-4d11-8aae-4ffba8654271_2025-11-04_20-21-14.jpg
+      absolute_path: /Users/gilraitses/pax/data/images_by_location/5_Ave/E_St/cd949f21-54b2-4d11-8aae-4ffba8654271_2025-11-04_20-21-14.jpg
+      size_bytes: 19152
+  f0b924fe-0df6-4ac2-85a2-5d2b96d081d5:
+    camera_id: f0b924fe-0df6-4ac2-85a2-5d2b96d081d5
+    camera_name: 7 Ave @ 57 St
+    avenue: 7 Ave
+    cross_street: 57 St
+    total_images: 4
+    time_range:
+      earliest_utc: '2025-11-03T23:36:24+00:00'
+      latest_utc: '2025-11-05T01:21:14+00:00'
+      earliest_nyc: '2025-11-03T18:36:24-05:00'
+      latest_nyc: '2025-11-04T20:21:14-05:00'
+      duration_hours: 25.75
+      duration_days: 1.07
+    images_by_date:
+      '2025-11-03': 1
+      '2025-11-04': 3
+    images:
+    - timestamp: '2025-11-03T23:36:24+00:00'
+      timestamp_nyc: '2025-11-03T18:36:24-05:00'
+      date: '2025-11-03'
+      date_part: '2025-11-03'
+      time_part: 18-36-24
+      local_path: /Users/gilraitses/pax/data/images_by_location/7_Ave/57_St/f0b924fe-0df6-4ac2-85a2-5d2b96d081d5_2025-11-03_18-36-24.jpg
+      absolute_path: /Users/gilraitses/pax/data/images_by_location/7_Ave/57_St/f0b924fe-0df6-4ac2-85a2-5d2b96d081d5_2025-11-03_18-36-24.jpg
+      size_bytes: 21046
+    - timestamp: '2025-11-04T19:58:48+00:00'
+      timestamp_nyc: '2025-11-04T14:58:48-05:00'
+      date: '2025-11-04'
+      date_part: '2025-11-04'
+      time_part: 14-58-48
+      local_path: /Users/gilraitses/pax/data/images_by_location/7_Ave/57_St/f0b924fe-0df6-4ac2-85a2-5d2b96d081d5_2025-11-04_14-58-48.jpg
+      absolute_path: /Users/gilraitses/pax/data/images_by_location/7_Ave/57_St/f0b924fe-0df6-4ac2-85a2-5d2b96d081d5_2025-11-04_14-58-48.jpg
+      size_bytes: 21927
+    - timestamp: '2025-11-04T20:10:52+00:00'
+      timestamp_nyc: '2025-11-04T15:10:52-05:00'
+      date: '2025-11-04'
+      date_part: '2025-11-04'
+      time_part: 15-10-52
+      local_path: /Users/gilraitses/pax/data/images_by_location/7_Ave/57_St/f0b924fe-0df6-4ac2-85a2-5d2b96d081d5_2025-11-04_15-10-52.jpg
+      absolute_path: /Users/gilraitses/pax/data/images_by_location/7_Ave/57_St/f0b924fe-0df6-4ac2-85a2-5d2b96d081d5_2025-11-04_15-10-52.jpg
+      size_bytes: 20975
+    - timestamp: '2025-11-05T01:21:14+00:00'
+      timestamp_nyc: '2025-11-04T20:21:14-05:00'
+      date: '2025-11-04'
+      date_part: '2025-11-04'
+      time_part: 20-21-14
+      local_path: /Users/gilraitses/pax/data/images_by_location/7_Ave/57_St/f0b924fe-0df6-4ac2-85a2-5d2b96d081d5_2025-11-04_20-21-14.jpg
+      absolute_path: /Users/gilraitses/pax/data/images_by_location/7_Ave/57_St/f0b924fe-0df6-4ac2-85a2-5d2b96d081d5_2025-11-04_20-21-14.jpg
+      size_bytes: 20507
+  434094f8-1be4-4c19-8067-1e11049e46b4:
+    camera_id: 434094f8-1be4-4c19-8067-1e11049e46b4
+    camera_name: Madison Ave @ 46 St - Manhattan
+    avenue: Madison Ave
+    cross_street: 46 St
+    total_images: 4
+    time_range:
+      earliest_utc: '2025-11-03T23:36:24+00:00'
+      latest_utc: '2025-11-05T01:21:14+00:00'
+      earliest_nyc: '2025-11-03T18:36:24-05:00'
+      latest_nyc: '2025-11-04T20:21:14-05:00'
+      duration_hours: 25.75
+      duration_days: 1.07
+    images_by_date:
+      '2025-11-03': 1
+      '2025-11-04': 3
+    images:
+    - timestamp: '2025-11-03T23:36:24+00:00'
+      timestamp_nyc: '2025-11-03T18:36:24-05:00'
+      date: '2025-11-03'
+      date_part: '2025-11-03'
+      time_part: 18-36-24
+      local_path: /Users/gilraitses/pax/data/images_by_location/Madison_Ave/46_St/434094f8-1be4-4c19-8067-1e11049e46b4_2025-11-03_18-36-24.jpg
+      absolute_path: /Users/gilraitses/pax/data/images_by_location/Madison_Ave/46_St/434094f8-1be4-4c19-8067-1e11049e46b4_2025-11-03_18-36-24.jpg
+      size_bytes: 21540
+    - timestamp: '2025-11-04T19:58:48+00:00'
+      timestamp_nyc: '2025-11-04T14:58:48-05:00'
+      date: '2025-11-04'
+      date_part: '2025-11-04'
+      time_part: 14-58-48
+      local_path: /Users/gilraitses/pax/data/images_by_location/Madison_Ave/46_St/434094f8-1be4-4c19-8067-1e11049e46b4_2025-11-04_14-58-48.jpg
+      absolute_path: /Users/gilraitses/pax/data/images_by_location/Madison_Ave/46_St/434094f8-1be4-4c19-8067-1e11049e46b4_2025-11-04_14-58-48.jpg
+      size_bytes: 20713
+    - timestamp: '2025-11-04T20:10:52+00:00'
+      timestamp_nyc: '2025-11-04T15:10:52-05:00'
+      date: '2025-11-04'
+      date_part: '2025-11-04'
+      time_part: 15-10-52
+      local_path: /Users/gilraitses/pax/data/images_by_location/Madison_Ave/46_St/434094f8-1be4-4c19-8067-1e11049e46b4_2025-11-04_15-10-52.jpg
+      absolute_path: /Users/gilraitses/pax/data/images_by_location/Madison_Ave/46_St/434094f8-1be4-4c19-8067-1e11049e46b4_2025-11-04_15-10-52.jpg
+      size_bytes: 20157
+    - timestamp: '2025-11-05T01:21:14+00:00'
+      timestamp_nyc: '2025-11-04T20:21:14-05:00'
+      date: '2025-11-04'
+      date_part: '2025-11-04'
+      time_part: 20-21-14
+      local_path: /Users/gilraitses/pax/data/images_by_location/Madison_Ave/46_St/434094f8-1be4-4c19-8067-1e11049e46b4_2025-11-04_20-21-14.jpg
+      absolute_path: /Users/gilraitses/pax/data/images_by_location/Madison_Ave/46_St/434094f8-1be4-4c19-8067-1e11049e46b4_2025-11-04_20-21-14.jpg
+      size_bytes: 21866
+  5352e130-4668-4be5-a7b9-9e1ce4ea6d4c:
+    camera_id: 5352e130-4668-4be5-a7b9-9e1ce4ea6d4c
+    camera_name: 3 Ave @ 42 St
+    avenue: 3 Ave
+    cross_street: 42 St
+    total_images: 5
+    time_range:
+      earliest_utc: '2025-11-03T23:36:24+00:00'
+      latest_utc: '2025-11-05T01:21:14+00:00'
+      earliest_nyc: '2025-11-03T18:36:24-05:00'
+      latest_nyc: '2025-11-04T20:21:14-05:00'
+      duration_hours: 25.75
+      duration_days: 1.07
+    images_by_date:
+      '2025-11-03': 1
+      '2025-11-04': 4
+    images:
+    - timestamp: '2025-11-03T23:36:24+00:00'
+      timestamp_nyc: '2025-11-03T18:36:24-05:00'
+      date: '2025-11-03'
+      date_part: '2025-11-03'
+      time_part: 18-36-24
+      local_path: /Users/gilraitses/pax/data/images_by_location/3_Ave/42_St/5352e130-4668-4be5-a7b9-9e1ce4ea6d4c_2025-11-03_18-36-24.jpg
+      absolute_path: /Users/gilraitses/pax/data/images_by_location/3_Ave/42_St/5352e130-4668-4be5-a7b9-9e1ce4ea6d4c_2025-11-03_18-36-24.jpg
+      size_bytes: 21126
+    - timestamp: '2025-11-04T19:58:48+00:00'
+      timestamp_nyc: '2025-11-04T14:58:48-05:00'
+      date: '2025-11-04'
+      date_part: '2025-11-04'
+      time_part: 14-58-48
+      local_path: /Users/gilraitses/pax/data/images_by_location/3_Ave/42_St/5352e130-4668-4be5-a7b9-9e1ce4ea6d4c_2025-11-04_14-58-48.jpg
+      absolute_path: /Users/gilraitses/pax/data/images_by_location/3_Ave/42_St/5352e130-4668-4be5-a7b9-9e1ce4ea6d4c_2025-11-04_14-58-48.jpg
+      size_bytes: 17607
+    - timestamp: '2025-11-04T20:02:05+00:00'
+      timestamp_nyc: '2025-11-04T15:02:05-05:00'
+      date: '2025-11-04'
+      date_part: '2025-11-04'
+      time_part: 15-02-05
+      local_path: /Users/gilraitses/pax/data/images_by_location/3_Ave/42_St/5352e130-4668-4be5-a7b9-9e1ce4ea6d4c_2025-11-04_15-02-05.jpg
+      absolute_path: /Users/gilraitses/pax/data/images_by_location/3_Ave/42_St/5352e130-4668-4be5-a7b9-9e1ce4ea6d4c_2025-11-04_15-02-05.jpg
+      size_bytes: 18655
+    - timestamp: '2025-11-04T20:10:52+00:00'
+      timestamp_nyc: '2025-11-04T15:10:52-05:00'
+      date: '2025-11-04'
+      date_part: '2025-11-04'
+      time_part: 15-10-52
+      local_path: /Users/gilraitses/pax/data/images_by_location/3_Ave/42_St/5352e130-4668-4be5-a7b9-9e1ce4ea6d4c_2025-11-04_15-10-52.jpg
+      absolute_path: /Users/gilraitses/pax/data/images_by_location/3_Ave/42_St/5352e130-4668-4be5-a7b9-9e1ce4ea6d4c_2025-11-04_15-10-52.jpg
+      size_bytes: 15351
+    - timestamp: '2025-11-05T01:21:14+00:00'
+      timestamp_nyc: '2025-11-04T20:21:14-05:00'
+      date: '2025-11-04'
+      date_part: '2025-11-04'
+      time_part: 20-21-14
+      local_path: /Users/gilraitses/pax/data/images_by_location/3_Ave/42_St/5352e130-4668-4be5-a7b9-9e1ce4ea6d4c_2025-11-04_20-21-14.jpg
+      absolute_path: /Users/gilraitses/pax/data/images_by_location/3_Ave/42_St/5352e130-4668-4be5-a7b9-9e1ce4ea6d4c_2025-11-04_20-21-14.jpg
+      size_bytes: 18629
+  a4c12003-9638-473d-bfe3-dddf509c80b8:
+    camera_id: a4c12003-9638-473d-bfe3-dddf509c80b8
+    camera_name: 6 Ave @ 58 St
+    avenue: 6 Ave
+    cross_street: 58 St
+    total_images: 4
+    time_range:
+      earliest_utc: '2025-11-03T23:36:24+00:00'
+      latest_utc: '2025-11-05T01:21:14+00:00'
+      earliest_nyc: '2025-11-03T18:36:24-05:00'
+      latest_nyc: '2025-11-04T20:21:14-05:00'
+      duration_hours: 25.75
+      duration_days: 1.07
+    images_by_date:
+      '2025-11-03': 1
+      '2025-11-04': 3
+    images:
+    - timestamp: '2025-11-03T23:36:24+00:00'
+      timestamp_nyc: '2025-11-03T18:36:24-05:00'
+      date: '2025-11-03'
+      date_part: '2025-11-03'
+      time_part: 18-36-24
+      local_path: /Users/gilraitses/pax/data/images_by_location/6_Ave/58_St/a4c12003-9638-473d-bfe3-dddf509c80b8_2025-11-03_18-36-24.jpg
+      absolute_path: /Users/gilraitses/pax/data/images_by_location/6_Ave/58_St/a4c12003-9638-473d-bfe3-dddf509c80b8_2025-11-03_18-36-24.jpg
+      size_bytes: 17747
+    - timestamp: '2025-11-04T19:58:48+00:00'
+      timestamp_nyc: '2025-11-04T14:58:48-05:00'
+      date: '2025-11-04'
+      date_part: '2025-11-04'
+      time_part: 14-58-48
+      local_path: /Users/gilraitses/pax/data/images_by_location/6_Ave/58_St/a4c12003-9638-473d-bfe3-dddf509c80b8_2025-11-04_14-58-48.jpg
+      absolute_path: /Users/gilraitses/pax/data/images_by_location/6_Ave/58_St/a4c12003-9638-473d-bfe3-dddf509c80b8_2025-11-04_14-58-48.jpg
+      size_bytes: 19611
+    - timestamp: '2025-11-04T20:10:52+00:00'
+      timestamp_nyc: '2025-11-04T15:10:52-05:00'
+      date: '2025-11-04'
+      date_part: '2025-11-04'
+      time_part: 15-10-52
+      local_path: /Users/gilraitses/pax/data/images_by_location/6_Ave/58_St/a4c12003-9638-473d-bfe3-dddf509c80b8_2025-11-04_15-10-52.jpg
+      absolute_path: /Users/gilraitses/pax/data/images_by_location/6_Ave/58_St/a4c12003-9638-473d-bfe3-dddf509c80b8_2025-11-04_15-10-52.jpg
+      size_bytes: 19760
+    - timestamp: '2025-11-05T01:21:14+00:00'
+      timestamp_nyc: '2025-11-04T20:21:14-05:00'
+      date: '2025-11-04'
+      date_part: '2025-11-04'
+      time_part: 20-21-14
+      local_path: /Users/gilraitses/pax/data/images_by_location/6_Ave/58_St/a4c12003-9638-473d-bfe3-dddf509c80b8_2025-11-04_20-21-14.jpg
+      absolute_path: /Users/gilraitses/pax/data/images_by_location/6_Ave/58_St/a4c12003-9638-473d-bfe3-dddf509c80b8_2025-11-04_20-21-14.jpg
+      size_bytes: 17680
+  1546f761-039c-4b5c-af5e-75c83c9f603f:
+    camera_id: 1546f761-039c-4b5c-af5e-75c83c9f603f
+    camera_name: Lexington Ave @ 42 St
+    avenue: Lexington Ave
+    cross_street: 42 St
+    total_images: 4
+    time_range:
+      earliest_utc: '2025-11-03T23:36:24+00:00'
+      latest_utc: '2025-11-05T01:21:14+00:00'
+      earliest_nyc: '2025-11-03T18:36:24-05:00'
+      latest_nyc: '2025-11-04T20:21:14-05:00'
+      duration_hours: 25.75
+      duration_days: 1.07
+    images_by_date:
+      '2025-11-03': 1
+      '2025-11-04': 3
+    images:
+    - timestamp: '2025-11-03T23:36:24+00:00'
+      timestamp_nyc: '2025-11-03T18:36:24-05:00'
+      date: '2025-11-03'
+      date_part: '2025-11-03'
+      time_part: 18-36-24
+      local_path: /Users/gilraitses/pax/data/images_by_location/Lexington_Ave/42_St/1546f761-039c-4b5c-af5e-75c83c9f603f_2025-11-03_18-36-24.jpg
+      absolute_path: /Users/gilraitses/pax/data/images_by_location/Lexington_Ave/42_St/1546f761-039c-4b5c-af5e-75c83c9f603f_2025-11-03_18-36-24.jpg
+      size_bytes: 26335
+    - timestamp: '2025-11-04T19:58:48+00:00'
+      timestamp_nyc: '2025-11-04T14:58:48-05:00'
+      date: '2025-11-04'
+      date_part: '2025-11-04'
+      time_part: 14-58-48
+      local_path: /Users/gilraitses/pax/data/images_by_location/Lexington_Ave/42_St/1546f761-039c-4b5c-af5e-75c83c9f603f_2025-11-04_14-58-48.jpg
+      absolute_path: /Users/gilraitses/pax/data/images_by_location/Lexington_Ave/42_St/1546f761-039c-4b5c-af5e-75c83c9f603f_2025-11-04_14-58-48.jpg
+      size_bytes: 22783
+    - timestamp: '2025-11-04T20:10:52+00:00'
+      timestamp_nyc: '2025-11-04T15:10:52-05:00'
+      date: '2025-11-04'
+      date_part: '2025-11-04'
+      time_part: 15-10-52
+      local_path: /Users/gilraitses/pax/data/images_by_location/Lexington_Ave/42_St/1546f761-039c-4b5c-af5e-75c83c9f603f_2025-11-04_15-10-52.jpg
+      absolute_path: /Users/gilraitses/pax/data/images_by_location/Lexington_Ave/42_St/1546f761-039c-4b5c-af5e-75c83c9f603f_2025-11-04_15-10-52.jpg
+      size_bytes: 25001
+    - timestamp: '2025-11-05T01:21:14+00:00'
+      timestamp_nyc: '2025-11-04T20:21:14-05:00'
+      date: '2025-11-04'
+      date_part: '2025-11-04'
+      time_part: 20-21-14
+      local_path: /Users/gilraitses/pax/data/images_by_location/Lexington_Ave/42_St/1546f761-039c-4b5c-af5e-75c83c9f603f_2025-11-04_20-21-14.jpg
+      absolute_path: /Users/gilraitses/pax/data/images_by_location/Lexington_Ave/42_St/1546f761-039c-4b5c-af5e-75c83c9f603f_2025-11-04_20-21-14.jpg
+      size_bytes: 25782
+  e229e0fd-559b-4c1e-bcba-ac23db1d01e3:
+    camera_id: e229e0fd-559b-4c1e-bcba-ac23db1d01e3
+    camera_name: 6 Ave @ 57 St
+    avenue: 6 Ave
+    cross_street: 57 St
+    total_images: 4
+    time_range:
+      earliest_utc: '2025-11-03T23:36:24+00:00'
+      latest_utc: '2025-11-05T01:21:14+00:00'
+      earliest_nyc: '2025-11-03T18:36:24-05:00'
+      latest_nyc: '2025-11-04T20:21:14-05:00'
+      duration_hours: 25.75
+      duration_days: 1.07
+    images_by_date:
+      '2025-11-03': 1
+      '2025-11-04': 3
+    images:
+    - timestamp: '2025-11-03T23:36:24+00:00'
+      timestamp_nyc: '2025-11-03T18:36:24-05:00'
+      date: '2025-11-03'
+      date_part: '2025-11-03'
+      time_part: 18-36-24
+      local_path: /Users/gilraitses/pax/data/images_by_location/6_Ave/57_St/e229e0fd-559b-4c1e-bcba-ac23db1d01e3_2025-11-03_18-36-24.jpg
+      absolute_path: /Users/gilraitses/pax/data/images_by_location/6_Ave/57_St/e229e0fd-559b-4c1e-bcba-ac23db1d01e3_2025-11-03_18-36-24.jpg
+      size_bytes: 20470
+    - timestamp: '2025-11-04T19:58:48+00:00'
+      timestamp_nyc: '2025-11-04T14:58:48-05:00'
+      date: '2025-11-04'
+      date_part: '2025-11-04'
+      time_part: 14-58-48
+      local_path: /Users/gilraitses/pax/data/images_by_location/6_Ave/57_St/e229e0fd-559b-4c1e-bcba-ac23db1d01e3_2025-11-04_14-58-48.jpg
+      absolute_path: /Users/gilraitses/pax/data/images_by_location/6_Ave/57_St/e229e0fd-559b-4c1e-bcba-ac23db1d01e3_2025-11-04_14-58-48.jpg
+      size_bytes: 24218
+    - timestamp: '2025-11-04T20:10:52+00:00'
+      timestamp_nyc: '2025-11-04T15:10:52-05:00'
+      date: '2025-11-04'
+      date_part: '2025-11-04'
+      time_part: 15-10-52
+      local_path: /Users/gilraitses/pax/data/images_by_location/6_Ave/57_St/e229e0fd-559b-4c1e-bcba-ac23db1d01e3_2025-11-04_15-10-52.jpg
+      absolute_path: /Users/gilraitses/pax/data/images_by_location/6_Ave/57_St/e229e0fd-559b-4c1e-bcba-ac23db1d01e3_2025-11-04_15-10-52.jpg
+      size_bytes: 23741
+    - timestamp: '2025-11-05T01:21:14+00:00'
+      timestamp_nyc: '2025-11-04T20:21:14-05:00'
+      date: '2025-11-04'
+      date_part: '2025-11-04'
+      time_part: 20-21-14
+      local_path: /Users/gilraitses/pax/data/images_by_location/6_Ave/57_St/e229e0fd-559b-4c1e-bcba-ac23db1d01e3_2025-11-04_20-21-14.jpg
+      absolute_path: /Users/gilraitses/pax/data/images_by_location/6_Ave/57_St/e229e0fd-559b-4c1e-bcba-ac23db1d01e3_2025-11-04_20-21-14.jpg
+      size_bytes: 20493
+  8933100a-8229-42fe-b4b2-265db410d7ae:
+    camera_id: 8933100a-8229-42fe-b4b2-265db410d7ae
+    camera_name: 5 Ave @ 46 St
+    avenue: 5 Ave
+    cross_street: 46 St
+    total_images: 4
+    time_range:
+      earliest_utc: '2025-11-03T23:36:24+00:00'
+      latest_utc: '2025-11-05T01:21:14+00:00'
+      earliest_nyc: '2025-11-03T18:36:24-05:00'
+      latest_nyc: '2025-11-04T20:21:14-05:00'
+      duration_hours: 25.75
+      duration_days: 1.07
+    images_by_date:
+      '2025-11-03': 1
+      '2025-11-04': 3
+    images:
+    - timestamp: '2025-11-03T23:36:24+00:00'
+      timestamp_nyc: '2025-11-03T18:36:24-05:00'
+      date: '2025-11-03'
+      date_part: '2025-11-03'
+      time_part: 18-36-24
+      local_path: /Users/gilraitses/pax/data/images_by_location/5_Ave/46_St/8933100a-8229-42fe-b4b2-265db410d7ae_2025-11-03_18-36-24.jpg
+      absolute_path: /Users/gilraitses/pax/data/images_by_location/5_Ave/46_St/8933100a-8229-42fe-b4b2-265db410d7ae_2025-11-03_18-36-24.jpg
+      size_bytes: 19604
+    - timestamp: '2025-11-04T19:58:48+00:00'
+      timestamp_nyc: '2025-11-04T14:58:48-05:00'
+      date: '2025-11-04'
+      date_part: '2025-11-04'
+      time_part: 14-58-48
+      local_path: /Users/gilraitses/pax/data/images_by_location/5_Ave/46_St/8933100a-8229-42fe-b4b2-265db410d7ae_2025-11-04_14-58-48.jpg
+      absolute_path: /Users/gilraitses/pax/data/images_by_location/5_Ave/46_St/8933100a-8229-42fe-b4b2-265db410d7ae_2025-11-04_14-58-48.jpg
+      size_bytes: 20979
+    - timestamp: '2025-11-04T20:10:52+00:00'
+      timestamp_nyc: '2025-11-04T15:10:52-05:00'
+      date: '2025-11-04'
+      date_part: '2025-11-04'
+      time_part: 15-10-52
+      local_path: /Users/gilraitses/pax/data/images_by_location/5_Ave/46_St/8933100a-8229-42fe-b4b2-265db410d7ae_2025-11-04_15-10-52.jpg
+      absolute_path: /Users/gilraitses/pax/data/images_by_location/5_Ave/46_St/8933100a-8229-42fe-b4b2-265db410d7ae_2025-11-04_15-10-52.jpg
+      size_bytes: 21424
+    - timestamp: '2025-11-05T01:21:14+00:00'
+      timestamp_nyc: '2025-11-04T20:21:14-05:00'
+      date: '2025-11-04'
+      date_part: '2025-11-04'
+      time_part: 20-21-14
+      local_path: /Users/gilraitses/pax/data/images_by_location/5_Ave/46_St/8933100a-8229-42fe-b4b2-265db410d7ae_2025-11-04_20-21-14.jpg
+      absolute_path: /Users/gilraitses/pax/data/images_by_location/5_Ave/46_St/8933100a-8229-42fe-b4b2-265db410d7ae_2025-11-04_20-21-14.jpg
+      size_bytes: 19872
+  d1363c77-e061-4414-be82-e6d749254859:
+    camera_id: d1363c77-e061-4414-be82-e6d749254859
+    camera_name: Madison Ave @ 42 St
+    avenue: Madison Ave
+    cross_street: 42 St
+    total_images: 4
+    time_range:
+      earliest_utc: '2025-11-03T23:36:24+00:00'
+      latest_utc: '2025-11-05T01:21:14+00:00'
+      earliest_nyc: '2025-11-03T18:36:24-05:00'
+      latest_nyc: '2025-11-04T20:21:14-05:00'
+      duration_hours: 25.75
+      duration_days: 1.07
+    images_by_date:
+      '2025-11-03': 1
+      '2025-11-04': 3
+    images:
+    - timestamp: '2025-11-03T23:36:24+00:00'
+      timestamp_nyc: '2025-11-03T18:36:24-05:00'
+      date: '2025-11-03'
+      date_part: '2025-11-03'
+      time_part: 18-36-24
+      local_path: /Users/gilraitses/pax/data/images_by_location/Madison_Ave/42_St/d1363c77-e061-4414-be82-e6d749254859_2025-11-03_18-36-24.jpg
+      absolute_path: /Users/gilraitses/pax/data/images_by_location/Madison_Ave/42_St/d1363c77-e061-4414-be82-e6d749254859_2025-11-03_18-36-24.jpg
+      size_bytes: 21631
+    - timestamp: '2025-11-04T19:58:48+00:00'
+      timestamp_nyc: '2025-11-04T14:58:48-05:00'
+      date: '2025-11-04'
+      date_part: '2025-11-04'
+      time_part: 14-58-48
+      local_path: /Users/gilraitses/pax/data/images_by_location/Madison_Ave/42_St/d1363c77-e061-4414-be82-e6d749254859_2025-11-04_14-58-48.jpg
+      absolute_path: /Users/gilraitses/pax/data/images_by_location/Madison_Ave/42_St/d1363c77-e061-4414-be82-e6d749254859_2025-11-04_14-58-48.jpg
+      size_bytes: 21968
+    - timestamp: '2025-11-04T20:10:52+00:00'
+      timestamp_nyc: '2025-11-04T15:10:52-05:00'
+      date: '2025-11-04'
+      date_part: '2025-11-04'
+      time_part: 15-10-52
+      local_path: /Users/gilraitses/pax/data/images_by_location/Madison_Ave/42_St/d1363c77-e061-4414-be82-e6d749254859_2025-11-04_15-10-52.jpg
+      absolute_path: /Users/gilraitses/pax/data/images_by_location/Madison_Ave/42_St/d1363c77-e061-4414-be82-e6d749254859_2025-11-04_15-10-52.jpg
+      size_bytes: 22341
+    - timestamp: '2025-11-05T01:21:14+00:00'
+      timestamp_nyc: '2025-11-04T20:21:14-05:00'
+      date: '2025-11-04'
+      date_part: '2025-11-04'
+      time_part: 20-21-14
+      local_path: /Users/gilraitses/pax/data/images_by_location/Madison_Ave/42_St/d1363c77-e061-4414-be82-e6d749254859_2025-11-04_20-21-14.jpg
+      absolute_path: /Users/gilraitses/pax/data/images_by_location/Madison_Ave/42_St/d1363c77-e061-4414-be82-e6d749254859_2025-11-04_20-21-14.jpg
+      size_bytes: 20227
+  332f161d-47cb-4c8a-b6b6-5ad48a55c978:
+    camera_id: 332f161d-47cb-4c8a-b6b6-5ad48a55c978
+    camera_name: Ave of Americas @ Central Park South
+    avenue: Ave of Americas
+    cross_street: Central
+    total_images: 4
+    time_range:
+      earliest_utc: '2025-11-03T23:36:24+00:00'
+      latest_utc: '2025-11-05T01:21:14+00:00'
+      earliest_nyc: '2025-11-03T18:36:24-05:00'
+      latest_nyc: '2025-11-04T20:21:14-05:00'
+      duration_hours: 25.75
+      duration_days: 1.07
+    images_by_date:
+      '2025-11-03': 1
+      '2025-11-04': 3
+    images:
+    - timestamp: '2025-11-03T23:36:24+00:00'
+      timestamp_nyc: '2025-11-03T18:36:24-05:00'
+      date: '2025-11-03'
+      date_part: '2025-11-03'
+      time_part: 18-36-24
+      local_path: /Users/gilraitses/pax/data/images_by_location/Ave_of_Americas/Central/332f161d-47cb-4c8a-b6b6-5ad48a55c978_2025-11-03_18-36-24.jpg
+      absolute_path: /Users/gilraitses/pax/data/images_by_location/Ave_of_Americas/Central/332f161d-47cb-4c8a-b6b6-5ad48a55c978_2025-11-03_18-36-24.jpg
+      size_bytes: 18750
+    - timestamp: '2025-11-04T19:58:48+00:00'
+      timestamp_nyc: '2025-11-04T14:58:48-05:00'
+      date: '2025-11-04'
+      date_part: '2025-11-04'
+      time_part: 14-58-48
+      local_path: /Users/gilraitses/pax/data/images_by_location/Ave_of_Americas/Central/332f161d-47cb-4c8a-b6b6-5ad48a55c978_2025-11-04_14-58-48.jpg
+      absolute_path: /Users/gilraitses/pax/data/images_by_location/Ave_of_Americas/Central/332f161d-47cb-4c8a-b6b6-5ad48a55c978_2025-11-04_14-58-48.jpg
+      size_bytes: 23235
+    - timestamp: '2025-11-04T20:10:52+00:00'
+      timestamp_nyc: '2025-11-04T15:10:52-05:00'
+      date: '2025-11-04'
+      date_part: '2025-11-04'
+      time_part: 15-10-52
+      local_path: /Users/gilraitses/pax/data/images_by_location/Ave_of_Americas/Central/332f161d-47cb-4c8a-b6b6-5ad48a55c978_2025-11-04_15-10-52.jpg
+      absolute_path: /Users/gilraitses/pax/data/images_by_location/Ave_of_Americas/Central/332f161d-47cb-4c8a-b6b6-5ad48a55c978_2025-11-04_15-10-52.jpg
+      size_bytes: 22475
+    - timestamp: '2025-11-05T01:21:14+00:00'
+      timestamp_nyc: '2025-11-04T20:21:14-05:00'
+      date: '2025-11-04'
+      date_part: '2025-11-04'
+      time_part: 20-21-14
+      local_path: /Users/gilraitses/pax/data/images_by_location/Ave_of_Americas/Central/332f161d-47cb-4c8a-b6b6-5ad48a55c978_2025-11-04_20-21-14.jpg
+      absolute_path: /Users/gilraitses/pax/data/images_by_location/Ave_of_Americas/Central/332f161d-47cb-4c8a-b6b6-5ad48a55c978_2025-11-04_20-21-14.jpg
+      size_bytes: 16643
+  b5a78bda-3ca9-4ad4-bd03-4cee70baba2d:
+    camera_id: b5a78bda-3ca9-4ad4-bd03-4cee70baba2d
+    camera_name: 5 Ave @ 59 St
+    avenue: 5 Ave
+    cross_street: 59 St
+    total_images: 4
+    time_range:
+      earliest_utc: '2025-11-03T23:36:24+00:00'
+      latest_utc: '2025-11-05T01:21:14+00:00'
+      earliest_nyc: '2025-11-03T18:36:24-05:00'
+      latest_nyc: '2025-11-04T20:21:14-05:00'
+      duration_hours: 25.75
+      duration_days: 1.07
+    images_by_date:
+      '2025-11-03': 1
+      '2025-11-04': 3
+    images:
+    - timestamp: '2025-11-03T23:36:24+00:00'
+      timestamp_nyc: '2025-11-03T18:36:24-05:00'
+      date: '2025-11-03'
+      date_part: '2025-11-03'
+      time_part: 18-36-24
+      local_path: /Users/gilraitses/pax/data/images_by_location/5_Ave/59_St/b5a78bda-3ca9-4ad4-bd03-4cee70baba2d_2025-11-03_18-36-24.jpg
+      absolute_path: /Users/gilraitses/pax/data/images_by_location/5_Ave/59_St/b5a78bda-3ca9-4ad4-bd03-4cee70baba2d_2025-11-03_18-36-24.jpg
+      size_bytes: 19676
+    - timestamp: '2025-11-04T19:58:48+00:00'
+      timestamp_nyc: '2025-11-04T14:58:48-05:00'
+      date: '2025-11-04'
+      date_part: '2025-11-04'
+      time_part: 14-58-48
+      local_path: /Users/gilraitses/pax/data/images_by_location/5_Ave/59_St/b5a78bda-3ca9-4ad4-bd03-4cee70baba2d_2025-11-04_14-58-48.jpg
+      absolute_path: /Users/gilraitses/pax/data/images_by_location/5_Ave/59_St/b5a78bda-3ca9-4ad4-bd03-4cee70baba2d_2025-11-04_14-58-48.jpg
+      size_bytes: 22826
+    - timestamp: '2025-11-04T20:10:52+00:00'
+      timestamp_nyc: '2025-11-04T15:10:52-05:00'
+      date: '2025-11-04'
+      date_part: '2025-11-04'
+      time_part: 15-10-52
+      local_path: /Users/gilraitses/pax/data/images_by_location/5_Ave/59_St/b5a78bda-3ca9-4ad4-bd03-4cee70baba2d_2025-11-04_15-10-52.jpg
+      absolute_path: /Users/gilraitses/pax/data/images_by_location/5_Ave/59_St/b5a78bda-3ca9-4ad4-bd03-4cee70baba2d_2025-11-04_15-10-52.jpg
+      size_bytes: 23121
+    - timestamp: '2025-11-05T01:21:14+00:00'
+      timestamp_nyc: '2025-11-04T20:21:14-05:00'
+      date: '2025-11-04'
+      date_part: '2025-11-04'
+      time_part: 20-21-14
+      local_path: /Users/gilraitses/pax/data/images_by_location/5_Ave/59_St/b5a78bda-3ca9-4ad4-bd03-4cee70baba2d_2025-11-04_20-21-14.jpg
+      absolute_path: /Users/gilraitses/pax/data/images_by_location/5_Ave/59_St/b5a78bda-3ca9-4ad4-bd03-4cee70baba2d_2025-11-04_20-21-14.jpg
+      size_bytes: 19030
+  9561ad5f-0eda-460b-ab12-41caa4e0a91e:
+    camera_id: 9561ad5f-0eda-460b-ab12-41caa4e0a91e
+    camera_name: 47 St Bet. 5 Ave @ Madison Ave- Manhattan
+    avenue: 5 Ave
+    cross_street: 47 St
+    total_images: 4
+    time_range:
+      earliest_utc: '2025-11-03T23:36:24+00:00'
+      latest_utc: '2025-11-05T01:21:14+00:00'
+      earliest_nyc: '2025-11-03T18:36:24-05:00'
+      latest_nyc: '2025-11-04T20:21:14-05:00'
+      duration_hours: 25.75
+      duration_days: 1.07
+    images_by_date:
+      '2025-11-03': 1
+      '2025-11-04': 3
+    images:
+    - timestamp: '2025-11-03T23:36:24+00:00'
+      timestamp_nyc: '2025-11-03T18:36:24-05:00'
+      date: '2025-11-03'
+      date_part: '2025-11-03'
+      time_part: 18-36-24
+      local_path: /Users/gilraitses/pax/data/images_by_location/5_Ave/47_St/9561ad5f-0eda-460b-ab12-41caa4e0a91e_2025-11-03_18-36-24.jpg
+      absolute_path: /Users/gilraitses/pax/data/images_by_location/5_Ave/47_St/9561ad5f-0eda-460b-ab12-41caa4e0a91e_2025-11-03_18-36-24.jpg
+      size_bytes: 15445
+    - timestamp: '2025-11-04T19:58:48+00:00'
+      timestamp_nyc: '2025-11-04T14:58:48-05:00'
+      date: '2025-11-04'
+      date_part: '2025-11-04'
+      time_part: 14-58-48
+      local_path: /Users/gilraitses/pax/data/images_by_location/5_Ave/47_St/9561ad5f-0eda-460b-ab12-41caa4e0a91e_2025-11-04_14-58-48.jpg
+      absolute_path: /Users/gilraitses/pax/data/images_by_location/5_Ave/47_St/9561ad5f-0eda-460b-ab12-41caa4e0a91e_2025-11-04_14-58-48.jpg
+      size_bytes: 16183
+    - timestamp: '2025-11-04T20:10:52+00:00'
+      timestamp_nyc: '2025-11-04T15:10:52-05:00'
+      date: '2025-11-04'
+      date_part: '2025-11-04'
+      time_part: 15-10-52
+      local_path: /Users/gilraitses/pax/data/images_by_location/5_Ave/47_St/9561ad5f-0eda-460b-ab12-41caa4e0a91e_2025-11-04_15-10-52.jpg
+      absolute_path: /Users/gilraitses/pax/data/images_by_location/5_Ave/47_St/9561ad5f-0eda-460b-ab12-41caa4e0a91e_2025-11-04_15-10-52.jpg
+      size_bytes: 17233
+    - timestamp: '2025-11-05T01:21:14+00:00'
+      timestamp_nyc: '2025-11-04T20:21:14-05:00'
+      date: '2025-11-04'
+      date_part: '2025-11-04'
+      time_part: 20-21-14
+      local_path: /Users/gilraitses/pax/data/images_by_location/5_Ave/47_St/9561ad5f-0eda-460b-ab12-41caa4e0a91e_2025-11-04_20-21-14.jpg
+      absolute_path: /Users/gilraitses/pax/data/images_by_location/5_Ave/47_St/9561ad5f-0eda-460b-ab12-41caa4e0a91e_2025-11-04_20-21-14.jpg
+      size_bytes: 14147
+  fc7db899-7a79-41f3-b9b1-b23ce64c5a5e:
+    camera_id: fc7db899-7a79-41f3-b9b1-b23ce64c5a5e
+    camera_name: 7 Ave @ 49 St
+    avenue: 7 Ave
+    cross_street: 49 St
+    total_images: 4
+    time_range:
+      earliest_utc: '2025-11-03T23:36:24+00:00'
+      latest_utc: '2025-11-05T01:21:14+00:00'
+      earliest_nyc: '2025-11-03T18:36:24-05:00'
+      latest_nyc: '2025-11-04T20:21:14-05:00'
+      duration_hours: 25.75
+      duration_days: 1.07
+    images_by_date:
+      '2025-11-03': 1
+      '2025-11-04': 3
+    images:
+    - timestamp: '2025-11-03T23:36:24+00:00'
+      timestamp_nyc: '2025-11-03T18:36:24-05:00'
+      date: '2025-11-03'
+      date_part: '2025-11-03'
+      time_part: 18-36-24
+      local_path: /Users/gilraitses/pax/data/images_by_location/7_Ave/49_St/fc7db899-7a79-41f3-b9b1-b23ce64c5a5e_2025-11-03_18-36-24.jpg
+      absolute_path: /Users/gilraitses/pax/data/images_by_location/7_Ave/49_St/fc7db899-7a79-41f3-b9b1-b23ce64c5a5e_2025-11-03_18-36-24.jpg
+      size_bytes: 20038
+    - timestamp: '2025-11-04T19:58:48+00:00'
+      timestamp_nyc: '2025-11-04T14:58:48-05:00'
+      date: '2025-11-04'
+      date_part: '2025-11-04'
+      time_part: 14-58-48
+      local_path: /Users/gilraitses/pax/data/images_by_location/7_Ave/49_St/fc7db899-7a79-41f3-b9b1-b23ce64c5a5e_2025-11-04_14-58-48.jpg
+      absolute_path: /Users/gilraitses/pax/data/images_by_location/7_Ave/49_St/fc7db899-7a79-41f3-b9b1-b23ce64c5a5e_2025-11-04_14-58-48.jpg
+      size_bytes: 17866
+    - timestamp: '2025-11-04T20:10:52+00:00'
+      timestamp_nyc: '2025-11-04T15:10:52-05:00'
+      date: '2025-11-04'
+      date_part: '2025-11-04'
+      time_part: 15-10-52
+      local_path: /Users/gilraitses/pax/data/images_by_location/7_Ave/49_St/fc7db899-7a79-41f3-b9b1-b23ce64c5a5e_2025-11-04_15-10-52.jpg
+      absolute_path: /Users/gilraitses/pax/data/images_by_location/7_Ave/49_St/fc7db899-7a79-41f3-b9b1-b23ce64c5a5e_2025-11-04_15-10-52.jpg
+      size_bytes: 19046
+    - timestamp: '2025-11-05T01:21:14+00:00'
+      timestamp_nyc: '2025-11-04T20:21:14-05:00'
+      date: '2025-11-04'
+      date_part: '2025-11-04'
+      time_part: 20-21-14
+      local_path: /Users/gilraitses/pax/data/images_by_location/7_Ave/49_St/fc7db899-7a79-41f3-b9b1-b23ce64c5a5e_2025-11-04_20-21-14.jpg
+      absolute_path: /Users/gilraitses/pax/data/images_by_location/7_Ave/49_St/fc7db899-7a79-41f3-b9b1-b23ce64c5a5e_2025-11-04_20-21-14.jpg
+      size_bytes: 18861
+  7af854d4-3997-4656-aea3-5482dc4c20ee:
+    camera_id: 7af854d4-3997-4656-aea3-5482dc4c20ee
+    camera_name: Unknown
+    avenue: Unknown
+    cross_street: Unknown
+    total_images: 1
+    time_range:
+      earliest_utc: '2025-11-03T22:12:14+00:00'
+      latest_utc: '2025-11-03T22:12:14+00:00'
+      earliest_nyc: '2025-11-03T17:12:14-05:00'
+      latest_nyc: '2025-11-03T17:12:14-05:00'
+      duration_hours: 0.0
+      duration_days: 0.0
+    images_by_date:
+      '2025-11-03': 1
+    images:
+    - timestamp: '2025-11-03T22:12:14+00:00'
+      timestamp_nyc: '2025-11-03T17:12:14-05:00'
+      date: '2025-11-03'
+      date_part: '2025-11-03'
+      time_part: 17-12-14
+      local_path: /Users/gilraitses/pax/data/images_by_location/Unknown/Unknown/7af854d4-3997-4656-aea3-5482dc4c20ee_2025-11-03_17-12-14.jpg
+      absolute_path: /Users/gilraitses/pax/data/images_by_location/Unknown/Unknown/7af854d4-3997-4656-aea3-5482dc4c20ee_2025-11-03_17-12-14.jpg
+      size_bytes: 22059
+  300e0508-3c7e-4ac5-8527-b75bcf8292b8:
+    camera_id: 300e0508-3c7e-4ac5-8527-b75bcf8292b8
+    camera_name: Unknown
+    avenue: Unknown
+    cross_street: Unknown
+    total_images: 1
+    time_range:
+      earliest_utc: '2025-11-03T22:12:14+00:00'
+      latest_utc: '2025-11-03T22:12:14+00:00'
+      earliest_nyc: '2025-11-03T17:12:14-05:00'
+      latest_nyc: '2025-11-03T17:12:14-05:00'
+      duration_hours: 0.0
+      duration_days: 0.0
+    images_by_date:
+      '2025-11-03': 1
+    images:
+    - timestamp: '2025-11-03T22:12:14+00:00'
+      timestamp_nyc: '2025-11-03T17:12:14-05:00'
+      date: '2025-11-03'
+      date_part: '2025-11-03'
+      time_part: 17-12-14
+      local_path: /Users/gilraitses/pax/data/images_by_location/Unknown/Unknown/300e0508-3c7e-4ac5-8527-b75bcf8292b8_2025-11-03_17-12-14.jpg
+      absolute_path: /Users/gilraitses/pax/data/images_by_location/Unknown/Unknown/300e0508-3c7e-4ac5-8527-b75bcf8292b8_2025-11-03_17-12-14.jpg
+      size_bytes: 14113
+  98c2de4e-fa0c-41d0-b1ea-6d1df833d792:
+    camera_id: 98c2de4e-fa0c-41d0-b1ea-6d1df833d792
+    camera_name: Unknown
+    avenue: Unknown
+    cross_street: Unknown
+    total_images: 1
+    time_range:
+      earliest_utc: '2025-11-03T22:12:14+00:00'
+      latest_utc: '2025-11-03T22:12:14+00:00'
+      earliest_nyc: '2025-11-03T17:12:14-05:00'
+      latest_nyc: '2025-11-03T17:12:14-05:00'
+      duration_hours: 0.0
+      duration_days: 0.0
+    images_by_date:
+      '2025-11-03': 1
+    images:
+    - timestamp: '2025-11-03T22:12:14+00:00'
+      timestamp_nyc: '2025-11-03T17:12:14-05:00'
+      date: '2025-11-03'
+      date_part: '2025-11-03'
+      time_part: 17-12-14
+      local_path: /Users/gilraitses/pax/data/images_by_location/Unknown/Unknown/98c2de4e-fa0c-41d0-b1ea-6d1df833d792_2025-11-03_17-12-14.jpg
+      absolute_path: /Users/gilraitses/pax/data/images_by_location/Unknown/Unknown/98c2de4e-fa0c-41d0-b1ea-6d1df833d792_2025-11-03_17-12-14.jpg
+      size_bytes: 16305
+  0039e6bf-5244-4b4e-b7dc-d02056bbfdc9:
+    camera_id: 0039e6bf-5244-4b4e-b7dc-d02056bbfdc9
+    camera_name: Unknown
+    avenue: Unknown
+    cross_street: Unknown
+    total_images: 1
+    time_range:
+      earliest_utc: '2025-11-03T22:12:14+00:00'
+      latest_utc: '2025-11-03T22:12:14+00:00'
+      earliest_nyc: '2025-11-03T17:12:14-05:00'
+      latest_nyc: '2025-11-03T17:12:14-05:00'
+      duration_hours: 0.0
+      duration_days: 0.0
+    images_by_date:
+      '2025-11-03': 1
+    images:
+    - timestamp: '2025-11-03T22:12:14+00:00'
+      timestamp_nyc: '2025-11-03T17:12:14-05:00'
+      date: '2025-11-03'
+      date_part: '2025-11-03'
+      time_part: 17-12-14
+      local_path: /Users/gilraitses/pax/data/images_by_location/Unknown/Unknown/0039e6bf-5244-4b4e-b7dc-d02056bbfdc9_2025-11-03_17-12-14.jpg
+      absolute_path: /Users/gilraitses/pax/data/images_by_location/Unknown/Unknown/0039e6bf-5244-4b4e-b7dc-d02056bbfdc9_2025-11-03_17-12-14.jpg
+      size_bytes: 18465
+  a23d8461-9d7c-4e11-a392-777ef35b48ba:
+    camera_id: a23d8461-9d7c-4e11-a392-777ef35b48ba
+    camera_name: Unknown
+    avenue: Unknown
+    cross_street: Unknown
+    total_images: 1
+    time_range:
+      earliest_utc: '2025-11-03T22:12:14+00:00'
+      latest_utc: '2025-11-03T22:12:14+00:00'
+      earliest_nyc: '2025-11-03T17:12:14-05:00'
+      latest_nyc: '2025-11-03T17:12:14-05:00'
+      duration_hours: 0.0
+      duration_days: 0.0
+    images_by_date:
+      '2025-11-03': 1
+    images:
+    - timestamp: '2025-11-03T22:12:14+00:00'
+      timestamp_nyc: '2025-11-03T17:12:14-05:00'
+      date: '2025-11-03'
+      date_part: '2025-11-03'
+      time_part: 17-12-14
+      local_path: /Users/gilraitses/pax/data/images_by_location/Unknown/Unknown/a23d8461-9d7c-4e11-a392-777ef35b48ba_2025-11-03_17-12-14.jpg
+      absolute_path: /Users/gilraitses/pax/data/images_by_location/Unknown/Unknown/a23d8461-9d7c-4e11-a392-777ef35b48ba_2025-11-03_17-12-14.jpg
+      size_bytes: 10132

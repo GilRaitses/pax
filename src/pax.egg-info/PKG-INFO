@@ -1,0 +1,49 @@
+Metadata-Version: 2.4
+Name: pax
+Version: 0.2.0
+Summary: Perception-aware corridor analytics
+Author: Gil Raitses
+License: MIT
+Requires-Python: >=3.11
+Description-Content-Type: text/markdown
+Requires-Dist: requests>=2.32
+Requires-Dist: pydantic>=2.6
+Requires-Dist: pydantic-settings>=2.4
+Requires-Dist: numpy>=1.26
+Requires-Dist: pandas>=2.1
+Requires-Dist: geopandas>=0.14
+Requires-Dist: shapely>=2.0
+Requires-Dist: scipy>=1.11
+Requires-Dist: networkx>=3.2
+Requires-Dist: scikit-learn>=1.4
+Requires-Dist: tqdm>=4.66
+Requires-Dist: python-dotenv>=1.0
+Requires-Dist: pyarrow>=15.0
+Requires-Dist: google-cloud-storage>=2.16
+Requires-Dist: matplotlib>=3.8
+Requires-Dist: pillow>=10.3
+Requires-Dist: pyyaml>=6.0
+Provides-Extra: dev
+Requires-Dist: pytest>=8.0; extra == "dev"
+Requires-Dist: ruff>=0.6; extra == "dev"
+Requires-Dist: mypy>=1.10; extra == "dev"
+
+# Pax Corridor Toolkit (Reset)
+
+This repository is being rebuilt around a street-network-first workflow for the Midtown corridor (34th–66th St, Lexington Ave to 9th Ave). All prior longitude-driven scripts have been archived under `docs/backup_20251105_150716/`.
+
+## Current status
+
+- Project skeleton reinstated (`pyproject.toml`, `src/pax`)
+- Upcoming work: street-network-based camera selection and Voronoi zone generation
+
+## Data dependencies
+
+- NYC Planning Digital City Map street centerlines (`docs/termprojectproposal_bkup/.../DCM_StreetCenterLine.*`)
+- `nyc_cameras_full.json` snapshot under `docs/termprojectproposal_bkup`
+
+## Next steps
+
+1. Build corridor polygon from DCM street data (Lexington through 9th).
+2. Filter cameras by street membership rather than latitude/longitude thresholds.
+3. Regenerate Voronoi zones and visualization assets against the new manifest.
