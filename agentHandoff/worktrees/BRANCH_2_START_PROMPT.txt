@@ -1,0 +1,19 @@
+I want to work on BRANCH 2: Empirical Data Structure Definition.
+
+See agentHandoff/worktrees/MULTI_AGENT_WORK_TREE.md for full details.
+
+Let's start with Task 2.1: Research Vision Model Output Formats.
+- Review YOLOv8n output format
+- Review Detectron2 output format  
+- Review CLIP output format
+- Document standard formats used in urban vision research
+- Create research document: docs/research/vision_model_outputs.md
+
+Then move to Task 2.2: Design Feature Vector Schema.
+- Define spatial features (pedestrian count, vehicle count, density)
+- Define visual complexity features (scene complexity, lighting, weather)
+- Define temporal features (time encoding, day of week)
+- Create Pydantic model: src/pax/schemas/feature_vector.py
+- Document schema: docs/schemas/feature_vector_spec.md
+
+This work is independent of BRANCH 1 and can proceed in parallel.
