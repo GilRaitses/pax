@@ -4,9 +4,9 @@
 
 ## Overall Progress
 
-- **2 Branches Complete:** BRANCH 2, BRANCH 4
-- **1 Branch In Progress:** BRANCH 1 (1/5 tasks done)
-- **1 Branch Waiting:** BRANCH 3 (depends on BRANCH 1)
+- **3 Branches Complete:** BRANCH 1, BRANCH 2, BRANCH 4
+- **2 Branches Ready to Start:** BRANCH 3, BRANCH 5
+- **Overall:** 60% complete (3/5 branches done)
 
 ## Branch Status
 
@@ -22,21 +22,21 @@
 - **Deliverables:** 5 visualization scripts, progress dashboard, quality reports
 - **Impact:** Can analyze current collection, ready for baseline visualization
 
-### ⏳ BRANCH 1: Vision Model Integration & Feature Extraction — IN PROGRESS
-- **Status:** Task 1.1 complete (YOLOv8n), continuing with 1.2-1.5
-- **Progress:** 1/5 tasks complete (20%)
-- **Next:** Task 1.2 (Detectron2), Task 1.3 (CLIP), Task 1.4 (Pipeline with BRANCH 2 schema), Task 1.5 (Extract features)
-- **Blocking:** BRANCH 3 depends on Task 1.5 completion
+### ✅ BRANCH 1: Vision Model Integration & Feature Extraction — COMPLETE
+- **Status:** All 5 tasks complete
+- **Completion Date:** November 10, 2025
+- **Deliverables:** 3 vision model wrappers, unified extraction pipeline, batch processing
+- **Impact:** BRANCH 3 and BRANCH 5 can now start
 
-### ⏳ BRANCH 3: Baseline Generation (Partial) — WAITING
-- **Status:** Waiting for BRANCH 1 Task 1.5 (feature extraction)
-- **Dependencies:** Needs features extracted from images
-- **Can Start:** Once BRANCH 1 completes Task 1.5
+### ✅ BRANCH 3: Baseline Generation (Partial) — READY TO START
+- **Status:** Ready to start (BRANCH 1 complete)
+- **Dependencies:** ✅ Features can now be extracted
+- **Can Start:** Now! Use `BRANCH_3_START_PROMPT.txt`
 
-### ⏳ BRANCH 5: Infrastructure & Tooling — NOT STARTED
-- **Status:** Waiting for BRANCH 1 (needs features)
-- **Dependencies:** Needs feature extraction pipeline
-- **Can Start:** After BRANCH 1 Task 1.4 or 1.5
+### ✅ BRANCH 5: Infrastructure & Tooling — READY TO START
+- **Status:** Ready to start (BRANCH 1 complete)
+- **Dependencies:** ✅ Feature extraction pipeline available
+- **Can Start:** Now! Use `BRANCH_5_START_PROMPT.txt`
 
 ## Dependencies Graph
 
@@ -52,29 +52,37 @@ BRANCH 4 (Complete) ──→ Independent (Visualization)
 
 ## Next Actions
 
-1. **BRANCH 1:** Continue with Tasks 1.2-1.5
-   - Task 1.2: Set up Detectron2
-   - Task 1.3: Set up CLIP
-   - Task 1.4: Create pipeline (integrate BRANCH 2 schema)
-   - Task 1.5: Extract features from ~495 images
+1. **BRANCH 3:** Start baseline generation
+   - Use: `BRANCH_3_START_PROMPT.txt`
+   - Process images by zone
+   - Compute preliminary stress scores
+   - Generate partial baseline heatmap
 
-2. **BRANCH 3:** Wait for BRANCH 1 Task 1.5, then start baseline generation
+2. **BRANCH 5:** Start infrastructure setup
+   - Use: `BRANCH_5_START_PROMPT.txt`
+   - Set up feature storage
+   - Create query API
+   - Build monitoring tools
 
-3. **BRANCH 5:** Can start after BRANCH 1 Task 1.4 (pipeline created)
+3. **Run Batch Extraction:** Process all ~495 images to generate feature dataset
+   ```bash
+   python scripts/extract_all_features.py
+   ```
 
 ## Completion Estimates
 
-- **BRANCH 1:** ~2-3 days remaining (4 tasks left)
-- **BRANCH 3:** ~1 day (after BRANCH 1 completes)
-- **BRANCH 5:** ~2 days (can start after BRANCH 1 Task 1.4)
+- **BRANCH 3:** ~1 day (can start now)
+- **BRANCH 5:** ~2 days (can start now)
 
 ## Files Created
 
+- `BRANCH_1_COMPLETE.md` - BRANCH 1 completion summary
 - `BRANCH_2_COMPLETE.md` - BRANCH 2 completion summary
 - `BRANCH_4_COMPLETE.md` - BRANCH 4 completion summary
-- `BRANCH_1_INTEGRATE_SCHEMA_PROMPT.txt` - Integration guide for BRANCH 1
+- `BRANCH_3_START_PROMPT.txt` - Ready-to-use prompt for BRANCH 3
+- `BRANCH_5_START_PROMPT.txt` - Ready-to-use prompt for BRANCH 5
 - `WORK_TREE_STATUS.md` - This file (overall status)
 
 ---
 
-**Overall Progress:** 40% complete (2/5 branches done, 1 in progress)
+**Overall Progress:** 60% complete (3/5 branches done, 2 ready to start)
