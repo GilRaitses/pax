@@ -6,6 +6,7 @@ import json
 import subprocess
 import sys
 from datetime import datetime, timedelta
+from pathlib import Path
 from zoneinfo import ZoneInfo
 
 def get_recent_executions(project: str, region: str, job: str, limit: int = 20) -> list:
