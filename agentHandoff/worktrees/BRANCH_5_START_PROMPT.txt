@@ -1,0 +1,51 @@
+I want to work on BRANCH 5: Infrastructure & Tooling.
+
+See agentHandoff/worktrees/MULTI_AGENT_WORK_TREE.md for full details.
+
+BRANCH 1 is now complete! The feature extraction pipeline is available:
+- src/pax/vision/extractor.py (single image extraction)
+- scripts/extract_all_features.py (batch processing)
+
+Let's start with Task 5.1: Create Batch Image Processing Script.
+- Enhance existing extract_all_features.py or create wrapper
+- Process images in parallel (multiprocessing)
+- Handle failures gracefully with retry logic
+- Resume from checkpoint if interrupted
+- Create script: scripts/2025-11-10/batch_process_images.py
+- Output: Enhanced batch processing with parallelization
+
+Then Task 5.2: Set up Feature Storage.
+- Choose storage format (Parquet recommended for ML)
+- Create schema based on BRANCH 2's FeatureVector
+- Set up storage location: data/features/
+- Create storage module: src/pax/storage/feature_storage.py
+- Support both JSON and Parquet formats
+- Output: Feature storage system
+
+Then Task 5.3: Create Feature Query/Retrieval API.
+- API to query features by camera, time, zone
+- Support filtering and aggregation
+- Create module: src/pax/storage/feature_query.py
+- Include functions for:
+  - Get features by camera ID
+  - Get features by time range
+  - Get features by zone
+  - Aggregate statistics
+- Output: Feature query API
+
+Then Task 5.4: Build Feature Extraction Monitoring.
+- Track extraction progress
+- Monitor errors and failures
+- Generate extraction reports
+- Create script: scripts/2025-11-10/monitor_extraction.py
+- Output: Monitoring dashboard/script
+
+Finally Task 5.5: Create Data Quality Checks.
+- Validate feature completeness
+- Check for outliers
+- Identify data quality issues
+- Use BRANCH 2's validation functions
+- Create script: scripts/2025-11-10/check_feature_quality.py
+- Output: Data quality check script
+
+This work builds on BRANCH 1's extraction pipeline and BRANCH 2's schema/validation.

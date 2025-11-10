@@ -1,0 +1,48 @@
+I want to work on BRANCH 3: Baseline Generation (Partial).
+
+See agentHandoff/worktrees/MULTI_AGENT_WORK_TREE.md for full details.
+
+BRANCH 1 is now complete! Features can be extracted from images using:
+- src/pax/vision/extractor.py (single image)
+- scripts/extract_all_features.py (batch processing)
+
+Let's start with Task 3.1: Process Available Images per Camera Zone.
+- Group images by camera zone (using camera manifest: data/manifests/corridor_cameras_numbered.json)
+- Count images per zone
+- Identify zones with sufficient data (≥3 images)
+- Create script: scripts/2025-11-10/process_images_by_zone.py
+- Output: Zone data availability report (docs/reports/zone_data_availability.md)
+
+Then Task 3.2: Compute Preliminary Stress Scores.
+- Extract features from images (or use already extracted features if available)
+- Use simple heuristics to compute stress scores:
+  - Pedestrian count (higher = more stress)
+  - Vehicle count (higher = more stress)
+  - Crowd density (higher = more stress)
+  - Visual complexity (higher = more stress)
+- Compute mean stress per zone (where data exists)
+- Handle zones with insufficient data gracefully
+- Create script: scripts/2025-11-10/compute_stress_scores.py
+- Output: Preliminary stress scores JSON (data/stress_scores_preliminary.json)
+
+Then Task 3.3: Identify Zones with Sufficient Data.
+- List zones with ≥3 images (sufficient for baseline)
+- List zones with 1-2 images (partial data)
+- List zones with 0 images (missing data)
+- Create report: docs/reports/data_completeness.md
+- Output: Data completeness report
+
+Then Task 3.4: Generate Partial Baseline Heatmap.
+- Use BRANCH 4's heatmap script: scripts/2025-11-10/generate_baseline_heatmap.py
+- Visualize stress scores for zones with data
+- Mark zones with insufficient/missing data clearly
+- Output: docs/figures/baseline_heatmap_partial.png
+
+Finally Task 3.5: Document Data Gaps.
+- Identify which zones need more images
+- Estimate when full baseline can be generated (need 2 weeks = 672 images/camera)
+- Create data collection priority list
+- Create report: docs/reports/data_gaps.md
+- Output: Data gaps document
+
+This work uses the feature extraction pipeline from BRANCH 1 and the visualization scripts from BRANCH 4.
