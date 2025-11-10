@@ -30,7 +30,7 @@ def build_parser() -> argparse.ArgumentParser:
     parser.add_argument(
         "--dcm-shapefile",
         type=Path,
-        default=Path("docs/data/dcm/DCM_StreetCenterLine.shp"),
+        default=Path("data/shapefiles/dcm/DCM_StreetCenterLine.shp"),
         help="Street centerline shapefile",
     )
     parser.add_argument(
