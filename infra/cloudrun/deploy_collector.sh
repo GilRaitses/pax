@@ -189,7 +189,7 @@ gcloud run jobs add-iam-policy-binding "$JOB_NAME" \
   --quiet || echo "Permission may already exist, continuing..."
 
 # Grant permission for Cloud Scheduler's compute service account to invoke the job
-# Cloud Scheduler uses the project's compute service account for OIDC authentication
+# Cloud Scheduler uses the project's compute service account for OAuth token authentication
 PROJECT_NUMBER=$(gcloud projects describe "$PROJECT" --format='value(projectNumber)')
 COMPUTE_SERVICE_ACCOUNT="${PROJECT_NUMBER}-compute@developer.gserviceaccount.com"
 
@@ -209,20 +209,22 @@ echo "=========================================="
 # Get the job URI for direct HTTP trigger
 JOB_URI="https://${REGION}-run.googleapis.com/apis/run.googleapis.com/v1/namespaces/${PROJECT}/jobs/${JOB_NAME}:run"
 
-# Cloud Scheduler must use the compute service account for OIDC authentication
+# Cloud Scheduler must use OAuth tokens for Cloud Run Jobs (not OIDC)
+# OIDC works with Cloud Run Services, but Jobs require OAuth tokens
 # to invoke Cloud Run jobs via HTTP
 PROJECT_NUMBER=$(gcloud projects describe "$PROJECT" --format='value(projectNumber)')
 SCHEDULER_SERVICE_ACCOUNT="${PROJECT_NUMBER}-compute@developer.gserviceaccount.com"
 
-# Create scheduler that triggers job directly via HTTP
+# Create scheduler that triggers job directly via HTTP using OAuth tokens
+# Note: Cloud Run Jobs require OAuth tokens, not OIDC tokens
 gcloud scheduler jobs create http "$SCHEDULER_NAME" \
   --project "$PROJECT" \
   --location "$REGION" \
   --schedule "$SCHEDULE" \
   --uri "$JOB_URI" \
   --http-method POST \
-  --oidc-service-account-email "$SCHEDULER_SERVICE_ACCOUNT" \
-  --oidc-token-audience "$JOB_URI" \
+  --oauth-service-account-email "$SCHEDULER_SERVICE_ACCOUNT" \
+  --oauth-token-scope "https://www.googleapis.com/auth/cloud-platform" \
   --time-zone "UTC" || \
 gcloud scheduler jobs update http "$SCHEDULER_NAME" \
   --project "$PROJECT" \
@@ -230,8 +232,8 @@ gcloud scheduler jobs update http "$SCHEDULER_NAME" \
   --schedule "$SCHEDULE" \
   --uri "$JOB_URI" \
   --http-method POST \
-  --oidc-service-account-email "$SCHEDULER_SERVICE_ACCOUNT" \
-  --oidc-token-audience "$JOB_URI" \
+  --oauth-service-account-email "$SCHEDULER_SERVICE_ACCOUNT" \
+  --oauth-token-scope "https://www.googleapis.com/auth/cloud-platform" \
   --time-zone "UTC"
 
 echo ""
