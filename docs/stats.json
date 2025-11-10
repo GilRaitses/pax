@@ -1,485 +1,488 @@
 {
-  "totalImages": 169,
+  "totalImages": 250,
   "activeCameras": 82,
   "camerasInManifest": 82,
-  "latestCapture": "2025-11-10T00:27:43",
+  "latestCapture": "2025-11-10T10:24:20-05:00",
   "latestCameraId": "03a8a2da-3ac2-45aa-a5ba-4ff7d1ecbd22",
   "latestCameraName": "5 Ave @ 47 St",
+  "latestImagePath": "images/03a8a2da-3ac2-45aa-a5ba-4ff7d1ecbd22/20251110T152420.jpg",
+  "latestImageUrl": "https://storage.googleapis.com/pax-nyc-images/images/03a8a2da-3ac2-45aa-a5ba-4ff7d1ecbd22/20251110T152420.jpg",
   "cameraCounts": {
     "03a8a2da-3ac2-45aa-a5ba-4ff7d1ecbd22": {
-      "count": 2,
-      "lastCapture": "2025-11-10T00:27:43",
-      "firstCapture": "2025-11-05T23:04:04"
+      "count": 3,
+      "lastCapture": "2025-11-10T10:24:20-05:00",
+      "firstCapture": "2025-11-05T18:04:04-05:00"
     },
     "04e09ed5-2d97-4e29-8438-b87748850dbb": {
-      "count": 1,
-      "lastCapture": "2025-11-10T00:27:43",
-      "firstCapture": "2025-11-10T00:27:43"
+      "count": 2,
+      "lastCapture": "2025-11-10T10:24:20-05:00",
+      "firstCapture": "2025-11-09T19:27:43-05:00"
     },
     "053e8995-f8cb-4d02-a659-70ac7c7da5db": {
-      "count": 2,
-      "lastCapture": "2025-11-10T00:27:43",
-      "firstCapture": "2025-11-05T23:04:04"
+      "count": 3,
+      "lastCapture": "2025-11-10T10:24:20-05:00",
+      "firstCapture": "2025-11-05T18:04:04-05:00"
     },
     "0a49d947-2a5b-498d-a386-2cef5ce883fa": {
-      "count": 2,
-      "lastCapture": "2025-11-10T00:27:43",
-      "firstCapture": "2025-11-05T23:04:04"
+      "count": 3,
+      "lastCapture": "2025-11-10T10:24:20-05:00",
+      "firstCapture": "2025-11-05T18:04:04-05:00"
     },
     "0b4bd3d3-1741-49b3-87cc-d0960fa5f424": {
-      "count": 2,
-      "lastCapture": "2025-11-10T00:27:43",
-      "firstCapture": "2025-11-05T23:04:04"
+      "count": 3,
+      "lastCapture": "2025-11-10T10:24:20-05:00",
+      "firstCapture": "2025-11-05T18:04:04-05:00"
     },
     "0c9a2836-c408-48d3-85c7-1977c33d9133": {
-      "count": 2,
-      "lastCapture": "2025-11-10T00:27:43",
-      "firstCapture": "2025-11-05T23:04:04"
+      "count": 3,
+      "lastCapture": "2025-11-10T10:24:20-05:00",
+      "firstCapture": "2025-11-05T18:04:04-05:00"
     },
     "0dc7c2b4-614d-46a3-9610-3ba09f3f1284": {
       "count": 1,
-      "lastCapture": "2025-11-05T23:04:04",
-      "firstCapture": "2025-11-05T23:04:04"
+      "lastCapture": "2025-11-05T18:04:04-05:00",
+      "firstCapture": "2025-11-05T18:04:04-05:00"
     },
     "1546f761-039c-4b5c-af5e-75c83c9f603f": {
-      "count": 2,
-      "lastCapture": "2025-11-10T00:27:43",
-      "firstCapture": "2025-11-05T23:04:04"
+      "count": 3,
+      "lastCapture": "2025-11-10T10:24:20-05:00",
+      "firstCapture": "2025-11-05T18:04:04-05:00"
     },
     "15f7a00b-5afb-4193-a5e4-dfe7710a5dfe": {
-      "count": 2,
-      "lastCapture": "2025-11-10T00:27:43",
-      "firstCapture": "2025-11-05T23:04:04"
+      "count": 3,
+      "lastCapture": "2025-11-10T10:24:20-05:00",
+      "firstCapture": "2025-11-05T18:04:04-05:00"
     },
     "17b6c7dd-2aa7-442a-8832-d39051a47d1b": {
-      "count": 2,
-      "lastCapture": "2025-11-10T00:27:43",
-      "firstCapture": "2025-11-05T23:04:04"
+      "count": 3,
+      "lastCapture": "2025-11-10T10:24:20-05:00",
+      "firstCapture": "2025-11-05T18:04:04-05:00"
     },
     "180dcc87-d861-43e3-8898-9ad5ee1a26a9": {
-      "count": 2,
-      "lastCapture": "2025-11-10T00:27:43",
-      "firstCapture": "2025-11-05T23:04:04"
+      "count": 3,
+      "lastCapture": "2025-11-10T10:24:20-05:00",
+      "firstCapture": "2025-11-05T18:04:04-05:00"
     },
     "1927b469-e2dc-4943-a70c-e6e52fd4c48c": {
-      "count": 2,
-      "lastCapture": "2025-11-10T00:27:43",
-      "firstCapture": "2025-11-05T23:04:04"
+      "count": 3,
+      "lastCapture": "2025-11-10T10:24:20-05:00",
+      "firstCapture": "2025-11-05T18:04:04-05:00"
     },
     "19789499-03ac-45de-9401-a7a71ea60d1e": {
-      "count": 2,
-      "lastCapture": "2025-11-10T00:27:43",
-      "firstCapture": "2025-11-05T23:04:04"
+      "count": 3,
+      "lastCapture": "2025-11-10T10:24:20-05:00",
+      "firstCapture": "2025-11-05T18:04:04-05:00"
     },
     "1dddf912-4718-4b2a-94dd-1f793a9ed22c": {
-      "count": 2,
-      "lastCapture": "2025-11-10T00:27:43",
-      "firstCapture": "2025-11-05T23:04:04"
+      "count": 3,
+      "lastCapture": "2025-11-10T10:24:20-05:00",
+      "firstCapture": "2025-11-05T18:04:04-05:00"
     },
     "1e60ade7-c760-48cf-acd9-d9d6cbfa9420": {
       "count": 1,
-      "lastCapture": "2025-11-05T23:04:04",
-      "firstCapture": "2025-11-05T23:04:04"
+      "lastCapture": "2025-11-05T18:04:04-05:00",
+      "firstCapture": "2025-11-05T18:04:04-05:00"
     },
     "1eb66413-6761-4eb0-bc04-e2533bb74b42": {
-      "count": 2,
-      "lastCapture": "2025-11-10T00:27:43",
-      "firstCapture": "2025-11-05T23:04:04"
+      "count": 3,
+      "lastCapture": "2025-11-10T10:24:20-05:00",
+      "firstCapture": "2025-11-05T18:04:04-05:00"
     },
     "20b2298a-90cf-463f-b172-0b398a34f061": {
-      "count": 2,
-      "lastCapture": "2025-11-10T00:27:43",
-      "firstCapture": "2025-11-05T23:04:04"
+      "count": 3,
+      "lastCapture": "2025-11-10T10:24:20-05:00",
+      "firstCapture": "2025-11-05T18:04:04-05:00"
     },
     "2191c11c-1757-4938-a608-a2c6ae0e6486": {
       "count": 1,
-      "lastCapture": "2025-11-05T23:04:04",
-      "firstCapture": "2025-11-05T23:04:04"
+      "lastCapture": "2025-11-05T18:04:04-05:00",
+      "firstCapture": "2025-11-05T18:04:04-05:00"
     },
     "2589c0d6-c389-4861-b812-4ae68f560eba": {
-      "count": 2,
-      "lastCapture": "2025-11-10T00:27:43",
-      "firstCapture": "2025-11-05T23:04:04"
+      "count": 3,
+      "lastCapture": "2025-11-10T10:24:20-05:00",
+      "firstCapture": "2025-11-05T18:04:04-05:00"
     },
     "326b2bab-d277-4c5a-9778-a7af791ad151": {
-      "count": 2,
-      "lastCapture": "2025-11-10T00:27:43",
-      "firstCapture": "2025-11-05T23:04:04"
+      "count": 3,
+      "lastCapture": "2025-11-10T10:24:20-05:00",
+      "firstCapture": "2025-11-05T18:04:04-05:00"
     },
     "332f161d-47cb-4c8a-b6b6-5ad48a55c978": {
-      "count": 2,
-      "lastCapture": "2025-11-10T00:27:43",
-      "firstCapture": "2025-11-05T23:04:04"
+      "count": 3,
+      "lastCapture": "2025-11-10T10:24:20-05:00",
+      "firstCapture": "2025-11-05T18:04:04-05:00"
     },
     "34674be5-4791-47f1-b0b2-2db0ff619732": {
-      "count": 2,
-      "lastCapture": "2025-11-10T00:27:43",
-      "firstCapture": "2025-11-05T23:04:04"
+      "count": 3,
+      "lastCapture": "2025-11-10T10:24:20-05:00",
+      "firstCapture": "2025-11-05T18:04:04-05:00"
     },
     "37e2a4b6-2fbd-42f5-9d2d-130b664783f2": {
-      "count": 2,
-      "lastCapture": "2025-11-10T00:27:43",
-      "firstCapture": "2025-11-05T23:04:04"
+      "count": 3,
+      "lastCapture": "2025-11-10T10:24:20-05:00",
+      "firstCapture": "2025-11-05T18:04:04-05:00"
     },
     "3a3d7bc0-7f35-46ba-9cca-75fe83aac34d": {
-      "count": 2,
-      "lastCapture": "2025-11-10T00:27:43",
-      "firstCapture": "2025-11-05T23:04:04"
+      "count": 3,
+      "lastCapture": "2025-11-10T10:24:20-05:00",
+      "firstCapture": "2025-11-05T18:04:04-05:00"
     },
     "3d8e276f-b179-414d-a506-679d5e559d3e": {
-      "count": 2,
-      "lastCapture": "2025-11-10T00:27:43",
-      "firstCapture": "2025-11-05T23:04:04"
+      "count": 3,
+      "lastCapture": "2025-11-10T10:24:20-05:00",
+      "firstCapture": "2025-11-05T18:04:04-05:00"
     },
     "3f04a686-f97c-4187-8968-cb09265e08ff": {
-      "count": 2,
-      "lastCapture": "2025-11-10T00:27:43",
-      "firstCapture": "2025-11-05T23:04:04"
+      "count": 3,
+      "lastCapture": "2025-11-10T10:24:20-05:00",
+      "firstCapture": "2025-11-05T18:04:04-05:00"
     },
     "404fac12-9b5c-430b-a01b-12b50d39521c": {
-      "count": 2,
-      "lastCapture": "2025-11-10T00:27:43",
-      "firstCapture": "2025-11-05T23:04:04"
+      "count": 3,
+      "lastCapture": "2025-11-10T10:24:20-05:00",
+      "firstCapture": "2025-11-05T18:04:04-05:00"
     },
     "434094f8-1be4-4c19-8067-1e11049e46b4": {
-      "count": 2,
-      "lastCapture": "2025-11-10T00:27:43",
-      "firstCapture": "2025-11-05T23:04:04"
+      "count": 3,
+      "lastCapture": "2025-11-10T10:24:20-05:00",
+      "firstCapture": "2025-11-05T18:04:04-05:00"
     },
     "45cb119b-0e4a-442e-9410-b810ab8c255d": {
-      "count": 2,
-      "lastCapture": "2025-11-10T00:27:43",
-      "firstCapture": "2025-11-05T23:04:04"
+      "count": 3,
+      "lastCapture": "2025-11-10T10:24:20-05:00",
+      "firstCapture": "2025-11-05T18:04:04-05:00"
     },
     "482e6d35-2a67-4bbf-b36f-fdf7e031d607": {
-      "count": 2,
-      "lastCapture": "2025-11-10T00:27:43",
-      "firstCapture": "2025-11-05T23:04:04"
+      "count": 3,
+      "lastCapture": "2025-11-10T10:24:20-05:00",
+      "firstCapture": "2025-11-05T18:04:04-05:00"
     },
     "4850e464-1111-4b5d-a72d-f54a0e12a789": {
-      "count": 2,
-      "lastCapture": "2025-11-10T00:27:43",
-      "firstCapture": "2025-11-05T23:04:04"
+      "count": 3,
+      "lastCapture": "2025-11-10T10:24:20-05:00",
+      "firstCapture": "2025-11-05T18:04:04-05:00"
     },
     "4ebe49c8-3e68-43f7-b415-da3db9f72693": {
-      "count": 2,
-      "lastCapture": "2025-11-10T00:27:43",
-      "firstCapture": "2025-11-05T23:04:04"
+      "count": 3,
+      "lastCapture": "2025-11-10T10:24:20-05:00",
+      "firstCapture": "2025-11-05T18:04:04-05:00"
     },
     "4f3f56e3-f68e-4b60-a4ba-153ecb9094f7": {
-      "count": 2,
-      "lastCapture": "2025-11-10T00:27:43",
-      "firstCapture": "2025-11-05T23:04:04"
+      "count": 3,
+      "lastCapture": "2025-11-10T10:24:20-05:00",
+      "firstCapture": "2025-11-05T18:04:04-05:00"
     },
     "4f8c2e84-c15a-4474-91fb-7e14554d4c4e": {
-      "count": 2,
-      "lastCapture": "2025-11-10T00:27:43",
-      "firstCapture": "2025-11-05T23:04:04"
+      "count": 3,
+      "lastCapture": "2025-11-10T10:24:20-05:00",
+      "firstCapture": "2025-11-05T18:04:04-05:00"
     },
     "5352e130-4668-4be5-a7b9-9e1ce4ea6d4c": {
-      "count": 1,
-      "lastCapture": "2025-11-10T00:27:43",
-      "firstCapture": "2025-11-10T00:27:43"
+      "count": 2,
+      "lastCapture": "2025-11-10T10:24:20-05:00",
+      "firstCapture": "2025-11-09T19:27:43-05:00"
     },
     "5bb6d7d8-39ce-43b8-b539-376fbcf73927": {
-      "count": 1,
-      "lastCapture": "2025-11-10T00:27:43",
-      "firstCapture": "2025-11-10T00:27:43"
+      "count": 2,
+      "lastCapture": "2025-11-10T10:24:20-05:00",
+      "firstCapture": "2025-11-09T19:27:43-05:00"
     },
     "5c505897-b475-4359-897d-b064bdb9feef": {
-      "count": 2,
-      "lastCapture": "2025-11-10T00:27:43",
-      "firstCapture": "2025-11-05T23:04:04"
+      "count": 3,
+      "lastCapture": "2025-11-10T10:24:20-05:00",
+      "firstCapture": "2025-11-05T18:04:04-05:00"
     },
     "5caa3ace-277b-42db-97bd-585f29b0d49f": {
-      "count": 2,
-      "lastCapture": "2025-11-10T00:27:43",
-      "firstCapture": "2025-11-05T23:04:04"
+      "count": 3,
+      "lastCapture": "2025-11-10T10:24:20-05:00",
+      "firstCapture": "2025-11-05T18:04:04-05:00"
     },
     "5d055599-875a-4010-991f-e7e454889052": {
-      "count": 2,
-      "lastCapture": "2025-11-10T00:27:43",
-      "firstCapture": "2025-11-05T23:04:04"
+      "count": 3,
+      "lastCapture": "2025-11-10T10:24:20-05:00",
+      "firstCapture": "2025-11-05T18:04:04-05:00"
     },
     "62b3062d-542f-40f1-86ec-206710e789b6": {
-      "count": 1,
-      "lastCapture": "2025-11-10T00:27:43",
-      "firstCapture": "2025-11-10T00:27:43"
+      "count": 2,
+      "lastCapture": "2025-11-10T10:24:20-05:00",
+      "firstCapture": "2025-11-09T19:27:43-05:00"
     },
     "62ecb539-5e6c-40ff-a771-ea77153cc4ed": {
-      "count": 2,
-      "lastCapture": "2025-11-10T00:27:43",
-      "firstCapture": "2025-11-05T23:04:04"
+      "count": 3,
+      "lastCapture": "2025-11-10T10:24:20-05:00",
+      "firstCapture": "2025-11-05T18:04:04-05:00"
     },
     "76faba94-f9e5-42d7-981e-0cbbbfd4bc21": {
-      "count": 2,
-      "lastCapture": "2025-11-10T00:27:43",
-      "firstCapture": "2025-11-05T23:04:04"
+      "count": 3,
+      "lastCapture": "2025-11-10T10:24:20-05:00",
+      "firstCapture": "2025-11-05T18:04:04-05:00"
     },
     "78a5c61d-9dce-4b52-b0da-bf7d22c1f501": {
-      "count": 2,
-      "lastCapture": "2025-11-10T00:27:43",
-      "firstCapture": "2025-11-05T23:04:04"
+      "count": 3,
+      "lastCapture": "2025-11-10T10:24:20-05:00",
+      "firstCapture": "2025-11-05T18:04:04-05:00"
     },
     "7a7016c5-a086-40fd-9298-90f17f8b6cea": {
-      "count": 2,
-      "lastCapture": "2025-11-10T00:27:43",
-      "firstCapture": "2025-11-05T23:04:04"
+      "count": 3,
+      "lastCapture": "2025-11-10T10:24:20-05:00",
+      "firstCapture": "2025-11-05T18:04:04-05:00"
     },
     "7e2400e3-cad2-407a-927b-d575a35048e3": {
-      "count": 1,
-      "lastCapture": "2025-11-10T00:27:43",
-      "firstCapture": "2025-11-10T00:27:43"
+      "count": 2,
+      "lastCapture": "2025-11-10T10:24:20-05:00",
+      "firstCapture": "2025-11-09T19:27:43-05:00"
     },
     "81db80c2-13fe-4ae7-8b47-c08aa42d512f": {
-      "count": 2,
-      "lastCapture": "2025-11-10T00:27:43",
-      "firstCapture": "2025-11-05T23:04:04"
+      "count": 3,
+      "lastCapture": "2025-11-10T10:24:20-05:00",
+      "firstCapture": "2025-11-05T18:04:04-05:00"
     },
     "83655dbc-7902-4fdb-926c-15fee4396b83": {
-      "count": 2,
-      "lastCapture": "2025-11-10T00:27:43",
-      "firstCapture": "2025-11-05T23:04:04"
+      "count": 3,
+      "lastCapture": "2025-11-10T10:24:20-05:00",
+      "firstCapture": "2025-11-05T18:04:04-05:00"
     },
     "83bf2591-579d-415b-a0d4-fe39868b46d1": {
-      "count": 2,
-      "lastCapture": "2025-11-10T00:27:43",
-      "firstCapture": "2025-11-05T23:04:04"
+      "count": 3,
+      "lastCapture": "2025-11-10T10:24:20-05:00",
+      "firstCapture": "2025-11-05T18:04:04-05:00"
     },
     "85809312-60f2-4a52-a694-82628529c05a": {
-      "count": 2,
-      "lastCapture": "2025-11-10T00:27:43",
-      "firstCapture": "2025-11-05T23:04:04"
+      "count": 3,
+      "lastCapture": "2025-11-10T10:24:20-05:00",
+      "firstCapture": "2025-11-05T18:04:04-05:00"
     },
     "879ab924-18ac-4779-a681-395d73a0f0cc": {
-      "count": 2,
-      "lastCapture": "2025-11-10T00:27:43",
-      "firstCapture": "2025-11-05T23:04:04"
+      "count": 3,
+      "lastCapture": "2025-11-10T10:24:20-05:00",
+      "firstCapture": "2025-11-05T18:04:04-05:00"
     },
     "8933100a-8229-42fe-b4b2-265db410d7ae": {
-      "count": 2,
-      "lastCapture": "2025-11-10T00:27:43",
-      "firstCapture": "2025-11-05T23:04:04"
+      "count": 3,
+      "lastCapture": "2025-11-10T10:24:20-05:00",
+      "firstCapture": "2025-11-05T18:04:04-05:00"
     },
     "8cd15417-5b79-4065-9165-4b6ff0ff3f53": {
-      "count": 2,
-      "lastCapture": "2025-11-10T00:27:43",
-      "firstCapture": "2025-11-05T23:04:04"
+      "count": 3,
+      "lastCapture": "2025-11-10T10:24:20-05:00",
+      "firstCapture": "2025-11-05T18:04:04-05:00"
     },
     "9561ad5f-0eda-460b-ab12-41caa4e0a91e": {
-      "count": 2,
-      "lastCapture": "2025-11-10T00:27:43",
-      "firstCapture": "2025-11-05T23:04:04"
+      "count": 3,
+      "lastCapture": "2025-11-10T10:24:20-05:00",
+      "firstCapture": "2025-11-05T18:04:04-05:00"
     },
     "9565e94d-66f2-4965-9c13-82d5500d6cfd": {
-      "count": 2,
-      "lastCapture": "2025-11-10T00:27:43",
-      "firstCapture": "2025-11-05T23:04:04"
+      "count": 3,
+      "lastCapture": "2025-11-10T10:24:20-05:00",
+      "firstCapture": "2025-11-05T18:04:04-05:00"
     },
     "9c4c2657-6796-4953-bbe6-c50f24bb5820": {
-      "count": 2,
-      "lastCapture": "2025-11-10T00:27:43",
-      "firstCapture": "2025-11-05T23:04:04"
+      "count": 3,
+      "lastCapture": "2025-11-10T10:24:20-05:00",
+      "firstCapture": "2025-11-05T18:04:04-05:00"
     },
     "9e3e26ae-d49f-4f64-ba99-113b779c25a2": {
-      "count": 2,
-      "lastCapture": "2025-11-10T00:27:43",
-      "firstCapture": "2025-11-05T23:04:04"
+      "count": 3,
+      "lastCapture": "2025-11-10T10:24:20-05:00",
+      "firstCapture": "2025-11-05T18:04:04-05:00"
     },
     "9e694610-60f1-4939-a1f9-1679e6408f27": {
-      "count": 2,
-      "lastCapture": "2025-11-10T00:27:43",
-      "firstCapture": "2025-11-05T23:04:04"
+      "count": 3,
+      "lastCapture": "2025-11-10T10:24:20-05:00",
+      "firstCapture": "2025-11-05T18:04:04-05:00"
     },
     "9eca011a-81b1-4e4a-b44a-4ee2bc8affff": {
       "count": 1,
-      "lastCapture": "2025-11-05T23:04:04",
-      "firstCapture": "2025-11-05T23:04:04"
+      "lastCapture": "2025-11-05T18:04:04-05:00",
+      "firstCapture": "2025-11-05T18:04:04-05:00"
     },
     "a356e2c6-7d95-4d93-85c1-da3d05485d8c": {
-      "count": 2,
-      "lastCapture": "2025-11-10T00:27:43",
-      "firstCapture": "2025-11-05T23:04:04"
+      "count": 3,
+      "lastCapture": "2025-11-10T10:24:20-05:00",
+      "firstCapture": "2025-11-05T18:04:04-05:00"
     },
     "a4c12003-9638-473d-bfe3-dddf509c80b8": {
-      "count": 2,
-      "lastCapture": "2025-11-10T00:27:43",
-      "firstCapture": "2025-11-05T23:04:04"
+      "count": 3,
+      "lastCapture": "2025-11-10T10:24:20-05:00",
+      "firstCapture": "2025-11-05T18:04:04-05:00"
     },
     "aacb43bf-ed37-44c6-a2fe-8449a7851306": {
       "count": 2,
-      "lastCapture": "2025-11-10T00:27:43",
-      "firstCapture": "2025-11-05T23:04:04"
+      "lastCapture": "2025-11-09T19:27:43-05:00",
+      "firstCapture": "2025-11-05T18:04:04-05:00"
     },
     "b0cbb042-de0a-449f-b5d1-49f68a9bf2ae": {
-      "count": 2,
-      "lastCapture": "2025-11-10T00:27:43",
-      "firstCapture": "2025-11-05T23:04:04"
+      "count": 3,
+      "lastCapture": "2025-11-10T10:24:20-05:00",
+      "firstCapture": "2025-11-05T18:04:04-05:00"
     },
     "b331d9d1-c081-4476-8302-83445ac196e7": {
       "count": 1,
-      "lastCapture": "2025-11-05T23:04:04",
-      "firstCapture": "2025-11-05T23:04:04"
+      "lastCapture": "2025-11-05T18:04:04-05:00",
+      "firstCapture": "2025-11-05T18:04:04-05:00"
     },
     "b5a78bda-3ca9-4ad4-bd03-4cee70baba2d": {
-      "count": 2,
-      "lastCapture": "2025-11-10T00:27:43",
-      "firstCapture": "2025-11-05T23:04:04"
+      "count": 3,
+      "lastCapture": "2025-11-10T10:24:20-05:00",
+      "firstCapture": "2025-11-05T18:04:04-05:00"
     },
     "bb362cd8-057b-4538-bdee-cf846a725ea0": {
       "count": 1,
-      "lastCapture": "2025-11-05T23:04:04",
-      "firstCapture": "2025-11-05T23:04:04"
+      "lastCapture": "2025-11-05T18:04:04-05:00",
+      "firstCapture": "2025-11-05T18:04:04-05:00"
     },
     "bca4a4b0-d73f-4937-9301-85ff8293bd94": {
-      "count": 2,
-      "lastCapture": "2025-11-10T00:27:43",
-      "firstCapture": "2025-11-05T23:04:04"
+      "count": 3,
+      "lastCapture": "2025-11-10T10:24:20-05:00",
+      "firstCapture": "2025-11-05T18:04:04-05:00"
     },
     "c0f05969-abc6-4fa6-b317-3e6ba03e989a": {
       "count": 1,
-      "lastCapture": "2025-11-05T23:04:04",
-      "firstCapture": "2025-11-05T23:04:04"
+      "lastCapture": "2025-11-05T18:04:04-05:00",
+      "firstCapture": "2025-11-05T18:04:04-05:00"
     },
     "c34ca47e-e375-4b9f-a8d7-f9737566b783": {
-      "count": 2,
-      "lastCapture": "2025-11-10T00:27:43",
-      "firstCapture": "2025-11-05T23:04:04"
+      "count": 3,
+      "lastCapture": "2025-11-10T10:24:20-05:00",
+      "firstCapture": "2025-11-05T18:04:04-05:00"
     },
     "c6d013c9-e69b-4824-8dad-b6580491d916": {
-      "count": 2,
-      "lastCapture": "2025-11-10T00:27:43",
-      "firstCapture": "2025-11-05T23:04:04"
+      "count": 3,
+      "lastCapture": "2025-11-10T10:24:20-05:00",
+      "firstCapture": "2025-11-05T18:04:04-05:00"
     },
     "c880d0c4-db84-44c2-9f00-62f21a83b5d0": {
-      "count": 2,
-      "lastCapture": "2025-11-10T00:27:43",
-      "firstCapture": "2025-11-05T23:04:04"
+      "count": 3,
+      "lastCapture": "2025-11-10T10:24:20-05:00",
+      "firstCapture": "2025-11-05T18:04:04-05:00"
     },
     "ccd1abb9-0683-4d93-a62f-b2b121612d28": {
-      "count": 2,
-      "lastCapture": "2025-11-10T00:27:43",
-      "firstCapture": "2025-11-05T23:04:04"
+      "count": 3,
+      "lastCapture": "2025-11-10T10:24:20-05:00",
+      "firstCapture": "2025-11-05T18:04:04-05:00"
     },
     "cd949f21-54b2-4d11-8aae-4ffba8654271": {
-      "count": 2,
-      "lastCapture": "2025-11-10T00:27:43",
-      "firstCapture": "2025-11-05T23:04:04"
+      "count": 3,
+      "lastCapture": "2025-11-10T10:24:20-05:00",
+      "firstCapture": "2025-11-05T18:04:04-05:00"
     },
     "d1363c77-e061-4414-be82-e6d749254859": {
-      "count": 2,
-      "lastCapture": "2025-11-10T00:27:43",
-      "firstCapture": "2025-11-05T23:04:04"
+      "count": 3,
+      "lastCapture": "2025-11-10T10:24:20-05:00",
+      "firstCapture": "2025-11-05T18:04:04-05:00"
     },
     "d1d8cd99-7609-409a-a739-f5913dabf4e6": {
-      "count": 2,
-      "lastCapture": "2025-11-10T00:27:43",
-      "firstCapture": "2025-11-05T23:04:04"
+      "count": 3,
+      "lastCapture": "2025-11-10T10:24:20-05:00",
+      "firstCapture": "2025-11-05T18:04:04-05:00"
     },
     "d78ebdc6-2211-479e-bda6-59d79db20258": {
-      "count": 2,
-      "lastCapture": "2025-11-10T00:27:43",
-      "firstCapture": "2025-11-05T23:04:04"
+      "count": 3,
+      "lastCapture": "2025-11-10T10:24:20-05:00",
+      "firstCapture": "2025-11-05T18:04:04-05:00"
     },
     "d8122408-7092-41ba-a9db-ef8847edeaef": {
-      "count": 2,
-      "lastCapture": "2025-11-10T00:27:43",
-      "firstCapture": "2025-11-05T23:04:04"
+      "count": 3,
+      "lastCapture": "2025-11-10T10:24:20-05:00",
+      "firstCapture": "2025-11-05T18:04:04-05:00"
     },
     "dbbf45f6-7d87-46fa-825f-454a7e2bbcad": {
-      "count": 2,
-      "lastCapture": "2025-11-10T00:27:43",
-      "firstCapture": "2025-11-05T23:04:04"
+      "count": 3,
+      "lastCapture": "2025-11-10T10:24:20-05:00",
+      "firstCapture": "2025-11-05T18:04:04-05:00"
     },
     "defa5e30-d6c7-4582-9ceb-03ff0fe7b93a": {
-      "count": 2,
-      "lastCapture": "2025-11-10T00:27:43",
-      "firstCapture": "2025-11-05T23:04:04"
+      "count": 3,
+      "lastCapture": "2025-11-10T10:24:20-05:00",
+      "firstCapture": "2025-11-05T18:04:04-05:00"
     },
     "e229e0fd-559b-4c1e-bcba-ac23db1d01e3": {
-      "count": 2,
-      "lastCapture": "2025-11-10T00:27:43",
-      "firstCapture": "2025-11-05T23:04:04"
+      "count": 3,
+      "lastCapture": "2025-11-10T10:24:20-05:00",
+      "firstCapture": "2025-11-05T18:04:04-05:00"
     },
     "e777e4b4-25cb-4c39-98fc-8d6b25cf7de7": {
-      "count": 2,
-      "lastCapture": "2025-11-10T00:27:43",
-      "firstCapture": "2025-11-05T23:04:04"
+      "count": 3,
+      "lastCapture": "2025-11-10T10:24:20-05:00",
+      "firstCapture": "2025-11-05T18:04:04-05:00"
     },
     "e8a479f8-5170-4f1f-b258-b9745c966c71": {
-      "count": 2,
-      "lastCapture": "2025-11-10T00:27:43",
-      "firstCapture": "2025-11-05T23:04:04"
+      "count": 3,
+      "lastCapture": "2025-11-10T10:24:20-05:00",
+      "firstCapture": "2025-11-05T18:04:04-05:00"
     },
     "ec9eda79-e250-4e6f-a8f6-e51021fb054f": {
       "count": 1,
-      "lastCapture": "2025-11-05T23:04:04",
-      "firstCapture": "2025-11-05T23:04:04"
+      "lastCapture": "2025-11-05T18:04:04-05:00",
+      "firstCapture": "2025-11-05T18:04:04-05:00"
     },
     "ee1b1d85-e8ce-485f-a539-12962933eb9f": {
-      "count": 2,
-      "lastCapture": "2025-11-10T00:27:43",
-      "firstCapture": "2025-11-05T23:04:04"
+      "count": 3,
+      "lastCapture": "2025-11-10T10:24:20-05:00",
+      "firstCapture": "2025-11-05T18:04:04-05:00"
     },
     "f06979b2-3497-4330-9882-a06c8a442b7c": {
-      "count": 2,
-      "lastCapture": "2025-11-10T00:27:43",
-      "firstCapture": "2025-11-05T23:04:04"
+      "count": 3,
+      "lastCapture": "2025-11-10T10:24:20-05:00",
+      "firstCapture": "2025-11-05T18:04:04-05:00"
     },
     "f0b924fe-0df6-4ac2-85a2-5d2b96d081d5": {
-      "count": 2,
-      "lastCapture": "2025-11-10T00:27:43",
-      "firstCapture": "2025-11-05T23:04:04"
+      "count": 3,
+      "lastCapture": "2025-11-10T10:24:20-05:00",
+      "firstCapture": "2025-11-05T18:04:04-05:00"
     },
     "f2964d50-042c-4021-8b52-992c08c6ff6f": {
-      "count": 2,
-      "lastCapture": "2025-11-10T00:27:43",
-      "firstCapture": "2025-11-05T23:04:04"
+      "count": 3,
+      "lastCapture": "2025-11-10T10:24:20-05:00",
+      "firstCapture": "2025-11-05T18:04:04-05:00"
     },
     "f3d82b25-6b10-44c7-ae89-30df075a7ac8": {
-      "count": 2,
-      "lastCapture": "2025-11-10T00:27:43",
-      "firstCapture": "2025-11-05T23:04:04"
+      "count": 3,
+      "lastCapture": "2025-11-10T10:24:20-05:00",
+      "firstCapture": "2025-11-05T18:04:04-05:00"
     },
     "f4d2c0f5-0148-45e7-95ba-a5185d8e8060": {
-      "count": 2,
-      "lastCapture": "2025-11-10T00:27:43",
-      "firstCapture": "2025-11-05T23:04:04"
+      "count": 3,
+      "lastCapture": "2025-11-10T10:24:20-05:00",
+      "firstCapture": "2025-11-05T18:04:04-05:00"
     },
     "f4e822f7-d2a2-4146-851c-04b2fa6d5265": {
-      "count": 2,
-      "lastCapture": "2025-11-10T00:27:43",
-      "firstCapture": "2025-11-05T23:04:04"
+      "count": 3,
+      "lastCapture": "2025-11-10T10:24:20-05:00",
+      "firstCapture": "2025-11-05T18:04:04-05:00"
     },
     "f96c7b05-c0a1-4d3c-93ae-b025bdea422a": {
       "count": 1,
-      "lastCapture": "2025-11-05T23:04:04",
-      "firstCapture": "2025-11-05T23:04:04"
+      "lastCapture": "2025-11-05T18:04:04-05:00",
+      "firstCapture": "2025-11-05T18:04:04-05:00"
     },
     "f9ed4dbb-7dd1-4b0c-80df-7f5586109599": {
       "count": 1,
-      "lastCapture": "2025-11-05T23:04:04",
-      "firstCapture": "2025-11-05T23:04:04"
+      "lastCapture": "2025-11-05T18:04:04-05:00",
+      "firstCapture": "2025-11-05T18:04:04-05:00"
     },
     "fc7db899-7a79-41f3-b9b1-b23ce64c5a5e": {
-      "count": 2,
-      "lastCapture": "2025-11-10T00:27:43",
-      "firstCapture": "2025-11-05T23:04:04"
+      "count": 3,
+      "lastCapture": "2025-11-10T10:24:20-05:00",
+      "firstCapture": "2025-11-05T18:04:04-05:00"
     }
   },
   "collectionPeriod": {
     "start": "2025-11-05",
     "end": "2025-11-10",
-    "days": 2
+    "days": 3
   },
   "imagesByDate": {
     "2025-11-05": 87,
-    "2025-11-10": 82
+    "2025-11-09": 82,
+    "2025-11-10": 81
   },
-  "todayImages": 82,
+  "todayImages": 81,
   "expectedPerDay": 3936,
   "collectionRate": "48 images per camera per day (every 30 minutes)",
-  "storageInfo": "169 images across 92 cameras",
+  "storageInfo": "250 images across 92 cameras",
   "bucket": "pax-nyc-images",
-  "generatedAt": "2025-11-10T00:30:49.916363"
+  "generatedAt": "2025-11-10T11:37:34.445132-05:00"
 }

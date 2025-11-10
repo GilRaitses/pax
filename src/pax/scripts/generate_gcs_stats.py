@@ -25,17 +25,20 @@ LOGGER = logging.getLogger(__name__)
 
 def parse_timestamp_from_path(blob_name: str) -> datetime | None:
     """Extract timestamp from blob path like: images/camera-id/YYYYMMDDTHHMMSS.jpg
-    Assumes timestamps are in Eastern time (America/New_York).
+    
+    Note: Despite collector code converting to ET, the actual filenames appear to be in UTC
+    (based on GCS blob creation times). We parse as UTC and convert to ET for consistency.
     """
     try:
         parts = blob_name.split("/")
         if len(parts) >= 3:
             filename = parts[-1]
             timestamp_str = filename.replace(".jpg", "").replace(".jpeg", "")
-            # Parse as naive datetime, then assume Eastern time
+            # Parse as UTC (what's actually stored based on blob creation times)
             naive_dt = datetime.strptime(timestamp_str, "%Y%m%dT%H%M%S")
-            et_tz = ZoneInfo("America/New_York")
-            return naive_dt.replace(tzinfo=et_tz)
+            utc_dt = naive_dt.replace(tzinfo=ZoneInfo("UTC"))
+            # Convert to Eastern time for display/consistency
+            return utc_dt.astimezone(ZoneInfo("America/New_York"))
     except Exception:
         pass
     return None
@@ -135,11 +138,26 @@ def generate_gcs_stats(
     expected_per_day = 82 * 48  # 82 cameras × 48 images/day
     days_active = len(sorted_dates) if sorted_dates else 0
     
-    # Construct public URL for latest image
+    # Generate signed URL for latest image (valid for 7 days)
+    # Note: Requires service account with private key. For GitHub Pages, consider
+    # making the bucket public or using a proxy API endpoint.
     latest_image_url = None
     if latest_image_path:
-        # GCS public URL format: https://storage.googleapis.com/BUCKET_NAME/PATH
-        latest_image_url = f"https://storage.googleapis.com/{bucket_name}/{latest_image_path}"
+        try:
+            blob = bucket.blob(latest_image_path)
+            # Try to generate signed URL (requires service account credentials)
+            latest_image_url = blob.generate_signed_url(
+                version="v4",
+                expiration=timedelta(days=7),
+                method="GET"
+            )
+            LOGGER.debug("Generated signed URL for latest image")
+        except Exception as e:
+            LOGGER.warning("Failed to generate signed URL for latest image: %s", e)
+            LOGGER.warning("To fix: Use service account credentials or make bucket public")
+            # Fallback: Use public URL format (requires bucket to be public)
+            # For GitHub Pages, you may need to make the bucket public or use a proxy
+            latest_image_url = f"https://storage.googleapis.com/{bucket_name}/{latest_image_path}"
     
     stats = {
         "totalImages": total_images,
