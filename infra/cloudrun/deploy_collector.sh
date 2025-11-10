@@ -209,6 +209,11 @@ echo "=========================================="
 # Get the job URI for direct HTTP trigger
 JOB_URI="https://${REGION}-run.googleapis.com/apis/run.googleapis.com/v1/namespaces/${PROJECT}/jobs/${JOB_NAME}:run"
 
+# Cloud Scheduler must use the compute service account for OIDC authentication
+# to invoke Cloud Run jobs via HTTP
+PROJECT_NUMBER=$(gcloud projects describe "$PROJECT" --format='value(projectNumber)')
+SCHEDULER_SERVICE_ACCOUNT="${PROJECT_NUMBER}-compute@developer.gserviceaccount.com"
+
 # Create scheduler that triggers job directly via HTTP
 gcloud scheduler jobs create http "$SCHEDULER_NAME" \
   --project "$PROJECT" \
@@ -216,7 +221,8 @@ gcloud scheduler jobs create http "$SCHEDULER_NAME" \
   --schedule "$SCHEDULE" \
   --uri "$JOB_URI" \
   --http-method POST \
-  --oidc-service-account-email "$SERVICE_ACCOUNT" \
+  --oidc-service-account-email "$SCHEDULER_SERVICE_ACCOUNT" \
+  --oidc-token-audience "$JOB_URI" \
   --time-zone "UTC" || \
 gcloud scheduler jobs update http "$SCHEDULER_NAME" \
   --project "$PROJECT" \
@@ -224,7 +230,8 @@ gcloud scheduler jobs update http "$SCHEDULER_NAME" \
   --schedule "$SCHEDULE" \
   --uri "$JOB_URI" \
   --http-method POST \
-  --oidc-service-account-email "$SERVICE_ACCOUNT" \
+  --oidc-service-account-email "$SCHEDULER_SERVICE_ACCOUNT" \
+  --oidc-token-audience "$JOB_URI" \
   --time-zone "UTC"
 
 echo ""
