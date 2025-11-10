@@ -40,22 +40,24 @@
 
 **Objective:** Establish standardized format for vision model outputs that can be embedded into the search algorithm.
 
+**What this means:** When we analyze camera images with computer vision models, we need a consistent way to represent what the models detect (like "5 pedestrians, 2 cars, high crowd density") so the pathfinding algorithm can use this information.
+
 **Tasks:**
 - [ ] Research leading ML models for vision analysis in urban camera networks
-  - YOLOv8n (object detection)
-  - Detectron2 (instance segmentation)
-  - CLIP (scene understanding)
-  - Traffic flow estimation models
-- [ ] Define feature vector structure:
-  - Pedestrian count
-  - Vehicle count
-  - Crowd density metrics
-  - Visual complexity scores
-  - Lighting conditions
-  - Weather indicators
-  - Temporal features (time of day, day of week)
+  - **YOLOv8n:** Fast object detection model that can identify people, cars, bikes in images
+  - **Detectron2:** More detailed model that can identify individual objects and their boundaries
+  - **CLIP:** Model that understands scene context (e.g., "busy intersection", "quiet street")
+  - **Traffic flow estimation models:** Specialized models for measuring how many people/vehicles are moving
+- [ ] Define feature vector structure (a list of numbers representing what we see):
+  - **Pedestrian count:** How many people are visible
+  - **Vehicle count:** How many cars/trucks/bikes
+  - **Crowd density metrics:** How crowded the area is (people per square meter)
+  - **Visual complexity scores:** How visually "busy" or "noisy" the scene is
+  - **Lighting conditions:** Bright, dim, nighttime, etc.
+  - **Weather indicators:** Clear, rainy, foggy, etc.
+  - **Temporal features:** Time of day (morning rush hour vs. late night), day of week (weekday vs. weekend)
 - [ ] Create schema/documentation for empirical data format
-- [ ] Design embedding strategy for search algorithm integration
+- [ ] Design embedding strategy for search algorithm integration (how to convert these features into numbers the pathfinding algorithm can use)
 
 **Deliverables:**
 - Empirical data structure specification document
@@ -66,18 +68,20 @@
 
 **Objective:** Compute baseline stress/complexity scores for each of the 82 camera zones.
 
+**What this means:** For each camera zone, we calculate an average "stress score" that represents how difficult/complex it is to navigate through that area. This becomes our baseline (starting point) for comparison.
+
 **Tasks:**
 - [ ] Collect sufficient data (target: 2 weeks = 672 images/camera)
 - [ ] Set up feature extraction pipeline:
-  - Vision model integration
-  - Batch processing for collected images
-  - Feature vector generation
+  - **Vision model integration:** Connect computer vision models to analyze images
+  - **Batch processing:** Process many images at once efficiently
+  - **Feature vector generation:** Extract the list of numbers (features) from each image
 - [ ] Compute baseline metrics per zone:
-  - Mean stress score
-  - Variance/std deviation
-  - Temporal patterns (hourly, daily)
-  - Peak/off-peak characteristics
-- [ ] Generate baseline report/visualization
+  - **Mean stress score:** Average difficulty/complexity for this zone
+  - **Variance/std deviation:** How much the stress varies (is it consistently busy or sometimes quiet?)
+  - **Temporal patterns:** How stress changes throughout the day (rush hour vs. off-peak)
+  - **Peak/off-peak characteristics:** When is this zone most/least stressful?
+- [ ] Generate baseline report/visualization (heatmap showing stress levels across all zones)
 
 **Deliverables:**
 - Baseline scores for all 82 camera zones
@@ -94,21 +98,25 @@
 
 **Objective:** Collect high temporal resolution data from edge cases (most/least stressful zones) to measure dynamic state transitions.
 
+**What "minimax" means:** We focus on the extremes (minimum and maximum stress zones) because these provide the most useful information for learning. The busiest zones show us what makes navigation difficult, and the quietest zones show us what makes it easy.
+
+**What "dynamic state transitions" means:** How the scene changes over time - for example, watching how many people enter/exit an intersection over 1 minute tells us about pedestrian flow patterns.
+
 **Concept:**
-- Identify top 5 highest stress score zones (busiest)
-- Identify bottom 5 lowest stress score zones (least busy)
-- Collect 1 minute of images every 2 seconds = 30 frames per camera
+- Identify top 5 highest stress score zones (busiest/most complex)
+- Identify bottom 5 lowest stress score zones (least busy/quietest)
+- Collect 1 minute of images every 2 seconds = 30 frames per camera (like a short video)
 - Run this collection every hour
 - Limit: Maximum 3 captures per camera per 6-hour period (prevents over-sampling same zones)
 
 **Rationale:**
-- Edge cases provide most informative data for learning
+- Edge cases provide most informative data for learning (extremes teach us more than averages)
 - High temporal resolution (2-second intervals) enables:
-  - Pedestrian flow measurement
-  - Dynamic state transition metrics
-  - Temporal pattern analysis
-- Hourly collection captures diurnal patterns
-- 6-hour limit ensures diversity across zones
+  - **Pedestrian flow measurement:** Count how many people move through an area per second
+  - **Dynamic state transition metrics:** Measure how the scene changes (e.g., "crowd builds up, then disperses")
+  - **Temporal pattern analysis:** Understand how conditions evolve over time
+- Hourly collection captures diurnal patterns (how conditions change throughout the day)
+- 6-hour limit ensures diversity across zones (we don't keep collecting from the same 5 cameras all day)
 
 **Tasks:**
 - [ ] Implement stress score calculation from baseline data
@@ -151,17 +159,21 @@
 
 **Objective:** Design the search algorithm architecture before implementation.
 
+**What "pseudocode" means:** Step-by-step description of the algorithm in plain language (not actual code), like a recipe for how the pathfinding will work.
+
+**What "knowledge base" means:** A structured way to store and access information about the map - which intersections connect to which, which camera zones cover which areas, etc.
+
 **Tasks:**
 - [ ] Create pseudocode for:
-  - Baseline A* with Manhattan distance heuristic
-  - Learned heuristic A* (using Ridge regression weights)
-  - Pareto front evaluation
-  - Multi-scale resolution handling
+  - **Baseline A* with Manhattan distance heuristic:** Standard pathfinding using only distance (like "how many blocks away?")
+  - **Learned heuristic A* (using Ridge regression weights):** Pathfinding that uses learned patterns from camera data (like "this area is usually stressful, avoid it")
+  - **Pareto front evaluation:** Finding paths that balance multiple goals (shortest distance vs. lowest stress)
+  - **Multi-scale resolution handling:** Using both camera zones (coarse) and intersections (fine) in the search
 - [ ] Design knowledge base structure:
-  - How to represent camera zones in search space
-  - How to map intersections to zones
-  - How to compute edge costs
-  - How to apply learned heuristics
+  - How to represent camera zones in search space (each zone = a region with a stress score)
+  - How to map intersections to zones (which camera zone covers which intersection?)
+  - How to compute edge costs (how "expensive" is it to move from one intersection to another?)
+  - How to apply learned heuristics (use stress scores to guide pathfinding)
 - [ ] Document algorithm flow and decision points
 
 **Deliverables:**
@@ -190,16 +202,27 @@
 
 ### 3.3 Implement Learned Heuristic A*
 
+**What "Ridge regression" means:** A machine learning technique that learns to predict stress scores from camera features. It's like teaching a computer: "when you see these features (many pedestrians, high visual complexity), predict a high stress score."
+
+**How Ridge Regression Works:**
+1. **Training data:** We have many examples of camera images with known stress scores (or we compute stress from features)
+2. **Learning:** The model finds weights (numbers) that best predict stress from features
+3. **Formula:** `predicted_stress = weight₁ × pedestrian_count + weight₂ × vehicle_count + weight₃ × complexity + ... + bias`
+4. **Ridge part:** Prevents overfitting (memorizing training data instead of learning patterns) by penalizing very large weights
+
 **Tasks:**
 - [ ] Train Ridge regression model:
-  - Features: Camera zone feature vectors
-  - Target: Stress/complexity scores
-  - Cross-validation
+  - **Features:** Camera zone feature vectors (the numbers we extract from images)
+  - **Target:** Stress/complexity scores (what we're trying to predict)
+  - **Cross-validation:** Test the model on data it hasn't seen to make sure it generalizes well
 - [ ] Implement learned heuristic:
-  - `h(n) = w^T * f(zone(n))`
-  - Integration with A* search
+  - **Formula:** `h(n) = w^T * f(zone(n))` 
+    - `h(n)` = predicted stress for intersection `n`
+    - `w^T` = learned weights (from Ridge regression)
+    - `f(zone(n))` = feature vector for the camera zone containing intersection `n`
+  - **Integration with A* search:** Use this predicted stress to guide pathfinding (avoid high-stress zones)
 - [ ] Test learned heuristic A*
-- [ ] Compare with baseline
+- [ ] Compare with baseline (does learned heuristic find better paths than distance-only?)
 
 **Deliverables:**
 - Learned heuristic implementation
@@ -208,16 +231,27 @@
 
 ### 3.4 Pareto Front Evaluation
 
+**What "Pareto front" means:** When you have multiple goals (like "shortest distance" AND "lowest stress"), you can't always optimize both at once. The Pareto front is the set of paths where you can't improve one goal without making the other worse. These are the "best compromise" solutions.
+
+**Example:** 
+- Path A: 10 blocks, stress score 8 (short but stressful)
+- Path B: 12 blocks, stress score 3 (longer but calm)
+- Path C: 11 blocks, stress score 4 (compromise)
+
+Path C is on the Pareto front if there's no other path that's both shorter AND less stressful.
+
+**What "non-dominated solutions" means:** Solutions where you can't find another solution that's better in ALL objectives. If Path A is shorter but Path B is less stressful, neither "dominates" the other - they're both valid options.
+
 **Tasks:**
 - [ ] Implement Pareto front computation:
-  - Multiple objectives (distance, stress, complexity)
-  - Non-dominated solutions
-  - Front visualization
+  - **Multiple objectives:** Balance distance (shorter is better) vs. stress (lower is better) vs. complexity (simpler is better)
+  - **Non-dominated solutions:** Find all paths where you can't improve one objective without hurting another
+  - **Front visualization:** Plot showing the trade-off curve (distance vs. stress)
 - [ ] Evaluate multi-scale resolution:
-  - Camera zone level
-  - Intersection level
-  - Combined analysis
-- [ ] Generate Pareto front report
+  - **Camera zone level:** Coarse analysis using zone-level stress scores
+  - **Intersection level:** Fine-grained analysis at individual intersections
+  - **Combined analysis:** Use both scales together for Pareto front
+- [ ] Generate Pareto front report (showing all optimal compromise paths)
 
 **Deliverables:**
 - Pareto front implementation
@@ -330,6 +364,62 @@ Baseline Generation (1.2)
             ↓
         Testing (4.2)
 ```
+
+## Detailed Explanations
+
+### Ridge Regression Explained
+
+**What it is:** A machine learning technique that learns to predict a number (stress score) from multiple inputs (features like pedestrian count, vehicle count, etc.).
+
+**How it works:**
+1. **Training phase:** We feed the model many examples: "This image has 10 pedestrians, 5 cars, high complexity → stress score 7.5"
+2. **Learning:** The model finds weights (coefficients) that best fit the data
+3. **Prediction:** For a new image, multiply features by weights and sum: `stress = 0.3×pedestrians + 0.2×vehicles + 0.5×complexity + ...`
+4. **Ridge regularization:** Prevents overfitting by keeping weights small (penalizes extreme values)
+
+**Why Ridge (not other methods):**
+- Simple and interpretable (you can see which features matter most)
+- Works well with many features
+- Prevents overfitting (memorizing training data)
+- Fast to train and use
+
+**In our context:**
+- **Input:** Feature vector from camera zone (pedestrian count, vehicle count, complexity, etc.)
+- **Output:** Predicted stress score for that zone
+- **Use:** Guide A* search to avoid high-stress zones
+
+### Pareto Front Explained
+
+**The Problem:** We want paths that are BOTH short AND low-stress, but these goals conflict. A direct route might be stressful (busy streets), while a calm route might be longer.
+
+**Pareto Optimality:** A solution is "Pareto optimal" if you can't improve one objective without making another worse.
+
+**Example with 3 paths:**
+- Path 1: 10 blocks, stress 8 → Not Pareto optimal (Path 3 is better in both)
+- Path 2: 15 blocks, stress 2 → Not Pareto optimal (Path 3 is better in both)  
+- Path 3: 12 blocks, stress 4 → Pareto optimal (no other path is both shorter AND less stressful)
+
+**The Pareto Front:** The set of all Pareto optimal solutions. It shows the trade-off curve: "If you want lower stress, you must accept longer distance (and vice versa)."
+
+**Visualization:** A scatter plot where:
+- X-axis = distance
+- Y-axis = stress
+- Each point = a path
+- Pareto front = the "lower-left boundary" (shortest distance for each stress level)
+
+**Multi-Objective:** We can have more than 2 objectives:
+- Distance (minimize)
+- Stress (minimize)
+- Complexity (minimize)
+- Time (minimize)
+
+The Pareto front becomes a multi-dimensional surface showing all optimal trade-offs.
+
+**In our context:**
+- Find all paths from Grand Central to Carnegie Hall
+- Score each path on multiple objectives
+- Identify Pareto optimal paths (the "best compromises")
+- Present user with options: "Do you prefer shortest distance or lowest stress?"
 
 ## Open Questions
 
