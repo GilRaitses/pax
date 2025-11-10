@@ -1,0 +1,83 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+*.egg-info/
+dist/
+build/
+*.egg
+
+# Virtual environments
+venv/
+env/
+ENV/
+.venv
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Data files (large)
+data/raw/images/**
+data/warehouse/**
+data/packages/**
+data/exports/**
+
+# Backup directories
+docs/backup_*/
+docs/data_bkup/**
+docs/src_bkup/**
+docs/infra_bkup/**
+
+# Large shapefiles (keep only what's needed)
+docs/data/dcm/*.shp
+docs/data/dcm/*.shx
+docs/data/dcm/*.dbf
+docs/data/dcm/*.prj
+docs/data/dcm/*.sbn
+docs/data/dcm/*.sbx
+docs/data/dcm/*.cpg
+
+# Keep only essential outputs
+# Ignore old/draft visualizations
+docs/*.png
+docs/voronoi_*.png
+docs/voronoi_map.png
+
+# BUT KEEP the final partition maps with captions
+!docs/logs/2025-11-09/outputs/*.png
+!docs/problem_space.png
+
+# Logs and temporary files
+*.log
+*.tmp
+*.bak
+
+# Jupyter
+.ipynb_checkpoints/
+*.ipynb
+
+# Environment variables
+.env
+.env.local
+
+# Google Cloud credentials (if stored locally)
+*.json
+!data/corridor_cameras_numbered.json
+!docs/stats.json
+!package*.json
+
+# Compiled files
+*.class
+*.o
+*.a
+

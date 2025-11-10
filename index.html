@@ -252,7 +252,41 @@
         </header>
 
         <div class="proposal-section">
-            <h2>Research Question</h2>
+            <h2 style="color: #667eea; font-size: 2.2em; margin-bottom: 30px; text-align: center; border-bottom: 3px solid #667eea; padding-bottom: 15px;">
+                Multi-Scale Coverage Zone Analysis
+            </h2>
+            
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(500px, 1fr)); gap: 30px; margin: 40px 0;">
+                <div style="background: #f8f9fa; padding: 25px; border-radius: 12px; border-left: 5px solid #667eea;">
+                    <h3 style="color: #764ba2; margin-top: 0; margin-bottom: 15px;">Problem Space</h3>
+                    <img src="docs/logs/2025-11-09/outputs/problem_space.png" 
+                         alt="Problem Space: Multi-Scale Coverage Zones" 
+                         style="width: 100%; border-radius: 8px; box-shadow: 0 4px 8px rgba(0,0,0,0.1); margin-bottom: 15px;">
+                    <p style="font-size: 0.95em; line-height: 1.6; color: #555; font-style: italic; margin: 0;">
+                        <strong>Problem Space for Undirected Graph Search with Multi-Scale Coverage Zones.</strong> 
+                        Spatial coverage zones (defined by traffic camera locations) partition the search space to enable 
+                        multi-scale resolution analysis. The coverage zones represent different levels of granularity needed 
+                        to determine Pareto-optimal solutions, allowing the search algorithm to efficiently explore the solution 
+                        frontier by considering both local neighborhood characteristics and global path structure.
+                    </p>
+                </div>
+                
+                <div style="background: #f8f9fa; padding: 25px; border-radius: 12px; border-left: 5px solid #764ba2;">
+                    <h3 style="color: #764ba2; margin-top: 0; margin-bottom: 15px;">Camera Corridor</h3>
+                    <img src="docs/logs/2025-11-09/outputs/camera_corridor_partition.png" 
+                         alt="Camera Corridor with Extended Coverage Zones" 
+                         style="width: 100%; border-radius: 8px; box-shadow: 0 4px 8px rgba(0,0,0,0.1); margin-bottom: 15px;">
+                    <p style="font-size: 0.95em; line-height: 1.6; color: #555; font-style: italic; margin: 0;">
+                        <strong>Camera Corridor with Extended Coverage Zones.</strong> 
+                        Extended camera corridor (purple boundary: 34th-66th St, 3rd-9th/Amsterdam) containing 82 traffic cameras 
+                        used for multi-scale resolution analysis. The problem space (red boundary) is nested within this wider corridor, 
+                        demonstrating the relationship between the constrained search space and the extended coverage area needed for 
+                        Pareto front determination.
+                    </p>
+                </div>
+            </div>
+            
+            <h2 style="color: #667eea; font-size: 1.8em; margin-top: 40px; margin-bottom: 20px; border-top: 2px solid #667eea; padding-top: 20px;">Research Question</h2>
             <p style="font-size: 1.1em; line-height: 1.7; color: #333;">
                 Can learned heuristics from vision-based environmental features outperform standard 
                 Manhattan-distance baselines in predicting route stress and improving path interpretability?
