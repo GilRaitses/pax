@@ -6,6 +6,7 @@ import json
 import logging
 from dataclasses import dataclass
 from datetime import datetime
+from zoneinfo import ZoneInfo
 from pathlib import Path
 from typing import Iterable
 import re
@@ -47,7 +48,8 @@ class CameraDataCollector:
     ) -> CameraSnapshotBatch:
         """Entry point for a single sampling sweep."""
 
-        started_at = datetime.utcnow()
+        # Use Eastern time (New York)
+        started_at = datetime.now(ZoneInfo("America/New_York"))
         if camera_ids is None:
             metadata = self.client.list_cameras()
             camera_ids = [item["id"] for item in metadata]
@@ -114,7 +116,9 @@ class CameraDataCollector:
     def _store_snapshot(
         self, snapshot: CameraSnapshot, *, download_images: bool = True
     ) -> dict[str, str | None]:
-        timestamp_slug = snapshot.captured_at.strftime("%Y%m%dT%H%M%S")
+        # Convert to Eastern time for filename
+        captured_at_et = snapshot.captured_at.astimezone(ZoneInfo("America/New_York"))
+        timestamp_slug = captured_at_et.strftime("%Y%m%dT%H%M%S")
         camera_slug = self._slugify(snapshot.camera_id)
 
         image_path: Path | None = None
@@ -148,7 +152,7 @@ class CameraDataCollector:
         root = self.settings.storage.root
         return {
             "camera_id": snapshot.camera_id,
-            "captured_at": snapshot.captured_at.isoformat(),
+            "captured_at": snapshot.captured_at.astimezone(ZoneInfo("America/New_York")).isoformat(),
             "image_path": str(image_path.relative_to(root)) if image_path else None,
             "image_remote_uri": remote_uri,
             "metadata_path": str(metadata_path.relative_to(root)),
@@ -157,7 +161,9 @@ class CameraDataCollector:
     def _persist_batch(
         self, batch: CameraSnapshotBatch, storage_records: list[dict[str, str | None]]
     ) -> None:
-        timestamp = batch.started_at.strftime("%Y%m%dT%H%M%SZ")
+        # Use Eastern time for batch filename
+        started_at_et = batch.started_at.astimezone(ZoneInfo("America/New_York"))
+        timestamp = started_at_et.strftime("%Y%m%dT%H%M%S")
         out_dir = self.settings.storage.raw or (self.settings.storage.root / "raw")
         out_dir.mkdir(parents=True, exist_ok=True)
         out_path = out_dir / f"snapshots_{timestamp}.json"
@@ -168,8 +174,8 @@ class CameraDataCollector:
 
         manifest_path = (self.settings.storage.metadata or Path()) / f"batch_{timestamp}.json"
         manifest = {
-            "started_at": batch.started_at.isoformat(),
-            "completed_at": batch.completed_at.isoformat(),
+            "started_at": batch.started_at.astimezone(ZoneInfo("America/New_York")).isoformat(),
+            "completed_at": batch.completed_at.astimezone(ZoneInfo("America/New_York")).isoformat(),
             "count": batch.count,
             "storage_records": storage_records,
         }

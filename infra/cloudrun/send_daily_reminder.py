@@ -11,6 +11,7 @@ import json
 import logging
 import os
 from datetime import datetime, timedelta
+from zoneinfo import ZoneInfo
 from email.mime.text import MIMEText
 from email.mime.multipart import MIMEMultipart
 
@@ -26,7 +27,8 @@ def get_yesterday_summary(bucket_name: str, prefix: str = "images") -> dict:
     client = storage.Client()
     bucket = client.bucket(bucket_name)
     
-    yesterday = datetime.utcnow() - timedelta(days=1)
+    # Use Eastern time (New York)
+    yesterday = datetime.now(ZoneInfo("America/New_York")) - timedelta(days=1)
     date_str = yesterday.strftime("%Y-%m-%d")
     date_start = yesterday.replace(hour=0, minute=0, second=0, microsecond=0)
     date_end = date_start + timedelta(days=1)

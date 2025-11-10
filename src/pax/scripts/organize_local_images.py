@@ -40,8 +40,8 @@ def build_parser() -> argparse.ArgumentParser:
     parser.add_argument(
         "--manifest-path",
         type=Path,
-        default=Path("data/image_manifest.yaml"),
-        help="Path to save manifest YAML (default: data/image_manifest.yaml)",
+        default=Path("data/manifests/image_manifest.yaml"),
+        help="Path to save manifest YAML (default: data/manifests/image_manifest.yaml)",
     )
     parser.add_argument(
         "--copy",

@@ -14,6 +14,7 @@ import tarfile
 import zipfile
 from collections import defaultdict
 from datetime import datetime, timedelta
+from zoneinfo import ZoneInfo
 from pathlib import Path
 
 from google.cloud import storage
@@ -24,13 +25,20 @@ LOGGER = logging.getLogger(__name__)
 
 
 def parse_timestamp_from_path(blob_name: str) -> datetime | None:
-    """Extract timestamp from blob path like: images/camera-id/YYYYMMDDTHHMMSS.jpg"""
+    """Extract timestamp from blob path like: images/camera-id/YYYYMMDDTHHMMSS.jpg
+    Assumes timestamps are in Eastern time (America/New_York).
+    """
     try:
         parts = blob_name.split("/")
         if len(parts) >= 3:
             filename = parts[-1]
             timestamp_str = filename.replace(".jpg", "").replace(".jpeg", "")
-            return datetime.strptime(timestamp_str, "%Y%m%dT%H%M%S")
+            # Parse as naive datetime, then assume Eastern time
+            naive_dt = datetime.strptime(timestamp_str, "%Y%m%dT%H%M%S")
+            # Assume Eastern time (for new files) or UTC (for old files)
+            # Try Eastern first, fallback to UTC for backward compatibility
+            et_tz = ZoneInfo("America/New_York")
+            return naive_dt.replace(tzinfo=et_tz)
     except Exception:
         pass
     return None
@@ -43,7 +51,7 @@ def package_daily_images(
     output_dir: Path | None = None,
     format: str = "zip",
 ) -> Path:
-    """Package all images from a specific date (midnight to midnight UTC).
+    """Package all images from a specific date (midnight to midnight Eastern time).
     
     Args:
         bucket_name: GCS bucket name
@@ -56,16 +64,17 @@ def package_daily_images(
         Path to created archive file
     """
     if target_date is None:
-        # Default to yesterday
-        yesterday = datetime.utcnow() - timedelta(days=1)
+        # Default to yesterday (Eastern time)
+        yesterday = datetime.now(ZoneInfo("America/New_York")) - timedelta(days=1)
         target_date = yesterday.strftime("%Y-%m-%d")
     
-    # Parse target date
-    date_obj = datetime.strptime(target_date, "%Y-%m-%d")
+    # Parse target date in Eastern timezone
+    et_tz = ZoneInfo("America/New_York")
+    date_obj = datetime.strptime(target_date, "%Y-%m-%d").replace(tzinfo=et_tz)
     date_start = date_obj.replace(hour=0, minute=0, second=0, microsecond=0)
     date_end = date_start + timedelta(days=1)
     
-    LOGGER.info("Packaging images from %s (UTC)", target_date)
+    LOGGER.info("Packaging images from %s (Eastern time)", target_date)
     LOGGER.info("Time range: %s to %s", date_start.isoformat(), date_end.isoformat())
     
     # Connect to GCS
@@ -85,8 +94,11 @@ def package_daily_images(
         if not timestamp:
             continue
         
-        # Check if within date range (midnight to midnight UTC)
-        if date_start <= timestamp < date_end:
+        # Convert timestamp to Eastern time for comparison
+        timestamp_et = timestamp.astimezone(ZoneInfo("America/New_York"))
+        
+        # Check if within date range (midnight to midnight Eastern time)
+        if date_start <= timestamp_et < date_end:
             # Extract camera ID from path
             parts = blob.name.split("/")
             if len(parts) >= 3:
@@ -148,7 +160,7 @@ def package_daily_images(
         "images_per_camera": {cam_id: len(blobs) for cam_id, blobs in daily_images.items()},
         "archive_path": str(archive_path),
         "archive_size_bytes": archive_path.stat().st_size,
-        "created_at": datetime.utcnow().isoformat(),
+        "created_at": datetime.now(ZoneInfo("America/New_York")).isoformat(),
     }
     
     manifest_path = output_dir / f"manifest-{target_date}.json"

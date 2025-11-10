@@ -17,25 +17,25 @@ def build_parser() -> argparse.ArgumentParser:
     parser.add_argument(
         "--zones",
         type=Path,
-        default=Path("data/voronoi_zones.geojson"),
+        default=Path("data/geojson/voronoi_zones.geojson"),
         help="Voronoi polygons GeoJSON",
     )
     parser.add_argument(
         "--cameras",
         type=Path,
-        default=Path("data/corridor_cameras.geojson"),
+        default=Path("data/geojson/corridor_cameras.geojson"),
         help="Camera points GeoJSON",
     )
     parser.add_argument(
         "--corridor",
         type=Path,
-        default=Path("data/corridor_polygon.geojson"),
+        default=Path("data/geojson/corridor_polygon.geojson"),
         help="Corridor boundary GeoJSON",
     )
     parser.add_argument(
         "--streets",
         type=Path,
-        default=Path("docs/data/dcm/DCM_StreetCenterLine.shp"),
+        default=Path("data/shapefiles/dcm/DCM_StreetCenterLine.shp"),
         help="Street centerline shapefile",
     )
     parser.add_argument(

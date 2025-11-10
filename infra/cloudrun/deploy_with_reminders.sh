@@ -65,7 +65,7 @@ echo ""
 
 # Step 1: Deploy collector
 echo "Step 1: Deploying collector..."
-./infra/cloudrun/deploy_collector_v2.sh \
+./infra/cloudrun/deploy_collector.sh \
   --project "$PROJECT" \
   --region "$REGION" \
   --bucket "$BUCKET" \
@@ -142,7 +142,7 @@ echo "=========================================="
 echo "Deployment Complete!"
 echo "=========================================="
 echo ""
-echo "✅ Collector: pax-collector-v2"
+echo "✅ Collector: pax-collector"
 echo "   Schedule: $SCHEDULE (every 30 min)"
 echo ""
 echo "✅ Daily Reminders: $REMINDER_SCHEDULER"

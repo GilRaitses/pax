@@ -3,6 +3,7 @@
 from __future__ import annotations
 
 from datetime import datetime
+from zoneinfo import ZoneInfo
 from typing import Annotated
 
 from pydantic import BaseModel, Field, HttpUrl
@@ -47,7 +48,8 @@ class CameraSnapshotBatch(BaseModel):
         started_at: datetime,
         storage_records: list[dict[str, str | None]] | None = None,
     ) -> """Construct a batch record.""":
-        finished = datetime.utcnow()
+        # Use Eastern time (New York)
+        finished = datetime.now(ZoneInfo("America/New_York"))
         return cls(
             started_at=started_at,
             completed_at=finished,

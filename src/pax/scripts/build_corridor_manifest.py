@@ -65,7 +65,7 @@ def build_parser() -> argparse.ArgumentParser:
     parser.add_argument(
         "--dcm",
         type=Path,
-        default=Path("docs/data/dcm/DCM_StreetCenterLine.shp"),
+        default=Path("data/shapefiles/dcm/DCM_StreetCenterLine.shp"),
         help="Path to NYC Planning DCM StreetCenterLine shapefile",
     )
     parser.add_argument(
@@ -77,19 +77,19 @@ def build_parser() -> argparse.ArgumentParser:
     parser.add_argument(
         "--output",
         type=Path,
-        default=Path("data/corridor_cameras.yaml"),
+        default=Path("data/manifests/corridor_cameras.yaml"),
         help="Output manifest path (YAML)",
     )
     parser.add_argument(
         "--output-json",
         type=Path,
-        default=Path("data/corridor_cameras.json"),
+        default=Path("data/manifests/corridor_cameras.json"),
         help="Output JSON list of cameras",
     )
     parser.add_argument(
         "--export-corridor",
         type=Path,
-        default=Path("data/corridor_polygon.geojson"),
+        default=Path("data/geojson/corridor_polygon.geojson"),
         help="Optional GeoJSON export of the corridor polygon",
     )
     parser.add_argument(

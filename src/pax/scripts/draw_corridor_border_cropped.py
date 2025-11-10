@@ -278,19 +278,19 @@ def main(argv: list[str] | None = None) -> int:
     parser.add_argument(
         "--intersections",
         type=Path,
-        default=Path("data/actual_intersections.json"),
+        default=Path("data/geojson/intersections.json"),
         help="Path to intersection data JSON",
     )
     parser.add_argument(
         "--cameras",
         type=Path,
-        default=Path("data/corridor_88_cameras.json"),
+        default=Path("data/manifests/corridor_88_cameras.json"),
         help="Path to camera data JSON",
     )
     parser.add_argument(
         "--streets",
         type=Path,
-        default=Path("docs/data/dcm/DCM_StreetCenterLine.shp"),
+        default=Path("data/shapefiles/dcm/DCM_StreetCenterLine.shp"),
         help="Path to DCM street centerline shapefile",
     )
     parser.add_argument(

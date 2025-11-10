@@ -267,7 +267,7 @@ def build_parser() -> argparse.ArgumentParser:
     parser.add_argument(
         "--zones",
         type=Path,
-        default=Path("data/voronoi_zones.geojson"),
+        default=Path("data/geojson/voronoi_zones.geojson"),
         help="Voronoi zones GeoJSON (optional)",
     )
     parser.add_argument(

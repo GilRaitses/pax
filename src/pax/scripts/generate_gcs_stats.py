@@ -13,6 +13,7 @@ import logging
 import sys
 from collections import defaultdict
 from datetime import datetime, timedelta
+from zoneinfo import ZoneInfo
 from pathlib import Path
 
 from google.cloud import storage
@@ -23,13 +24,18 @@ LOGGER = logging.getLogger(__name__)
 
 
 def parse_timestamp_from_path(blob_name: str) -> datetime | None:
-    """Extract timestamp from blob path like: images/camera-id/YYYYMMDDTHHMMSS.jpg"""
+    """Extract timestamp from blob path like: images/camera-id/YYYYMMDDTHHMMSS.jpg
+    Assumes timestamps are in Eastern time (America/New_York).
+    """
     try:
         parts = blob_name.split("/")
         if len(parts) >= 3:
             filename = parts[-1]
             timestamp_str = filename.replace(".jpg", "").replace(".jpeg", "")
-            return datetime.strptime(timestamp_str, "%Y%m%dT%H%M%S")
+            # Parse as naive datetime, then assume Eastern time
+            naive_dt = datetime.strptime(timestamp_str, "%Y%m%dT%H%M%S")
+            et_tz = ZoneInfo("America/New_York")
+            return naive_dt.replace(tzinfo=et_tz)
     except Exception:
         pass
     return None
@@ -67,6 +73,7 @@ def generate_gcs_stats(
     total_images = 0
     latest_capture = None
     latest_camera_id = None
+    latest_image_path = None
     images_by_date: dict[str, int] = defaultdict(int)
     
     for blob in blobs:
@@ -82,7 +89,9 @@ def generate_gcs_stats(
             timestamp = parse_timestamp_from_path(blob.name)
             
             if timestamp:
-                date_str = timestamp.strftime("%Y-%m-%d")
+                # Use Eastern time for date grouping
+                timestamp_et = timestamp.astimezone(ZoneInfo("America/New_York")) if timestamp.tzinfo else timestamp.replace(tzinfo=ZoneInfo("America/New_York"))
+                date_str = timestamp_et.strftime("%Y-%m-%d")
                 images_by_date[date_str] += 1
                 
                 if camera_id not in camera_counts:
@@ -94,7 +103,7 @@ def generate_gcs_stats(
                 
                 camera_counts[camera_id]["count"] += 1
                 
-                capture_str = timestamp.isoformat()
+                capture_str = timestamp_et.isoformat()
                 if not camera_counts[camera_id]["lastCapture"] or capture_str > camera_counts[camera_id]["lastCapture"]:
                     camera_counts[camera_id]["lastCapture"] = capture_str
                 
@@ -105,6 +114,7 @@ def generate_gcs_stats(
                 if not latest_capture or capture_str > latest_capture:
                     latest_capture = capture_str
                     latest_camera_id = camera_id
+                    latest_image_path = blob.name
     
     # Get camera names from manifest
     active_cameras = len(camera_manifest) if camera_manifest else len(camera_counts)
@@ -117,13 +127,19 @@ def generate_gcs_stats(
     collection_start = sorted_dates[0] if sorted_dates else None
     collection_end = sorted_dates[-1] if sorted_dates else None
     
-    # Calculate today's images
-    today = datetime.utcnow().strftime("%Y-%m-%d")
+    # Calculate today's images (Eastern time)
+    today = datetime.now(ZoneInfo("America/New_York")).strftime("%Y-%m-%d")
     today_images = images_by_date.get(today, 0)
     
     # Calculate expected vs actual
     expected_per_day = 82 * 48  # 82 cameras × 48 images/day
     days_active = len(sorted_dates) if sorted_dates else 0
+    
+    # Construct public URL for latest image
+    latest_image_url = None
+    if latest_image_path:
+        # GCS public URL format: https://storage.googleapis.com/BUCKET_NAME/PATH
+        latest_image_url = f"https://storage.googleapis.com/{bucket_name}/{latest_image_path}"
     
     stats = {
         "totalImages": total_images,
@@ -132,6 +148,8 @@ def generate_gcs_stats(
         "latestCapture": latest_capture,
         "latestCameraId": latest_camera_id,
         "latestCameraName": latest_camera_name,
+        "latestImagePath": latest_image_path,
+        "latestImageUrl": latest_image_url,
         "cameraCounts": camera_counts,
         "collectionPeriod": {
             "start": collection_start,
@@ -144,7 +162,7 @@ def generate_gcs_stats(
         "collectionRate": "48 images per camera per day (every 30 minutes)",
         "storageInfo": f"{total_images:,} images across {len(camera_counts)} cameras",
         "bucket": bucket_name,
-        "generatedAt": datetime.utcnow().isoformat(),
+        "generatedAt": datetime.now(ZoneInfo("America/New_York")).isoformat(),
     }
     
     return stats
@@ -164,7 +182,7 @@ def main(argv: list[str] | None = None) -> int:
     parser.add_argument(
         "--manifest",
         type=Path,
-        help="Path to numbered camera manifest (default: data/corridor_cameras_numbered.json)",
+        help="Path to numbered camera manifest (default: data/manifests/corridor_cameras_numbered.json)",
     )
     parser.add_argument(
         "--output",
@@ -184,7 +202,7 @@ def main(argv: list[str] | None = None) -> int:
     settings = PaxSettings()
     bucket_name = args.bucket or settings.remote.bucket or "pax-nyc-images"
     
-    manifest_path = args.manifest or Path("data/corridor_cameras_numbered.json")
+    manifest_path = args.manifest or Path("data/manifests/corridor_cameras_numbered.json")
     
     try:
         stats = generate_gcs_stats(

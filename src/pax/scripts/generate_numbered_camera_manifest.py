@@ -255,7 +255,7 @@ def main(argv: list[str] | None = None) -> int:
     parser.add_argument(
         "--output",
         type=Path,
-        default=Path("data/corridor_cameras_numbered.json"),
+        default=Path("data/manifests/corridor_cameras_numbered.json"),
         help="Output manifest path",
     )
     parser.add_argument(

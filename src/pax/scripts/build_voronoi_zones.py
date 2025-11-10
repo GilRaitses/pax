@@ -24,25 +24,25 @@ def build_parser() -> argparse.ArgumentParser:
     parser.add_argument(
         "--manifest",
         type=Path,
-        default=Path("data/corridor_cameras.yaml"),
+        default=Path("data/manifests/corridor_cameras.yaml"),
         help="Camera manifest produced by build_corridor_manifest",
     )
     parser.add_argument(
         "--corridor",
         type=Path,
-        default=Path("data/corridor_polygon.geojson"),
+        default=Path("data/geojson/corridor_polygon.geojson"),
         help="GeoJSON polygon that defines the corridor boundary",
     )
     parser.add_argument(
         "--street-centerlines",
         type=Path,
-        default=Path("docs/data/dcm/DCM_StreetCenterLine.shp"),
+        default=Path("data/shapefiles/dcm/DCM_StreetCenterLine.shp"),
         help="NYC Planning DCM street centerline shapefile",
     )
     parser.add_argument(
         "--output-zones",
         type=Path,
-        default=Path("data/voronoi_zones.geojson"),
+        default=Path("data/geojson/voronoi_zones.geojson"),
         help="Output path for Voronoi polygons (GeoJSON)",
     )
     parser.add_argument(
@@ -54,7 +54,7 @@ def build_parser() -> argparse.ArgumentParser:
     parser.add_argument(
         "--output-cameras",
         type=Path,
-        default=Path("data/corridor_cameras.geojson"),
+        default=Path("data/geojson/corridor_cameras.geojson"),
         help="GeoJSON export for camera points",
     )
     parser.add_argument(
