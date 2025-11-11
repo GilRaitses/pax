@@ -101,6 +101,8 @@ SMALL_LETTERS = {
     ':': ["   ", " █ ", "   "],
     '/': ["  █", " █ ", "█  "],
     '%': ["█ █", " █ ", "█ █"],
+    '.': ["   ", "   ", " █ "],
+    '-': ["   ", "███", "   "],
 }
 
 # Large ASCII numbers (5 rows tall)
@@ -371,54 +373,57 @@ LARGE_LETTERS = {
 }
 
 
-def render_large_text(text: str, color: str = Colors.RESET, numbers_only: bool = False) -> list[str]:
-    """Render text using large ASCII characters.
+def render_small_text(text: str, color: str = Colors.RESET) -> list[str]:
+    """Render text using small ASCII letters (3 rows)."""
+    lines = [''] * 3
+    for char in text.upper():
+        char_lines = SMALL_LETTERS.get(char, SMALL_LETTERS.get(' ', ['   '] * 3))
+        for i in range(3):
+            lines[i] += char_lines[i] + ' '
+    return [color + line + Colors.RESET for line in lines]
+
+
+def render_large_numbers(text: str, color: str = Colors.RESET) -> list[str]:
+    """Render numbers using large ASCII characters (5 rows).
     
-    Args:
-        text: Text to render
-        color: ANSI color code
-        numbers_only: If True, render numbers large and letters small
+    Handles numbers, colons, periods, and dashes by converting small chars to 5-row format.
     """
-    if numbers_only:
-        # Use small letters (3 rows) and large numbers (5 rows)
-        # Find where numbers start/end
-        num_lines = [''] * 5
-        letter_lines = [''] * 3
+    lines = [''] * 5
+    for char in text:
+        if char in LARGE_NUMBERS:
+            char_lines = LARGE_NUMBERS[char]
+        elif char in SMALL_LETTERS:  # For punctuation/symbols (:, ., -)
+            # Convert 3-row to 5-row by centering vertically
+            small_lines = SMALL_LETTERS[char]
+            char_lines = ['     '] * 5
+            # Center the 3-row character in the 5-row space
+            char_lines[1] = small_lines[0].center(6)[:6] if len(small_lines[0]) <= 3 else small_lines[0]
+            char_lines[2] = small_lines[1].center(6)[:6] if len(small_lines[1]) <= 3 else small_lines[1]
+            char_lines[3] = small_lines[2].center(6)[:6] if len(small_lines[2]) <= 3 else small_lines[2]
+        else:
+            char_lines = ['     '] * 5
         
-        for char in text.upper():
-            if char.isdigit() or char in LARGE_NUMBERS:
-                # Large number
-                char_lines = LARGE_NUMBERS.get(char, LARGE_NUMBERS.get(' ', ['     '] * 5))
-                for i in range(5):
-                    num_lines[i] += char_lines[i] + ' '
-            else:
-                # Small letter
-                char_lines = SMALL_LETTERS.get(char, SMALL_LETTERS.get(' ', ['   '] * 3))
-                for i in range(3):
-                    letter_lines[i] += char_lines[i] + ' '
+        for i in range(5):
+            lines[i] += char_lines[i] + ' '
+    
+    return [color + line + Colors.RESET for line in lines]
+
+
+def render_large_text(text: str, color: str = Colors.RESET) -> list[str]:
+    """Render text using large ASCII characters (all 5 rows)."""
+    lines = [''] * 5
+    for char in text.upper():
+        if char in LARGE_LETTERS:
+            char_lines = LARGE_LETTERS[char]
+        elif char in LARGE_NUMBERS:
+            char_lines = LARGE_NUMBERS[char]
+        else:
+            char_lines = LARGE_LETTERS.get(' ', ['     '] * 5)
         
-        # Combine: letters on top (3 rows), numbers below (5 rows)
-        combined = []
-        for line in letter_lines:
-            combined.append(color + line + Colors.RESET)
-        for line in num_lines:
-            combined.append(color + line + Colors.RESET)
-        return combined
-    else:
-        # Original behavior: all large
-        lines = [''] * 5
-        for char in text.upper():
-            if char in LARGE_LETTERS:
-                char_lines = LARGE_LETTERS[char]
-            elif char in LARGE_NUMBERS:
-                char_lines = LARGE_NUMBERS[char]
-            else:
-                char_lines = LARGE_LETTERS.get(' ', ['     '] * 5)
-            
-            for i in range(5):
-                lines[i] += char_lines[i] + ' '
-        
-        return [color + line + Colors.RESET for line in lines]
+        for i in range(5):
+            lines[i] += char_lines[i] + ' '
+    
+    return [color + line + Colors.RESET for line in lines]
 
 
 def get_cinnamoroll_frame(frame_idx: int, x_pos: int, y_pos: int) -> list[str]:
@@ -568,32 +573,45 @@ def monitor_process(
             print(Colors.CREAM + f"Time: {time_str}" + Colors.RESET)
             print()
             
+            # Elapsed time
+            elapsed_label_lines = render_small_text("ELAPSED", Colors.MINT)
+            for line in elapsed_label_lines:
+                print(line)
             elapsed_min = int(elapsed // 60)
             elapsed_sec = int(elapsed % 60)
             elapsed_str = f"{elapsed_min:02d}:{elapsed_sec:02d}"
-            elapsed_lines = render_large_text(f"ELAPSED {elapsed_str}", Colors.MINT, numbers_only=True)
+            elapsed_lines = render_large_numbers(elapsed_str, Colors.MINT)
             for line in elapsed_lines:
                 print(line)
             print()
             
             # Images counter
+            images_label_lines = render_small_text("IMAGES", Colors.PINK)
+            for line in images_label_lines:
+                print(line)
             images_str = f"{newly_downloaded}"
-            images_lines = render_large_text(f"IMAGES {images_str}", Colors.PINK, numbers_only=True)
+            images_lines = render_large_numbers(images_str, Colors.PINK)
             for line in images_lines:
                 print(line)
             print()
             
             # Features counter
+            features_label_lines = render_small_text("FEATURES", Colors.MINT)
+            for line in features_label_lines:
+                print(line)
             features_str = f"{newly_extracted}"
-            features_lines = render_large_text(f"FEATURES {features_str}", Colors.MINT, numbers_only=True)
+            features_lines = render_large_numbers(features_str, Colors.MINT)
             for line in features_lines:
                 print(line)
             print()
             
             # Rates
             if image_rate > 0:
+                rate_label_lines = render_small_text("RATE", Colors.CREAM)
+                for line in rate_label_lines:
+                    print(line)
                 rate_str = f"{image_rate:.1f}"
-                rate_lines = render_large_text(f"RATE {rate_str}", Colors.CREAM, numbers_only=True)
+                rate_lines = render_large_numbers(rate_str, Colors.CREAM)
                 for line in rate_lines:
                     print(line)
                 print()
