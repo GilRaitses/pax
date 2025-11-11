@@ -37,11 +37,27 @@ echo "Step 1/4: Extracting features from images..."
 echo "This may take a while (~$IMAGE_COUNT images)..."
 echo
 
-python3 scripts/2025-11-10/extract_all_features.py \
-    --base-image-dir data/raw/images \
-    --output data/features/extracted_features.json \
+# Launch Cinnamoroll monitor
+echo "Launching Cinnamoroll monitor..."
+scripts/2025-11-11/open_cinnamoroll_monitor.sh \
+    data/raw/images \
+    data/features \
+    /tmp/baseline_run.log \
+    1.5 \
+    "$(date +%Y%m%d)" || {
+    echo "⚠️  Monitor launch failed, continuing without monitor"
+}
+
+echo "Waiting 2 seconds for monitor to start..."
+sleep 2
+echo
+
+scripts/2025-11-10/run_with_venv.sh \
+    scripts/extract_all_features.py \
+    --input-dir data/raw/images \
+    --output-dir data/features \
     --format json \
-    || {
+    2>&1 | tee /tmp/baseline_run.log || {
     echo "ERROR: Feature extraction failed"
     exit 1
 }
@@ -49,14 +65,35 @@ python3 scripts/2025-11-10/extract_all_features.py \
 echo "✅ Feature extraction complete"
 echo
 
+# Find the most recent features file
+LATEST_FEATURES=$(ls -t data/features/features_*.json 2>/dev/null | head -1)
+if [ -z "$LATEST_FEATURES" ]; then
+    echo "ERROR: No features file found"
+    exit 1
+fi
+
+echo "Using features file: $LATEST_FEATURES"
+echo
+
 # Step 2: Compute stress scores
 echo "Step 2/4: Computing stress scores..."
 echo
 
-python3 scripts/2025-11-10/run_with_venv.sh \
+# Check if image manifest exists, if not skip it
+IMAGE_MANIFEST=""
+if [ -f "data/manifests/image_manifest.yaml" ]; then
+    IMAGE_MANIFEST="--image-manifest data/manifests/image_manifest.yaml"
+elif [ -f "data/manifests/image_manifest.json" ]; then
+    IMAGE_MANIFEST="--image-manifest data/manifests/image_manifest.json"
+fi
+
+scripts/2025-11-10/run_with_venv.sh \
     scripts/2025-11-10/compute_stress_scores.py \
     --camera-manifest data/manifests/corridor_cameras_numbered.json \
+    $IMAGE_MANIFEST \
     --base-image-dir data/raw/images \
+    --use-extracted-features \
+    --features-path "$LATEST_FEATURES" \
     --output data/stress_scores_updated.json \
     || {
     echo "ERROR: Stress score computation failed"
@@ -70,7 +107,7 @@ echo
 echo "Step 3/4: Generating baseline heatmap..."
 echo
 
-python3 scripts/2025-11-10/run_with_venv.sh \
+scripts/2025-11-10/run_with_venv.sh \
     scripts/2025-11-10/generate_baseline_heatmap.py \
     --stress-scores data/stress_scores_updated.json \
     --output docs/figures/baseline_heatmap_updated.png \
