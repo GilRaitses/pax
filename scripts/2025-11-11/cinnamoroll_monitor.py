@@ -311,25 +311,40 @@ def count_local_images(local_dir: Path, date_filter: str | None = None) -> dict:
     return {"total": total, "by_camera": by_camera}
 
 
-def count_features(features_dir: Path) -> int:
-    """Count extracted features."""
+def count_features(features_dir: Path) -> tuple[int, set[str]]:
+    """Count extracted features and return set of analyzed image paths.
+    
+    Returns:
+        Tuple of (total_features_count, set_of_analyzed_image_paths)
+    """
     if not features_dir.exists():
-        return 0
+        return 0, set()
     
     count = 0
+    analyzed_images = set()
+    
     for json_file in features_dir.glob("features_*.json"):
         try:
             import json
             with open(json_file) as f:
                 data = json.load(f)
                 if isinstance(data, list):
+                    # List of feature vectors
                     count += len(data)
+                    for item in data:
+                        if isinstance(item, dict) and "image_path" in item:
+                            analyzed_images.add(item["image_path"])
                 elif isinstance(data, dict):
-                    count += len(data.get("features", []))
+                    # Dictionary with features list
+                    features_list = data.get("features", [])
+                    count += len(features_list)
+                    for item in features_list:
+                        if isinstance(item, dict) and "image_path" in item:
+                            analyzed_images.add(item["image_path"])
         except Exception:
             continue
     
-    return count
+    return count, analyzed_images
 
 
 def monitor_process(
@@ -353,7 +368,7 @@ def monitor_process(
     
     # Initial counts
     initial_images = count_local_images(local_dir, date_filter)["total"]
-    initial_feature_count = count_features(features_dir)
+    initial_feature_count, initial_analyzed_images = count_features(features_dir)
     
     start_time = time.time()
     last_update = start_time
@@ -373,22 +388,28 @@ def monitor_process(
             # Get current counts
             image_stats = count_local_images(local_dir, date_filter)
             current_images = image_stats["total"]
-            current_features = count_features(features_dir)
+            current_features, analyzed_images = count_features(features_dir)
             
+            # Images analyzed = images that have features extracted
+            images_analyzed = len(analyzed_images)
+            
+            # Newly downloaded (for progress tracking)
             newly_downloaded = current_images - initial_images
-            newly_extracted = current_features - initial_feature_count
             
-            # Calculate progress percentage
+            # Calculate progress percentage (based on images analyzed)
             if expected_total and expected_total > 0:
-                progress = min(100.0, (newly_downloaded / expected_total) * 100.0)
+                progress = min(100.0, (images_analyzed / expected_total) * 100.0)
+            elif current_images > 0:
+                # Progress based on how many images have been analyzed vs available
+                progress = min(100.0, (images_analyzed / current_images) * 100.0)
             else:
                 # Estimate progress based on elapsed time (if we have a rough estimate)
                 progress = min(100.0, (elapsed / 3600.0) * 100.0)  # Assume 1 hour max
             
-            # Calculate rates
+            # Calculate rates (based on images analyzed)
             if elapsed > 0:
-                image_rate = newly_downloaded / elapsed
-                feature_rate = newly_extracted / elapsed
+                image_rate = images_analyzed / elapsed
+                feature_rate = current_features / elapsed
             else:
                 image_rate = 0
                 feature_rate = 0
@@ -411,12 +432,13 @@ def monitor_process(
             elapsed_min = int(elapsed // 60)
             elapsed_sec = int(elapsed % 60)
             print(Colors.MINT + f"Elapsed: {elapsed_min:02d}:{elapsed_sec:02d}" + Colors.RESET)
-            print(Colors.PINK + f"Images: {newly_downloaded}" + Colors.RESET)
+            print(Colors.PINK + f"Images Analyzed: {images_analyzed}" + Colors.RESET)
             if current_images > 0:
-                print(Colors.CREAM + f"  (total: {current_images})" + Colors.RESET)
-            print(Colors.MINT + f"Features: {newly_extracted}" + Colors.RESET)
-            if current_features > 0:
-                print(Colors.CREAM + f"  (total: {current_features})" + Colors.RESET)
+                print(Colors.CREAM + f"  (available: {current_images})" + Colors.RESET)
+            print(Colors.MINT + f"Features Extracted: {current_features}" + Colors.RESET)
+            if images_analyzed > 0:
+                avg_features = current_features / images_analyzed if images_analyzed > 0 else 0
+                print(Colors.CREAM + f"  (avg: {avg_features:.1f} per image)" + Colors.RESET)
             
             if image_rate > 0:
                 print(Colors.CREAM + f"Rate: {image_rate:.2f} images/sec" + Colors.RESET)
