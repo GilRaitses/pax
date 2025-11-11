@@ -178,16 +178,26 @@ class SpeckSystem:
         self.wind_time = 0.0
         self.wind_gust_phase = random.uniform(0, 2 * math.pi)
         
-        # Speck characters and colors (subtle, blending with charcoal background)
-        self.speck_chars = ['·', '•', '▪', '▫', '▪', '·']
-        # Subtle colors that blend with dark terminal background
+        # Speck characters and colors (deep oceanic tones with sea foam wisps)
+        self.speck_chars = ['·', '•', '▪', '▫', '▪', '·', '○', '◯']
+        # Deep oceanic colors with occasional sea foam
         self.speck_colors = [
-            '\033[90m',    # Dark gray (almost black)
-            '\033[2;90m',  # Dim dark gray
-            '\033[38;5;238m',  # Dark gray (256 color)
-            '\033[38;5;239m',  # Slightly lighter dark gray
-            '\033[38;5;240m',  # Medium dark gray
-            '\033[2;38;5;238m',  # Dim dark gray
+            '\033[38;5;17m',   # Deep ocean blue (very dark)
+            '\033[38;5;18m',   # Dark navy blue
+            '\033[38;5;19m',   # Deep sea blue
+            '\033[38;5;20m',   # Ocean depth blue
+            '\033[38;5;21m',   # Dark teal blue
+            '\033[38;5;23m',   # Deep cyan-blue
+            '\033[38;5;24m',   # Ocean teal
+            '\033[38;5;25m',   # Deep aqua
+            '\033[38;5;30m',   # Dark sea green
+            '\033[38;5;31m',   # Deep teal
+            '\033[2;38;5;23m', # Dim deep ocean
+            '\033[2;38;5;24m', # Dim ocean teal
+            # Sea foam wisps (lighter, occasional)
+            '\033[38;5;51m',   # Bright sea foam cyan (rare)
+            '\033[38;5;87m',   # Light sea foam (rare)
+            '\033[97m',        # White sea foam (very rare)
         ]
         
         # Spawn initial specks
@@ -196,7 +206,7 @@ class SpeckSystem:
             self.spawn_speck()
     
     def spawn_speck(self, x: float | None = None, y: float | None = None):
-        """Spawn a new speck."""
+        """Spawn a new speck with oceanic colors."""
         if x is None:
             x = random.uniform(0, self.terminal_width)
         if y is None:
@@ -207,7 +217,14 @@ class SpeckSystem:
         size = random.uniform(0.3, 0.6)
         
         char_idx = random.randint(0, len(self.speck_chars) - 1)
-        color_idx = random.randint(0, len(self.speck_colors) - 1)
+        
+        # Weighted color selection: mostly deep ocean, occasional sea foam
+        if random.random() < 0.05:  # 5% chance for sea foam (bright colors)
+            # Sea foam colors (indices 12-14)
+            color_idx = random.choice([12, 13, 14])
+        else:
+            # Deep oceanic tones (indices 0-11)
+            color_idx = random.randint(0, 11)
         
         speck = Speck(
             x=x, y=y,
