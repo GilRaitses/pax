@@ -220,7 +220,7 @@ def plot_baseline_heatmap(
         edgecolor="black",
         linewidth=0.5,
         legend=True,
-        legend_kwds={"labels": ["No Data", "Has Data"], "shrink": 0.8},
+        legend_kwds={"labels": ["No Data", "Has Data"]},
         vmin=0,
         vmax=1,
         categorical=True,
@@ -235,13 +235,17 @@ def plot_baseline_heatmap(
     ax2.grid(True, alpha=0.3)
 
     # Add statistics text
+    min_stress_str = f"{valid_scores.min():.2f}" if len(valid_scores) > 0 else "N/A"
+    max_stress_str = f"{valid_scores.max():.2f}" if len(valid_scores) > 0 else "N/A"
+    mean_stress_str = f"{valid_scores.mean():.2f}" if len(valid_scores) > 0 else "N/A"
+    
     stats_text = f"""
 Statistics:
 - Zones with data: {zones['has_data'].sum()} / {len(zones)}
 - Coverage: {zones['has_data'].sum() / len(zones) * 100:.1f}%
-- Mean stress: {valid_scores.mean():.2f} (if available)
-- Min stress: {valid_scores.min():.2f if len(valid_scores) > 0 else 'N/A'}
-- Max stress: {valid_scores.max():.2f if len(valid_scores) > 0 else 'N/A'}
+- Mean stress: {mean_stress_str}
+- Min stress: {min_stress_str}
+- Max stress: {max_stress_str}
 """
     fig.text(0.5, 0.02, stats_text, ha="center", fontsize=10, family="monospace")
 

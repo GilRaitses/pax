@@ -1,0 +1,77 @@
+# BRANCH 3: Baseline Generation - Start Prompt
+
+You are working on **BRANCH 3: Baseline Generation** for the Multi-Scale Signal Processing project.
+
+## Context
+
+BRANCH 1 (Vision Model Integration) is COMPLETE. All vision models (YOLOv8n, Detectron2, CLIP) are integrated and the feature extraction pipeline is ready.
+
+BRANCH 2 (Empirical Data Structure) is COMPLETE. The feature vector schema is defined and validated.
+
+BRANCH 5 (Infrastructure) is COMPLETE. Storage and query APIs are ready.
+
+**Torch installation has been fixed** - torch (2.9.0) and transformers (4.57.1) are installed in the venv and ready to use.
+
+**You can now start baseline generation!**
+
+## Your Tasks
+
+1. **Process available images** (~495 images currently available)
+2. **Extract features** using BRANCH 1's vision models
+3. **Compute preliminary stress scores** per camera zone
+4. **Generate partial baseline heatmap**
+5. **Document data gaps** (zones with insufficient data)
+
+## Available Resources
+
+- **Vision Models:** `src/pax/vision/extractor.py` (unified pipeline)
+- **Feature Schema:** `src/pax/schemas/feature_vector.py`
+- **Storage:** `src/pax/storage/feature_storage.py`
+- **Images:** `docs/backup/data_bkup/raw/images/` (~495 images)
+- **Manifest:** `data/manifests/corridor_cameras_numbered.json` (82 cameras)
+- **Stress Score Script:** `scripts/2025-11-10/compute_stress_scores.py` (ready to use)
+
+## Running Scripts
+
+**IMPORTANT:** Torch and transformers are installed in the `venv` virtual environment. You have two options:
+
+### Option 1: Activate venv manually
+```bash
+source venv/bin/activate
+python scripts/2025-11-10/compute_stress_scores.py --base-image-dir docs/backup/data_bkup/raw/images
+```
+
+### Option 2: Use the wrapper script (recommended)
+```bash
+scripts/2025-11-10/run_with_venv.sh scripts/2025-11-10/compute_stress_scores.py --base-image-dir docs/backup/data_bkup/raw/images
+```
+
+The wrapper script automatically uses the venv Python, so you don't need to manually activate it.
+
+## Starting Point
+
+Begin by:
+1. Reading the feature extraction pipeline: `src/pax/vision/extractor.py`
+2. Understanding the feature vector schema: `src/pax/schemas/feature_vector.py`
+3. Testing the stress score computation script:
+   ```bash
+   scripts/2025-11-10/run_with_venv.sh scripts/2025-11-10/compute_stress_scores.py --base-image-dir docs/backup/data_bkup/raw/images
+   ```
+4. Processing a small batch of images to verify the pipeline works
+5. Computing stress scores for zones with sufficient data (≥3 images)
+
+## Expected Deliverables
+
+- Feature dataset (JSON/Parquet) with extracted features
+- Stress scores per camera zone
+- Baseline heatmap visualization
+- Data gap analysis (zones needing more data)
+
+## Notes
+
+- **Torch is fixed:** Use `run_with_venv.sh` wrapper or activate venv manually
+- Start with existing ~495 images
+- System is collecting new images every 30 minutes
+- Continue refining baseline as more data arrives
+- Target: 2 weeks of baseline data (672 images/camera)
+- All dependencies are met - ready to start!

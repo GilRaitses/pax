@@ -29,6 +29,7 @@ Thumbs.db
 
 # Data files (large)
 data/raw/images/**
+data/downloaded_images/**
 data/warehouse/**
 data/packages/**
 data/exports/**
