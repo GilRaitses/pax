@@ -589,10 +589,16 @@ def monitor_process(
             images_label_lines = render_small_text("IMAGES", Colors.PINK)
             for line in images_label_lines:
                 print(line)
+            # Show newly downloaded, but also show total in small text
             images_str = f"{newly_downloaded}"
             images_lines = render_large_numbers(images_str, Colors.PINK)
             for line in images_lines:
                 print(line)
+            if current_images > 0:
+                total_text = f"(total: {current_images})"
+                total_lines = render_small_text(total_text, Colors.CREAM)
+                for line in total_lines:
+                    print(line)
             print()
             
             # Features counter
@@ -603,6 +609,11 @@ def monitor_process(
             features_lines = render_large_numbers(features_str, Colors.MINT)
             for line in features_lines:
                 print(line)
+            if current_features > 0:
+                total_text = f"(total: {current_features})"
+                total_lines = render_small_text(total_text, Colors.CREAM)
+                for line in total_lines:
+                    print(line)
             print()
             
             # Rates
@@ -635,11 +646,20 @@ def monitor_process(
                     with open(log_file) as f:
                         lines = f.readlines()
                         if lines:
-                            last_line = lines[-1].strip()
-                            if last_line:
-                                print()
-                                print(Colors.CREAM + "Latest log:" + Colors.RESET)
-                                print(Colors.CREAM + last_line[:terminal_width - 4] + Colors.RESET)
+                            # Show last 3 lines, wrapping if needed
+                            print()
+                            print(Colors.CREAM + "Latest log:" + Colors.RESET)
+                            # Get last 3 non-empty lines
+                            recent_lines = [l.strip() for l in lines[-10:] if l.strip()][-3:]
+                            for line in recent_lines:
+                                # Wrap long lines
+                                if len(line) > terminal_width - 4:
+                                    # Split into chunks
+                                    chunks = [line[i:i+terminal_width-4] for i in range(0, len(line), terminal_width-4)]
+                                    for chunk in chunks:
+                                        print(Colors.CREAM + chunk + Colors.RESET)
+                                else:
+                                    print(Colors.CREAM + line + Colors.RESET)
                 except Exception:
                     pass
             
