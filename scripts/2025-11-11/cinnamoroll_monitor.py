@@ -457,19 +457,23 @@ def count_local_images(local_dir: Path, date_filter: str | None = None) -> dict:
     return {"total": total, "by_camera": by_camera}
 
 
-def count_features(features_dir: Path) -> tuple[int, set[str]]:
-    """Count extracted features and return set of analyzed image paths.
+def count_features(features_dir: Path) -> tuple[int, set[str], dict | None]:
+    """Count extracted features and return set of analyzed image paths and last feature vector.
     
     Returns:
-        Tuple of (total_features_count, set_of_analyzed_image_paths)
+        Tuple of (total_features_count, set_of_analyzed_image_paths, last_feature_vector)
     """
     if not features_dir.exists():
-        return 0, set()
+        return 0, set(), None
     
     count = 0
     analyzed_images = set()
+    last_feature = None
     
-    for json_file in features_dir.glob("features_*.json"):
+    # Get all feature files sorted by modification time
+    feature_files = sorted(features_dir.glob("features_*.json"), key=lambda p: p.stat().st_mtime)
+    
+    for json_file in feature_files:
         try:
             import json
             with open(json_file) as f:
@@ -480,6 +484,7 @@ def count_features(features_dir: Path) -> tuple[int, set[str]]:
                     for item in data:
                         if isinstance(item, dict) and "image_path" in item:
                             analyzed_images.add(item["image_path"])
+                            last_feature = item  # Keep last one
                 elif isinstance(data, dict):
                     # Dictionary with features list
                     features_list = data.get("features", [])
@@ -487,10 +492,49 @@ def count_features(features_dir: Path) -> tuple[int, set[str]]:
                     for item in features_list:
                         if isinstance(item, dict) and "image_path" in item:
                             analyzed_images.add(item["image_path"])
+                            last_feature = item  # Keep last one
         except Exception:
             continue
     
-    return count, analyzed_images
+    return count, analyzed_images, last_feature
+
+
+def parse_progress_from_log(log_file: Path) -> dict:
+    """Parse progress information from log file.
+    
+    Returns:
+        Dict with 'current', 'total', 'percent', 'elapsed', 'remaining', 'rate'
+    """
+    if not log_file or not log_file.exists():
+        return {}
+    
+    try:
+        with open(log_file) as f:
+            lines = f.readlines()
+        
+        # Look for progress bar lines (e.g., "Extracting features: 37%| 1491/4051 [1:10:39<2:02:13, 2.8")
+        progress_info = {}
+        for line in reversed(lines[-50:]):  # Check last 50 lines
+            line = line.strip()
+            
+            # Match progress bar pattern
+            import re
+            # Pattern: "Extracting features: XX%| NNNN/TTTT [HH:MM:SS<HH:MM:SS, R.R"
+            match = re.search(r'(\d+)%[|]\s*(\d+)/(\d+)\s*\[([\d:]+)<([\d:]+),\s*([\d.]+)', line)
+            if match:
+                progress_info = {
+                    'percent': float(match.group(1)),
+                    'current': int(match.group(2)),
+                    'total': int(match.group(3)),
+                    'elapsed': match.group(4),
+                    'remaining': match.group(5),
+                    'rate': float(match.group(6)),
+                }
+                break
+        
+        return progress_info
+    except Exception:
+        return {}
 
 
 def monitor_process(
@@ -537,23 +581,31 @@ def monitor_process(
             # Get current counts
             image_stats = count_local_images(local_dir, date_filter)
             current_images = image_stats["total"]
-            current_features, analyzed_images = count_features(features_dir)
+            current_features, analyzed_images, last_feature = count_features(features_dir)
             
-            # Images analyzed = images that have features extracted
-            images_analyzed = len(analyzed_images)
+            # Parse progress from log file (more accurate)
+            log_progress = parse_progress_from_log(log_file)
+            
+            # Use log progress if available, otherwise calculate from counts
+            if log_progress:
+                images_analyzed = log_progress.get('current', len(analyzed_images))
+                progress = log_progress.get('percent', 0.0)
+            else:
+                # Images analyzed = images that have features extracted
+                images_analyzed = len(analyzed_images)
+                
+                # Calculate progress percentage (based on images analyzed)
+                if expected_total and expected_total > 0:
+                    progress = min(100.0, (images_analyzed / expected_total) * 100.0)
+                elif current_images > 0:
+                    # Progress based on how many images have been analyzed vs available
+                    progress = min(100.0, (images_analyzed / current_images) * 100.0)
+                else:
+                    # Estimate progress based on elapsed time (if we have a rough estimate)
+                    progress = min(100.0, (elapsed / 3600.0) * 100.0)  # Assume 1 hour max
             
             # Newly downloaded (for progress tracking)
             newly_downloaded = current_images - initial_images
-            
-            # Calculate progress percentage (based on images analyzed)
-            if expected_total and expected_total > 0:
-                progress = min(100.0, (images_analyzed / expected_total) * 100.0)
-            elif current_images > 0:
-                # Progress based on how many images have been analyzed vs available
-                progress = min(100.0, (images_analyzed / current_images) * 100.0)
-            else:
-                # Estimate progress based on elapsed time (if we have a rough estimate)
-                progress = min(100.0, (elapsed / 3600.0) * 100.0)  # Assume 1 hour max
             
             # Calculate rates (based on images analyzed)
             if elapsed > 0:
@@ -584,16 +636,45 @@ def monitor_process(
             elapsed_min = int(elapsed // 60)
             elapsed_sec = int(elapsed % 60)
             print(Colors.MINT + f"Elapsed: {elapsed_min:02d}:{elapsed_sec:02d}" + Colors.RESET)
-            print(Colors.PINK + f"Images Analyzed: {images_analyzed}" + Colors.RESET)
-            if current_images > 0:
-                print(Colors.CREAM + f"  (available: {current_images})" + Colors.RESET)
-            print(Colors.MINT + f"Features Extracted: {current_features}" + Colors.RESET)
-            if images_analyzed > 0:
-                avg_features = current_features / images_analyzed if images_analyzed > 0 else 0
-                print(Colors.CREAM + f"  (avg: {avg_features:.1f} per image)" + Colors.RESET)
             
-            if image_rate > 0:
-                print(Colors.CREAM + f"Rate: {image_rate:.2f} images/sec" + Colors.RESET)
+            # Show progress from log if available
+            if log_progress:
+                print(Colors.PINK + f"Images Analyzed: {log_progress.get('current', images_analyzed)}/{log_progress.get('total', current_images)}" + Colors.RESET)
+                if log_progress.get('rate'):
+                    print(Colors.CREAM + f"  Rate: {log_progress['rate']:.1f} images/sec" + Colors.RESET)
+                if log_progress.get('remaining'):
+                    print(Colors.CREAM + f"  Remaining: {log_progress['remaining']}" + Colors.RESET)
+            else:
+                print(Colors.PINK + f"Images Analyzed: {images_analyzed}" + Colors.RESET)
+                if current_images > 0:
+                    print(Colors.CREAM + f"  (available: {current_images})" + Colors.RESET)
+            
+            # Show features from last processed image
+            if last_feature:
+                # Count features in last feature vector
+                feature_count = 0
+                if isinstance(last_feature, dict):
+                    # Count all numeric values in the feature vector
+                    for key, value in last_feature.items():
+                        if isinstance(value, (int, float)):
+                            feature_count += 1
+                        elif isinstance(value, dict):
+                            feature_count += len([v for v in value.values() if isinstance(v, (int, float))])
+                        elif isinstance(value, list):
+                            feature_count += len(value)
+                
+                print(Colors.MINT + f"Features (last image): {feature_count}" + Colors.RESET)
+                
+                # Show feature summary
+                if isinstance(last_feature, dict):
+                    spatial = last_feature.get('spatial', {}) or last_feature.get('yolo', {}) or {}
+                    if spatial:
+                        ped = spatial.get('pedestrian_count', 0)
+                        veh = spatial.get('vehicle_count', 0)
+                        bike = spatial.get('bicycle_count', 0)
+                        print(Colors.CREAM + f"  Ped: {ped} | Veh: {veh} | Bike: {bike}" + Colors.RESET)
+            else:
+                print(Colors.MINT + f"Features Extracted: {current_features}" + Colors.RESET)
             
             print(Colors.BLUE + f"Progress: {progress:.1f}%" + Colors.RESET)
             print()
@@ -677,22 +758,50 @@ def monitor_process(
             print(Colors.CREAM + "Press Ctrl+C to stop" + Colors.RESET)
             print(Colors.BOLD + Colors.BLUE + "=" * terminal_width + Colors.RESET)
             
-            # Check log file if provided
+            # Check log file if provided - show progress updates, skip warnings
             if log_file and log_file.exists():
                 try:
                     with open(log_file) as f:
                         lines = f.readlines()
                         if lines:
                             print()
-                            print(Colors.CREAM + "Latest log:" + Colors.RESET)
-                            recent_lines = [l.strip() for l in lines[-10:] if l.strip()][-3:]
-                            for line in recent_lines:
-                                if len(line) > terminal_width - 4:
-                                    chunks = [line[i:i+terminal_width-4] for i in range(0, len(line), terminal_width-4)]
-                                    for chunk in chunks:
-                                        print(Colors.CREAM + chunk + Colors.RESET)
-                                else:
-                                    print(Colors.CREAM + line + Colors.RESET)
+                            print(Colors.CREAM + "Progress Updates:" + Colors.RESET)
+                            
+                            # Filter out warnings and find progress lines
+                            import re
+                            progress_lines = []
+                            for line in reversed(lines[-100:]):  # Check last 100 lines
+                                line_stripped = line.strip()
+                                # Skip tokenizer warnings
+                                if 'tokenizers' in line_stripped.lower() or 'TOKENIZERS_PARALLELISM' in line_stripped:
+                                    continue
+                                # Look for progress bar or feature extraction lines
+                                if re.search(r'Extracting features|%[|]|\d+/\d+', line_stripped):
+                                    progress_lines.insert(0, line_stripped)
+                                    if len(progress_lines) >= 3:
+                                        break
+                            
+                            # Show progress lines or last non-warning line
+                            if progress_lines:
+                                for line in progress_lines[-3:]:
+                                    if len(line) > terminal_width - 4:
+                                        chunks = [line[i:i+terminal_width-4] for i in range(0, len(line), terminal_width-4)]
+                                        for chunk in chunks:
+                                            print(Colors.CREAM + chunk + Colors.RESET)
+                                    else:
+                                        print(Colors.CREAM + line + Colors.RESET)
+                            else:
+                                # Fallback: show last non-warning line
+                                for line in reversed(lines[-20:]):
+                                    line_stripped = line.strip()
+                                    if line_stripped and 'tokenizers' not in line_stripped.lower():
+                                        if len(line_stripped) > terminal_width - 4:
+                                            chunks = [line_stripped[i:i+terminal_width-4] for i in range(0, len(line_stripped), terminal_width-4)]
+                                            for chunk in chunks:
+                                                print(Colors.CREAM + chunk + Colors.RESET)
+                                        else:
+                                            print(Colors.CREAM + line_stripped + Colors.RESET)
+                                        break
                 except Exception:
                     pass
             
