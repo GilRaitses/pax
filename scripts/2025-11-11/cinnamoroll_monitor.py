@@ -606,16 +606,27 @@ def monitor_process(
             
             # Combine: specks behind, bubbles on top
             for y in range(terminal_height):
+                # Get lines, ensuring they're the right length
                 speck_line = speck_canvas[y] if y < len(speck_canvas) else ' ' * terminal_width
                 bubble_line = bubble_canvas[y] if y < len(bubble_canvas) else ' ' * terminal_width
                 
+                # Ensure lines are exactly terminal_width
+                speck_line = (speck_line + ' ' * terminal_width)[:terminal_width]
+                bubble_line = (bubble_line + ' ' * terminal_width)[:terminal_width]
+                
                 # Combine: bubbles overwrite specks where they exist
                 combined = list(speck_line)
-                for x, char in enumerate(bubble_line):
-                    if char != ' ':
+                for x in range(min(len(bubble_line), terminal_width)):
+                    char = bubble_line[x]
+                    if char != ' ' and x < len(combined):
                         combined[x] = char
                 
-                print(''.join(combined))
+                # Ensure combined is exactly terminal_width
+                combined_str = ''.join(combined)[:terminal_width]
+                if len(combined_str) < terminal_width:
+                    combined_str += ' ' * (terminal_width - len(combined_str))
+                
+                print(combined_str)
             
             # Footer
             print()
