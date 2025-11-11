@@ -8,7 +8,7 @@ PROJECT_ROOT="$(cd "$SCRIPT_DIR/../.." && pwd)"
 LOCAL_DIR="${1:-data/raw/images}"
 FEATURES_DIR="${2:-data/features}"
 LOG_FILE="${3:-/tmp/baseline_run.log}"
-REFRESH_INTERVAL="${4:-1.5}"
+REFRESH_INTERVAL="${4:-0.1}"
 DATE_FILTER="${5:-}"
 
 # Detect OS and open appropriate terminal
