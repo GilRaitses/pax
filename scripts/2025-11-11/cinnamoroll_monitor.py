@@ -200,8 +200,8 @@ class SpeckSystem:
             '\033[97m',        # White sea foam (very rare)
         ]
         
-        # Spawn initial specks
-        self.target_speck_count = terminal_width * terminal_height // 8  # Dense curtain
+        # Spawn initial specks - much denser for visible wind effect
+        self.target_speck_count = terminal_width * terminal_height // 3  # Very dense curtain
         for _ in range(self.target_speck_count):
             self.spawn_speck()
     
@@ -265,9 +265,18 @@ class SpeckSystem:
             )
             speck.update(dt, self.terminal_width, self.terminal_height, wind_x, wind_y)
         
-        # Maintain speck count
+        # Maintain speck count - keep it dense
         while len(self.specks) < self.target_speck_count:
             self.spawn_speck()
+        
+        # Occasionally spawn extra specks in progress area for visible wind
+        progress_width = int((progress / 100.0) * self.terminal_width)
+        if progress_width > 0 and random.random() < 0.3:  # 30% chance per frame
+            # Spawn a few specks in the progress area
+            for _ in range(3):
+                x = random.uniform(0, progress_width)
+                y = random.uniform(0, self.terminal_height)
+                self.spawn_speck(x, y)
     
     def render(self, progress: float) -> tuple[list[str], list[str]]:
         """Render specks as background and progress curtain.
