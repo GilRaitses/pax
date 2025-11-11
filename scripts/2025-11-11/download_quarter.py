@@ -82,9 +82,9 @@ def download_quarter(
     # Get quarter hours
     start_hour, end_hour = get_quarter_hours(quarter)
     
-    # Convert target_date to datetime at start of day
+    # Convert target_date to datetime at start of day in ET timezone
     target_datetime = datetime.combine(target_date, datetime.min.time())
-    target_datetime = ZoneInfo("America/New_York").localize(target_datetime)
+    target_datetime = target_datetime.replace(tzinfo=ZoneInfo("America/New_York"))
     
     print("=" * 60)
     print(f"DOWNLOADING QUARTER {quarter}")
