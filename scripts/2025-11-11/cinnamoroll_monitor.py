@@ -587,6 +587,12 @@ def monitor_process(
         category = random.choice(list(bubble_system.size_categories.keys()))
         bubble_system.spawn_bubble(category)
     
+    # Make sure we have bubbles
+    if len(bubble_system.bubbles) == 0:
+        # Force spawn at least one of each size
+        for category in bubble_system.size_categories.keys():
+            bubble_system.spawn_bubble(category)
+    
     try:
         while True:
             current_time = time.time()
@@ -750,8 +756,13 @@ def monitor_process(
                         continue
                     
                     char = line[i]
-                    if char != ' ' and x_pos < terminal_width:
-                        combined_canvas[y][x_pos] = current_color + char + Colors.RESET
+                    # Bubbles overwrite everything (including spaces with color)
+                    if x_pos < terminal_width:
+                        # Check if this is a bubble character (not a space)
+                        if char != ' ':
+                            combined_canvas[y][x_pos] = current_color + char + Colors.RESET
+                        # If it's a space but we have color, it might be part of bubble rendering
+                        # Skip spaces from bubble canvas (keep background)
                         x_pos += 1
                     i += 1
             
