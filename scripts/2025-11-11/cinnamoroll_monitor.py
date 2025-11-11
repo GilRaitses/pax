@@ -33,6 +33,49 @@ class Colors:
 
 
 @dataclass
+class Speck:
+    """A small speck for the progress curtain."""
+    x: float
+    y: float
+    vx: float  # Horizontal velocity
+    vy: float  # Vertical velocity
+    size: float  # Size (very small)
+    color: str  # Speck color
+    char: str  # Character to display
+    lifetime: float  # How long speck has existed
+    
+    def update(self, dt: float, terminal_width: int, terminal_height: int, wind_x: float, wind_y: float):
+        """Update speck physics with wind."""
+        # Apply wind forces
+        wind_strength = 1.2  # Specks are lighter than bubbles
+        self.vx += wind_x * wind_strength * dt
+        self.vy += wind_y * wind_strength * dt
+        
+        # Air resistance
+        damping = 0.92
+        self.vx *= damping
+        self.vy *= damping
+        
+        # Update position
+        self.x += self.vx * dt
+        self.y += self.vy * dt
+        
+        # Wrap around edges
+        if self.x < 0:
+            self.x = terminal_width
+        elif self.x > terminal_width:
+            self.x = 0
+        
+        if self.y < 0:
+            self.y = terminal_height
+        elif self.y > terminal_height:
+            self.y = 0
+        
+        # Update lifetime
+        self.lifetime += dt
+
+
+@dataclass
 class Bubble:
     """A floating bubble with physics."""
     x: float
@@ -123,6 +166,109 @@ class Bubble:
             return '·'  # Middle glow
         else:
             return ' '
+
+
+class SpeckSystem:
+    """Manages progress curtain specks."""
+    
+    def __init__(self, terminal_width: int, terminal_height: int):
+        self.terminal_width = terminal_width
+        self.terminal_height = terminal_height
+        self.specks: list[Speck] = []
+        self.wind_time = 0.0
+        self.wind_gust_phase = random.uniform(0, 2 * math.pi)
+        
+        # Speck characters and colors (contrasting with bubbles)
+        self.speck_chars = ['·', '•', '▪', '▫', '▪', '·']
+        self.speck_colors = [
+            Colors.CREAM,  # Cream
+            '\033[93m',    # Yellow
+            '\033[92m',    # Green
+            '\033[91m',    # Red
+            '\033[93m',    # Yellow
+            Colors.CREAM,  # Cream
+        ]
+        
+        # Spawn initial specks
+        self.target_speck_count = terminal_width * terminal_height // 8  # Dense curtain
+        for _ in range(self.target_speck_count):
+            self.spawn_speck()
+    
+    def spawn_speck(self, x: float | None = None, y: float | None = None):
+        """Spawn a new speck."""
+        if x is None:
+            x = random.uniform(0, self.terminal_width)
+        if y is None:
+            y = random.uniform(0, self.terminal_height)
+        
+        vx = random.uniform(-0.3, 0.3)
+        vy = random.uniform(-0.2, 0.2)
+        size = random.uniform(0.3, 0.6)
+        
+        char_idx = random.randint(0, len(self.speck_chars) - 1)
+        color_idx = random.randint(0, len(self.speck_colors) - 1)
+        
+        speck = Speck(
+            x=x, y=y,
+            vx=vx, vy=vy,
+            size=size,
+            color=self.speck_colors[color_idx],
+            char=self.speck_chars[char_idx],
+            lifetime=0.0,
+        )
+        self.specks.append(speck)
+    
+    def get_wind_at_position(self, x: float, y: float, t: float) -> tuple[float, float]:
+        """Calculate wind vector (same as bubble system)."""
+        base_angle = math.sin(t * 0.1) * 2 * math.pi
+        base_strength = 0.5 + 0.3 * math.sin(t * 0.15)
+        wind_x = math.cos(base_angle) * base_strength
+        wind_y = math.sin(base_angle) * base_strength
+        
+        gust_x = math.sin(x * 0.1 + t * 0.3) * 0.4
+        gust_y = math.cos(y * 0.1 + t * 0.25) * 0.4
+        
+        gust_phase = math.sin(t * 0.05 + self.wind_gust_phase)
+        if abs(gust_phase) > 0.8:
+            gust_strength = abs(gust_phase) * 1.5
+            gust_x += math.cos(t * 0.2) * gust_strength
+            gust_y += math.sin(t * 0.18) * gust_strength
+        
+        return wind_x + gust_x, wind_y + gust_y
+    
+    def update(self, dt: float, progress: float):
+        """Update all specks."""
+        self.wind_time += dt
+        
+        # Update specks
+        for speck in self.specks:
+            wind_x, wind_y = self.get_wind_at_position(
+                speck.x, speck.y, self.wind_time
+            )
+            speck.update(dt, self.terminal_width, self.terminal_height, wind_x, wind_y)
+        
+        # Maintain speck count
+        while len(self.specks) < self.target_speck_count:
+            self.spawn_speck()
+    
+    def render(self, progress: float) -> list[str]:
+        """Render specks as progress curtain (only up to progress %)."""
+        canvas = [[' ' for _ in range(self.terminal_width)] 
+                 for _ in range(self.terminal_height)]
+        
+        # Calculate progress width
+        progress_width = int((progress / 100.0) * self.terminal_width)
+        
+        # Render specks only within progress area
+        for speck in self.specks:
+            x = int(speck.x)
+            y = int(speck.y)
+            
+            # Only render if within progress area
+            if 0 <= x < progress_width and 0 <= y < self.terminal_height:
+                canvas[y][x] = speck.color + speck.char + Colors.RESET
+        
+        return [''.join(row) for row in canvas]
 
 
 class BubbleSystem:
@@ -366,6 +512,9 @@ def monitor_process(
     # Bubble system
     bubble_system = BubbleSystem(terminal_width, terminal_height)
     
+    # Speck system for progress curtain
+    speck_system = SpeckSystem(terminal_width, terminal_height)
+    
     # Initial counts
     initial_images = count_local_images(local_dir, date_filter)["total"]
     initial_feature_count, initial_analyzed_images = count_features(features_dir)
@@ -417,6 +566,9 @@ def monitor_process(
             # Update bubble system
             bubble_system.update(dt, progress)
             
+            # Update speck system
+            speck_system.update(dt, progress)
+            
             # Clear screen
             print(Colors.CLEAR, end='')
             
@@ -446,10 +598,24 @@ def monitor_process(
             print(Colors.BLUE + f"Progress: {progress:.1f}%" + Colors.RESET)
             print()
             
-            # Render bubbles
+            # Render progress curtain (specks) first (behind bubbles)
+            speck_canvas = speck_system.render(progress)
+            
+            # Render bubbles on top
             bubble_canvas = bubble_system.render()
-            for line in bubble_canvas:
-                print(line)
+            
+            # Combine: specks behind, bubbles on top
+            for y in range(terminal_height):
+                speck_line = speck_canvas[y] if y < len(speck_canvas) else ' ' * terminal_width
+                bubble_line = bubble_canvas[y] if y < len(bubble_canvas) else ' ' * terminal_width
+                
+                # Combine: bubbles overwrite specks where they exist
+                combined = list(speck_line)
+                for x, char in enumerate(bubble_line):
+                    if char != ' ':
+                        combined[x] = char
+                
+                print(''.join(combined))
             
             # Footer
             print()
