@@ -605,28 +605,67 @@ def monitor_process(
             bubble_canvas = bubble_system.render()
             
             # Combine: specks behind, bubbles on top
+            # Create a combined canvas character by character
+            combined_canvas = [[' ' for _ in range(terminal_width)] 
+                              for _ in range(terminal_height)]
+            
+            # First, place specks
+            for y in range(min(len(speck_canvas), terminal_height)):
+                line = speck_canvas[y]
+                x_pos = 0
+                i = 0
+                while i < len(line) and x_pos < terminal_width:
+                    # Check for ANSI escape sequence
+                    if line[i] == '\033':
+                        # Skip ANSI code until 'm'
+                        while i < len(line) and line[i] != 'm':
+                            i += 1
+                        if i < len(line):
+                            i += 1  # Skip the 'm'
+                        continue
+                    
+                    # Regular character
+                    if x_pos < terminal_width:
+                        combined_canvas[y][x_pos] = line[i]
+                        x_pos += 1
+                    i += 1
+            
+            # Then, overlay bubbles (they overwrite specks)
+            for y in range(min(len(bubble_canvas), terminal_height)):
+                line = bubble_canvas[y]
+                x_pos = 0
+                i = 0
+                current_color = ''
+                while i < len(line) and x_pos < terminal_width:
+                    # Check for ANSI escape sequence
+                    if line[i] == '\033':
+                        # Capture ANSI code
+                        ansi_start = i
+                        while i < len(line) and line[i] != 'm':
+                            i += 1
+                        if i < len(line):
+                            current_color = line[ansi_start:i+1]
+                            i += 1
+                        continue
+                    
+                    # Regular character
+                    char = line[i]
+                    if char != ' ' and x_pos < terminal_width:
+                        combined_canvas[y][x_pos] = current_color + char + Colors.RESET
+                        x_pos += 1
+                    elif x_pos < terminal_width and combined_canvas[y][x_pos] == ' ':
+                        # Preserve color if we're overwriting a space
+                        if current_color:
+                            combined_canvas[y][x_pos] = current_color + ' ' + Colors.RESET
+                        x_pos += 1
+                    i += 1
+            
+            # Print combined canvas
             for y in range(terminal_height):
-                # Get lines, ensuring they're the right length
-                speck_line = speck_canvas[y] if y < len(speck_canvas) else ' ' * terminal_width
-                bubble_line = bubble_canvas[y] if y < len(bubble_canvas) else ' ' * terminal_width
-                
-                # Ensure lines are exactly terminal_width
-                speck_line = (speck_line + ' ' * terminal_width)[:terminal_width]
-                bubble_line = (bubble_line + ' ' * terminal_width)[:terminal_width]
-                
-                # Combine: bubbles overwrite specks where they exist
-                combined = list(speck_line)
-                for x in range(min(len(bubble_line), terminal_width)):
-                    char = bubble_line[x]
-                    if char != ' ' and x < len(combined):
-                        combined[x] = char
-                
-                # Ensure combined is exactly terminal_width
-                combined_str = ''.join(combined)[:terminal_width]
-                if len(combined_str) < terminal_width:
-                    combined_str += ' ' * (terminal_width - len(combined_str))
-                
-                print(combined_str)
+                line = ''.join(combined_canvas[y])
+                # Ensure line is exactly terminal_width (accounting for ANSI codes)
+                # Simple approach: pad with spaces if needed
+                print(line)
             
             # Footer
             print()
