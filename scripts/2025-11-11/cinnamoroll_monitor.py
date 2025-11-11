@@ -561,7 +561,7 @@ def monitor_process(
     
     # Initial counts
     initial_images = count_local_images(local_dir, date_filter)["total"]
-    initial_feature_count, initial_analyzed_images = count_features(features_dir)
+    initial_feature_count, initial_analyzed_images, _ = count_features(features_dir)
     
     start_time = time.time()
     last_update = start_time
