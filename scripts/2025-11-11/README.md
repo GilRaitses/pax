@@ -5,6 +5,25 @@ Daily scripts folder for November 11, 2025.
 
 ## Scripts Created Today
 
+### `cinnamoroll_monitor.py`
+Cinnamoroll-themed process status monitor with ASCII animation.
+
+**Features:**
+- Bouncing Cinnamoroll ASCII art characters (flipbook animation)
+- Large ASCII numbers and letters for counters
+- Updates every 1.5 seconds
+- Cinnamoroll color theme (blue, pink, mint, cream)
+- Monitors images and features extraction progress
+- Can tail log files
+
+**Usage:**
+```bash
+python3 scripts/2025-11-11/cinnamoroll_monitor.py
+
+# Or launch in new window:
+./scripts/2025-11-11/open_cinnamoroll_monitor.sh
+```
+
 ### `download_quarter.py`
 Downloads images for a specific 6-hour quarter of a day.
 
