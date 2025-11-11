@@ -609,24 +609,28 @@ def monitor_process(
             combined_canvas = [[' ' for _ in range(terminal_width)] 
                               for _ in range(terminal_height)]
             
-            # First, place specks
+            # First, place specks (preserve their colors)
             for y in range(min(len(speck_canvas), terminal_height)):
                 line = speck_canvas[y]
                 x_pos = 0
                 i = 0
+                current_color = ''
                 while i < len(line) and x_pos < terminal_width:
                     # Check for ANSI escape sequence
                     if line[i] == '\033':
-                        # Skip ANSI code until 'm'
+                        # Capture ANSI code
+                        ansi_start = i
                         while i < len(line) and line[i] != 'm':
                             i += 1
                         if i < len(line):
-                            i += 1  # Skip the 'm'
+                            current_color = line[ansi_start:i+1]
+                            i += 1
                         continue
                     
                     # Regular character
-                    if x_pos < terminal_width:
-                        combined_canvas[y][x_pos] = line[i]
+                    char = line[i]
+                    if char != ' ' and x_pos < terminal_width:
+                        combined_canvas[y][x_pos] = current_color + char + Colors.RESET
                         x_pos += 1
                     i += 1
             
