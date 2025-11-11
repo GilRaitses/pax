@@ -251,24 +251,39 @@ class SpeckSystem:
         while len(self.specks) < self.target_speck_count:
             self.spawn_speck()
     
-    def render(self, progress: float) -> list[str]:
-        """Render specks as progress curtain (only up to progress %)."""
-        canvas = [[' ' for _ in range(self.terminal_width)] 
-                 for _ in range(self.terminal_height)]
+    def render(self, progress: float) -> tuple[list[str], list[str]]:
+        """Render specks as background and progress curtain.
+        
+        Returns:
+            Tuple of (background_canvas, progress_canvas)
+            - background_canvas: All specks across full width (whirly background)
+            - progress_canvas: Specks only within progress area (progress curtain)
+        """
+        # Background canvas (all specks)
+        bg_canvas = [[' ' for _ in range(self.terminal_width)] 
+                    for _ in range(self.terminal_height)]
+        
+        # Progress canvas (only progress area)
+        progress_canvas = [[' ' for _ in range(self.terminal_width)] 
+                          for _ in range(self.terminal_height)]
         
         # Calculate progress width
         progress_width = int((progress / 100.0) * self.terminal_width)
         
-        # Render specks only within progress area
+        # Render specks
         for speck in self.specks:
             x = int(speck.x)
             y = int(speck.y)
             
-            # Only render if within progress area
-            if 0 <= x < progress_width and 0 <= y < self.terminal_height:
-                canvas[y][x] = speck.color + speck.char + Colors.RESET
+            if 0 <= x < self.terminal_width and 0 <= y < self.terminal_height:
+                # Always render to background
+                bg_canvas[y][x] = speck.color + speck.char + Colors.RESET
+                
+                # Also render to progress canvas if within progress area
+                if x < progress_width:
+                    progress_canvas[y][x] = speck.color + speck.char + Colors.RESET
         
-        return [''.join(row) for row in canvas]
+        return [''.join(row) for row in bg_canvas], [''.join(row) for row in progress_canvas]
 
 
 class BubbleSystem:
@@ -653,21 +668,20 @@ def monitor_process(
             print(Colors.BLUE + f"Progress: {progress:.1f}%" + Colors.RESET)
             print()
             
-            # Render progress curtain (specks) first (behind bubbles)
-            speck_canvas = speck_system.render(progress)
+            # Render specks: background (full width) and progress curtain
+            bg_speck_canvas, progress_speck_canvas = speck_system.render(progress)
             
             # Render bubbles on top
             bubble_canvas = bubble_system.render()
             
-            # Combine: specks behind, bubbles on top
+            # Combine: background specks + progress specks + bubbles
             # Create a combined canvas character by character
             combined_canvas = [[' ' for _ in range(terminal_width)] 
                               for _ in range(terminal_height)]
             
-            # First, place specks (preserve their colors)
-            for y in range(min(len(speck_canvas), terminal_height)):
-                line = speck_canvas[y]
-                x_pos = 0
+            def parse_ansi_line(line: str, canvas_row: list, start_x: int = 0):
+                """Parse a line with ANSI codes and place characters in canvas row."""
+                x_pos = start_x
                 i = 0
                 current_color = ''
                 while i < len(line) and x_pos < terminal_width:
@@ -685,11 +699,40 @@ def monitor_process(
                     # Regular character
                     char = line[i]
                     if char != ' ' and x_pos < terminal_width:
+                        canvas_row[x_pos] = current_color + char + Colors.RESET
+                        x_pos += 1
+                    i += 1
+            
+            # First, place background specks (full width, whirly background)
+            for y in range(min(len(bg_speck_canvas), terminal_height)):
+                parse_ansi_line(bg_speck_canvas[y], combined_canvas[y])
+            
+            # Then, overlay progress specks (only in progress area, brighter)
+            for y in range(min(len(progress_speck_canvas), terminal_height)):
+                line = progress_speck_canvas[y]
+                x_pos = 0
+                i = 0
+                current_color = ''
+                progress_width = int((progress / 100.0) * terminal_width)
+                while i < len(line) and x_pos < progress_width:
+                    # Check for ANSI escape sequence
+                    if line[i] == '\033':
+                        ansi_start = i
+                        while i < len(line) and line[i] != 'm':
+                            i += 1
+                        if i < len(line):
+                            current_color = line[ansi_start:i+1]
+                            i += 1
+                        continue
+                    
+                    char = line[i]
+                    if char != ' ' and x_pos < terminal_width:
+                        # Make progress specks brighter/more visible
                         combined_canvas[y][x_pos] = current_color + char + Colors.RESET
                         x_pos += 1
                     i += 1
             
-            # Then, overlay bubbles (they overwrite specks)
+            # Finally, overlay bubbles (they overwrite specks)
             for y in range(min(len(bubble_canvas), terminal_height)):
                 line = bubble_canvas[y]
                 x_pos = 0
@@ -698,7 +741,6 @@ def monitor_process(
                 while i < len(line) and x_pos < terminal_width:
                     # Check for ANSI escape sequence
                     if line[i] == '\033':
-                        # Capture ANSI code
                         ansi_start = i
                         while i < len(line) and line[i] != 'm':
                             i += 1
@@ -707,23 +749,15 @@ def monitor_process(
                             i += 1
                         continue
                     
-                    # Regular character
                     char = line[i]
                     if char != ' ' and x_pos < terminal_width:
                         combined_canvas[y][x_pos] = current_color + char + Colors.RESET
-                        x_pos += 1
-                    elif x_pos < terminal_width and combined_canvas[y][x_pos] == ' ':
-                        # Preserve color if we're overwriting a space
-                        if current_color:
-                            combined_canvas[y][x_pos] = current_color + ' ' + Colors.RESET
                         x_pos += 1
                     i += 1
             
             # Print combined canvas
             for y in range(terminal_height):
                 line = ''.join(combined_canvas[y])
-                # Ensure line is exactly terminal_width (accounting for ANSI codes)
-                # Simple approach: pad with spaces if needed
                 print(line)
             
             # Feature summary section below bubbles
