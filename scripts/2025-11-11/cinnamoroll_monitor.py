@@ -329,6 +329,8 @@ class BubbleSystem:
         self.min_lifetime = 60.0  # 1 minute minimum
         self.current_progress = 0.0
         self.last_progress_change = time.time()
+        self.last_emission_time = time.time()
+        self.emission_interval = 2.0  # Emit a bubble every 2 seconds after pop
         
         # Wind system
         self.wind_base_x = 0.0
@@ -425,16 +427,15 @@ class BubbleSystem:
         # Update wind time
         self.wind_time += dt
         
+        current_time = time.time()
+        
         # Check if progress changed
         if abs(progress - self.current_progress) > 0.01:  # 1% threshold
-            # Pop all bubbles if they've lived at least 1 minute
-            current_time = time.time()
-            self.bubbles = [
-                b for b in self.bubbles
-                if (current_time - b.spawn_time) < self.min_lifetime
-            ]
+            # Pop ALL bubbles when progress changes
+            self.bubbles = []
             self.current_progress = progress
             self.last_progress_change = current_time
+            self.last_emission_time = current_time  # Reset emission timer
         
         # Update all bubbles with wind
         for bubble in self.bubbles:
@@ -444,13 +445,18 @@ class BubbleSystem:
             )
             bubble.update(dt, self.terminal_width, self.terminal_height, wind_x, wind_y)
         
-        # Spawn new bubbles to maintain population
-        for category in self.size_categories.keys():
-            count = sum(1 for b in self.bubbles 
-                       if self.size_categories[category][0] <= b.size <= self.size_categories[category][1])
-            if count < self.max_per_size:
-                if random.random() < 0.1:  # 10% chance per frame
+        # Slowly emit bubbles after pop (give them space to grow)
+        time_since_emission = current_time - self.last_emission_time
+        if time_since_emission >= self.emission_interval:
+            # Emit one bubble per category if under limit
+            for category in self.size_categories.keys():
+                count = sum(1 for b in self.bubbles 
+                           if self.size_categories[category][0] <= b.size <= self.size_categories[category][1])
+                if count < self.max_per_size:
                     self.spawn_bubble(category)
+                    break  # Only emit one per interval
+            
+            self.last_emission_time = current_time
     
     def render(self) -> list[str]:
         """Render all bubbles to a canvas."""
