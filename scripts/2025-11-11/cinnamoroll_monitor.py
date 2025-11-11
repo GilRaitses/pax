@@ -739,12 +739,16 @@ def monitor_process(
                     i += 1
             
             # Finally, overlay bubbles (they overwrite specks)
+            # Parse bubble canvas more carefully to preserve positions
             for y in range(min(len(bubble_canvas), terminal_height)):
                 line = bubble_canvas[y]
                 x_pos = 0
                 i = 0
                 current_color = ''
-                while i < len(line) and x_pos < terminal_width:
+                
+                # Build a list of (position, char, color) tuples
+                bubble_chars = []
+                while i < len(line):
                     # Check for ANSI escape sequence
                     if line[i] == '\033':
                         ansi_start = i
@@ -756,15 +760,15 @@ def monitor_process(
                         continue
                     
                     char = line[i]
-                    # Bubbles overwrite everything (including spaces with color)
-                    if x_pos < terminal_width:
-                        # Check if this is a bubble character (not a space)
-                        if char != ' ':
-                            combined_canvas[y][x_pos] = current_color + char + Colors.RESET
-                        # If it's a space but we have color, it might be part of bubble rendering
-                        # Skip spaces from bubble canvas (keep background)
-                        x_pos += 1
+                    if char != ' ':
+                        bubble_chars.append((x_pos, char, current_color))
+                    x_pos += 1
                     i += 1
+                
+                # Now place bubble characters, overwriting background
+                for x_pos, char, color in bubble_chars:
+                    if 0 <= x_pos < terminal_width:
+                        combined_canvas[y][x_pos] = color + char + Colors.RESET
             
             # Print combined canvas
             for y in range(terminal_height):
