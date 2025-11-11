@@ -512,15 +512,16 @@ def parse_progress_from_log(log_file: Path) -> dict:
         with open(log_file) as f:
             lines = f.readlines()
         
-        # Look for progress bar lines (e.g., "Extracting features: 37%| 1491/4051 [1:10:39<2:02:13, 2.8")
+        # Look for progress bar lines (e.g., "Extracting features: 49%|████▉     | 1996/4051 [1:39:10<2:23:38,  4.19s/it]")
         progress_info = {}
-        for line in reversed(lines[-50:]):  # Check last 50 lines
+        for line in reversed(lines[-100:]):  # Check last 100 lines
             line = line.strip()
             
-            # Match progress bar pattern
+            # Match progress bar pattern (handles Unicode block characters)
             import re
-            # Pattern: "Extracting features: XX%| NNNN/TTTT [HH:MM:SS<HH:MM:SS, R.R"
-            match = re.search(r'(\d+)%[|]\s*(\d+)/(\d+)\s*\[([\d:]+)<([\d:]+),\s*([\d.]+)', line)
+            # Pattern: "Extracting features: XX%| [blocks] | NNNN/TTTT [HH:MM:SS<HH:MM:SS, R.R"
+            # The block characters can be any Unicode blocks, so we match anything between %| and |
+            match = re.search(r'(\d+)%[|][^|]*[|]\s*(\d+)/(\d+)\s*\[([\d:]+)<([\d:]+),\s*([\d.]+)', line)
             if match:
                 progress_info = {
                     'percent': float(match.group(1)),
