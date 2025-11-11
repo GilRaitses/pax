@@ -32,48 +32,43 @@ class Colors:
 CINNAMOROLL_FRAMES = [
     # Frame 1: Normal position (on ground)
     [
-        "     ╭───╮",
-        "    ( •.• )",
-        "     ╰─╯",
-        "    ╱   ╲",
-        "   ╱     ╲",
-        "  ╱       ╲",
+        "   ╭───╮",
+        "  ( •.• )",
+        "   ╰─╯",
+        "  ╱   ╲",
+        " ╱     ╲",
     ],
     # Frame 2: Slightly up
     [
-        "     ╭───╮",
-        "    ( •.• )",
-        "     ╰─╯",
-        "    ╱   ╲",
-        "   ╱     ╲",
-        "  ╱       ╲",
+        "   ╭───╮",
+        "  ( •.• )",
+        "   ╰─╯",
+        "  ╱   ╲",
+        " ╱     ╲",
     ],
     # Frame 3: High bounce (legs up)
     [
-        "     ╭───╮",
-        "    ( •.• )",
-        "     ╰─╯",
-        "    ╱   ╲",
-        "   ╱     ╲",
-        "  ╱       ╲",
+        "   ╭───╮",
+        "  ( •.• )",
+        "   ╰─╯",
+        "  ╱   ╲",
+        " ╱     ╲",
     ],
     # Frame 4: Coming down
     [
-        "     ╭───╮",
-        "    ( •.• )",
-        "     ╰─╯",
-        "    ╱   ╲",
-        "   ╱     ╲",
-        "  ╱       ╲",
+        "   ╭───╮",
+        "  ( •.• )",
+        "   ╰─╯",
+        "  ╱   ╲",
+        " ╱     ╲",
     ],
     # Frame 5: Landing (squish)
     [
-        "     ╭───╮",
-        "    ( •.• )",
-        "     ╰─╯",
-        "    ╱   ╲",
-        "   ╱     ╲",
-        "  ╱       ╲",
+        "   ╭───╮",
+        "  ( •.• )",
+        "   ╰─╯",
+        "  ╱   ╲",
+        " ╱     ╲",
     ],
 ]
 
@@ -366,16 +361,22 @@ def get_cinnamoroll_frame(frame_idx: int, x_pos: int, y_pos: int) -> list[str]:
     """Get a Cinnamoroll frame at a specific position."""
     frame = CINNAMOROLL_FRAMES[frame_idx % len(CINNAMOROLL_FRAMES)]
     colored_frame = []
+    bounce_frame = frame_idx % len(CINNAMOROLL_FRAMES)
+    bounce_offset = abs(bounce_frame - len(CINNAMOROLL_FRAMES) // 2)
+    
     for i, line in enumerate(frame):
         # Add horizontal padding for x position
         # Use different colors for different parts
-        if i < 2:  # Head
+        if i < 2:  # Head/ears
             color = Colors.PINK
-        elif i == 2:  # Body
+        elif i == 2:  # Face
             color = Colors.CREAM
-        else:  # Legs
+        else:  # Body/legs
             color = Colors.MINT
-        padded = ' ' * x_pos + color + line + Colors.RESET
+        
+        # Add vertical bounce effect
+        vertical_pad = max(0, 2 - bounce_offset) if i == 0 else 0
+        padded = ' ' * x_pos + ('\n' * vertical_pad) + color + line + Colors.RESET
         colored_frame.append(padded)
     return colored_frame
 
@@ -538,15 +539,10 @@ def monitor_process(
             
             # Cinnamoroll animation
             print()
-            # Add vertical spacing based on bounce
-            bounce_frame = frame_idx % len(CINNAMOROLL_FRAMES)
-            bounce_offset = abs(bounce_frame - len(CINNAMOROLL_FRAMES) // 2)
-            for _ in range(max(0, 2 - bounce_offset)):
-                print()
-            
             cinnamoroll_frame = get_cinnamoroll_frame(frame_idx, cinnamoroll_x, cinnamoroll_y)
             for line in cinnamoroll_frame:
-                print(line)
+                if line.strip():  # Only print non-empty lines
+                    print(line)
             
             # Footer
             print()
