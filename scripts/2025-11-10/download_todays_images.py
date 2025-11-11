@@ -30,12 +30,23 @@ def list_todays_images_gcs(
     prefix: str = "images",
     start_hour: int = 12,
     end_hour: int = 18,
+    target_date: str | None = None,
 ) -> list[tuple[str, int]]:
-    """List all images from today in GCS within specified time range.
+    """List all images from a specific date in GCS within specified time range.
+    
+    Args:
+        bucket: GCS bucket name
+        prefix: GCS prefix
+        start_hour: Start hour (0-23) in ET
+        end_hour: End hour (0-23) in ET
+        target_date: Date in YYYY-MM-DD format (default: today)
     
     Returns list of tuples: (gcs_path, file_size_bytes)
     """
-    print(f"Fetching today's images from GCS (12pm-6pm ET)...")
+    if target_date:
+        print(f"Fetching images from GCS ({start_hour}:00-{end_hour}:59 ET on {target_date})...")
+    else:
+        print(f"Fetching today's images from GCS ({start_hour}:00-{end_hour}:59 ET)...")
     
     try:
         from google.cloud import storage
@@ -43,20 +54,27 @@ def list_todays_images_gcs(
         client = storage.Client()
         bucket_obj = client.bucket(bucket)
         
-        # Get today's date range in ET (12pm-6pm)
-        today_et = datetime.now(ZoneInfo("America/New_York"))
-        today_start = today_et.replace(hour=start_hour, minute=0, second=0, microsecond=0)
-        today_end = today_et.replace(hour=end_hour, minute=59, second=59, microsecond=999999)
+        # Get target date range in ET
+        if target_date:
+            target_dt = datetime.strptime(target_date, "%Y-%m-%d")
+            target_dt = ZoneInfo("America/New_York").localize(
+                datetime.combine(target_dt.date(), datetime.min.time())
+            )
+        else:
+            target_dt = datetime.now(ZoneInfo("America/New_York"))
+        
+        time_start = target_dt.replace(hour=start_hour, minute=0, second=0, microsecond=0)
+        time_end = target_dt.replace(hour=end_hour, minute=59, second=59, microsecond=999999)
         
         # Convert to UTC for comparison with blob.time_created
-        today_start_utc = today_start.astimezone(ZoneInfo("UTC"))
-        today_end_utc = today_end.astimezone(ZoneInfo("UTC"))
+        time_start_utc = time_start.astimezone(ZoneInfo("UTC"))
+        time_end_utc = time_end.astimezone(ZoneInfo("UTC"))
         
         # List all blobs
         blobs = list(bucket_obj.list_blobs(prefix=prefix))
         
-        # Filter to today's images in time range
-        today_images = []
+        # Filter to images in time range
+        filtered_images = []
         for blob in blobs:
             if not blob.name.endswith((".jpg", ".jpeg")):
                 continue
@@ -64,11 +82,12 @@ def list_todays_images_gcs(
             # Check if blob was created in the time range (by time_created)
             if blob.time_created:
                 created_utc = blob.time_created
-                if today_start_utc <= created_utc <= today_end_utc:
-                    today_images.append((f"gs://{bucket}/{blob.name}", blob.size))
+                if time_start_utc <= created_utc <= time_end_utc:
+                    filtered_images.append((f"gs://{bucket}/{blob.name}", blob.size))
         
-        print(f"Found {len(today_images)} images from {start_hour}:00-{end_hour}:59 ET today in GCS")
-        return today_images
+        date_str = target_date if target_date else "today"
+        print(f"Found {len(filtered_images)} images from {start_hour}:00-{end_hour}:59 ET on {date_str} in GCS")
+        return filtered_images
         
     except ImportError:
         print("ERROR: google-cloud-storage not installed. Using gsutil fallback...")
@@ -231,17 +250,30 @@ def download_todays_images(
     launch_monitor: bool = True,
     start_hour: int = 12,
     end_hour: int = 18,
+    target_date: str | None = None,
 ) -> None:
-    """Download all images from today's collection runs (12pm-6pm ET by default)."""
+    """Download all images from a specific date's collection runs (12pm-6pm ET by default).
+    
+    Args:
+        bucket: GCS bucket name
+        prefix: GCS prefix
+        local_dir: Local directory to save images
+        dry_run: If True, only show what would be downloaded
+        launch_monitor: If True, launch progress monitor
+        start_hour: Start hour (0-23) in ET
+        end_hour: End hour (0-23) in ET
+        target_date: Date in YYYY-MM-DD format (default: today)
+    """
     if local_dir is None:
         local_dir = Path("data/raw/images")
     
     local_dir = Path(local_dir)
+    date_str = target_date if target_date else "today"
     print(f"Local directory: {local_dir}")
-    print(f"Time range: {start_hour}:00-{end_hour}:59 ET today")
+    print(f"Time range: {start_hour}:00-{end_hour}:59 ET on {date_str}")
     
-    # Get today's images from GCS (with file sizes)
-    gcs_images_with_sizes = list_todays_images_gcs(bucket, prefix, start_hour, end_hour)
+    # Get images from GCS (with file sizes)
+    gcs_images_with_sizes = list_todays_images_gcs(bucket, prefix, start_hour, end_hour, target_date)
     
     if not gcs_images_with_sizes:
         print("No images found from specified time range in GCS")
@@ -391,6 +423,11 @@ def main():
         default=18,
         help="End hour (0-23) in ET (default: 18 for 6pm)",
     )
+    parser.add_argument(
+        "--date",
+        type=str,
+        help="Date in YYYY-MM-DD format (default: today)",
+    )
     
     args = parser.parse_args()
     
@@ -402,6 +439,7 @@ def main():
         launch_monitor=not args.no_monitor,
         start_hour=args.start_hour,
         end_hour=args.end_hour,
+        target_date=args.date,
     )
 
 
