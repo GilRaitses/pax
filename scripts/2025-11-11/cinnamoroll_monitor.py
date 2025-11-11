@@ -94,20 +94,21 @@ class Bubble:
     def get_char(self, dx: int, dy: int) -> str:
         """Get character at offset from bubble center."""
         dist = math.sqrt(dx*dx + dy*dy)
-        if dist > self.current_size:
+        if dist > self.current_size + 0.5:
             return ' '
         
-        # Create bubble shape with rotation
-        angle = math.atan2(dy, dx) - self.rotation
-        # Use distance to create circular shape
+        # Create bubble shape
         edge_dist = abs(dist - self.current_size)
         
-        if edge_dist < 0.5:
-            return '○'  # Edge
-        elif edge_dist < 1.0:
+        # Use different characters for bubble effect
+        if edge_dist < 0.3:
+            return '○'  # Outer edge
+        elif edge_dist < 0.6:
             return '◉'  # Near edge
-        elif dist < self.current_size * 0.7:
-            return '◯'  # Middle
+        elif dist < self.current_size * 0.5:
+            return '◯'  # Inner
+        elif dist < self.current_size * 0.8:
+            return '·'  # Middle glow
         else:
             return ' '
 
