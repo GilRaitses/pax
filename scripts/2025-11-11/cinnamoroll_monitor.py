@@ -1,453 +1,244 @@
 #!/usr/bin/env python3
-"""Cinnamoroll-themed process status monitor with ASCII animation.
+"""Bubble-themed process status monitor with floating bubble animation.
 
 Features:
-- Bouncing Cinnamoroll ASCII art characters
-- Large ASCII numbers for counters
-- Flipbook animation (updates every 1.5 seconds)
-- Cinnamoroll color theme
+- Floating bubbles of different sizes
+- Bubbles float, grow, shrink, rotate, and revolve
+- Max 3 bubbles per size category
+- Bubbles pop when progress percentage changes
+- Normal-sized text for stats
 """
 
 from __future__ import annotations
 
 import argparse
+import math
+import random
 import sys
 import time
+from dataclasses import dataclass
 from datetime import datetime
 from pathlib import Path
 from zoneinfo import ZoneInfo
 
-# ANSI color codes for Cinnamoroll theme
+# ANSI color codes for bubble theme
 class Colors:
-    BLUE = '\033[94m'      # Cinnamoroll Blue
-    PINK = '\033[95m'      # Cinnamoroll Pink
-    MINT = '\033[96m'      # Cinnamoroll Mint
-    CREAM = '\033[97m'     # Cinnamoroll Cream
+    BLUE = '\033[94m'      # Light blue
+    PINK = '\033[95m'      # Pink
+    MINT = '\033[96m'     # Mint
+    CREAM = '\033[97m'    # Cream
     RESET = '\033[0m'
     BOLD = '\033[1m'
     CLEAR = '\033[2J\033[H'  # Clear screen and move to top
 
 
-# ASCII Cinnamoroll frames for animation (bouncing)
-# Cinnamoroll is a white dog with floppy ears
-CINNAMOROLL_FRAMES = [
-    # Frame 1: Normal position (on ground)
-    [
-        "   ╭───╮",
-        "  ( •.• )",
-        "   ╰─╯",
-        "  ╱   ╲",
-        " ╱     ╲",
-    ],
-    # Frame 2: Slightly up (legs compressed)
-    [
-        "   ╭───╮",
-        "  ( •.• )",
-        "   ╰─╯",
-        "  ╱   ╲",
-        " ╱     ╲",
-    ],
-    # Frame 3: High bounce (legs extended up)
-    [
-        "   ╭───╮",
-        "  ( •.• )",
-        "   ╰─╯",
-        "  ╱   ╲",
-        " ╱     ╲",
-    ],
-    # Frame 4: Coming down
-    [
-        "   ╭───╮",
-        "  ( •.• )",
-        "   ╰─╯",
-        "  ╱   ╲",
-        " ╱     ╲",
-    ],
-    # Frame 5: Landing (squish)
-    [
-        "   ╭───╮",
-        "  ( •.• )",
-        "   ╰─╯",
-        "  ╱   ╲",
-        " ╱     ╲",
-    ],
-]
-
-# Small ASCII letters (3 rows tall)
-SMALL_LETTERS = {
-    'I': ["███", " █ ", "███"],
-    'M': ["█ █", "███", "█ █"],
-    'A': ["███", "█ █", "█ █"],
-    'G': ["███", "█  ", "███"],
-    'E': ["███", "██ ", "███"],
-    'S': ["███", "███", "███"],
-    'P': ["███", "█ █", "█  "],
-    'R': ["███", "█ █", "█ █"],
-    'O': ["███", "█ █", "███"],
-    'C': ["███", "█  ", "███"],
-    'D': ["██ ", "█ █", "██ "],
-    'N': ["█ █", "███", "█ █"],
-    'T': ["███", " █ ", " █ "],
-    'L': ["█  ", "█  ", "███"],
-    'F': ["███", "██ ", "█  "],
-    'U': ["█ █", "█ █", "███"],
-    'H': ["█ █", "███", "█ █"],
-    'Y': ["█ █", " █ ", " █ "],
-    'W': ["█ █", "█ █", "███"],
-    'V': ["█ █", "█ █", " █ "],
-    'X': ["█ █", " █ ", "█ █"],
-    'Z': ["███", " █ ", "███"],
-    ' ': ["   ", "   ", "   "],
-    ':': ["   ", " █ ", "   "],
-    '/': ["  █", " █ ", "█  "],
-    '%': ["█ █", " █ ", "█ █"],
-    '.': ["   ", "   ", " █ "],
-    '-': ["   ", "███", "   "],
-}
-
-# Large ASCII numbers (5 rows tall)
-LARGE_NUMBERS = {
-    '0': [
-        " ████ ",
-        "█    █",
-        "█    █",
-        "█    █",
-        " ████ "
-    ],
-    '1': [
-        "  ██  ",
-        " ███  ",
-        "  ██  ",
-        "  ██  ",
-        "██████"
-    ],
-    '2': [
-        " ████ ",
-        "    █",
-        " ████ ",
-        "█     ",
-        "██████"
-    ],
-    '3': [
-        " ████ ",
-        "    █",
-        " ████ ",
-        "    █",
-        " ████ "
-    ],
-    '4': [
-        "█    █",
-        "█    █",
-        "██████",
-        "    █",
-        "    █"
-    ],
-    '5': [
-        "██████",
-        "█     ",
-        "██████",
-        "    █",
-        "██████"
-    ],
-    '6': [
-        " ████ ",
-        "█     ",
-        "██████",
-        "█    █",
-        " ████ "
-    ],
-    '7': [
-        "██████",
-        "    █",
-        "   █ ",
-        "  █  ",
-        " █   "
-    ],
-    '8': [
-        " ████ ",
-        "█    █",
-        " ████ ",
-        "█    █",
-        " ████ "
-    ],
-    '9': [
-        " ████ ",
-        "█    █",
-        " █████",
-        "    █",
-        " ████ "
-    ],
-    ':': [
-        "     ",
-        " ██  ",
-        "     ",
-        " ██  ",
-        "     "
-    ],
-    '/': [
-        "    █",
-        "   █ ",
-        "  █  ",
-        " █   ",
-        "█    "
-    ],
-    '%': [
-        "█   █",
-        "   █ ",
-        "  █  ",
-        " █   ",
-        "█   █"
-    ],
-    ' ': [
-        "     ",
-        "     ",
-        "     ",
-        "     ",
-        "     "
-    ],
-}
-
-# Large ASCII letters
-LARGE_LETTERS = {
-    'I': [
-        "██████",
-        "  ██  ",
-        "  ██  ",
-        "  ██  ",
-        "██████"
-    ],
-    'M': [
-        "█    █",
-        "██  ██",
-        "█ ██ █",
-        "█    █",
-        "█    █"
-    ],
-    'A': [
-        " ████ ",
-        "█    █",
-        "██████",
-        "█    █",
-        "█    █"
-    ],
-    'G': [
-        " ████ ",
-        "█     ",
-        "█  ███",
-        "█    █",
-        " ████ "
-    ],
-    'E': [
-        "██████",
-        "█     ",
-        "██████",
-        "█     ",
-        "██████"
-    ],
-    'S': [
-        " ████ ",
-        "█     ",
-        " ████ ",
-        "    █",
-        "██████"
-    ],
-    'P': [
-        "██████",
-        "█    █",
-        "██████",
-        "█     ",
-        "█     "
-    ],
-    'R': [
-        "██████",
-        "█    █",
-        "██████",
-        "█  █  ",
-        "█    █"
-    ],
-    'O': [
-        " ████ ",
-        "█    █",
-        "█    █",
-        "█    █",
-        " ████ "
-    ],
-    'C': [
-        " ████ ",
-        "█     ",
-        "█     ",
-        "█     ",
-        " ████ "
-    ],
-    'D': [
-        "█████ ",
-        "█    █",
-        "█    █",
-        "█    █",
-        "█████ "
-    ],
-    'N': [
-        "█    █",
-        "██   █",
-        "█ █  █",
-        "█  █ █",
-        "█   ██"
-    ],
-    'T': [
-        "██████",
-        "  ██  ",
-        "  ██  ",
-        "  ██  ",
-        "  ██  "
-    ],
-    'L': [
-        "█     ",
-        "█     ",
-        "█     ",
-        "█     ",
-        "██████"
-    ],
-    'F': [
-        "██████",
-        "█     ",
-        "██████",
-        "█     ",
-        "█     "
-    ],
-    'U': [
-        "█    █",
-        "█    █",
-        "█    █",
-        "█    █",
-        " ████ "
-    ],
-    'H': [
-        "█    █",
-        "█    █",
-        "██████",
-        "█    █",
-        "█    █"
-    ],
-    'Y': [
-        "█    █",
-        " █  █ ",
-        "  ██  ",
-        "  ██  ",
-        "  ██  "
-    ],
-    'W': [
-        "█    █",
-        "█    █",
-        "█ ██ █",
-        "██  ██",
-        "█    █"
-    ],
-    'V': [
-        "█    █",
-        "█    █",
-        " █  █ ",
-        " █  █ ",
-        "  ██  "
-    ],
-    'X': [
-        "█    █",
-        " █  █ ",
-        "  ██  ",
-        " █  █ ",
-        "█    █"
-    ],
-    'Z': [
-        "██████",
-        "   █  ",
-        "  █   ",
-        " █    ",
-        "██████"
-    ],
-    ' ': [
-        "     ",
-        "     ",
-        "     ",
-        "     ",
-        "     "
-    ],
-}
-
-
-def render_small_text(text: str, color: str = Colors.RESET) -> list[str]:
-    """Render text using small ASCII letters (3 rows)."""
-    lines = [''] * 3
-    for char in text.upper():
-        char_lines = SMALL_LETTERS.get(char, SMALL_LETTERS.get(' ', ['   '] * 3))
-        for i in range(3):
-            lines[i] += char_lines[i] + ' '
-    return [color + line + Colors.RESET for line in lines]
-
-
-def render_large_numbers(text: str, color: str = Colors.RESET) -> list[str]:
-    """Render numbers using large ASCII characters (5 rows).
+@dataclass
+class Bubble:
+    """A floating bubble with physics."""
+    x: float
+    y: float
+    size: float  # Base size
+    current_size: float  # Current size (for growth/shrink)
+    vx: float  # Horizontal velocity
+    vy: float  # Vertical velocity
+    rotation: float  # Rotation angle
+    rotation_speed: float  # Rotation speed
+    growth_phase: float  # Growth phase (0-2π)
+    growth_speed: float  # Growth speed
+    orbit_center_x: float  # Orbit center X
+    orbit_center_y: float  # Orbit center Y
+    orbit_radius: float  # Orbit radius
+    orbit_angle: float  # Orbit angle
+    orbit_speed: float  # Orbit speed
+    spawn_time: float  # When bubble was spawned
+    color: str  # Bubble color
     
-    Handles numbers, colons, periods, and dashes by converting small chars to 5-row format.
-    """
-    lines = [''] * 5
-    for char in text:
-        if char in LARGE_NUMBERS:
-            char_lines = LARGE_NUMBERS[char]
-        elif char in SMALL_LETTERS:  # For punctuation/symbols (:, ., -)
-            # Convert 3-row to 5-row by centering vertically
-            small_lines = SMALL_LETTERS[char]
-            char_lines = ['     '] * 5
-            # Center the 3-row character in the 5-row space
-            char_lines[1] = small_lines[0].center(6)[:6] if len(small_lines[0]) <= 3 else small_lines[0]
-            char_lines[2] = small_lines[1].center(6)[:6] if len(small_lines[1]) <= 3 else small_lines[1]
-            char_lines[3] = small_lines[2].center(6)[:6] if len(small_lines[2]) <= 3 else small_lines[2]
+    def update(self, dt: float, terminal_width: int, terminal_height: int):
+        """Update bubble physics."""
+        # Update orbit
+        if self.orbit_radius > 0:
+            self.orbit_angle += self.orbit_speed * dt
+            self.x = self.orbit_center_x + math.cos(self.orbit_angle) * self.orbit_radius
+            self.y = self.orbit_center_y + math.sin(self.orbit_angle) * self.orbit_radius
+        
+        # Update position with velocity
+        self.x += self.vx * dt
+        self.y += self.vy * dt
+        
+        # Bounce off edges
+        if self.x < self.current_size:
+            self.x = self.current_size
+            self.vx = abs(self.vx)
+        elif self.x > terminal_width - self.current_size:
+            self.x = terminal_width - self.current_size
+            self.vx = -abs(self.vx)
+        
+        if self.y < self.current_size:
+            self.y = self.current_size
+            self.vy = abs(self.vy)
+        elif self.y > terminal_height - self.current_size:
+            self.y = terminal_height - self.current_size
+            self.vy = -abs(self.vy)
+        
+        # Update rotation
+        self.rotation += self.rotation_speed * dt
+        
+        # Update growth (shapeshifting)
+        self.growth_phase += self.growth_speed * dt
+        growth_factor = 1.0 + 0.2 * math.sin(self.growth_phase)  # ±20% size variation
+        self.current_size = self.size * growth_factor
+        
+        # Gentle floating (slight vertical drift)
+        self.vy += math.sin(time.time() * 0.5) * 0.1 * dt
+    
+    def get_char(self, dx: int, dy: int) -> str:
+        """Get character at offset from bubble center."""
+        dist = math.sqrt(dx*dx + dy*dy)
+        if dist > self.current_size:
+            return ' '
+        
+        # Create bubble shape with rotation
+        angle = math.atan2(dy, dx) - self.rotation
+        # Use distance to create circular shape
+        edge_dist = abs(dist - self.current_size)
+        
+        if edge_dist < 0.5:
+            return '○'  # Edge
+        elif edge_dist < 1.0:
+            return '◉'  # Near edge
+        elif dist < self.current_size * 0.7:
+            return '◯'  # Middle
         else:
-            char_lines = ['     '] * 5
-        
-        for i in range(5):
-            lines[i] += char_lines[i] + ' '
+            return ' '
+
+
+class BubbleSystem:
+    """Manages bubbles and their lifecycle."""
     
-    return [color + line + Colors.RESET for line in lines]
-
-
-def render_large_text(text: str, color: str = Colors.RESET) -> list[str]:
-    """Render text using large ASCII characters (all 5 rows)."""
-    lines = [''] * 5
-    for char in text.upper():
-        if char in LARGE_LETTERS:
-            char_lines = LARGE_LETTERS[char]
-        elif char in LARGE_NUMBERS:
-            char_lines = LARGE_NUMBERS[char]
+    def __init__(self, terminal_width: int, terminal_height: int):
+        self.terminal_width = terminal_width
+        self.terminal_height = terminal_height
+        self.bubbles: list[Bubble] = []
+        self.size_categories = {
+            'small': (2.0, 3.0),   # Size range
+            'medium': (4.0, 6.0),
+            'large': (7.0, 10.0),
+        }
+        self.max_per_size = 3
+        self.min_lifetime = 60.0  # 1 minute minimum
+        self.current_progress = 0.0
+        self.last_progress_change = time.time()
+    
+    def spawn_bubble(self, size_category: str):
+        """Spawn a new bubble of given size category."""
+        size_min, size_max = self.size_categories[size_category]
+        
+        # Count existing bubbles of this size
+        count = sum(1 for b in self.bubbles if size_min <= b.size <= size_max)
+        if count >= self.max_per_size:
+            return
+        
+        # Random size within category
+        size = random.uniform(size_min, size_max)
+        
+        # Random position
+        x = random.uniform(size, self.terminal_width - size)
+        y = random.uniform(size, self.terminal_height - size)
+        
+        # Random velocity (gentle floating)
+        vx = random.uniform(-0.5, 0.5)
+        vy = random.uniform(-0.3, 0.3)
+        
+        # Random rotation
+        rotation = random.uniform(0, 2 * math.pi)
+        rotation_speed = random.uniform(-0.5, 0.5)
+        
+        # Growth animation
+        growth_phase = random.uniform(0, 2 * math.pi)
+        growth_speed = random.uniform(0.3, 0.8)
+        
+        # Orbit (some bubbles orbit around others)
+        orbit_radius = random.uniform(0, 8) if random.random() < 0.3 else 0
+        orbit_angle = random.uniform(0, 2 * math.pi)
+        orbit_speed = random.uniform(0.2, 0.5) if orbit_radius > 0 else 0
+        
+        # Orbit center (if orbiting, use another bubble or random point)
+        if orbit_radius > 0 and self.bubbles:
+            center_bubble = random.choice(self.bubbles)
+            orbit_center_x = center_bubble.x
+            orbit_center_y = center_bubble.y
         else:
-            char_lines = LARGE_LETTERS.get(' ', ['     '] * 5)
+            orbit_center_x = x
+            orbit_center_y = y
         
-        for i in range(5):
-            lines[i] += char_lines[i] + ' '
-    
-    return [color + line + Colors.RESET for line in lines]
-
-
-def get_cinnamoroll_frame(frame_idx: int, x_pos: int, y_pos: int) -> list[str]:
-    """Get a Cinnamoroll frame at a specific position."""
-    frame = CINNAMOROLL_FRAMES[frame_idx % len(CINNAMOROLL_FRAMES)]
-    colored_frame = []
-    bounce_frame = frame_idx % len(CINNAMOROLL_FRAMES)
-    bounce_offset = abs(bounce_frame - len(CINNAMOROLL_FRAMES) // 2)
-    
-    for i, line in enumerate(frame):
-        # Add horizontal padding for x position
-        # Use different colors for different parts
-        if i < 2:  # Head/ears
-            color = Colors.PINK
-        elif i == 2:  # Face
-            color = Colors.CREAM
-        else:  # Body/legs
-            color = Colors.MINT
+        # Random color
+        colors = [Colors.BLUE, Colors.PINK, Colors.MINT, Colors.CREAM]
+        color = random.choice(colors)
         
-        # Add vertical bounce effect
-        vertical_pad = max(0, 2 - bounce_offset) if i == 0 else 0
-        padded = ' ' * x_pos + ('\n' * vertical_pad) + color + line + Colors.RESET
-        colored_frame.append(padded)
-    return colored_frame
+        bubble = Bubble(
+            x=x, y=y,
+            size=size, current_size=size,
+            vx=vx, vy=vy,
+            rotation=rotation, rotation_speed=rotation_speed,
+            growth_phase=growth_phase, growth_speed=growth_speed,
+            orbit_center_x=orbit_center_x,
+            orbit_center_y=orbit_center_y,
+            orbit_radius=orbit_radius,
+            orbit_angle=orbit_angle,
+            orbit_speed=orbit_speed,
+            spawn_time=time.time(),
+            color=color,
+        )
+        
+        self.bubbles.append(bubble)
+    
+    def update(self, dt: float, progress: float):
+        """Update all bubbles and handle progress changes."""
+        # Check if progress changed
+        if abs(progress - self.current_progress) > 0.01:  # 1% threshold
+            # Pop all bubbles if they've lived at least 1 minute
+            current_time = time.time()
+            self.bubbles = [
+                b for b in self.bubbles
+                if (current_time - b.spawn_time) < self.min_lifetime
+            ]
+            self.current_progress = progress
+            self.last_progress_change = current_time
+        
+        # Update all bubbles
+        for bubble in self.bubbles:
+            bubble.update(dt, self.terminal_width, self.terminal_height)
+        
+        # Spawn new bubbles to maintain population
+        for category in self.size_categories.keys():
+            count = sum(1 for b in self.bubbles 
+                       if self.size_categories[category][0] <= b.size <= self.size_categories[category][1])
+            if count < self.max_per_size:
+                if random.random() < 0.1:  # 10% chance per frame
+                    self.spawn_bubble(category)
+    
+    def render(self) -> list[str]:
+        """Render all bubbles to a canvas."""
+        # Create canvas
+        canvas = [[' ' for _ in range(self.terminal_width)] 
+                 for _ in range(self.terminal_height)]
+        
+        # Render each bubble
+        for bubble in self.bubbles:
+            # Render bubble
+            radius = int(bubble.current_size) + 1
+            for dy in range(-radius, radius + 1):
+                for dx in range(-radius, radius + 1):
+                    x = int(bubble.x) + dx
+                    y = int(bubble.y) + dy
+                    
+                    if 0 <= x < self.terminal_width and 0 <= y < self.terminal_height:
+                        char = bubble.get_char(dx, dy)
+                        if char != ' ':
+                            canvas[y][x] = bubble.color + char + Colors.RESET
+        
+        # Convert to strings
+        return [''.join(row) for row in canvas]
 
 
 def count_local_images(local_dir: Path, date_filter: str | None = None) -> dict:
@@ -498,34 +289,39 @@ def monitor_process(
     local_dir: Path,
     features_dir: Path | None = None,
     log_file: Path | None = None,
-    refresh_interval: float = 1.5,
+    refresh_interval: float = 0.1,  # Faster updates for smooth animation
     date_filter: str | None = None,
+    expected_total: int | None = None,
 ):
-    """Monitor process with Cinnamoroll animation."""
+    """Monitor process with floating bubble animation."""
     if features_dir is None:
         features_dir = Path("data/features")
     
-    # Terminal dimensions (will be detected)
+    # Terminal dimensions
     terminal_width = 80
     terminal_height = 24
     
-    # Animation state
-    frame_idx = 0
-    cinnamoroll_x = 5
-    cinnamoroll_y = 2
-    direction = 1  # 1 = right, -1 = left
+    # Bubble system
+    bubble_system = BubbleSystem(terminal_width, terminal_height)
     
     # Initial counts
     initial_images = count_local_images(local_dir, date_filter)["total"]
     initial_feature_count = count_features(features_dir)
     
     start_time = time.time()
-    last_image_count = initial_images
-    last_feature_count = initial_feature_count
+    last_update = start_time
+    
+    # Spawn initial bubbles
+    for _ in range(5):
+        category = random.choice(list(bubble_system.size_categories.keys()))
+        bubble_system.spawn_bubble(category)
     
     try:
         while True:
-            elapsed = time.time() - start_time
+            current_time = time.time()
+            dt = current_time - last_update
+            last_update = current_time
+            elapsed = current_time - start_time
             
             # Get current counts
             image_stats = count_local_images(local_dir, date_filter)
@@ -535,6 +331,13 @@ def monitor_process(
             newly_downloaded = current_images - initial_images
             newly_extracted = current_features - initial_feature_count
             
+            # Calculate progress percentage
+            if expected_total and expected_total > 0:
+                progress = min(100.0, (newly_downloaded / expected_total) * 100.0)
+            else:
+                # Estimate progress based on elapsed time (if we have a rough estimate)
+                progress = min(100.0, (elapsed / 3600.0) * 100.0)  # Assume 1 hour max
+            
             # Calculate rates
             if elapsed > 0:
                 image_rate = newly_downloaded / elapsed
@@ -543,96 +346,41 @@ def monitor_process(
                 image_rate = 0
                 feature_rate = 0
             
-            # Update Cinnamoroll position (bounce animation)
-            frame_idx += 1
-            
-            # Calculate bounce height based on frame
-            bounce_frame = frame_idx % len(CINNAMOROLL_FRAMES)
-            bounce_height = abs(bounce_frame - len(CINNAMOROLL_FRAMES) // 2)
-            
-            # Move horizontally
-            cinnamoroll_x += direction * 2
-            
-            # Bounce off edges
-            if cinnamoroll_x > terminal_width - 20:
-                direction = -1
-                cinnamoroll_x = terminal_width - 20
-            elif cinnamoroll_x < 0:
-                direction = 1
-                cinnamoroll_x = 0
+            # Update bubble system
+            bubble_system.update(dt, progress)
             
             # Clear screen
             print(Colors.CLEAR, end='')
             
-            # Header (simple, no title)
+            # Header
             print(Colors.BOLD + Colors.BLUE + "=" * terminal_width + Colors.RESET)
             print()
             
-            # Time
+            # Stats (normal text)
             time_str = datetime.now(ZoneInfo("America/New_York")).strftime("%Y-%m-%d %H:%M:%S %Z")
             print(Colors.CREAM + f"Time: {time_str}" + Colors.RESET)
             print()
             
-            # Elapsed time
-            elapsed_label_lines = render_small_text("ELAPSED", Colors.MINT)
-            for line in elapsed_label_lines:
-                print(line)
             elapsed_min = int(elapsed // 60)
             elapsed_sec = int(elapsed % 60)
-            elapsed_str = f"{elapsed_min:02d}:{elapsed_sec:02d}"
-            elapsed_lines = render_large_numbers(elapsed_str, Colors.MINT)
-            for line in elapsed_lines:
-                print(line)
-            print()
-            
-            # Images counter
-            images_label_lines = render_small_text("IMAGES", Colors.PINK)
-            for line in images_label_lines:
-                print(line)
-            # Show newly downloaded, but also show total in small text
-            images_str = f"{newly_downloaded}"
-            images_lines = render_large_numbers(images_str, Colors.PINK)
-            for line in images_lines:
-                print(line)
+            print(Colors.MINT + f"Elapsed: {elapsed_min:02d}:{elapsed_sec:02d}" + Colors.RESET)
+            print(Colors.PINK + f"Images: {newly_downloaded}" + Colors.RESET)
             if current_images > 0:
-                total_text = f"(total: {current_images})"
-                total_lines = render_small_text(total_text, Colors.CREAM)
-                for line in total_lines:
-                    print(line)
-            print()
-            
-            # Features counter
-            features_label_lines = render_small_text("FEATURES", Colors.MINT)
-            for line in features_label_lines:
-                print(line)
-            features_str = f"{newly_extracted}"
-            features_lines = render_large_numbers(features_str, Colors.MINT)
-            for line in features_lines:
-                print(line)
+                print(Colors.CREAM + f"  (total: {current_images})" + Colors.RESET)
+            print(Colors.MINT + f"Features: {newly_extracted}" + Colors.RESET)
             if current_features > 0:
-                total_text = f"(total: {current_features})"
-                total_lines = render_small_text(total_text, Colors.CREAM)
-                for line in total_lines:
-                    print(line)
-            print()
+                print(Colors.CREAM + f"  (total: {current_features})" + Colors.RESET)
             
-            # Rates
             if image_rate > 0:
-                rate_label_lines = render_small_text("RATE", Colors.CREAM)
-                for line in rate_label_lines:
-                    print(line)
-                rate_str = f"{image_rate:.1f}"
-                rate_lines = render_large_numbers(rate_str, Colors.CREAM)
-                for line in rate_lines:
-                    print(line)
-                print()
+                print(Colors.CREAM + f"Rate: {image_rate:.2f} images/sec" + Colors.RESET)
             
-            # Cinnamoroll animation
+            print(Colors.BLUE + f"Progress: {progress:.1f}%" + Colors.RESET)
             print()
-            cinnamoroll_frame = get_cinnamoroll_frame(frame_idx, cinnamoroll_x, cinnamoroll_y)
-            for line in cinnamoroll_frame:
-                if line.strip():  # Only print non-empty lines
-                    print(line)
+            
+            # Render bubbles
+            bubble_canvas = bubble_system.render()
+            for line in bubble_canvas:
+                print(line)
             
             # Footer
             print()
@@ -646,15 +394,11 @@ def monitor_process(
                     with open(log_file) as f:
                         lines = f.readlines()
                         if lines:
-                            # Show last 3 lines, wrapping if needed
                             print()
                             print(Colors.CREAM + "Latest log:" + Colors.RESET)
-                            # Get last 3 non-empty lines
                             recent_lines = [l.strip() for l in lines[-10:] if l.strip()][-3:]
                             for line in recent_lines:
-                                # Wrap long lines
                                 if len(line) > terminal_width - 4:
-                                    # Split into chunks
                                     chunks = [line[i:i+terminal_width-4] for i in range(0, len(line), terminal_width-4)]
                                     for chunk in chunks:
                                         print(Colors.CREAM + chunk + Colors.RESET)
@@ -667,13 +411,12 @@ def monitor_process(
             
     except KeyboardInterrupt:
         print("\n\n" + Colors.BOLD + Colors.PINK + "Monitoring stopped!" + Colors.RESET)
-        print(Colors.CREAM + "Cinnamoroll says goodbye! 👋" + Colors.RESET)
 
 
 def main():
     """Main entry point."""
     parser = argparse.ArgumentParser(
-        description="Cinnamoroll-themed process monitor with ASCII animation",
+        description="Bubble-themed process monitor with floating bubble animation",
         formatter_class=argparse.RawDescriptionHelpFormatter,
     )
     
@@ -697,13 +440,18 @@ def main():
     parser.add_argument(
         "--refresh-interval",
         type=float,
-        default=1.5,
-        help="Refresh interval in seconds (default: 1.5)",
+        default=0.1,
+        help="Refresh interval in seconds (default: 0.1 for smooth animation)",
     )
     parser.add_argument(
         "--date-filter",
         type=str,
-        help="Date filter (YYYYMMDD) to only count images from this date",
+        help="Date filter for images (YYYYMMDD format)",
+    )
+    parser.add_argument(
+        "--expected-total",
+        type=int,
+        help="Expected total number of images for progress calculation",
     )
     
     args = parser.parse_args()
@@ -714,9 +462,9 @@ def main():
         log_file=args.log_file,
         refresh_interval=args.refresh_interval,
         date_filter=args.date_filter,
+        expected_total=args.expected_total,
     )
 
 
 if __name__ == "__main__":
     main()
-
