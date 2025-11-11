@@ -53,34 +53,46 @@ class Bubble:
     spawn_time: float  # When bubble was spawned
     color: str  # Bubble color
     
-    def update(self, dt: float, terminal_width: int, terminal_height: int):
-        """Update bubble physics."""
+    def update(self, dt: float, terminal_width: int, terminal_height: int, wind_x: float = 0.0, wind_y: float = 0.0):
+        """Update bubble physics with wind effects."""
         # Update orbit
         if self.orbit_radius > 0:
             self.orbit_angle += self.orbit_speed * dt
             self.x = self.orbit_center_x + math.cos(self.orbit_angle) * self.orbit_radius
             self.y = self.orbit_center_y + math.sin(self.orbit_angle) * self.orbit_radius
         
+        # Apply wind forces (bubbles are light, so wind affects them more)
+        wind_strength = 0.8  # How much wind affects bubbles
+        self.vx += wind_x * wind_strength * dt
+        self.vy += wind_y * wind_strength * dt
+        
+        # Air resistance (damping)
+        damping = 0.95
+        self.vx *= damping
+        self.vy *= damping
+        
         # Update position with velocity
         self.x += self.vx * dt
         self.y += self.vy * dt
         
-        # Bounce off edges
+        # Bounce off edges (with some energy loss)
         if self.x < self.current_size:
             self.x = self.current_size
-            self.vx = abs(self.vx)
+            self.vx = abs(self.vx) * 0.7
         elif self.x > terminal_width - self.current_size:
             self.x = terminal_width - self.current_size
-            self.vx = -abs(self.vx)
+            self.vx = -abs(self.vx) * 0.7
         
         if self.y < self.current_size:
             self.y = self.current_size
-            self.vy = abs(self.vy)
+            self.vy = abs(self.vy) * 0.7
         elif self.y > terminal_height - self.current_size:
             self.y = terminal_height - self.current_size
-            self.vy = -abs(self.vy)
+            self.vy = -abs(self.vy) * 0.7
         
-        # Update rotation
+        # Update rotation (wind causes rotation)
+        rotation_from_wind = (wind_x + wind_y) * 0.3
+        self.rotation_speed += rotation_from_wind * dt * 0.1
         self.rotation += self.rotation_speed * dt
         
         # Update growth (shapeshifting)
@@ -129,6 +141,12 @@ class BubbleSystem:
         self.min_lifetime = 60.0  # 1 minute minimum
         self.current_progress = 0.0
         self.last_progress_change = time.time()
+        
+        # Wind system
+        self.wind_base_x = 0.0
+        self.wind_base_y = 0.0
+        self.wind_time = 0.0
+        self.wind_gust_phase = random.uniform(0, 2 * math.pi)
     
     def spawn_bubble(self, size_category: str):
         """Spawn a new bubble of given size category."""
@@ -193,8 +211,32 @@ class BubbleSystem:
         
         self.bubbles.append(bubble)
     
+    def get_wind_at_position(self, x: float, y: float, t: float) -> tuple[float, float]:
+        """Calculate wind vector at a given position (varies by space and time)."""
+        # Base wind (slowly changing direction)
+        base_angle = math.sin(t * 0.1) * 2 * math.pi
+        base_strength = 0.5 + 0.3 * math.sin(t * 0.15)
+        wind_x = math.cos(base_angle) * base_strength
+        wind_y = math.sin(base_angle) * base_strength
+        
+        # Local gusts (varies by position)
+        gust_x = math.sin(x * 0.1 + t * 0.3) * 0.4
+        gust_y = math.cos(y * 0.1 + t * 0.25) * 0.4
+        
+        # Occasional strong gusts
+        gust_phase = math.sin(t * 0.05 + self.wind_gust_phase)
+        if abs(gust_phase) > 0.8:  # Strong gust
+            gust_strength = abs(gust_phase) * 1.5
+            gust_x += math.cos(t * 0.2) * gust_strength
+            gust_y += math.sin(t * 0.18) * gust_strength
+        
+        return wind_x + gust_x, wind_y + gust_y
+    
     def update(self, dt: float, progress: float):
         """Update all bubbles and handle progress changes."""
+        # Update wind time
+        self.wind_time += dt
+        
         # Check if progress changed
         if abs(progress - self.current_progress) > 0.01:  # 1% threshold
             # Pop all bubbles if they've lived at least 1 minute
@@ -206,9 +248,13 @@ class BubbleSystem:
             self.current_progress = progress
             self.last_progress_change = current_time
         
-        # Update all bubbles
+        # Update all bubbles with wind
         for bubble in self.bubbles:
-            bubble.update(dt, self.terminal_width, self.terminal_height)
+            # Get wind at bubble's position
+            wind_x, wind_y = self.get_wind_at_position(
+                bubble.x, bubble.y, self.wind_time
+            )
+            bubble.update(dt, self.terminal_width, self.terminal_height, wind_x, wind_y)
         
         # Spawn new bubbles to maintain population
         for category in self.size_categories.keys():
