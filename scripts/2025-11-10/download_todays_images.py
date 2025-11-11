@@ -57,9 +57,8 @@ def list_todays_images_gcs(
         # Get target date range in ET
         if target_date:
             target_dt = datetime.strptime(target_date, "%Y-%m-%d")
-            target_dt = ZoneInfo("America/New_York").localize(
-                datetime.combine(target_dt.date(), datetime.min.time())
-            )
+            target_dt = datetime.combine(target_dt.date(), datetime.min.time())
+            target_dt = target_dt.replace(tzinfo=ZoneInfo("America/New_York"))
         else:
             target_dt = datetime.now(ZoneInfo("America/New_York"))
         
