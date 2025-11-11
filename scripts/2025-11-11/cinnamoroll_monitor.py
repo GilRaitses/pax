@@ -649,43 +649,7 @@ def monitor_process(
                 if current_images > 0:
                     print(Colors.CREAM + f"  (available: {current_images})" + Colors.RESET)
             
-            # Show features from last processed image
-            if last_feature:
-                # Count features in last feature vector
-                feature_count = 0
-                if isinstance(last_feature, dict):
-                    # Count all numeric values in the feature vector
-                    for key, value in last_feature.items():
-                        if isinstance(value, (int, float)):
-                            feature_count += 1
-                        elif isinstance(value, dict):
-                            feature_count += len([v for v in value.values() if isinstance(v, (int, float))])
-                        elif isinstance(value, list):
-                            feature_count += len(value)
-                
-                print(Colors.MINT + f"Features (last image): {feature_count}" + Colors.RESET)
-                
-                # Show feature summary
-                if isinstance(last_feature, dict):
-                    spatial = last_feature.get('spatial', {}) or last_feature.get('yolo', {}) or {}
-                    if spatial:
-                        ped = spatial.get('pedestrian_count', 0)
-                        veh = spatial.get('vehicle_count', 0)
-                        bike = spatial.get('bicycle_count', 0)
-                        print(Colors.CREAM + f"  Ped: {ped} | Veh: {veh} | Bike: {bike}" + Colors.RESET)
-            else:
-                print(Colors.MINT + f"Features Extracted: {current_features}" + Colors.RESET)
-            
             print(Colors.BLUE + f"Progress: {progress:.1f}%" + Colors.RESET)
-            
-            # Show where features are being written
-            if features_dir.exists():
-                feature_files = list(features_dir.glob("features_*.json"))
-                if feature_files:
-                    latest_file = max(feature_files, key=lambda p: p.stat().st_mtime)
-                    print(Colors.CREAM + f"Features: {latest_file.name}" + Colors.RESET)
-                    print(Colors.CREAM + f"  Location: {features_dir}" + Colors.RESET)
-            
             print()
             
             # Render progress curtain (specks) first (behind bubbles)
@@ -761,8 +725,57 @@ def monitor_process(
                 # Simple approach: pad with spaces if needed
                 print(line)
             
-            # Footer
+            # Feature summary section below bubbles
             print()
+            print(Colors.BOLD + Colors.BLUE + "=" * terminal_width + Colors.RESET)
+            
+            # Try to load and display feature matrix from last processed image
+            feature_summary_shown = False
+            if last_feature and isinstance(last_feature, dict):
+                print(Colors.CREAM + "Feature Matrix (Last Image):" + Colors.RESET)
+                
+                # Extract spatial features
+                spatial = last_feature.get('spatial', {}) or last_feature.get('yolo', {}) or {}
+                if spatial:
+                    ped = spatial.get('pedestrian_count', 0)
+                    veh = spatial.get('vehicle_count', 0)
+                    bike = spatial.get('bicycle_count', 0)
+                    total = spatial.get('total_object_count', ped + veh + bike)
+                    crowd_density = spatial.get('crowd_density', 0.0)
+                    
+                    print(Colors.MINT + f"  Objects: Ped={ped} | Veh={veh} | Bike={bike} | Total={total}" + Colors.RESET)
+                    if crowd_density > 0:
+                        print(Colors.MINT + f"  Density: {crowd_density:.2f}" + Colors.RESET)
+                    feature_summary_shown = True
+                
+                # Extract visual complexity if available
+                visual = last_feature.get('visual_complexity', {}) or last_feature.get('detectron2', {}) or {}
+                if visual:
+                    scene_complexity = visual.get('scene_complexity', 0.0)
+                    lighting = visual.get('lighting_condition', 'unknown')
+                    if scene_complexity > 0 or lighting != 'unknown':
+                        print(Colors.MINT + f"  Scene: Complexity={scene_complexity:.2f} | Lighting={lighting}" + Colors.RESET)
+                        feature_summary_shown = True
+                
+                # Extract CLIP semantic scores if available
+                semantic = last_feature.get('semantic_scores', {}) or last_feature.get('clip', {}) or {}
+                if semantic and isinstance(semantic, dict):
+                    top_scene = semantic.get('top_scene', '') or max(semantic.items(), key=lambda x: x[1] if isinstance(x[1], (int, float)) else 0)[0] if semantic else ''
+                    if top_scene:
+                        print(Colors.MINT + f"  Scene Label: {top_scene}" + Colors.RESET)
+                        feature_summary_shown = True
+            
+            # Show feature file location if available
+            if features_dir.exists():
+                feature_files = list(features_dir.glob("features_*.json"))
+                if feature_files:
+                    latest_file = max(feature_files, key=lambda p: p.stat().st_mtime)
+                    if not feature_summary_shown:
+                        print(Colors.CREAM + "Features:" + Colors.RESET)
+                    print(Colors.CREAM + f"  File: {latest_file.name}" + Colors.RESET)
+                    print(Colors.CREAM + f"  Location: {features_dir}" + Colors.RESET)
+            
+            # Footer
             print(Colors.BOLD + Colors.BLUE + "=" * terminal_width + Colors.RESET)
             print(Colors.CREAM + "Press Ctrl+C to stop" + Colors.RESET)
             print(Colors.BOLD + Colors.BLUE + "=" * terminal_width + Colors.RESET)
