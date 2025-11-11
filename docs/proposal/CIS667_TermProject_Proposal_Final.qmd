@@ -506,6 +506,49 @@ The Ridge model produces a weight $w_i$ for each feature category (violations, p
 
 ## Data Pipeline
 
+### Feature Extraction: Vision Models
+
+Our feature extraction pipeline integrates three complementary computer vision models to extract perceptual and environmental features from traffic camera imagery:
+
+**1. YOLOv8n (Object Detection)**
+- Fast, lightweight object detection model
+- Extracts: pedestrian count, vehicle count, bicycle count
+- Processing time: ~0.1 seconds per image
+- Provides spatial density metrics
+
+**2. Detectron2 (Instance Segmentation)**
+- High-accuracy instance segmentation model
+- Extracts: detailed object boundaries, crowd density metrics, area coverage
+- Processing time: ~0.5 seconds per image
+- Provides pixel-level density analysis
+
+**3. CLIP (Scene Understanding via Hugging Face Transformers)**
+- Semantic scene understanding using contrastive language-image pre-training
+- Model: `openai/clip-vit-base-patch32` via Hugging Face `transformers` library
+- Extracts: scene labels (e.g., "busy street", "intersection", "traffic jam"), semantic embeddings (512-dimensional feature vectors), confidence scores
+- Processing time: ~0.5-1.0 seconds per image
+- Provides contextual understanding beyond object detection
+
+**CLIP Implementation Details:**
+- Uses Hugging Face Transformers (`transformers>=4.30`) for model loading and inference
+- Processes 15 predefined urban scene labels through text encoder
+- Computes cosine similarity between image and text embeddings
+- Returns top scene label with confidence score and full semantic embedding vector
+- Integrated into unified feature extraction pipeline (`src/pax/vision/extractor.py`)
+
+**Multiprocessing Considerations:**
+- Hugging Face tokenizers use internal parallelism that can conflict with Python multiprocessing
+- Library automatically disables parallelism when processes fork to prevent deadlocks
+- Warning message is informational; processing continues normally
+- Can be suppressed with `TOKENIZERS_PARALLELISM=false` environment variable
+
+**Unified Feature Extraction:**
+All three models are combined in a single pipeline that:
+- Processes images sequentially through each model
+- Handles errors gracefully (continues if one model fails)
+- Combines outputs into standardized feature vector format
+- Supports batch processing for efficiency
+
 ### Data Collection Plan
 
 **Feature Vector Structure:** Each camera zone record contains a robust multi-dimensional feature vector extracted via computer vision analysis of traffic camera footage. The features comprehensively encode violation types (pedestrian walkway, dangerous bike positioning, red light, flow blocking, car-bike lane), density metrics (pedestrian, vulnerable populations, traffic volume), infrastructure assessments (gaps, poor signage, signal malfunctions), behavioral indicators (cyclist speed, aggressive behavior) and environmental factors (visibility, weather impact, infrastructure quality, overall safety risk). Each record also includes a temperature/stress score (range: 0 to 30) as the target variable for supervised learning.
