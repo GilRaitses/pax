@@ -677,6 +677,15 @@ def monitor_process(
                 print(Colors.MINT + f"Features Extracted: {current_features}" + Colors.RESET)
             
             print(Colors.BLUE + f"Progress: {progress:.1f}%" + Colors.RESET)
+            
+            # Show where features are being written
+            if features_dir.exists():
+                feature_files = list(features_dir.glob("features_*.json"))
+                if feature_files:
+                    latest_file = max(feature_files, key=lambda p: p.stat().st_mtime)
+                    print(Colors.CREAM + f"Features: {latest_file.name}" + Colors.RESET)
+                    print(Colors.CREAM + f"  Location: {features_dir}" + Colors.RESET)
+            
             print()
             
             # Render progress curtain (specks) first (behind bubbles)
@@ -765,36 +774,37 @@ def monitor_process(
                         lines = f.readlines()
                         if lines:
                             print()
-                            print(Colors.CREAM + "Progress Updates:" + Colors.RESET)
+                            print(Colors.CREAM + "Progress:" + Colors.RESET)
                             
-                            # Filter out warnings and find progress lines
+                            # Find the most recent progress bar line
                             import re
-                            progress_lines = []
-                            for line in reversed(lines[-100:]):  # Check last 100 lines
+                            progress_line = None
+                            for line in reversed(lines[-200:]):  # Check last 200 lines
                                 line_stripped = line.strip()
-                                # Skip tokenizer warnings
-                                if 'tokenizers' in line_stripped.lower() or 'TOKENIZERS_PARALLELISM' in line_stripped:
+                                # Skip tokenizer warnings and other noise
+                                if any(skip in line_stripped.lower() for skip in ['tokenizers', 'parallelism', 'disable', 'warning', 'to disable']):
                                     continue
-                                # Look for progress bar or feature extraction lines
-                                if re.search(r'Extracting features|%[|]|\d+/\d+', line_stripped):
-                                    progress_lines.insert(0, line_stripped)
-                                    if len(progress_lines) >= 3:
-                                        break
+                                # Look for the progress bar line with "Extracting features"
+                                if 'Extracting features' in line_stripped and '%|' in line_stripped:
+                                    progress_line = line_stripped
+                                    break
                             
-                            # Show progress lines or last non-warning line
-                            if progress_lines:
-                                for line in progress_lines[-3:]:
-                                    if len(line) > terminal_width - 4:
-                                        chunks = [line[i:i+terminal_width-4] for i in range(0, len(line), terminal_width-4)]
-                                        for chunk in chunks:
-                                            print(Colors.CREAM + chunk + Colors.RESET)
-                                    else:
-                                        print(Colors.CREAM + line + Colors.RESET)
+                            # Show the progress line
+                            if progress_line:
+                                # Clean up the line (remove any extra whitespace)
+                                progress_line = progress_line.strip()
+                                # Display it
+                                if len(progress_line) > terminal_width - 4:
+                                    chunks = [progress_line[i:i+terminal_width-4] for i in range(0, len(progress_line), terminal_width-4)]
+                                    for chunk in chunks:
+                                        print(Colors.CREAM + chunk + Colors.RESET)
+                                else:
+                                    print(Colors.CREAM + progress_line + Colors.RESET)
                             else:
                                 # Fallback: show last non-warning line
-                                for line in reversed(lines[-20:]):
+                                for line in reversed(lines[-50:]):
                                     line_stripped = line.strip()
-                                    if line_stripped and 'tokenizers' not in line_stripped.lower():
+                                    if line_stripped and not any(skip in line_stripped.lower() for skip in ['tokenizers', 'parallelism', 'disable', 'warning']):
                                         if len(line_stripped) > terminal_width - 4:
                                             chunks = [line_stripped[i:i+terminal_width-4] for i in range(0, len(line_stripped), terminal_width-4)]
                                             for chunk in chunks:
