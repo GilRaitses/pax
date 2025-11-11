@@ -508,6 +508,44 @@ The Ridge model produces a weight $w_i$ for each feature category (violations, p
 
 ### Feature Extraction: Vision Models
 
+```{=latex}
+\begin{center}
+\textcolor{CinnamorollBlue}{\large Feature Extraction Pipeline}
+\end{center}
+\begin{figure}[H]
+\centering
+\begin{tikzpicture}[
+    node distance=1.5cm,
+    auto,
+    every node/.style={align=center, font=\small},
+    input/.style={rectangle, rounded corners=3pt, draw=CinnamorollDeepBlue, fill=CinnamorollCream, minimum width=2.5cm, minimum height=1cm},
+    model/.style={rectangle, rounded corners=3pt, draw=CinnamorollBlue, fill=CinnamorollLavender, minimum width=2.5cm, minimum height=1cm},
+    clip/.style={rectangle, rounded corners=3pt, draw=CinnamorollPink, fill=CinnamorollMint, minimum width=2.5cm, minimum height=1cm},
+    output/.style={rectangle, rounded corners=3pt, draw=CinnamorollDeepBlue, fill=CinnamorollPeriwinkle, minimum width=2.5cm, minimum height=1cm},
+    arrow/.style={->, >=stealth, line width=1pt, color=CinnamorollDeepBlue}
+]
+\node[input] (images) {Traffic Camera\\Images};
+\node[model, below left=of images] (yolo) {YOLOv8n\\Object Detection};
+\node[model, below=of images] (detectron) {Detectron2\\Instance\\Segmentation};
+\node[clip, below right=of images] (clip) {CLIP\\Scene Understanding\\\textit{(Hugging Face)}};
+\node[output, below=3cm of images] (features) {Unified Feature\\Vector};
+\node[output, below=of features] (final) {Feature Vector\\(JSON/Parquet)};
+\draw[arrow] (images) -- (yolo) node[midway, left, font=\tiny] {Fast};
+\draw[arrow] (images) -- (detectron) node[midway, right, font=\tiny] {Detailed};
+\draw[arrow] (images) -- (clip) node[midway, right, font=\tiny] {Semantic};
+\draw[arrow] (yolo) -- (features) node[midway, left, font=\tiny] {Counts};
+\draw[arrow] (detectron) -- (features) node[midway, left, font=\tiny] {Density};
+\draw[arrow] (clip) -- (features) node[midway, right, font=\tiny] {Scene\\Labels};
+\draw[arrow] (features) -- (final);
+\node[above=0.2cm of yolo, font=\tiny, color=CinnamorollBlue] {Pedestrians\\Vehicles\\Bikes};
+\node[above=0.2cm of detectron, font=\tiny, color=CinnamorollBlue] {Crowd Density\\Boundaries};
+\node[above=0.2cm of clip, font=\tiny, color=CinnamorollPink] {Scene Labels\\Embeddings};
+\end{tikzpicture}
+\caption{Feature extraction pipeline showing three vision models (YOLOv8n, Detectron2, CLIP) processing traffic camera images in parallel, with CLIP using Hugging Face Transformers for scene understanding. All model outputs are combined into a unified feature vector.}
+\label{fig:feature-extraction-pipeline}
+\end{figure}
+```
+
 Our feature extraction pipeline integrates three complementary computer vision models to extract perceptual and environmental features from traffic camera imagery:
 
 **1. YOLOv8n (Object Detection)**

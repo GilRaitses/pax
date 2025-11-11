@@ -1,0 +1,82 @@
+% Feature Extraction Pipeline Flowchart
+% For inclusion in proposal QMD
+
+\begin{tikzpicture}[
+    node distance=1.5cm,
+    auto,
+    every node/.style={
+        align=center,
+        font=\small
+    },
+    input/.style={
+        rectangle,
+        rounded corners=3pt,
+        draw=CinnamorollDeepBlue,
+        fill=CinnamorollCream,
+        minimum width=2.5cm,
+        minimum height=1cm
+    },
+    model/.style={
+        rectangle,
+        rounded corners=3pt,
+        draw=CinnamorollBlue,
+        fill=CinnamorollLavender,
+        minimum width=2.5cm,
+        minimum height=1cm
+    },
+    clip/.style={
+        rectangle,
+        rounded corners=3pt,
+        draw=CinnamorollPink,
+        fill=CinnamorollMint,
+        minimum width=2.5cm,
+        minimum height=1cm
+    },
+    output/.style={
+        rectangle,
+        rounded corners=3pt,
+        draw=CinnamorollDeepBlue,
+        fill=CinnamorollPeriwinkle,
+        minimum width=2.5cm,
+        minimum height=1cm
+    },
+    arrow/.style={
+        ->,
+        >=stealth,
+        line width=1pt,
+        color=CinnamorollDeepBlue
+    }
+]
+
+% Input
+\node[input] (images) {Traffic Camera\\Images};
+
+% YOLOv8n
+\node[model, below left=of images] (yolo) {YOLOv8n\\Object Detection};
+\draw[arrow] (images) -- (yolo) node[midway, left] {Fast};
+
+% Detectron2
+\node[model, below=of images] (detectron) {Detectron2\\Instance\\Segmentation};
+\draw[arrow] (images) -- (detectron) node[midway, right] {Detailed};
+
+% CLIP (with Hugging Face)
+\node[clip, below right=of images] (clip) {CLIP\\Scene Understanding\\\textit{(Hugging Face)}};
+\draw[arrow] (images) -- (clip) node[midway, right] {Semantic};
+
+% Feature combination
+\node[output, below=3cm of images] (features) {Unified Feature\\Vector};
+\draw[arrow] (yolo) -- (features) node[midway, left] {Counts};
+\draw[arrow] (detectron) -- (features) node[midway, left] {Density};
+\draw[arrow] (clip) -- (features) node[midway, right] {Scene\\Labels};
+
+% Output
+\node[output, below=of features] (output) {Feature Vector\\(JSON/Parquet)};
+\draw[arrow] (features) -- (output);
+
+% Labels
+\node[above=0.2cm of yolo, font=\tiny, color=CinnamorollBlue] {Pedestrians\\Vehicles\\Bikes};
+\node[above=0.2cm of detectron, font=\tiny, color=CinnamorollBlue] {Crowd Density\\Boundaries};
+\node[above=0.2cm of clip, font=\tiny, color=CinnamorollPink] {Scene Labels\\Embeddings};
+
+\end{tikzpicture}
+
