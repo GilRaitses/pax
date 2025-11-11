@@ -178,15 +178,16 @@ class SpeckSystem:
         self.wind_time = 0.0
         self.wind_gust_phase = random.uniform(0, 2 * math.pi)
         
-        # Speck characters and colors (contrasting with bubbles)
+        # Speck characters and colors (subtle, blending with charcoal background)
         self.speck_chars = ['·', '•', '▪', '▫', '▪', '·']
+        # Subtle colors that blend with dark terminal background
         self.speck_colors = [
-            Colors.CREAM,  # Cream
-            '\033[93m',    # Yellow
-            '\033[92m',    # Green
-            '\033[91m',    # Red
-            '\033[93m',    # Yellow
-            Colors.CREAM,  # Cream
+            '\033[90m',    # Dark gray (almost black)
+            '\033[2;90m',  # Dim dark gray
+            '\033[38;5;238m',  # Dark gray (256 color)
+            '\033[38;5;239m',  # Slightly lighter dark gray
+            '\033[38;5;240m',  # Medium dark gray
+            '\033[2;38;5;238m',  # Dim dark gray
         ]
         
         # Spawn initial specks
@@ -852,28 +853,46 @@ def monitor_process(
                                     progress_line = line_stripped
                                     break
                             
-                            # Show the progress line
+                            # Show the progress line with more space
                             if progress_line:
                                 # Clean up the line (remove any extra whitespace)
                                 progress_line = progress_line.strip()
-                                # Display it
-                                if len(progress_line) > terminal_width - 4:
-                                    chunks = [progress_line[i:i+terminal_width-4] for i in range(0, len(progress_line), terminal_width-4)]
+                                # Display it with wrapping and extra spacing
+                                max_width = terminal_width - 2  # Leave margin
+                                if len(progress_line) > max_width:
+                                    # Split into chunks, but try to preserve progress bar
+                                    chunks = []
+                                    remaining = progress_line
+                                    while len(remaining) > max_width:
+                                        # Try to break at a space if possible
+                                        break_point = max_width
+                                        if ' ' in remaining[:max_width]:
+                                            break_point = remaining.rfind(' ', 0, max_width)
+                                        chunks.append(remaining[:break_point])
+                                        remaining = remaining[break_point:].lstrip()
+                                    if remaining:
+                                        chunks.append(remaining)
+                                    
                                     for chunk in chunks:
                                         print(Colors.CREAM + chunk + Colors.RESET)
                                 else:
                                     print(Colors.CREAM + progress_line + Colors.RESET)
+                                
+                                # Add extra blank line for spacing
+                                print()
                             else:
                                 # Fallback: show last non-warning line
                                 for line in reversed(lines[-50:]):
                                     line_stripped = line.strip()
                                     if line_stripped and not any(skip in line_stripped.lower() for skip in ['tokenizers', 'parallelism', 'disable', 'warning']):
-                                        if len(line_stripped) > terminal_width - 4:
-                                            chunks = [line_stripped[i:i+terminal_width-4] for i in range(0, len(line_stripped), terminal_width-4)]
+                                        max_width = terminal_width - 2
+                                        if len(line_stripped) > max_width:
+                                            chunks = [line_stripped[i:i+max_width] for i in range(0, len(line_stripped), max_width)]
                                             for chunk in chunks:
                                                 print(Colors.CREAM + chunk + Colors.RESET)
                                         else:
                                             print(Colors.CREAM + line_stripped + Colors.RESET)
+                                        print()  # Extra spacing
                                         break
                 except Exception:
                     pass
